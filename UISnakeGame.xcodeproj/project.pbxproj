@@ -40,6 +40,7 @@
 		A75D94DA2C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94D92C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift */; };
 		A75D94DC2C4FDFEA00C23768 /* UIView+SNK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94DB2C4FDFEA00C23768 /* UIView+SNK.swift */; };
 		A75D94DE2C4FE27C00C23768 /* Sequence+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94DD2C4FE27C00C23768 /* Sequence+WSR.swift */; };
+		A75D94E12C4FFD7100C23768 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A75D94E02C4FFD7100C23768 /* Eureka */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A75D94C02C4F924100C23768 /* SuperEasyLayout in Frameworks */,
+				A75D94E12C4FFD7100C23768 /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +322,7 @@
 			name = UISnakeGame;
 			packageProductDependencies = (
 				A75D94BF2C4F924100C23768 /* SuperEasyLayout */,
+				A75D94E02C4FFD7100C23768 /* Eureka */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D94672C4DFE3500C23768 /* UISnakeGame.app */;
@@ -397,6 +400,7 @@
 			mainGroup = A75D945E2C4DFE3500C23768;
 			packageReferences = (
 				A75D94BE2C4F924100C23768 /* XCRemoteSwiftPackageReference "SuperEasyLayout" */,
+				A75D94DF2C4FFCFE00C23768 /* XCRemoteSwiftPackageReference "Eureka" */,
 			);
 			productRefGroup = A75D94682C4DFE3500C23768 /* Products */;
 			projectDirPath = "";
@@ -821,6 +825,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		A75D94DF2C4FFCFE00C23768 /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -828,6 +840,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A75D94BE2C4F924100C23768 /* XCRemoteSwiftPackageReference "SuperEasyLayout" */;
 			productName = SuperEasyLayout;
+		};
+		A75D94E02C4FFD7100C23768 /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A75D94DF2C4FFCFE00C23768 /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
