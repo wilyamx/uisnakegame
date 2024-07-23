@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Combine
 
 class SNKViewController: UIViewController {
+
+    lazy var cancellables = Set<AnyCancellable>()
 
     // MARK: - View Lifecycle
 

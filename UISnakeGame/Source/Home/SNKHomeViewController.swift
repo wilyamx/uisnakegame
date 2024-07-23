@@ -106,7 +106,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         navigationController?.isNavigationBarHidden = true
     }
 
-    // MARK: - Setup Methods
+    // MARK: - Setups
 
     override func setupLayout() {
         addSubviews([
