@@ -22,32 +22,6 @@ class SNKButton: UIButton {
         }
     }
 
-//    var titleColors: [UIControl.State: UIColor?] = [:] {
-//        didSet {
-//            titleColors.forEach { state, color in
-//                guard let attributedString = attributedTitle(for: state) else { return }
-//                guard let color else { return }
-//                let mutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
-//                mutableAttributedString
-//                    .addAttribute(.foregroundColor,
-//                                  value: color,
-//                                  range: NSRange(location: 0, length: attributedString.string.count))
-//                setAttributedTitle(mutableAttributedString, for: state)
-//            }
-//        }
-//    }
-//
-//    var backgroundColors: [UIControl.State: UIColor?] = [
-//        UIControl.State.normal: .clear,
-//        UIControl.State.disabled: .clear
-//    ] {
-//        didSet {
-//            if let color = backgroundColors[state] {
-//                backgroundColor = color
-//            }
-//        }
-//    }
-
     var colorStyle: ColorStyle = .primary { didSet {
         guard let attributedString = titleLabel?.attributedText else { return }
 
@@ -64,4 +38,52 @@ class SNKButton: UIButton {
         tintColor = colorStyle.textColor
     } }
 
+    var tapHandler: ((UIButton) -> Void)?
+    var tapHandlerAsync: ((UIButton) async -> Void)?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    convenience init(image: UIImage?) {
+        let frame = CGRect(origin: CGPoint.zero, size: image?.size ?? CGSize.zero)
+        self.init(frame: frame)
+        setImage(image, for: .normal)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    deinit {
+
+    }
+
+    func setup() {
+        colorStyle = .primary
+        addTarget(self, action: #selector(touchUpInsideButton(_:)), for: .touchUpInside)
+        isExclusiveTouch = true
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+}
+
+
+// MARK: - Actions
+
+extension SNKButton {
+    @objc func touchUpInsideButton(_: Any) {
+        if let tapHandlerAsync {
+            Task {
+                await tapHandlerAsync(self)
+            }
+            return
+        } else if let tapHandler {
+            tapHandler(self)
+        }
+    }
 }

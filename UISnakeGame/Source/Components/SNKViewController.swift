@@ -22,8 +22,6 @@ class SNKViewController: UIViewController {
         setupConstraints()
         setupBindings()
         setupActions()
-
-        print("[SNKViewController] viewDidLoad")
     }
 
     // MARK: - Setup Methods
