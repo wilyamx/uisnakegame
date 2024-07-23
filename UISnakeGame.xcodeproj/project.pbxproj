@@ -29,6 +29,9 @@
 		A75D94C02C4F924100C23768 /* SuperEasyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A75D94BF2C4F924100C23768 /* SuperEasyLayout */; };
 		A75D94C22C4F9ED300C23768 /* String+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C12C4F9ED300C23768 /* String+WSR.swift */; };
 		A75D94C42C4F9FAB00C23768 /* UIFont+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */; };
+		A75D94C62C4FACF700C23768 /* snake-game-config.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D94C52C4FACF700C23768 /* snake-game-config.json */; };
+		A75D94C82C4FB29F00C23768 /* WSRLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C72C4FB29F00C23768 /* WSRLogger.swift */; };
+		A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		A75D94BC2C4F906A00C23768 /* UIColor+WSR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WSR.swift"; sourceTree = "<group>"; };
 		A75D94C12C4F9ED300C23768 /* String+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+WSR.swift"; sourceTree = "<group>"; };
 		A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+WSR.swift"; sourceTree = "<group>"; };
+		A75D94C52C4FACF700C23768 /* snake-game-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "snake-game-config.json"; sourceTree = "<group>"; };
+		A75D94C72C4FB29F00C23768 /* WSRLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRLogger.swift; sourceTree = "<group>"; };
+		A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+WSR.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 				A75D94702C4DFE3500C23768 /* Main.storyboard */,
 				A75D94732C4DFE3500C23768 /* Assets.xcassets */,
 				A75D94752C4DFE3500C23768 /* LaunchScreen.storyboard */,
+				A75D94C52C4FACF700C23768 /* snake-game-config.json */,
 				A75D94782C4DFE3500C23768 /* Info.plist */,
 			);
 			path = UISnakeGame;
@@ -210,6 +217,7 @@
 		A75D94A12C4E43E400C23768 /* WSR */ = {
 			isa = PBXGroup;
 			children = (
+				A75D94C72C4FB29F00C23768 /* WSRLogger.swift */,
 				A75D94AF2C4F818900C23768 /* Extensions */,
 				A75D94A22C4E43FF00C23768 /* Coordinator */,
 			);
@@ -233,6 +241,7 @@
 				A75D94B22C4F81F600C23768 /* UIView+WSR.swift */,
 				A75D94C12C4F9ED300C23768 /* String+WSR.swift */,
 				A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */,
+				A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -351,6 +360,7 @@
 			files = (
 				A75D94742C4DFE3500C23768 /* Assets.xcassets in Resources */,
 				A75D94772C4DFE3500C23768 /* Base in Resources */,
+				A75D94C62C4FACF700C23768 /* snake-game-config.json in Resources */,
 				A75D94722C4DFE3500C23768 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,10 +392,12 @@
 				A75D94B12C4F81BE00C23768 /* UIViewController+WSR.swift in Sources */,
 				A75D94C42C4F9FAB00C23768 /* UIFont+WSR.swift in Sources */,
 				A75D94BD2C4F906A00C23768 /* UIColor+WSR.swift in Sources */,
+				A75D94C82C4FB29F00C23768 /* WSRLogger.swift in Sources */,
 				A75D94AE2C4E4B0F00C23768 /* SNKHomeCoordinator.swift in Sources */,
 				A75D94AC2C4E494C00C23768 /* SNKHomeViewController.swift in Sources */,
 				A75D94AA2C4E48FA00C23768 /* SNKViewController.swift in Sources */,
 				A75D94A62C4E45C800C23768 /* WSRCoordinatorProtocol.swift in Sources */,
+				A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */,
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
