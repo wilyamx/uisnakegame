@@ -1,0 +1,15 @@
+{
+  "originHash" : "5f5b957a0f3f9f1a65e509392ff9b4e758f0a758aad62837020f28f843c20435",
+  "pins" : [
+    {
+      "identity" : "supereasylayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doil6317/SuperEasyLayout",
+      "state" : {
+        "revision" : "0d2a9111aa62e6f2b2a3bb70e526e5cf00e9f8f6",
+        "version" : "0.3.0"
+      }
+    }
+  ],
+  "version" : 3
+}
