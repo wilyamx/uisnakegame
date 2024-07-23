@@ -101,6 +101,11 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         wsrLogger.info(message: "viewDidLoad")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+
     // MARK: - Setup Methods
 
     override func setupLayout() {
@@ -127,14 +132,14 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         playButton.tapHandler = { _ in
             wsrLogger.info(message: "playButton")
         }
-        settingsButton.tapHandler = { _ in
-            wsrLogger.info(message: "settingsButton")
+        settingsButton.tapHandler = { [weak self] _ in
+            self?.coordinator?.showSettings()
         }
-        leaderboardButton.tapHandler = { _ in
-            wsrLogger.info(message: "leaderboardButton")
+        leaderboardButton.tapHandler = { [weak self] _ in
+            self?.coordinator?.showLeaderboard()
         }
-        aboutButton.tapHandler = { _ in
-            wsrLogger.info(message: "aboutButton")
+        aboutButton.tapHandler = { [weak self] _ in
+            self?.coordinator?.showAbout()
         }
     }
 

@@ -20,7 +20,7 @@ class SNKHomeCoordinator: WSRCoordinatorProtocol {
     }
 
     func start() {
-        let viewController = SNKHomeViewController.instantiate()
+        let viewController = SNKHomeViewController()
         viewController.coordinator = self
 
         navigationController?.pushViewController(viewController, animated: false)
@@ -31,7 +31,28 @@ class SNKHomeCoordinator: WSRCoordinatorProtocol {
             return
         }
 
-        viewController.snkNavigationBarDefaultStyle()
+        viewController.snkNavigationBarDefaultStyle(backgroundColor: .accent, tintColor: .black)
         window?.rootViewController = navigationController
+    }
+
+    func showSettings() {
+        let viewController = SNKSettingsViewController()
+        viewController.coordinator = self
+
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func showLeaderboard() {
+        let viewController = SNKLeaderboardViewController()
+        viewController.coordinator = self
+
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func showAbout() {
+        let viewController = SNKAboutViewController()
+        viewController.coordinator = self
+
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

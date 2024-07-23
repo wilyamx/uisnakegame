@@ -32,6 +32,9 @@
 		A75D94C62C4FACF700C23768 /* snake-game-config.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D94C52C4FACF700C23768 /* snake-game-config.json */; };
 		A75D94C82C4FB29F00C23768 /* WSRLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C72C4FB29F00C23768 /* WSRLogger.swift */; };
 		A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */; };
+		A75D94CF2C4FD12300C23768 /* SNKSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94CE2C4FD12300C23768 /* SNKSettingsViewController.swift */; };
+		A75D94D12C4FD13D00C23768 /* SNKLeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94D02C4FD13D00C23768 /* SNKLeaderboardViewController.swift */; };
+		A75D94D32C4FD14F00C23768 /* SNKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94D22C4FD14F00C23768 /* SNKAboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,9 @@
 		A75D94C52C4FACF700C23768 /* snake-game-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "snake-game-config.json"; sourceTree = "<group>"; };
 		A75D94C72C4FB29F00C23768 /* WSRLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRLogger.swift; sourceTree = "<group>"; };
 		A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+WSR.swift"; sourceTree = "<group>"; };
+		A75D94CE2C4FD12300C23768 /* SNKSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSettingsViewController.swift; sourceTree = "<group>"; };
+		A75D94D02C4FD13D00C23768 /* SNKLeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKLeaderboardViewController.swift; sourceTree = "<group>"; };
+		A75D94D22C4FD14F00C23768 /* SNKAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKAboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,12 +170,15 @@
 		A75D949A2C4E335600C23768 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
 				A75D949F2C4E33C600C23768 /* Components */,
 				A75D949D2C4E337D00C23768 /* ViewModels */,
 				A75D949C2C4E336F00C23768 /* Utilities */,
 				A75D949B2C4E336300C23768 /* Extensions */,
 				A75D94A02C4E33E000C23768 /* Home */,
-				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
+				A75D94CC2C4FD0AE00C23768 /* Settings */,
+				A75D94CD2C4FD0B300C23768 /* Leaderboard */,
+				A75D94CB2C4FD0A300C23768 /* About */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -207,8 +216,8 @@
 		A75D94A02C4E33E000C23768 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A75D94A72C4E488E00C23768 /* SNKHomeViewModel.swift */,
 				A75D94AB2C4E494C00C23768 /* SNKHomeViewController.swift */,
+				A75D94A72C4E488E00C23768 /* SNKHomeViewModel.swift */,
 				A75D94AD2C4E4B0F00C23768 /* SNKHomeCoordinator.swift */,
 			);
 			path = Home;
@@ -244,6 +253,30 @@
 				A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A75D94CB2C4FD0A300C23768 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				A75D94D22C4FD14F00C23768 /* SNKAboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		A75D94CC2C4FD0AE00C23768 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A75D94CE2C4FD12300C23768 /* SNKSettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A75D94CD2C4FD0B300C23768 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				A75D94D02C4FD13D00C23768 /* SNKLeaderboardViewController.swift */,
+			);
+			path = Leaderboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,8 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A75D94B62C4F85EB00C23768 /* SNKButton.swift in Sources */,
+				A75D94D32C4FD14F00C23768 /* SNKAboutViewController.swift in Sources */,
 				A75D94A82C4E488E00C23768 /* SNKHomeViewModel.swift in Sources */,
 				A75D94A52C4E45C800C23768 /* WSRStoryboardedProtocol.swift in Sources */,
+				A75D94D12C4FD13D00C23768 /* SNKLeaderboardViewController.swift in Sources */,
 				A75D94B12C4F81BE00C23768 /* UIViewController+WSR.swift in Sources */,
 				A75D94C42C4F9FAB00C23768 /* UIFont+WSR.swift in Sources */,
 				A75D94BD2C4F906A00C23768 /* UIColor+WSR.swift in Sources */,
@@ -402,6 +437,7 @@
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
 				A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */,
+				A75D94CF2C4FD12300C23768 /* SNKSettingsViewController.swift in Sources */,
 				A75D94C22C4F9ED300C23768 /* String+WSR.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
