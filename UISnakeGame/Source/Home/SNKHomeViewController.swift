@@ -168,6 +168,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
 
     private func showNewUserAlert() {
         let alert = UIAlertController(title: "NEW GAME PROFILE", message: nil, preferredStyle: .alert)
+        alert.view.tintColor = .accent
         alert.addTextField { textField in
             textField.placeholder = "Your name"
         }
