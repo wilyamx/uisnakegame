@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import SuperEasyLayout
 
 class SNKSnakeGameViewController: SNKViewController {
-
     private lazy var dismissButton: UIBarButtonItem = {
         let view = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: nil, action: nil)
         view.tintColor = .white
@@ -28,11 +28,26 @@ class SNKSnakeGameViewController: SNKViewController {
         return view
     }()
 
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cyan
+        return view
+    }()
+
+    typealias Direction = SNKSnakeGameViewModel.Direction
+
+    let viewModel = SNKSnakeGameViewModel()
+
+    public var game: SNKSnakeGame?
+    public var userSwipeCallback: ((Direction) -> ())?
+
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Skillful Snake"
+
+        initGame()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,11 +55,29 @@ class SNKSnakeGameViewController: SNKViewController {
         navigationController?.isNavigationBarHidden = false
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        game?.start()
+    }
+
     // MARK: - Setups
 
     override func setupNavigation() {
         navigationItem.leftBarButtonItem = dismissButton
         navigationItem.rightBarButtonItems = [pausePlayButton, restartButton]
+    }
+
+    override func setupLayout() {
+        addSubviews([
+            containerView
+        ])
+    }
+
+    override func setupConstraints() {
+        containerView.left == view.left
+        containerView.right == view.right
+        containerView.top == view.topMargin
+        containerView.bottom == view.bottomMargin
     }
 
     override func setupActions() {
@@ -56,6 +89,8 @@ class SNKSnakeGameViewController: SNKViewController {
 
         pausePlayButton.target = self
         pausePlayButton.action = #selector(pausePlayTheGame)
+
+        addSwipeGuestures()
     }
 
     // MARK: - Handlers
@@ -117,5 +152,51 @@ extension SNKSnakeGameViewController {
 
         // show the alert
         present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Gameplay
+
+extension SNKSnakeGameViewController {
+    func initGame() {
+        view.layoutIfNeeded()
+
+        let snakeGame = SNKSnakeGame(frame: containerView.frame)
+        game = snakeGame
+
+        containerView.addSubview(snakeGame.view)
+
+        updateUI()
+    }
+    
+    private func addSwipeGuestures() {
+        addSwipeGestureRecognizer(direction: .left)
+        addSwipeGestureRecognizer(direction: .right)
+        addSwipeGestureRecognizer(direction: .up)
+        addSwipeGestureRecognizer(direction: .down)
+    }
+
+    private func addSwipeGestureRecognizer(direction: UISwipeGestureRecognizer.Direction) {
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+        swipeGestureRecognizer.direction = direction
+        self.view.addGestureRecognizer(swipeGestureRecognizer)
+    }
+
+    @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        let direction = Direction(sender.direction)
+        wsrLogger.info(message: "\(direction)")
+        userSwipeCallback?(direction)
+    }
+
+    // updates the collect coin label and the highscore label
+    private func updateUI() {
+
+    }
+
+    private func restart() {
+        guard game?.state == .stopped else { return }
+        //game.view.removeFromSuperview()
+        initGame()
+        game?.start()
     }
 }

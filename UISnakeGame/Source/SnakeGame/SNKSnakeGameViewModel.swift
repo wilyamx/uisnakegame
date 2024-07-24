@@ -6,4 +6,29 @@
 //  Copyright © 2024 Personal. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class SNKSnakeGameViewModel {
+    enum Direction {
+        case left
+        case up
+        case right
+        case down
+
+        var opposite: Direction {
+            switch self {
+            case .left: return .right
+            case .up: return .down
+            case .right: return .left
+            case .down: return .up
+            }
+        }
+
+        init(_ swipeDirection: UISwipeGestureRecognizer.Direction) {
+            if swipeDirection.contains(.up) { self = .up }
+            else if swipeDirection.contains(.down) { self = .down }
+            else if swipeDirection.contains(.left) { self = .left }
+            else { self = .right }
+        }
+    }
+}
