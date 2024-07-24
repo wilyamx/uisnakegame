@@ -27,7 +27,7 @@ class SNKButton: UIButton {
 
         // background
         backgroundColor = colorStyle.backgroundColor
-
+        
         // foreground
         let mutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
         mutableAttributedString
@@ -46,12 +46,6 @@ class SNKButton: UIButton {
         setup()
     }
 
-    convenience init(image: UIImage?) {
-        let frame = CGRect(origin: CGPoint.zero, size: image?.size ?? CGSize.zero)
-        self.init(frame: frame)
-        setImage(image, for: .normal)
-    }
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -64,6 +58,7 @@ class SNKButton: UIButton {
     func setup() {
         colorStyle = .primary
         addTarget(self, action: #selector(touchUpInsideButton(_:)), for: .touchUpInside)
+        addTarget(self, action: #selector(touchDownButton(_:)), for: .touchDown)
         isExclusiveTouch = true
     }
 
@@ -77,13 +72,17 @@ class SNKButton: UIButton {
 
 extension SNKButton {
     @objc func touchUpInsideButton(_: Any) {
+        backgroundColor = colorStyle.backgroundColor
+
         if let tapHandlerAsync {
-            Task {
-                await tapHandlerAsync(self)
-            }
+            Task { await tapHandlerAsync(self) }
             return
         } else if let tapHandler {
             tapHandler(self)
         }
+    }
+
+    @objc func touchDownButton(_: Any) {
+        backgroundColor = .accentVariation2
     }
 }

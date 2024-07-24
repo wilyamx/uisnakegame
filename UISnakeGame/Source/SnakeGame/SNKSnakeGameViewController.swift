@@ -32,7 +32,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Settings"
+        title = "Skillful Snake"
     }
     
     override func viewWillAppear(_ animated: Bool) {
