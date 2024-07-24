@@ -72,3 +72,50 @@ class SNKSnakeGameViewController: SNKViewController {
         wsrLogger.info(message: "333")
     }
 }
+
+// MARK: - Alerts
+
+extension SNKSnakeGameViewController {
+    private func showGameLevelAlert(level: Int) {
+        // create the alert
+        let alert = UIAlertController(
+            title: "Level \(level)", message: nil, preferredStyle: UIAlertController.Style.alert
+        )
+        alert.view.tintColor = .accent
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func showGameLevelCompleteAlert(level: Int) {
+        // create the alert
+        let alert = UIAlertController(
+            title: "LEVEL \(level)", message: "COMPLETE!", preferredStyle: UIAlertController.Style.alert
+        )
+        alert.view.tintColor = .accent
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "CONTINUE", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func showGameOverAlert(points: Int) {
+        // create the alert
+        let alert = UIAlertController(
+            title: "GAME OVER!", message: "\(points) points", preferredStyle: UIAlertController.Style.alert
+        )
+        alert.view.tintColor = .accent
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "PLAY AGAIN", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "QUIT", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        present(alert, animated: true, completion: nil)
+    }
+}

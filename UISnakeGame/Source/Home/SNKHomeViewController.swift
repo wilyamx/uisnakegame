@@ -126,8 +126,8 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }
 
     override func setupActions() {
-        newGameButton.tapHandler = { _ in
-            wsrLogger.info(message: "newGameButton")
+        newGameButton.tapHandler = { [weak self] _ in
+            self?.showNewUserAlert()
         }
         playButton.tapHandler = { [weak self] _ in
             guard let self else { return }
@@ -162,5 +162,23 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         developerTextLabel.right == view.right - 40
         developerTextLabel.top == verticalStackView.bottom + 40
         developerTextLabel.bottom == view.bottomMargin
+    }
+
+    // MARK: - Private Methods
+
+    private func showNewUserAlert() {
+        let alert = UIAlertController(title: "NEW GAME PROFILE", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "Your name"
+        }
+
+        let submitAction = UIAlertAction(title: "OK", style: .default) { [unowned alert] _ in
+            let answer = alert.textFields![0]
+            // do something interesting with "answer" here
+        }
+
+        alert.addAction(submitAction)
+
+        present(alert, animated: true)
     }
 }

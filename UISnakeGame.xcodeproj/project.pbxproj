@@ -43,6 +43,7 @@
 		A75D94E12C4FFD7100C23768 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A75D94E02C4FFD7100C23768 /* Eureka */; };
 		A75D94E72C507D9200C23768 /* SNKSnakeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94E62C507D9200C23768 /* SNKSnakeGameViewController.swift */; };
 		A75D94E92C507DA800C23768 /* SNKSnakeGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94E82C507DA800C23768 /* SNKSnakeGameViewModel.swift */; };
+		A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94EA2C5094E200C23768 /* UIAlertController+SNK.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		A75D94DD2C4FE27C00C23768 /* Sequence+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+WSR.swift"; sourceTree = "<group>"; };
 		A75D94E62C507D9200C23768 /* SNKSnakeGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSnakeGameViewController.swift; sourceTree = "<group>"; };
 		A75D94E82C507DA800C23768 /* SNKSnakeGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSnakeGameViewModel.swift; sourceTree = "<group>"; };
+		A75D94EA2C5094E200C23768 /* UIAlertController+SNK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+SNK.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A75D94DB2C4FDFEA00C23768 /* UIView+SNK.swift */,
+				A75D94EA2C5094E200C23768 /* UIAlertController+SNK.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
 				A75D94DC2C4FDFEA00C23768 /* UIView+SNK.swift in Sources */,
 				A75D94DE2C4FE27C00C23768 /* Sequence+WSR.swift in Sources */,
+				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
 				A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */,
 				A75D94CF2C4FD12300C23768 /* SNKSettingsViewController.swift in Sources */,
