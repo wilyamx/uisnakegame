@@ -47,6 +47,7 @@ class SNKSnakeGameViewController: SNKViewController {
         super.viewDidLoad()
         title = "Skillful Snake"
 
+        wsrLogger.info(message: "viewDidLoad")
         initGame()
     }
     
@@ -159,6 +160,7 @@ extension SNKSnakeGameViewController {
 
 extension SNKSnakeGameViewController {
     func initGame() {
+        wsrLogger.info(message: "initGame...")
         view.layoutIfNeeded()
 
         let snakeGame = SNKSnakeGame(frame: containerView.frame, tileSize: 50)

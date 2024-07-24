@@ -46,7 +46,7 @@ class SNKGridView: UIView {
         self.rows = Int(frame.height / size)
         self.columns = Int(frame.width / size)
 
-        wsrLogger.info(message: "\(rows), \(columns), \(size), \(origin)")
+        wsrLogger.info(message: "rows: \(rows), columns: \(columns)")
     }
 
     required init?(coder: NSCoder) {
