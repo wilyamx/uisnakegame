@@ -129,8 +129,9 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         newGameButton.tapHandler = { _ in
             wsrLogger.info(message: "newGameButton")
         }
-        playButton.tapHandler = { _ in
-            wsrLogger.info(message: "playButton")
+        playButton.tapHandler = { [weak self] _ in
+            guard let self else { return }
+            coordinator?.playTheGame(on: self)
         }
         settingsButton.tapHandler = { [weak self] _ in
             self?.coordinator?.showSettings()

@@ -31,8 +31,16 @@ class SNKHomeCoordinator: WSRCoordinatorProtocol {
             return
         }
 
-        viewController.snkNavigationBarDefaultStyle(backgroundColor: .accent, tintColor: .black)
+        viewController.snkNavigationBarDefaultStyle(backgroundColor: .accent, tintColor: .white)
         window?.rootViewController = navigationController
+    }
+
+    func playTheGame(on parentViewController: UIViewController) {
+        let viewController = SNKSnakeGameViewController()
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.modalPresentationStyle = .fullScreen
+
+        parentViewController.present(navController, animated: true)
     }
 
     func showSettings() {
