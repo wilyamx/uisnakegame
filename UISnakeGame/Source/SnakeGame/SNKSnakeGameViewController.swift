@@ -180,9 +180,9 @@ extension SNKSnakeGameViewController {
 
         // BUG: wrong height
         // adding game components
-        game?.makeGrid(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
-        game?.makeGridView(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
-        game?.makeSnake(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
+        game?.makeGrid()
+        game?.makeGridView()
+        game?.makeSnake()
         game?.placeRandomFood(color: .red)
 
         updateUI()

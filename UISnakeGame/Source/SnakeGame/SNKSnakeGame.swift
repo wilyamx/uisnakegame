@@ -30,7 +30,7 @@ class SNKSnakeGame {
 
     private(set) var state: SNKState = .stopped
     private(set) var timer: Timer?
-    private(set) var updateInterval: TimeInterval = 0.5 {
+    private(set) var updateInterval: TimeInterval = 0.3 {
         didSet { start() }
     }
 
@@ -41,13 +41,13 @@ class SNKSnakeGame {
 
     // MARK: - Game subviews
 
-    func makeGrid(frame: CGRect, tileSize: CGFloat) {
+    func makeGrid() {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
         self.grid = SNKGrid(frame: frame, size: tileSize)
     }
 
-    func makeGridView(frame: CGRect, tileSize: CGFloat) {
+    func makeGridView() {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
         let gridView = SNKGridView(frame: frame, size: tileSize)
@@ -57,7 +57,7 @@ class SNKSnakeGame {
         self.gridView = gridView
     }
 
-    func makeSnake(frame: CGRect, tileSize: CGFloat) {
+    func makeSnake() {
         guard let grid = grid else { fatalError("Grid not available!") }
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
