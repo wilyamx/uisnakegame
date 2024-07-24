@@ -9,13 +9,13 @@
 import UIKit
 
 final class SNKSnakeGameViewModel {
-    enum Direction {
+    enum SNKDirection {
         case left
         case up
         case right
         case down
 
-        var opposite: Direction {
+        var opposite: SNKDirection {
             switch self {
             case .left: return .right
             case .up: return .down

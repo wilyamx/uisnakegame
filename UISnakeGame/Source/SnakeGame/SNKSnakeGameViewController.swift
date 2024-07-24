@@ -34,12 +34,12 @@ class SNKSnakeGameViewController: SNKViewController {
         return view
     }()
 
-    typealias Direction = SNKSnakeGameViewModel.Direction
+    typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
 
     let viewModel = SNKSnakeGameViewModel()
 
     public var game: SNKSnakeGame?
-    public var userSwipeCallback: ((Direction) -> ())?
+    public var userSwipeCallback: ((SNKDirection) -> ())?
 
     // MARK: - View Lifecycle
 
@@ -61,6 +61,10 @@ class SNKSnakeGameViewController: SNKViewController {
         game?.start()
     }
 
+    deinit {
+        game?.stop()
+    }
+    
     // MARK: - Setups
 
     override func setupNavigation() {
@@ -160,6 +164,7 @@ extension SNKSnakeGameViewController {
 
 extension SNKSnakeGameViewController {
     func initGame() {
+        wsrLogger.info(message: "--------------")
         wsrLogger.info(message: "initGame...")
         view.layoutIfNeeded()
 
@@ -168,10 +173,13 @@ extension SNKSnakeGameViewController {
 
         containerView.addSubview(snakeGame.view)
 
+        let tileSize = 50.0
+
         // adding game components
-        game?.makeGrid(frame: containerView.frame, tileSize: 50)
-        game?.makeGridView(frame: containerView.frame, tileSize: 50)
-        game?.makeSnake()
+        game?.makeGrid(frame: containerView.frame, tileSize: tileSize)
+        game?.makeGridView(frame: containerView.frame, tileSize: tileSize)
+        game?.makeSnake(frame: containerView.frame, tileSize: tileSize)
+        game?.placeRandomFood(color: .red)
 
         updateUI()
     }
@@ -190,8 +198,10 @@ extension SNKSnakeGameViewController {
     }
 
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        let direction = Direction(sender.direction)
+        let direction = SNKDirection(sender.direction)
         wsrLogger.info(message: "\(direction)")
+
+        //game?.snake.cha
         userSwipeCallback?(direction)
     }
 

@@ -48,6 +48,7 @@
 		A75D94EF2C50A2C300C23768 /* SNKSnakeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94EE2C50A2C300C23768 /* SNKSnakeGame.swift */; };
 		A75D94F22C50A42500C23768 /* SNKSnake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F12C50A42500C23768 /* SNKSnake.swift */; };
 		A75D94F42C50D09200C23768 /* SNKGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F32C50D09200C23768 /* SNKGridView.swift */; };
+		A75D94F62C512C0200C23768 /* SNKTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F52C512C0200C23768 /* SNKTileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		A75D94EE2C50A2C300C23768 /* SNKSnakeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSnakeGame.swift; sourceTree = "<group>"; };
 		A75D94F12C50A42500C23768 /* SNKSnake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSnake.swift; sourceTree = "<group>"; };
 		A75D94F32C50D09200C23768 /* SNKGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGridView.swift; sourceTree = "<group>"; };
+		A75D94F52C512C0200C23768 /* SNKTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKTileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				A75D94F32C50D09200C23768 /* SNKGridView.swift */,
+				A75D94F52C512C0200C23768 /* SNKTileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				A75D94D32C4FD14F00C23768 /* SNKAboutViewController.swift in Sources */,
 				A75D94A82C4E488E00C23768 /* SNKHomeViewModel.swift in Sources */,
 				A75D94A52C4E45C800C23768 /* WSRStoryboardedProtocol.swift in Sources */,
+				A75D94F62C512C0200C23768 /* SNKTileView.swift in Sources */,
 				A75D94D12C4FD13D00C23768 /* SNKLeaderboardViewController.swift in Sources */,
 				A75D94DA2C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift in Sources */,
 				A75D94B12C4F81BE00C23768 /* UIViewController+WSR.swift in Sources */,

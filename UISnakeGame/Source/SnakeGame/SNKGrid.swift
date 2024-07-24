@@ -16,18 +16,39 @@ class SNKGrid {
         var position: CGPoint
     }
 
-    var locations: [SNKGridLocation] = []
+    var rows: Int = 0
+    var columns: Int = 0
+    var tileSize: CGFloat = 0
+    var locations: [[CGPoint]] = []
 
     init(frame: CGRect, size: CGFloat) {
-        let rows = Int(frame.height / size)
-        let columns = Int(frame.width / size)
+        tileSize = size
+        rows = Int(frame.height / size)
+        columns = Int(frame.width / size)
         wsrLogger.info(message: "rows: \(rows), columns: \(columns)")
 
+        // initializing the 2d array
+        locations = Array(
+            repeating: Array(repeating: .zero, count: columns),
+            count: rows
+        )
+
+        // assigning values to 2d array
         for row in 0..<rows {
             for col in 0..<columns {
-                let position = CGPoint(x: 0, y: 0)
-                locations.append(SNKGridLocation(row: row, column: col, position: position))
+                let position = CGPoint(x: CGFloat(col) * size, y: CGFloat(row) * size)
+                //wsrLogger.info(message: "[\(row)][\(col)]: \(position)")
+                locations[row][col] = position
             }
+            //wsrLogger.info(message: "---")
         }
+    }
+
+    func randomLocation() -> CGPoint {
+        let row = Int.random(in: 0..<rows)
+        let column = Int.random(in: 0..<columns)
+        wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
+        
+        return locations[Int(row)][Int(column)]
     }
 }

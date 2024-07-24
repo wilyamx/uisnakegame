@@ -10,13 +10,13 @@ import UIKit
 import SuperEasyLayout
 
 class SNKSnakeGame {
+    typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
+
     enum State {
         case stopped
         case started
         case paused
     }
-
-    //private(set) var grid: Grid?
 
     ///  all game objects will be added to this view
     var view: UIView = UIView()
@@ -41,8 +41,14 @@ class SNKSnakeGame {
 
     // MARK: - Game subviews
 
+    func makeGrid(frame: CGRect, tileSize: CGFloat) {
+        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
+
+        self.grid = SNKGrid(frame: frame, size: tileSize)
+    }
+
     func makeGridView(frame: CGRect, tileSize: CGFloat) {
-        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!")}
+        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
         let gridView = SNKGridView(frame: frame, size: tileSize)
         gridView.backgroundColor = .clear
@@ -51,14 +57,35 @@ class SNKSnakeGame {
         self.gridView = gridView
     }
 
-    func makeGrid(frame: CGRect, tileSize: CGFloat) {
-        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!")}
+    func makeSnake(frame: CGRect, tileSize: CGFloat) {
+        guard let grid = grid else { fatalError("Grid not available!") }
+        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
-        self.grid = SNKGrid(frame: frame, size: tileSize)
+        if let previousSnake = snake {
+            previousSnake.view.removeFromSuperview()
+        }
+
+        let snake = SNKSnake(frame: frame, size: tileSize, location: grid.locations[2][1])
+
+        view.addSubview(snake.view)
+
+        self.snake = snake
+    }
+
+    // MARK: - Others
+
+    func changeSnakeDirection(to direction: SNKDirection) {
+        snake?.changeDirection(to: direction)
     }
     
-    func makeSnake() {
+    func placeRandomFood(color: UIColor) {
+        guard let grid = grid else { fatalError("Grid not available!") }
+        
+        let location = grid.randomLocation()
+        let bodyFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let food = SNKTileView(frame: bodyFrame, color: .orange)
 
+        view.addSubview(food)
     }
 
     // MARK: - Game Control
