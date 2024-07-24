@@ -1,5 +1,5 @@
 //
-//  SNKGameScene.swift
+//  SNKGrid.swift
 //  UISnakeGame
 //
 //  Created by William Rena on 7/24/24.
@@ -8,10 +8,8 @@
 
 import Foundation
 
-class SNKGameScene {
-    let tileSize = 10
+class SNKGrid {
+    init(frame: CGRect, size: CGFloat) {
 
-    func start() {
-        
     }
 }

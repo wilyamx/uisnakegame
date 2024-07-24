@@ -161,10 +161,15 @@ extension SNKSnakeGameViewController {
     func initGame() {
         view.layoutIfNeeded()
 
-        let snakeGame = SNKSnakeGame(frame: containerView.frame)
+        let snakeGame = SNKSnakeGame(frame: containerView.frame, tileSize: 50)
         game = snakeGame
 
         containerView.addSubview(snakeGame.view)
+
+        // adding game components
+        game?.makeGrid(frame: containerView.frame, tileSize: 50)
+        game?.makeGridView(frame: containerView.frame, tileSize: 50)
+        game?.makeSnake()
 
         updateUI()
     }

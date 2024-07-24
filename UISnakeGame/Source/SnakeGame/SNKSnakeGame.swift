@@ -16,37 +16,52 @@ class SNKSnakeGame {
         case paused
     }
 
-    private lazy var gridView: SNKGridView = {
-        let view = SNKGridView(frame: frame)
-        view.backgroundColor = .clear
-        return view
-    }()
-
-    //let blockSize = Size(width: 25, height: 25)
-
     //private(set) var grid: Grid?
 
     ///  all game objects will be added to this view
     var view: UIView = UIView()
     
     var frame: CGRect = .zero
+    var tileSize: CGFloat = 0
 
     private(set) var snake: SNKSnake?
-    
+    private(set) var grid: SNKGrid?
+    private(set) var gridView: SNKGridView?
+
     private(set) var state: State = .stopped
     private(set) var timer: Timer?
     private(set) var updateInterval: TimeInterval = 0.8 {
         didSet { start() }
     }
 
-    init(frame: CGRect) {
+    init(frame: CGRect, tileSize: CGFloat) {
         self.frame = frame
-        configureViewSizeContraints()
+        self.tileSize = tileSize
     }
 
-    private func configureViewSizeContraints() {
+    // MARK: - Game subviews
+
+    func makeGridView(frame: CGRect, tileSize: CGFloat) {
+        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!")}
+
+        let gridView = SNKGridView(frame: frame, size: tileSize)
+        gridView.backgroundColor = .clear
         view.addSubview(gridView)
+
+        self.gridView = gridView
     }
+
+    func makeGrid(frame: CGRect, tileSize: CGFloat) {
+        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!")}
+
+        self.grid = SNKGrid(frame: frame, size: tileSize)
+    }
+    
+    func makeSnake() {
+
+    }
+
+    // MARK: - Game Control
 
     func start() {
         stop()
@@ -68,6 +83,8 @@ class SNKSnakeGame {
     func pause() {
         
     }
+
+    // MARK: - Realtime Display
 
     @objc private func onEnterframe() {
         wsrLogger.info(message: "***")

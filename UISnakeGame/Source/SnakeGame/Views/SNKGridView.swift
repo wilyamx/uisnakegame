@@ -39,12 +39,12 @@ class SNKGridView: UIView {
         gridPath.stroke()
     }
 
-    init(frame: CGRect, rows: Int = 20, columns: Int = 20, size: CGFloat = 30, origin: CGPoint = .zero) {
+    init(frame: CGRect, size: CGFloat = 30, origin: CGPoint = .zero) {
         super.init(frame: frame)
-        self.rows = rows
-        self.columns = columns
         self.size = size
         self.origin = origin
+        self.rows = Int(frame.height / size)
+        self.columns = Int(frame.width / size)
 
         wsrLogger.info(message: "\(rows), \(columns), \(size), \(origin)")
     }
