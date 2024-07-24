@@ -38,6 +38,8 @@ class SNKSnakeGameViewController: SNKViewController {
 
     let viewModel = SNKSnakeGameViewModel()
 
+    static var TILE_SIZE = 20.0
+
     public var game: SNKSnakeGame?
     public var userSwipeCallback: ((SNKDirection) -> ())?
 
@@ -95,7 +97,7 @@ class SNKSnakeGameViewController: SNKViewController {
         pausePlayButton.target = self
         pausePlayButton.action = #selector(pausePlayTheGame)
 
-        addSwipeGuestures()
+        addSwipeGestures()
     }
 
     // MARK: - Handlers
@@ -105,11 +107,12 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     @objc private func restartTheGame() {
-        wsrLogger.info(message: "222")
+        restart()
     }
 
     @objc private func pausePlayTheGame() {
-        wsrLogger.info(message: "333")
+        let state = game?.pause()
+        pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
     }
 }
 
@@ -168,23 +171,22 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "initGame...")
         view.layoutIfNeeded()
 
-        let snakeGame = SNKSnakeGame(frame: containerView.frame, tileSize: 50)
+        let snakeGame = SNKSnakeGame(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
         game = snakeGame
 
         containerView.addSubview(snakeGame.view)
 
-        let tileSize = 50.0
-
+        // BUG: wrong height
         // adding game components
-        game?.makeGrid(frame: containerView.frame, tileSize: tileSize)
-        game?.makeGridView(frame: containerView.frame, tileSize: tileSize)
-        game?.makeSnake(frame: containerView.frame, tileSize: tileSize)
+        game?.makeGrid(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
+        game?.makeGridView(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
+        game?.makeSnake(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
         game?.placeRandomFood(color: .red)
 
         updateUI()
     }
     
-    private func addSwipeGuestures() {
+    private func addSwipeGestures() {
         addSwipeGestureRecognizer(direction: .left)
         addSwipeGestureRecognizer(direction: .right)
         addSwipeGestureRecognizer(direction: .up)
@@ -201,7 +203,7 @@ extension SNKSnakeGameViewController {
         let direction = SNKDirection(sender.direction)
         wsrLogger.info(message: "\(direction)")
 
-        //game?.snake.cha
+        game?.snake?.changeDirection(to: direction)
         userSwipeCallback?(direction)
     }
 
@@ -212,8 +214,10 @@ extension SNKSnakeGameViewController {
 
     private func restart() {
         guard game?.state == .stopped else { return }
-        //game.view.removeFromSuperview()
+
+        game?.view.removeFromSuperview()
+
         initGame()
-        game?.start()
+//        game?.start()
     }
 }

@@ -12,7 +12,7 @@ import SuperEasyLayout
 class SNKSnakeGame {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
 
-    enum State {
+    enum SNKState {
         case stopped
         case started
         case paused
@@ -28,9 +28,9 @@ class SNKSnakeGame {
     private(set) var grid: SNKGrid?
     private(set) var gridView: SNKGridView?
 
-    private(set) var state: State = .stopped
+    private(set) var state: SNKState = .stopped
     private(set) var timer: Timer?
-    private(set) var updateInterval: TimeInterval = 0.8 {
+    private(set) var updateInterval: TimeInterval = 0.5 {
         didSet { start() }
     }
 
@@ -65,7 +65,7 @@ class SNKSnakeGame {
             previousSnake.view.removeFromSuperview()
         }
 
-        let snake = SNKSnake(frame: frame, size: tileSize, location: grid.locations[2][1])
+        let snake = SNKSnake(frame: frame, size: tileSize, location: grid.locations[5][7])
 
         view.addSubview(snake.view)
 
@@ -107,13 +107,15 @@ class SNKSnakeGame {
         state = .stopped
     }
 
-    func pause() {
-        
+    func pause() -> SNKState {
+        state == .stopped ? start() : stop()
+        return state
     }
 
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {
-        wsrLogger.info(message: "***")
+        //wsrLogger.info(message: "***")
+        snake?.move()
     }
 }
