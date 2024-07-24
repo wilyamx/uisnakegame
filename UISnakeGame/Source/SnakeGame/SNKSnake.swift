@@ -55,6 +55,9 @@ final class SNKSnake {
     }
 
     func changeDirection(to direction: SNKDirection) {
+        guard direction != previousFacingDirection else { return }
+        wsrLogger.info(message: "\(direction)")
+
         previousFacingDirection = direction
 
         switch direction {

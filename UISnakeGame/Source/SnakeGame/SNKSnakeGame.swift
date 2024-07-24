@@ -112,6 +112,15 @@ class SNKSnakeGame {
         return state
     }
 
+    func restart() {
+        stop()
+
+        view.removeFromSuperview()
+        snake = nil
+        grid = nil
+        gridView = nil
+    }
+    
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {

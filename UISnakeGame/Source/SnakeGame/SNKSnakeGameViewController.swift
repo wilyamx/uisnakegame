@@ -107,7 +107,9 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     @objc private func restartTheGame() {
-        restart()
+        game?.restart()
+
+        initGame()
     }
 
     @objc private func pausePlayTheGame() {
@@ -201,7 +203,7 @@ extension SNKSnakeGameViewController {
 
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
         let direction = SNKDirection(sender.direction)
-        wsrLogger.info(message: "\(direction)")
+        //wsrLogger.info(message: "\(direction)")
 
         game?.snake?.changeDirection(to: direction)
         userSwipeCallback?(direction)
@@ -210,14 +212,5 @@ extension SNKSnakeGameViewController {
     // updates the collect coin label and the highscore label
     private func updateUI() {
 
-    }
-
-    private func restart() {
-        guard game?.state == .stopped else { return }
-
-        game?.view.removeFromSuperview()
-
-        initGame()
-//        game?.start()
     }
 }
