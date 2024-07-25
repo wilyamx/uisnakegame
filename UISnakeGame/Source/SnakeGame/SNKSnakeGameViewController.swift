@@ -184,7 +184,7 @@ extension SNKSnakeGameViewController {
         game?.makeGrid()
         game?.makeGridView()
         game?.makeSnake()
-        game?.placeRandomFood(color: .red)
+        game?.placeRandomFood(color: SNKConstants.FOOD_COLOR)
 
         updateUI()
 

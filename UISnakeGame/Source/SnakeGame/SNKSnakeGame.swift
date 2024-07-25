@@ -15,7 +15,6 @@ class SNKSnakeGame {
     enum SNKState {
         case stopped
         case started
-        case paused
     }
 
     ///  all game objects will be added to this view
@@ -24,15 +23,20 @@ class SNKSnakeGame {
     var frame: CGRect = .zero
     var tileSize: CGFloat = 0
 
+    // actors
     private(set) var snake: SNKSnake?
     private(set) var grid: SNKGrid?
     private(set) var gridView: SNKGridView?
 
+    // game management
     private(set) var state: SNKState = .stopped
     private(set) var timer: Timer?
     private(set) var updateInterval: TimeInterval = SNKConstants.SPEED {
         didSet { start() }
     }
+
+    // plotted actors
+    private(set) var foodLocations: [CGPoint] = []
 
     init(frame: CGRect, tileSize: CGFloat) {
         self.frame = frame
@@ -40,7 +44,7 @@ class SNKSnakeGame {
         wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize)")
     }
 
-    // MARK: - Game subviews
+    // MARK: - Actor Creator
 
     func makeGrid() {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
@@ -66,27 +70,35 @@ class SNKSnakeGame {
             previousSnake.view.removeFromSuperview()
         }
 
-        let snake = SNKSnake(frame: frame, size: tileSize, location: grid.locations[0][0], gridInfo: grid.getInfo())
+        let location = grid.locations[1][1]
+        let snake = SNKSnake(frame: frame, size: tileSize, location: location, gridInfo: grid.getInfo())
 
         view.addSubview(snake.view)
 
         self.snake = snake
     }
 
-    // MARK: - Others
+    func placeRandomFood(color: UIColor) {
+        guard let grid = grid else { fatalError("Grid not available!") }
+        guard let snake = snake else { fatalError("Snake not available!") }
+
+        var location: CGPoint
+        repeat {
+            location = grid.randomLocation()
+        } while(snake.intersect(with: location))
+
+        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let food = SNKTileView(frame: foodFrame, color: .orange)
+
+        wsrLogger.info(message: "\(location)")
+        foodLocations.append(location)
+        view.addSubview(food)
+    }
+
+    // MARK: - Directions
 
     func changeSnakeDirection(to direction: SNKDirection) {
         snake?.changeDirection(to: direction)
-    }
-    
-    func placeRandomFood(color: UIColor) {
-        guard let grid = grid else { fatalError("Grid not available!") }
-        
-        let location = grid.randomLocation()
-        let bodyFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKTileView(frame: bodyFrame, color: .orange)
-
-        view.addSubview(food)
     }
 
     // MARK: - Game Control
@@ -121,11 +133,37 @@ class SNKSnakeGame {
         grid = nil
         gridView = nil
     }
-    
+
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {
-        //wsrLogger.info(message: "***")
-        snake?.move()
+        guard let snake else { return }
+
+        snake.move()
+
+        if let foodItemLocation = snakeIntersectToFoodItems() {
+            eatFoodItem(from: foodItemLocation)
+            placeRandomFood(color: SNKConstants.FOOD_COLOR)
+        }
+    }
+
+    // MARK: Collision Detection
+
+    private func snakeIntersectToFoodItems() -> CGPoint? {
+        guard let snake, !foodLocations.isEmpty else { return nil }
+        return snake.intersect(with: foodLocations)
+    }
+
+    // MARK: - Food
+
+    private func eatFoodItem(from location: CGPoint) {
+        for item in view.subviews {
+            if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
+                foodLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
+                item.removeFromSuperview()
+                wsrLogger.info(message: "\(location)")
+                break
+            }
+        }
     }
 }

@@ -54,7 +54,7 @@ class SNKGrid {
     func randomLocation() -> CGPoint {
         let row = Int.random(in: 0..<rows)
         let column = Int.random(in: 0..<columns)
-        wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
+        //wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
         
         return locations[Int(row)][Int(column)]
     }

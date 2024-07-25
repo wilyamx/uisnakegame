@@ -9,8 +9,9 @@
 import UIKit
 
 class SNKConstants {
-    static var TILE_SIZE = 15.0
+    static var TILE_SIZE = 25.0
     static var SPEED = 0.15
+    static var FOOD_COLOR = UIColor.red
 
     static var keyWindow: UIWindow? {
         UIApplication.shared.connectedScenes

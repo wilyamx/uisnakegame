@@ -59,9 +59,20 @@ final class SNKSnake {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func getPartsLocation() -> [CGPoint] {
+        var locations: [CGPoint] = []
+        for part in bodyParts {
+            locations.append(part.frame.origin)
+        }
+        return locations
+    }
+
+    // MARK: - Change Directions
+
     func changeDirection(to direction: SNKDirection) {
         guard direction != previousFacingDirection else { return }
-        wsrLogger.info(message: "\(direction)")
+        guard direction != previousFacingDirection.opposite else { return }
+        //wsrLogger.info(message: "\(direction)")
 
         previousFacingDirection = direction
 
@@ -80,14 +91,6 @@ final class SNKSnake {
         case .up: moveUp()
         case .down: moveDown()
         }
-    }
-
-    private func getPartsLocation() -> [CGPoint] {
-        var locations: [CGPoint] = []
-        for part in bodyParts {
-            locations.append(part.frame.origin)
-        }
-        return locations
     }
 
     private func moveLeft() {
@@ -146,5 +149,16 @@ final class SNKSnake {
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
         }
+    }
+
+    // MARK: - Collision Detection
+
+    func intersect(with location: CGPoint) -> Bool {
+        getPartsLocation().contains(where: { $0.x == location.x && $0.y == location.y })
+    }
+
+    func intersect(with locations: [CGPoint]) -> CGPoint? {
+        let headLocation = view.subviews[0].frame.origin
+        return locations.first(where: { $0.x == headLocation.x && $0.y == headLocation.y })
     }
 }
