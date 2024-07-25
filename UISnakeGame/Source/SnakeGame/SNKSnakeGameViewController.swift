@@ -28,9 +28,28 @@ class SNKSnakeGameViewController: SNKViewController {
         return view
     }()
 
+    private lazy var scoreTextLabel: UILabel = {
+        let view = UILabel()
+        view.text = "SCORE: 0"
+        view.textAlignment = .left
+        view.font = .largeTitle
+        view.textColor = .black
+        view.lineBreakMode = .byCharWrapping
+        return view
+    }()
+    private lazy var levelTextLabel: UILabel = {
+        let view = UILabel()
+        view.text = "LEVEL 1"
+        view.textAlignment = .right
+        view.font = .largeTitle
+        view.textColor = .black
+        view.lineBreakMode = .byCharWrapping
+        return view
+    }()
+
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .cyan
+        view.backgroundColor = SNKConstants.TILE_COLOR
         return view
     }()
 
@@ -82,7 +101,7 @@ class SNKSnakeGameViewController: SNKViewController {
         containerView.left == view.left
         containerView.right == view.right
         containerView.top == view.topMargin
-        containerView.bottom == view.bottom
+        containerView.bottom == view.bottomMargin
     }
 
     override func setupActions() {

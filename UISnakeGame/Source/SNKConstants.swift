@@ -11,6 +11,8 @@ import UIKit
 class SNKConstants {
     static var TILE_SIZE = 25.0
     static var SPEED = 0.15
+    static var GRIDLINES_COLOR = UIColor.white
+    static var TILE_COLOR = UIColor.accentVariation4
     static var FOOD_COLOR = UIColor.red
 
     static var keyWindow: UIWindow? {

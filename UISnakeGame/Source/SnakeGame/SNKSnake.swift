@@ -30,19 +30,19 @@ final class SNKSnake {
 
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
-        let head = SNKTileView(frame: headFrame, color: .black)
+        let head = SNKTileView(frame: headFrame, color: .accentVariation1)
 
         // [1] body 1
         let body1Frame = CGRect(x: location.x - size * 1, y: location.y, width: size, height: size)
-        let body1 = SNKTileView(frame: body1Frame, color: .lightGray)
+        let body1 = SNKTileView(frame: body1Frame, color: .accentVariation2)
 
         // [2] body 2
         let body2Frame = CGRect(x: location.x - size * 2, y: location.y, width: size, height: size)
-        let body2 = SNKTileView(frame: body2Frame, color: .lightGray)
+        let body2 = SNKTileView(frame: body2Frame, color: .accentVariation2)
 
         // [3] tail
         let tailFrame = CGRect(x: location.x - size * 3, y: location.y, width: size, height: size)
-        let tail = SNKTileView(frame: tailFrame, color: .gray)
+        let tail = SNKTileView(frame: tailFrame, color: .accentVariation3)
 
         view.addSubview(head)
         view.addSubview(body1)

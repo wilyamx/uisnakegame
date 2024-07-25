@@ -51,7 +51,7 @@ extension SNKViewController {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
 
             let titleAttribute = [
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold),
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .regular),
                 NSAttributedString.Key.foregroundColor: UIColor.white
             ]
             appearance.titleTextAttributes = titleAttribute

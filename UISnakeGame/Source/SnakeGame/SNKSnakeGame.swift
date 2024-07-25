@@ -63,8 +63,7 @@ class SNKSnakeGame {
     }
 
     func makeSnake() {
-        guard let grid = grid else { fatalError("Grid not available!") }
-        guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
+        guard let grid = grid, frame.size != .zero, tileSize != 0 else { return  }
 
         if let previousSnake = snake {
             previousSnake.view.removeFromSuperview()
@@ -80,7 +79,7 @@ class SNKSnakeGame {
 
     func placeRandomFood(color: UIColor) {
         guard let grid = grid else { fatalError("Grid not available!") }
-        guard let snake = snake else { fatalError("Snake not available!") }
+        guard let snake = snake else { return }
 
         var location: CGPoint
         repeat {

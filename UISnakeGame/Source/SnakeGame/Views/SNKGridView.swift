@@ -15,7 +15,7 @@ class SNKGridView: UIView {
     var origin: CGPoint = .zero
     var size: CGFloat = 0
 
-    let gridColor: UIColor = .darkGray
+    let gridColor: UIColor = SNKConstants.GRIDLINES_COLOR
 
     override func draw(_ rect: CGRect) {
         drawGrid()
