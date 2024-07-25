@@ -155,6 +155,7 @@ class SNKSnakeGame {
 
         if let foodItemLocation = snakeIntersectToFoodItems() {
             eatFoodItem(from: foodItemLocation)
+            snake.grow()
             placeRandomFood(color: SNKConstants.FOOD_COLOR)
         }
     }
