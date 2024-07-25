@@ -38,6 +38,10 @@ class SNKSnakeGame {
     // plotted actors
     private(set) var foodLocations: [CGPoint] = []
 
+    // score + level
+    @Published var score: Int = 0
+    @Published var level: Int = 0
+
     init(frame: CGRect, tileSize: CGFloat) {
         self.frame = frame
         self.tileSize = tileSize
@@ -58,6 +62,12 @@ class SNKSnakeGame {
         let gridView = SNKGridView(frame: frame, size: tileSize)
         gridView.backgroundColor = .clear
         view.addSubview(gridView)
+
+//        gridView.translatesAutoresizingMaskIntoConstraints = false
+//        gridView.left == view.left
+//        gridView.right == view.right
+//        gridView.top == view.top
+//        gridView.bottom == view.bottom
 
         self.gridView = gridView
     }
@@ -160,6 +170,8 @@ class SNKSnakeGame {
             if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
                 foodLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
                 item.removeFromSuperview()
+
+                score += 1
                 wsrLogger.info(message: "\(location)")
                 break
             }

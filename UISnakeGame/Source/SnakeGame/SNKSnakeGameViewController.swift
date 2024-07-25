@@ -28,20 +28,26 @@ class SNKSnakeGameViewController: SNKViewController {
         return view
     }()
 
+    private lazy var bottomStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.spacing = 0
+        return view
+    }()
     private lazy var scoreTextLabel: UILabel = {
         let view = UILabel()
         view.text = "SCORE: 0"
         view.textAlignment = .left
-        view.font = .largeTitle
+        view.font = .title2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
     }()
     private lazy var levelTextLabel: UILabel = {
         let view = UILabel()
-        view.text = "LEVEL 1"
+        view.text = "LEVEL: 1"
         view.textAlignment = .right
-        view.font = .largeTitle
+        view.font = .title2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
@@ -93,7 +99,11 @@ class SNKSnakeGameViewController: SNKViewController {
 
     override func setupLayout() {
         addSubviews([
-            containerView
+            containerView,
+            bottomStackView.addArrangedSubviews([
+                scoreTextLabel,
+                levelTextLabel
+            ])
         ])
     }
 
@@ -101,7 +111,20 @@ class SNKSnakeGameViewController: SNKViewController {
         containerView.left == view.left
         containerView.right == view.right
         containerView.top == view.topMargin
-        containerView.bottom == view.bottomMargin
+
+        bottomStackView.top == containerView.bottom
+        bottomStackView.left == view.left + 20
+        bottomStackView.right == view.right - 20
+        bottomStackView.bottom == view.bottomMargin
+    }
+
+    override func setupBindings() {
+        game?.$score
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] score in
+                self?.scoreTextLabel.text = "SCORE: \(score)"
+            }
+            .store(in: &cancellables)
     }
 
     override func setupActions() {
@@ -125,7 +148,6 @@ class SNKSnakeGameViewController: SNKViewController {
 
     @objc private func restartTheGame() {
         game?.restart()
-
         initGame()
     }
 
@@ -191,7 +213,6 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
         wsrLogger.info(message: "SafeAreaInset: \(SNKConstants.safeAreaInsets)")
         view.layoutIfNeeded()
-        containerView.layoutIfNeeded()
 
         let snakeGame = SNKSnakeGame(frame: containerView.bounds, tileSize: SNKConstants.TILE_SIZE)
         game = snakeGame
@@ -205,6 +226,7 @@ extension SNKSnakeGameViewController {
         game?.makeSnake()
         game?.placeRandomFood(color: SNKConstants.FOOD_COLOR)
 
+        setupBindings()
         updateUI()
 
         game?.start()

@@ -70,6 +70,7 @@ final class SNKSnake {
     // MARK: - Change Directions
 
     func changeDirection(to direction: SNKDirection) {
+        // ignore same and opposite direction
         guard direction != previousFacingDirection else { return }
         guard direction != previousFacingDirection.opposite else { return }
         //wsrLogger.info(message: "\(direction)")
