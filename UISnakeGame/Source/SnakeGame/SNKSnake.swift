@@ -19,15 +19,35 @@ final class SNKSnake {
     var stepSize: CGFloat = 0
     var gridInfo: SNKGridInfo
 
-    @Published var previousFacingDirection: SNKDirection = .right
+    var previousFacingDirection: SNKDirection
+    var facingDirection: SNKDirection
 
-    init(frame: CGRect, size: CGFloat, location: CGPoint, gridInfo: SNKGridInfo) {
+    init(frame: CGRect, size: CGFloat, location: CGPoint, direction: SNKDirection, gridInfo: SNKGridInfo) {
+        self.facingDirection = direction
+        self.previousFacingDirection = direction
         self.gridInfo = gridInfo
         self.stepSize = size
         view.frame = frame
 
-        // default right direction
+        // support right direction only for now
+        initialSnake(location: location, direction: direction, size: size)
+        //initialOneHeadSnake(location: location, direction: direction, size: size)
+    }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func initialOneHeadSnake(location: CGPoint, direction: SNKDirection, size: CGFloat) {
+        // [0] head
+        let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
+        let head = SNKTileView(frame: headFrame, color: .accentVariation1)
+
+        view.addSubview(head)
+        bodyParts.append(head)
+    }
+
+    private func initialSnake(location: CGPoint, direction: SNKDirection, size: CGFloat) {
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
         let head = SNKTileView(frame: headFrame, color: .accentVariation1)
@@ -55,10 +75,6 @@ final class SNKSnake {
         bodyParts.append(tail)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     private func getPartsLocation() -> [CGPoint] {
         var locations: [CGPoint] = []
         for part in bodyParts {
@@ -75,23 +91,19 @@ final class SNKSnake {
         guard direction != previousFacingDirection.opposite else { return }
         //wsrLogger.info(message: "\(direction)")
 
-        switch direction {
-        case .left: moveLeft()
-        case .right: moveRight()
-        case .up: moveUp()
-        case .down: moveDown()
-        }
-
-        previousFacingDirection = direction
+        // valid different direction
+        facingDirection = direction
     }
 
     func move() {
-        switch previousFacingDirection {
+        switch facingDirection {
         case .left: moveLeft()
         case .right: moveRight()
         case .up: moveUp()
         case .down: moveDown()
         }
+
+        previousFacingDirection = facingDirection
     }
 
     private func moveLeft() {

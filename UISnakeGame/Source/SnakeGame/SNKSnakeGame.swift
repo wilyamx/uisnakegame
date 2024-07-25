@@ -82,19 +82,12 @@ class SNKSnakeGame {
         }
 
         let location = grid.locations[1][1]
-        let snake = SNKSnake(frame: frame, size: tileSize, location: location, gridInfo: grid.getInfo())
+        let snake = SNKSnake(frame: frame, size: tileSize, location: location,
+                             direction: .right, gridInfo: grid.getInfo())
 
         view.addSubview(snake.view)
 
         self.snake = snake
-
-        // Bindings
-        snake.$previousFacingDirection
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.onEnterframe()
-            }
-            .store(in: &cancellables)
     }
 
     func placeRandomFood(color: UIColor) {
