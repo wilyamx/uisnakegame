@@ -125,6 +125,18 @@ class SNKSnakeGameViewController: SNKViewController {
                 self?.scoreTextLabel.text = "SCORE: \(score)"
             }
             .store(in: &cancellables)
+
+        game?.$alertState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let state else { return }
+                switch state {
+                case .levelComplete: break
+                case .newLevel: break
+                case .gameOver(let score): self?.showGameOverAlert(score: score)
+                }
+            }
+            .store(in: &cancellables)
     }
 
     override func setupActions() {
@@ -188,16 +200,20 @@ extension SNKSnakeGameViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    private func showGameOverAlert(points: Int) {
+    private func showGameOverAlert(score: Int) {
         // create the alert
         let alert = UIAlertController(
-            title: "GAME OVER!", message: "\(points) points", preferredStyle: UIAlertController.Style.alert
+            title: "GAME OVER!", message: "You got \(score) points!", preferredStyle: UIAlertController.Style.alert
         )
         alert.view.tintColor = .accent
 
         // add an action (button)
-        alert.addAction(UIAlertAction(title: "PLAY AGAIN", style: UIAlertAction.Style.cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "QUIT", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "PLAY AGAIN", style: UIAlertAction.Style.cancel) { [weak self] action in
+            self?.game?.restart()
+        })
+        alert.addAction(UIAlertAction(title: "QUIT", style: UIAlertAction.Style.default) { [weak self] action in
+            self?.dismiss(animated: true)
+        })
 
         // show the alert
         present(alert, animated: true, completion: nil)

@@ -75,9 +75,10 @@ final class SNKSnake {
         bodyParts.append(tail)
     }
 
-    private func getPartsLocation() -> [CGPoint] {
+    private func getPartsLocation(excludedTheHead: Bool = false) -> [CGPoint] {
         var locations: [CGPoint] = []
-        for part in bodyParts {
+        for (index, part) in bodyParts.enumerated() {
+            if excludedTheHead && index == 0 { continue }
             locations.append(part.frame.origin)
         }
         return locations
@@ -95,7 +96,7 @@ final class SNKSnake {
         view.addSubview(body)
         bodyParts.append(body)
 
-        var previousTailPart = bodyParts[bodyParts.count - 2]
+        let previousTailPart = bodyParts[bodyParts.count - 2]
         previousTailPart.fillColor = .accentVariation2
         previousTailPart.setNeedsDisplay()
     }
@@ -190,5 +191,11 @@ final class SNKSnake {
     func intersect(with locations: [CGPoint]) -> CGPoint? {
         let headLocation = view.subviews[0].frame.origin
         return locations.first(where: { $0.x == headLocation.x && $0.y == headLocation.y })
+    }
+
+    func intersectWithItself() -> Bool {
+        let headLocation = view.subviews[0].frame.origin
+        let otherBodyLocations = getPartsLocation(excludedTheHead: true)
+        return otherBodyLocations.contains(where: { $0.x == headLocation.x && $0.y == headLocation.y })
     }
 }

@@ -18,6 +18,12 @@ class SNKSnakeGame {
         case started
     }
 
+    enum SNKAlertState {
+        case newLevel
+        case levelComplete
+        case gameOver(Int)
+    }
+
     ///  all game objects will be added to this view
     var view: UIView = UIView()
     
@@ -39,9 +45,10 @@ class SNKSnakeGame {
     // plotted actors
     private(set) var foodLocations: [CGPoint] = []
 
-    // score + level
+    // score + level + alerts
     @Published var score: Int = 0
     @Published var level: Int = 0
+    @Published var alertState: SNKAlertState?
     lazy var cancellables = Set<AnyCancellable>()
 
     init(frame: CGRect, tileSize: CGFloat) {
@@ -146,6 +153,11 @@ class SNKSnakeGame {
         gridView = nil
     }
 
+    func gameOver() {
+        stop()
+        alertState = .gameOver(score)
+    }
+
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {
@@ -153,10 +165,15 @@ class SNKSnakeGame {
 
         snake.move()
 
-        if let foodItemLocation = snakeIntersectToFoodItems() {
-            eatFoodItem(from: foodItemLocation)
-            snake.grow()
-            placeRandomFood(color: SNKConstants.FOOD_COLOR)
+        if snakeIntersectWithItself() {
+            gameOver()
+        }
+        else {
+            if let foodItemLocation = snakeIntersectToFoodItems() {
+                eatFoodItem(from: foodItemLocation)
+                snake.grow()
+                placeRandomFood(color: SNKConstants.FOOD_COLOR)
+            }
         }
     }
 
@@ -165,6 +182,11 @@ class SNKSnakeGame {
     private func snakeIntersectToFoodItems() -> CGPoint? {
         guard let snake, !foodLocations.isEmpty else { return nil }
         return snake.intersect(with: foodLocations)
+    }
+
+    private func snakeIntersectWithItself() -> Bool {
+        guard let snake else { return false }
+        return snake.intersectWithItself()
     }
 
     // MARK: - Food
