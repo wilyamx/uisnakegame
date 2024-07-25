@@ -8,6 +8,7 @@
 
 import UIKit
 import SuperEasyLayout
+import Combine
 
 class SNKSnakeGame {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
@@ -41,6 +42,7 @@ class SNKSnakeGame {
     // score + level
     @Published var score: Int = 0
     @Published var level: Int = 0
+    lazy var cancellables = Set<AnyCancellable>()
 
     init(frame: CGRect, tileSize: CGFloat) {
         self.frame = frame
@@ -85,6 +87,14 @@ class SNKSnakeGame {
         view.addSubview(snake.view)
 
         self.snake = snake
+
+        // Bindings
+        snake.$previousFacingDirection
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.onEnterframe()
+            }
+            .store(in: &cancellables)
     }
 
     func placeRandomFood(color: UIColor) {

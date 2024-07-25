@@ -19,7 +19,7 @@ final class SNKSnake {
     var stepSize: CGFloat = 0
     var gridInfo: SNKGridInfo
 
-    private var previousFacingDirection: SNKDirection = .right
+    @Published var previousFacingDirection: SNKDirection = .right
 
     init(frame: CGRect, size: CGFloat, location: CGPoint, gridInfo: SNKGridInfo) {
         self.gridInfo = gridInfo
@@ -75,14 +75,14 @@ final class SNKSnake {
         guard direction != previousFacingDirection.opposite else { return }
         //wsrLogger.info(message: "\(direction)")
 
-        previousFacingDirection = direction
-
         switch direction {
         case .left: moveLeft()
         case .right: moveRight()
         case .up: moveUp()
         case .down: moveDown()
         }
+
+        previousFacingDirection = direction
     }
 
     func move() {
