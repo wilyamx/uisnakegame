@@ -30,7 +30,7 @@ class SNKSnakeGame {
 
     private(set) var state: SNKState = .stopped
     private(set) var timer: Timer?
-    private(set) var updateInterval: TimeInterval = 0.3 {
+    private(set) var updateInterval: TimeInterval = SNKConstants.SPEED {
         didSet { start() }
     }
 

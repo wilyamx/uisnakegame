@@ -38,8 +38,6 @@ class SNKSnakeGameViewController: SNKViewController {
 
     let viewModel = SNKSnakeGameViewModel()
 
-    static var TILE_SIZE = 50.0
-
     public var game: SNKSnakeGame?
     public var userSwipeCallback: ((SNKDirection) -> ())?
 
@@ -176,7 +174,7 @@ extension SNKSnakeGameViewController {
         view.layoutIfNeeded()
         containerView.layoutIfNeeded()
 
-        let snakeGame = SNKSnakeGame(frame: containerView.bounds, tileSize: SNKSnakeGameViewController.TILE_SIZE)
+        let snakeGame = SNKSnakeGame(frame: containerView.bounds, tileSize: SNKConstants.TILE_SIZE)
         game = snakeGame
 
         containerView.addSubview(snakeGame.view)

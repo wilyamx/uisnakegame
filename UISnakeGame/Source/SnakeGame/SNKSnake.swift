@@ -94,11 +94,11 @@ final class SNKSnake {
         let locations = getPartsLocation()
 
         let x = bodyParts[0].frame.origin.x
-        if x < 0 {
+        if x == 0 {
             bodyParts[0].frame.origin.x = gridInfo.rightMax - gridInfo.tileSize
         }
         else {
-            bodyParts[0].frame.origin.x -= SNKSnakeGameViewController.TILE_SIZE
+            bodyParts[0].frame.origin.x -= SNKConstants.TILE_SIZE
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -109,10 +109,10 @@ final class SNKSnake {
         let locations = getPartsLocation()
 
         let x = bodyParts[0].frame.origin.x
-        if x == gridInfo.rightMax {
+        if x == gridInfo.rightMax - gridInfo.tileSize {
             bodyParts[0].frame.origin.x = 0
         } else {
-            bodyParts[0].frame.origin.x += SNKSnakeGameViewController.TILE_SIZE
+            bodyParts[0].frame.origin.x += SNKConstants.TILE_SIZE
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -123,11 +123,11 @@ final class SNKSnake {
         let locations = getPartsLocation()
 
         let y = bodyParts[0].frame.origin.y
-        if y < 0 {
+        if y == 0 {
             bodyParts[0].frame.origin.y = gridInfo.bottomMax
         }
         else {
-            bodyParts[0].frame.origin.y -= SNKSnakeGameViewController.TILE_SIZE
+            bodyParts[0].frame.origin.y -= SNKConstants.TILE_SIZE
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -138,10 +138,10 @@ final class SNKSnake {
         let locations = getPartsLocation()
 
         let y = bodyParts[0].frame.origin.y
-        if y == gridInfo.bottomMax {
+        if y == gridInfo.bottomMax - gridInfo.tileSize {
             bodyParts[0].frame.origin.y = 0
         } else {
-            bodyParts[0].frame.origin.y += SNKSnakeGameViewController.TILE_SIZE
+            bodyParts[0].frame.origin.y += SNKConstants.TILE_SIZE
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
