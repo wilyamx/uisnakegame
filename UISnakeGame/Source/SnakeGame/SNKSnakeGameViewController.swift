@@ -210,6 +210,7 @@ extension SNKSnakeGameViewController {
         // add an action (button)
         alert.addAction(UIAlertAction(title: "PLAY AGAIN", style: UIAlertAction.Style.cancel) { [weak self] action in
             self?.game?.restart()
+            self?.initGame()
         })
         alert.addAction(UIAlertAction(title: "QUIT", style: UIAlertAction.Style.default) { [weak self] action in
             self?.dismiss(animated: true)

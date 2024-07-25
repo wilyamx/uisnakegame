@@ -90,7 +90,7 @@ class SNKSnakeGame {
 
         let location = grid.locations[1][1]
         let snake = SNKSnake(frame: frame, size: tileSize, location: location,
-                             direction: .right, gridInfo: grid.getInfo())
+                             direction: .right, gridInfo: grid.getInfo(), length: 8)
 
         view.addSubview(snake.view)
 

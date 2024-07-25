@@ -22,7 +22,8 @@ final class SNKSnake {
     var previousFacingDirection: SNKDirection
     var facingDirection: SNKDirection
 
-    init(frame: CGRect, size: CGFloat, location: CGPoint, direction: SNKDirection, gridInfo: SNKGridInfo) {
+    init(frame: CGRect, size: CGFloat, location: CGPoint,
+         direction: SNKDirection, gridInfo: SNKGridInfo, length: Int = 4) {
         self.facingDirection = direction
         self.previousFacingDirection = direction
         self.gridInfo = gridInfo
@@ -30,15 +31,16 @@ final class SNKSnake {
         view.frame = frame
 
         // support right direction only for now
-        initialSnake(location: location, direction: direction, size: size)
-        //initialOneHeadSnake(location: location, direction: direction, size: size)
+        if length == 1 { barbados(location: location, direction: direction, size: size) }
+        else if length == 4 { python(location: location, direction: direction, size: size) }
+        else { anaconda(location: location, direction: direction, size: size, length: length) }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func initialOneHeadSnake(location: CGPoint, direction: SNKDirection, size: CGFloat) {
+    private func barbados(location: CGPoint, direction: SNKDirection, size: CGFloat) {
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
         let head = SNKTileView(frame: headFrame, color: .accentVariation1)
@@ -47,7 +49,7 @@ final class SNKSnake {
         bodyParts.append(head)
     }
 
-    private func initialSnake(location: CGPoint, direction: SNKDirection, size: CGFloat) {
+    private func python(location: CGPoint, direction: SNKDirection, size: CGFloat) {
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
         let head = SNKTileView(frame: headFrame, color: .accentVariation1)
@@ -73,6 +75,32 @@ final class SNKSnake {
         bodyParts.append(body1)
         bodyParts.append(body2)
         bodyParts.append(tail)
+    }
+
+    private func anaconda(location: CGPoint, direction: SNKDirection, size: CGFloat, length: Int) {
+        var parts: [SNKTileView] = []
+
+        // [0] head
+        let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
+        let head = SNKTileView(frame: headFrame, color: .accentVariation1)
+        parts.append(head)
+
+        // bodies
+        for i in 0..<length - 2 {
+            let bodyFrame = CGRect(x: location.x - size * CGFloat(i) + 1, y: location.y, width: size, height: size)
+            let body = SNKTileView(frame: bodyFrame, color: .accentVariation2)
+            parts.append(body)
+        }
+
+        // [last] tail
+        let tailFrame = CGRect(x: location.x - size * CGFloat(parts.count), y: location.y, width: size, height: size)
+        let tail = SNKTileView(frame: tailFrame, color: .accentVariation3)
+        parts.append(tail)
+
+        for part in parts {
+            view.addSubview(part)
+        }
+        bodyParts = parts
     }
 
     private func getPartsLocation(excludedTheHead: Bool = false) -> [CGPoint] {
