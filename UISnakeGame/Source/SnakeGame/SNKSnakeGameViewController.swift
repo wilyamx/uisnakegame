@@ -187,6 +187,8 @@ extension SNKSnakeGameViewController {
         game?.placeRandomFood(color: .red)
 
         updateUI()
+
+        game?.start()
     }
     
     private func addSwipeGestures() {
