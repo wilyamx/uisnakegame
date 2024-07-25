@@ -49,6 +49,7 @@
 		A75D94F22C50A42500C23768 /* SNKSnake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F12C50A42500C23768 /* SNKSnake.swift */; };
 		A75D94F42C50D09200C23768 /* SNKGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F32C50D09200C23768 /* SNKGridView.swift */; };
 		A75D94F62C512C0200C23768 /* SNKTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F52C512C0200C23768 /* SNKTileView.swift */; };
+		A75D94F82C51D6CD00C23768 /* SNKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F72C51D6CD00C23768 /* SNKConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		A75D94F12C50A42500C23768 /* SNKSnake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSnake.swift; sourceTree = "<group>"; };
 		A75D94F32C50D09200C23768 /* SNKGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGridView.swift; sourceTree = "<group>"; };
 		A75D94F52C512C0200C23768 /* SNKTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKTileView.swift; sourceTree = "<group>"; };
+		A75D94F72C51D6CD00C23768 /* SNKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
+				A75D94F72C51D6CD00C23768 /* SNKConstants.swift */,
 				A75D949F2C4E33C600C23768 /* Components */,
 				A75D949D2C4E337D00C23768 /* ViewModels */,
 				A75D949C2C4E336F00C23768 /* Utilities */,
@@ -516,6 +519,7 @@
 				A75D94EF2C50A2C300C23768 /* SNKSnakeGame.swift in Sources */,
 				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
+				A75D94F82C51D6CD00C23768 /* SNKConstants.swift in Sources */,
 				A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */,
 				A75D94CF2C4FD12300C23768 /* SNKSettingsViewController.swift in Sources */,
 				A75D94C22C4F9ED300C23768 /* String+WSR.swift in Sources */,

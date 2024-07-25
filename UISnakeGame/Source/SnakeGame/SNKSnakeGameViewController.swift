@@ -38,7 +38,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     let viewModel = SNKSnakeGameViewModel()
 
-    static var TILE_SIZE = 20.0
+    static var TILE_SIZE = 50.0
 
     public var game: SNKSnakeGame?
     public var userSwipeCallback: ((SNKDirection) -> ())?
@@ -84,7 +84,7 @@ class SNKSnakeGameViewController: SNKViewController {
         containerView.left == view.left
         containerView.right == view.right
         containerView.top == view.topMargin
-        containerView.bottom == view.bottomMargin
+        containerView.bottom == view.bottom
     }
 
     override func setupActions() {
@@ -171,9 +171,12 @@ extension SNKSnakeGameViewController {
     func initGame() {
         wsrLogger.info(message: "--------------")
         wsrLogger.info(message: "initGame...")
+        wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
+        wsrLogger.info(message: "SafeAreaInset: \(SNKConstants.safeAreaInsets)")
         view.layoutIfNeeded()
+        containerView.layoutIfNeeded()
 
-        let snakeGame = SNKSnakeGame(frame: containerView.frame, tileSize: SNKSnakeGameViewController.TILE_SIZE)
+        let snakeGame = SNKSnakeGame(frame: containerView.bounds, tileSize: SNKSnakeGameViewController.TILE_SIZE)
         game = snakeGame
 
         containerView.addSubview(snakeGame.view)

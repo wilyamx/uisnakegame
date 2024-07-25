@@ -10,32 +10,37 @@ import UIKit
 
 final class SNKSnake {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
+    typealias SNKGridInfo = SNKGrid.SNKGridInfo
 
     /// the view containing all body parts of the snake
     let view = UIView()
 
     var bodyParts: [SNKTileView] = []
+    var stepSize: CGFloat = 0
+    var gridInfo: SNKGridInfo
 
     private var previousFacingDirection: SNKDirection = .right
 
-    init(frame: CGRect, size: CGFloat, location: CGPoint) {
+    init(frame: CGRect, size: CGFloat, location: CGPoint, gridInfo: SNKGridInfo) {
+        self.gridInfo = gridInfo
+        self.stepSize = size
         view.frame = frame
 
         // default right direction
 
-        // [0]
+        // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
         let head = SNKTileView(frame: headFrame, color: .black)
 
-        // [1]
+        // [1] body 1
         let body1Frame = CGRect(x: location.x - size * 1, y: location.y, width: size, height: size)
         let body1 = SNKTileView(frame: body1Frame, color: .lightGray)
 
-        // [2]
+        // [2] body 2
         let body2Frame = CGRect(x: location.x - size * 2, y: location.y, width: size, height: size)
         let body2 = SNKTileView(frame: body2Frame, color: .lightGray)
 
-        // [3]
+        // [3] tail
         let tailFrame = CGRect(x: location.x - size * 3, y: location.y, width: size, height: size)
         let tail = SNKTileView(frame: tailFrame, color: .gray)
 
@@ -77,49 +82,67 @@ final class SNKSnake {
         }
     }
 
-    private func moveLeft() {
+    private func getPartsLocation() -> [CGPoint] {
         var locations: [CGPoint] = []
         for part in bodyParts {
             locations.append(part.frame.origin)
         }
+        return locations
+    }
 
-        bodyParts[0].frame.origin.x -= SNKSnakeGameViewController.TILE_SIZE
+    private func moveLeft() {
+        let locations = getPartsLocation()
+
+        let x = bodyParts[0].frame.origin.x
+        if x < 0 {
+            bodyParts[0].frame.origin.x = gridInfo.rightMax - gridInfo.tileSize
+        }
+        else {
+            bodyParts[0].frame.origin.x -= SNKSnakeGameViewController.TILE_SIZE
+        }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
         }
     }
 
     private func moveRight() {
-        var locations: [CGPoint] = []
-        for part in bodyParts {
-            locations.append(part.frame.origin)
-        }
+        let locations = getPartsLocation()
 
-        bodyParts[0].frame.origin.x += SNKSnakeGameViewController.TILE_SIZE
+        let x = bodyParts[0].frame.origin.x
+        if x == gridInfo.rightMax {
+            bodyParts[0].frame.origin.x = 0
+        } else {
+            bodyParts[0].frame.origin.x += SNKSnakeGameViewController.TILE_SIZE
+        }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
         }
     }
 
     private func moveUp() {
-        var locations: [CGPoint] = []
-        for part in bodyParts {
-            locations.append(part.frame.origin)
-        }
+        let locations = getPartsLocation()
 
-        bodyParts[0].frame.origin.y -= SNKSnakeGameViewController.TILE_SIZE
+        let y = bodyParts[0].frame.origin.y
+        if y < 0 {
+            bodyParts[0].frame.origin.y = gridInfo.bottomMax
+        }
+        else {
+            bodyParts[0].frame.origin.y -= SNKSnakeGameViewController.TILE_SIZE
+        }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
         }
     }
 
     private func moveDown() {
-        var locations: [CGPoint] = []
-        for part in bodyParts {
-            locations.append(part.frame.origin)
-        }
+        let locations = getPartsLocation()
 
-        bodyParts[0].frame.origin.y += SNKSnakeGameViewController.TILE_SIZE
+        let y = bodyParts[0].frame.origin.y
+        if y == gridInfo.bottomMax {
+            bodyParts[0].frame.origin.y = 0
+        } else {
+            bodyParts[0].frame.origin.y += SNKSnakeGameViewController.TILE_SIZE
+        }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
         }

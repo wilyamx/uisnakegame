@@ -37,6 +37,7 @@ class SNKSnakeGame {
     init(frame: CGRect, tileSize: CGFloat) {
         self.frame = frame
         self.tileSize = tileSize
+        wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize)")
     }
 
     // MARK: - Game subviews
@@ -65,7 +66,7 @@ class SNKSnakeGame {
             previousSnake.view.removeFromSuperview()
         }
 
-        let snake = SNKSnake(frame: frame, size: tileSize, location: grid.locations[5][7])
+        let snake = SNKSnake(frame: frame, size: tileSize, location: grid.locations[0][0], gridInfo: grid.getInfo())
 
         view.addSubview(snake.view)
 
