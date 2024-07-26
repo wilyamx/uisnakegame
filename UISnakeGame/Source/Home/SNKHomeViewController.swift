@@ -36,7 +36,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = UILabel()
         view.text = "S-N-A-K-E"
         view.textAlignment = .center
-        view.font = .title1
+        view.font = .headline
         view.textColor = .white
         view.lineBreakMode = .byCharWrapping
         return view

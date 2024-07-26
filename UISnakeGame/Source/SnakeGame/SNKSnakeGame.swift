@@ -91,7 +91,7 @@ class SNKSnakeGame {
         }
 
         let location = grid.locations[1][1]
-        let snakeLength = 8
+        let snakeLength = SNKConstants.SNAKE_LENGTH
         let snake = SNKSnake(frame: frame, size: tileSize, location: location,
                              direction: .right, gridInfo: grid.getInfo(), length: snakeLength)
 
