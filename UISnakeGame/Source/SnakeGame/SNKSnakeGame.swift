@@ -199,6 +199,7 @@ class SNKSnakeGame {
         let newUpdateInterval = speedForSnakeLength(snake.length, baseSpeed: SNKConstants.SPEED)
         guard updateInterval != newUpdateInterval else { return }
 
+        wsrLogger.info(message: "new speed: \(updateInterval)")
         updateInterval = newUpdateInterval
     }
 

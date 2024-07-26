@@ -231,12 +231,15 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "SafeAreaInset: \(SNKConstants.safeAreaInsets)")
         view.layoutIfNeeded()
 
-        let snakeGame = SNKSnakeGame(frame: containerView.bounds, tileSize: SNKConstants.TILE_SIZE)
+        // BUG: wrong height
+        var frame = containerView.bounds
+        frame.size.height = 695
+
+        let snakeGame = SNKSnakeGame(frame: frame, tileSize: SNKConstants.TILE_SIZE)
         game = snakeGame
 
         containerView.addSubview(snakeGame.view)
 
-        // BUG: wrong height
         // adding game actors
         game?.makeGrid()
         game?.makeGridView()
