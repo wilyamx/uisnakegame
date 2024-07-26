@@ -144,7 +144,7 @@ class SNKSnakeGame {
         let frame = CGRect(x: coordinates.x, y: coordinates.y, width: grid.tileSize, height: grid.tileSize)
         let item = SNKTileView(frame: frame, color: color)
 
-        wsrLogger.info(message: "\(coordinates)")
+        //wsrLogger.info(message: "\(coordinates)")
         obstacleLocations.append(coordinates)
         view.addSubview(item)
     }
@@ -200,7 +200,7 @@ class SNKSnakeGame {
 
         snake.move()
 
-        if snakeIntersectWithItself() {
+        if snakeIntersectWithItself() || snakeIntersectWithObstacles() {
             gameOver()
         }
         else {
@@ -222,6 +222,11 @@ class SNKSnakeGame {
     private func snakeIntersectWithItself() -> Bool {
         guard let snake else { return false }
         return snake.intersectWithItself()
+    }
+
+    private func snakeIntersectWithObstacles() -> Bool {
+        guard let snake else { return false }
+        return snake.intersect(with: obstacleLocations) != nil
     }
 
     // MARK: - Food

@@ -240,7 +240,6 @@ extension SNKSnakeGameViewController {
         // adding game actors
         game?.makeGrid()
         game?.makeGridView()
-        game?.makeSnake()
 
         game?.placeObstacle(row: 5, column: 25)
         game?.placeObstacle(row: 6, column: 25)
@@ -268,9 +267,11 @@ extension SNKSnakeGameViewController {
         game?.placeObstacle(row: 39, column: 19)
         game?.placeObstacle(row: 39, column: 20)
 
+        //game?.placeRandomObstacle(color: SNKConstants.OBSTACLE_COLOR)
+
         game?.placeRandomFood(color: SNKConstants.FOOD_COLOR)
 
-        //game?.placeRandomObstacle(color: SNKConstants.OBSTACLE_COLOR)
+        game?.makeSnake()
 
         setupBindings()
         updateUI()
