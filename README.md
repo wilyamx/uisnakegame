@@ -29,9 +29,9 @@ Snake game built using **UIKit**. Our different way to study Swift Language.
 
 PROJECT SPECIFICATIONS
 
-- IDE: **XCode 15.4** for **iOS 17.5**
-- Language: **Swift 5**
-- Interface: **Storyboard**
+- **IDE:** `Code 15.4 for iOS 17.5`
+- **Language:** `Swift 5`
+- **Interface:** `Storyboard`
 
 ## Technical Implementations
 
@@ -41,7 +41,7 @@ PROJECT SPECIFICATIONS
 - User Defaults
 - Package Dependencies
 	- [Eureka](https://eurekacommunity.github.io/) - iOS form builder
-	- [SuperEasyLayout](https://github.com/doil6317/SuperEasyLayout) - UI constraints
+	- [SuperEasyLayout](https://github.com/doil6317/SuperEasyLayout) - apply UI constraints programmatically
 
 ## Screenshots
 
