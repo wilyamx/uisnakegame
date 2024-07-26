@@ -44,6 +44,7 @@ class SNKSnakeGame {
 
     // plotted actors
     private(set) var foodLocations: [CGPoint] = []
+    private(set) var obstacleLocations: [CGPoint] = []
 
     // score + level + alerts
     @Published var score: Int = 0
@@ -99,11 +100,29 @@ class SNKSnakeGame {
 
     func placeRandomFood(color: UIColor) {
         guard let grid = grid else { fatalError("Grid not available!") }
+
+        var location: CGPoint = grid.randomLocation()
+        if let snake = snake {
+            repeat {
+                location = grid.randomLocation()
+            } while(snake.intersect(with: location))
+        }
+
+        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let food = SNKTileView(frame: foodFrame, color: .orange)
+
+        wsrLogger.info(message: "\(location)")
+        foodLocations.append(location)
+        view.addSubview(food)
+    }
+
+    func placeRandomObstacle(color: UIColor = SNKConstants.OBSTACLE_COLOR, excludedLocations: [CGPoint]? = nil) {
+        guard let grid = grid else { fatalError("Grid not available!") }
         guard let snake = snake else { return }
 
         var location: CGPoint
         repeat {
-            location = grid.randomLocation()
+            location = grid.randomLocation(excludedLocations: excludedLocations)
         } while(snake.intersect(with: location))
 
         let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
@@ -112,6 +131,22 @@ class SNKSnakeGame {
         wsrLogger.info(message: "\(location)")
         foodLocations.append(location)
         view.addSubview(food)
+    }
+
+    func placeObstacle(row: Int, column: Int, color: UIColor = SNKConstants.OBSTACLE_COLOR) {
+        guard let grid = grid else { fatalError("Grid not available!") }
+        guard grid.isValid(row: row, column: column)
+        else {
+            fatalError("Grid [\(row)][\(column)] is invalid! Limit will be [\(grid.rows - 1)][\(grid.columns - 1)]")
+        }
+
+        let coordinates = grid.coordinates(row: row, column: column)
+        let frame = CGRect(x: coordinates.x, y: coordinates.y, width: grid.tileSize, height: grid.tileSize)
+        let item = SNKTileView(frame: frame, color: color)
+
+        wsrLogger.info(message: "\(coordinates)")
+        obstacleLocations.append(coordinates)
+        view.addSubview(item)
     }
 
     // MARK: - Directions
@@ -201,6 +236,30 @@ class SNKSnakeGame {
                 wsrLogger.info(message: "\(location)")
                 break
             }
+        }
+    }
+
+    // MARK: Speed Variation
+
+    private func speedForSnakeLength(_ snakeLength: Int) -> TimeInterval {
+        if snakeLength <= 4 {
+            return 0.80
+        } else if snakeLength <= 6 {
+            return 0.75
+        } else if snakeLength <= 8 {
+            return 0.70
+        } else if snakeLength <= 11 {
+            return 0.65
+        } else if snakeLength <= 15 {
+            return 0.62
+        } else if snakeLength <= 19 {
+            return 0.48
+        } else if snakeLength <= 22 {
+            return 0.44
+        } else if snakeLength <= 26 {
+            return 0.42
+        } else {
+            return 0.4
         }
     }
 }

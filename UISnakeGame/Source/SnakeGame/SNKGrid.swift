@@ -26,6 +26,13 @@ class SNKGrid {
     var locations: [[CGPoint]] = []
     var area: CGSize = .zero
 
+    /**
+     // two dimensional array
+     //    [
+     //        [CGPoint(0, 0), CGPoint(0, 1)],
+     //        [CGPoint(1, 0), CGPoint(1, 0)]
+     //    ]
+     */
     init(frame: CGRect, size: CGFloat) {
         area = frame.size
         tileSize = size
@@ -51,7 +58,20 @@ class SNKGrid {
         }
     }
 
-    func randomLocation() -> CGPoint {
+    func isValid(coordinate: CGPoint) -> Bool {
+        for row in 0..<rows {
+            if locations[row].contains(where: { $0.x == coordinate.x && $0.y == coordinate.y }) {
+                return false
+            }
+        }
+        return true
+    }
+
+    func isValid(row: Int, column: Int) -> Bool {
+        return row < self.rows && column < self.columns
+    }
+
+    func randomLocation(excludedLocations: [CGPoint]? = nil) -> CGPoint {
         let row = Int.random(in: 0..<rows)
         let column = Int.random(in: 0..<columns)
         //wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
@@ -59,7 +79,42 @@ class SNKGrid {
         return locations[Int(row)][Int(column)]
     }
 
+//    func randomLocation(excludedLocations: [CGPoint]? = nil) -> CGPoint {
+//        let row = Int.random(in: 0..<rows)
+//        let column = Int.random(in: 0..<columns)
+//        //wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
+//
+//        guard let excludedLocations, !excludedLocations.contains(
+//            where: { $0.x == CGFloat(row) && $0.y == CGFloat(column) }
+//        )
+//        else {
+//            randomLocation(excludedLocations: excludedLocations)
+//            return
+//        }
+//
+//        return locations[Int(row)][Int(column)]
+//    }
+
     func getInfo() -> SNKGridInfo {
         return SNKGridInfo(rows: rows, columns: columns, area: area, tileSize: tileSize)
+    }
+
+    func getAvailableLocations(occupiedLocations: [CGPoint]) -> [CGPoint] {
+        var availableLocations: [CGPoint] = []
+        for row in 0..<rows {
+            for col in 0..<columns {
+                let location = locations[row][col]
+                if !occupiedLocations.contains(where: { $0.x == location.x && $0.y == location.y }) {
+                    availableLocations.append(location)
+                }
+            }
+        }
+        return availableLocations
+    }
+
+    // MARK: - Translations
+
+    func coordinates(row: Int, column: Int) -> CGPoint {
+        return locations[row][column]
     }
 }

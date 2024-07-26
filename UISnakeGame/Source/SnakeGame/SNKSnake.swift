@@ -40,6 +40,8 @@ final class SNKSnake {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Parts
+
     private func barbados(location: CGPoint, direction: SNKDirection, size: CGFloat) {
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
@@ -103,7 +105,7 @@ final class SNKSnake {
         bodyParts = parts
     }
 
-    private func getPartsLocation(excludedTheHead: Bool = false) -> [CGPoint] {
+    func getLocations(excludedTheHead: Bool = false) -> [CGPoint] {
         var locations: [CGPoint] = []
         for (index, part) in bodyParts.enumerated() {
             if excludedTheHead && index == 0 { continue }
@@ -112,8 +114,10 @@ final class SNKSnake {
         return locations
     }
 
+    // MARK: - Abilities
+
     func grow() {
-        let locations = getPartsLocation()
+        let locations = getLocations()
         move()
 
         guard let insertLocation = locations.last else { return }
@@ -153,7 +157,7 @@ final class SNKSnake {
     }
 
     private func moveLeft() {
-        let locations = getPartsLocation()
+        let locations = getLocations()
 
         let x = bodyParts[0].frame.origin.x
         if x == 0 {
@@ -168,7 +172,7 @@ final class SNKSnake {
     }
 
     private func moveRight() {
-        let locations = getPartsLocation()
+        let locations = getLocations()
 
         let x = bodyParts[0].frame.origin.x
         if x == gridInfo.rightMax - gridInfo.tileSize {
@@ -182,7 +186,7 @@ final class SNKSnake {
     }
 
     private func moveUp() {
-        let locations = getPartsLocation()
+        let locations = getLocations()
 
         let y = bodyParts[0].frame.origin.y
         if y == 0 {
@@ -197,7 +201,7 @@ final class SNKSnake {
     }
 
     private func moveDown() {
-        let locations = getPartsLocation()
+        let locations = getLocations()
 
         let y = bodyParts[0].frame.origin.y
         if y == gridInfo.bottomMax - gridInfo.tileSize {
@@ -213,7 +217,7 @@ final class SNKSnake {
     // MARK: - Collision Detection
 
     func intersect(with location: CGPoint) -> Bool {
-        getPartsLocation().contains(where: { $0.x == location.x && $0.y == location.y })
+        getLocations().contains(where: { $0.x == location.x && $0.y == location.y })
     }
 
     func intersect(with locations: [CGPoint]) -> CGPoint? {
@@ -223,7 +227,7 @@ final class SNKSnake {
 
     func intersectWithItself() -> Bool {
         let headLocation = view.subviews[0].frame.origin
-        let otherBodyLocations = getPartsLocation(excludedTheHead: true)
+        let otherBodyLocations = getLocations(excludedTheHead: true)
         return otherBodyLocations.contains(where: { $0.x == headLocation.x && $0.y == headLocation.y })
     }
 }

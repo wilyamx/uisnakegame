@@ -203,7 +203,7 @@ extension SNKSnakeGameViewController {
     private func showGameOverAlert(score: Int) {
         // create the alert
         let alert = UIAlertController(
-            title: "GAME OVER!", message: "You got \(score) points!", preferredStyle: UIAlertController.Style.alert
+            title: "GAME OVER!", message: "You got \(score) point(s)!", preferredStyle: UIAlertController.Style.alert
         )
         alert.view.tintColor = .accent
 
@@ -237,11 +237,40 @@ extension SNKSnakeGameViewController {
         containerView.addSubview(snakeGame.view)
 
         // BUG: wrong height
-        // adding game components
+        // adding game actors
         game?.makeGrid()
         game?.makeGridView()
         game?.makeSnake()
+
+        game?.placeObstacle(row: 5, column: 25)
+        game?.placeObstacle(row: 6, column: 25)
+        game?.placeObstacle(row: 7, column: 25)
+        game?.placeObstacle(row: 8, column: 25)
+        game?.placeObstacle(row: 9, column: 25)
+
+        game?.placeObstacle(row: 15, column: 5)
+        game?.placeObstacle(row: 15, column: 6)
+        game?.placeObstacle(row: 15, column: 7)
+        game?.placeObstacle(row: 15, column: 8)
+
+        game?.placeObstacle(row: 25, column: 5)
+        game?.placeObstacle(row: 25, column: 6)
+        game?.placeObstacle(row: 25, column: 7)
+        game?.placeObstacle(row: 25, column: 8)
+
+        game?.placeObstacle(row: 32, column: 0)
+        game?.placeObstacle(row: 33, column: 0)
+        game?.placeObstacle(row: 34, column: 0)
+        game?.placeObstacle(row: 35, column: 0)
+
+        game?.placeObstacle(row: 39, column: 17)
+        game?.placeObstacle(row: 39, column: 18)
+        game?.placeObstacle(row: 39, column: 19)
+        game?.placeObstacle(row: 39, column: 20)
+
         game?.placeRandomFood(color: SNKConstants.FOOD_COLOR)
+
+        //game?.placeRandomObstacle(color: SNKConstants.OBSTACLE_COLOR)
 
         setupBindings()
         updateUI()
