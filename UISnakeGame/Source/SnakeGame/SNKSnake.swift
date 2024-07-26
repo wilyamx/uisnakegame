@@ -118,11 +118,11 @@ final class SNKSnake {
 
     // MARK: - Abilities
 
-    func grow() {
+    func grow() -> Int {
         let locations = getLocations()
         move()
 
-        guard let insertLocation = locations.last else { return }
+        guard let insertLocation = locations.last else { return 0 }
 
         let frame = CGRect(x: insertLocation.x, y: insertLocation.y, width: gridInfo.tileSize, height: gridInfo.tileSize)
         let body = SNKTileView(frame: frame, color: .accentVariation3)
@@ -133,6 +133,8 @@ final class SNKSnake {
         let previousTailPart = bodyParts[bodyParts.count - 2]
         previousTailPart.fillColor = .accentVariation2
         previousTailPart.setNeedsDisplay()
+
+        return bodyParts.count
     }
 
     // MARK: - Change Directions

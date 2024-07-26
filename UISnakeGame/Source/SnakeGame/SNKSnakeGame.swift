@@ -46,9 +46,10 @@ class SNKSnakeGame {
     private(set) var foodLocations: [CGPoint] = []
     private(set) var obstacleLocations: [CGPoint] = []
 
-    // score + level + alerts
+    // game info
     @Published var score: Int = 0
     @Published var level: Int = 0
+    @Published var snakeLength: Int = 0
     @Published var alertState: SNKAlertState?
     lazy var cancellables = Set<AnyCancellable>()
 
@@ -90,12 +91,14 @@ class SNKSnakeGame {
         }
 
         let location = grid.locations[1][1]
+        let snakeLength = 8
         let snake = SNKSnake(frame: frame, size: tileSize, location: location,
-                             direction: .right, gridInfo: grid.getInfo(), length: 8)
+                             direction: .right, gridInfo: grid.getInfo(), length: snakeLength)
 
         view.addSubview(snake.view)
 
         self.snake = snake
+        self.snakeLength = snakeLength
     }
 
     func placeRandomFood(color: UIColor) {
@@ -217,7 +220,7 @@ class SNKSnakeGame {
         else {
             if let foodItemLocation = snakeIntersectToFoodItems() {
                 eatFoodItem(from: foodItemLocation)
-                snake.grow()
+                snakeLength = snake.grow()
                 placeRandomFood(color: SNKConstants.FOOD_COLOR)
             }
         }
@@ -265,19 +268,19 @@ class SNKSnakeGame {
         if snakeLength <= 4 {
             speedVariation = 0.01
         } else if snakeLength <= 6 {
-            speedVariation = 0.01
+            speedVariation = 0.015
         } else if snakeLength <= 8 {
             speedVariation = 0.02
         } else if snakeLength <= 11 {
-            speedVariation = 0.02
+            speedVariation = 0.03
         } else if snakeLength <= 15 {
-            speedVariation = 0.02
+            speedVariation = 0.04
         } else if snakeLength <= 19 {
-            speedVariation = 0.02
+            speedVariation = 0.05
         } else if snakeLength <= 22 {
-            speedVariation = 0.02
+            speedVariation = 0.06
         } else if snakeLength <= 26 {
-            speedVariation = 0.02
+            speedVariation = 0.07
         } else {
             speedVariation = 0.3
         }

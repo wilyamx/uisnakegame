@@ -32,13 +32,23 @@ class SNKSnakeGameViewController: SNKViewController {
         let view = UIStackView()
         view.axis = .horizontal
         view.spacing = 0
+        view.distribution = .equalSpacing
         return view
     }()
     private lazy var scoreTextLabel: UILabel = {
         let view = UILabel()
         view.text = "SCORE: 0"
         view.textAlignment = .left
-        view.font = .title2
+        view.font = .body2
+        view.textColor = .black
+        view.lineBreakMode = .byCharWrapping
+        return view
+    }()
+    private lazy var snakeLengthTextLabel: UILabel = {
+        let view = UILabel()
+        view.text = "SNAKE LENGTH: 0"
+        view.textAlignment = .left
+        view.font = .body2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
@@ -47,7 +57,7 @@ class SNKSnakeGameViewController: SNKViewController {
         let view = UILabel()
         view.text = "LEVEL: 1"
         view.textAlignment = .right
-        view.font = .title2
+        view.font = .body2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
@@ -102,6 +112,7 @@ class SNKSnakeGameViewController: SNKViewController {
             containerView,
             bottomStackView.addArrangedSubviews([
                 scoreTextLabel,
+                snakeLengthTextLabel,
                 levelTextLabel
             ])
         ])
@@ -123,6 +134,13 @@ class SNKSnakeGameViewController: SNKViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] score in
                 self?.scoreTextLabel.text = "SCORE: \(score)"
+            }
+            .store(in: &cancellables)
+
+        game?.$snakeLength
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] length in
+                self?.snakeLengthTextLabel.text = "SNAKE LENGTH: \(length)"
             }
             .store(in: &cancellables)
 
@@ -228,7 +246,7 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "--------------")
         wsrLogger.info(message: "initGame...")
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
-        wsrLogger.info(message: "SafeAreaInset: \(SNKConstants.safeAreaInsets)")
+
         view.layoutIfNeeded()
 
         // BUG: wrong height
