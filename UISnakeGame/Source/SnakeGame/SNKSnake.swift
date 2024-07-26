@@ -22,6 +22,8 @@ final class SNKSnake {
     var previousFacingDirection: SNKDirection
     var facingDirection: SNKDirection
 
+    var length: Int { return bodyParts.count }
+
     init(frame: CGRect, size: CGFloat, location: CGPoint,
          direction: SNKDirection, gridInfo: SNKGridInfo, length: Int = 4) {
         self.facingDirection = direction

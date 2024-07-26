@@ -9,11 +9,12 @@
 import UIKit
 
 class SNKConstants {
-    static var TILE_SIZE = 25.0
+    static var TILE_SIZE = 15.0 //15
     static var SPEED = 0.15
     static var GRIDLINES_COLOR = UIColor.white
     static var TILE_COLOR = UIColor.accentVariation4
     static var FOOD_COLOR = UIColor.red
+    static var OBSTACLE_COLOR = UIColor.black
 
     static var keyWindow: UIWindow? {
         UIApplication.shared.connectedScenes

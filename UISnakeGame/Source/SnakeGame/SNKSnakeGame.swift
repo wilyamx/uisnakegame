@@ -193,10 +193,20 @@ class SNKSnakeGame {
         alertState = .gameOver(score)
     }
 
+    func updateGameSpeed() {
+        guard let snake = snake else { return }
+
+        let newUpdateInterval = speedForSnakeLength(snake.length, baseSpeed: SNKConstants.SPEED)
+        guard updateInterval != newUpdateInterval else { return }
+
+        updateInterval = newUpdateInterval
+    }
+
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {
         guard let snake else { return }
+        wsrLogger.info(message: "speed: \(updateInterval)")
 
         snake.move()
 
@@ -210,6 +220,8 @@ class SNKSnakeGame {
                 placeRandomFood(color: SNKConstants.FOOD_COLOR)
             }
         }
+
+        updateGameSpeed()
     }
 
     // MARK: Collision Detection
@@ -246,25 +258,29 @@ class SNKSnakeGame {
 
     // MARK: Speed Variation
 
-    private func speedForSnakeLength(_ snakeLength: Int) -> TimeInterval {
+    private func speedForSnakeLength(_ snakeLength: Int, baseSpeed: TimeInterval = 0) -> TimeInterval {
+        var speedVariation: Double = 0
+
         if snakeLength <= 4 {
-            return 0.80
+            speedVariation = 0.01
         } else if snakeLength <= 6 {
-            return 0.75
+            speedVariation = 0.01
         } else if snakeLength <= 8 {
-            return 0.70
+            speedVariation = 0.02
         } else if snakeLength <= 11 {
-            return 0.65
+            speedVariation = 0.02
         } else if snakeLength <= 15 {
-            return 0.62
+            speedVariation = 0.02
         } else if snakeLength <= 19 {
-            return 0.48
+            speedVariation = 0.02
         } else if snakeLength <= 22 {
-            return 0.44
+            speedVariation = 0.02
         } else if snakeLength <= 26 {
-            return 0.42
+            speedVariation = 0.02
         } else {
-            return 0.4
+            speedVariation = 0.3
         }
+
+        return baseSpeed - Double(speedVariation)
     }
 }
