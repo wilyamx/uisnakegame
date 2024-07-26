@@ -29,10 +29,9 @@ Snake game built using **UIKit**. Our different way to study Swift Language.
 
 PROJECT SPECIFICATIONS
 
-- Root Directory: / DailyTraining-SwiftUI
-- IDE: XCode 15.4 for iOS 17.5
-- Language: Swift 5
-- Interface: Storyboard
+- IDE: **XCode 15.4** for **iOS 17.5**
+- Language: **Swift 5**
+- Interface: **Storyboard**
 
 ## Technical Implementations
 
