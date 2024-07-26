@@ -72,28 +72,25 @@ class SNKGrid {
     }
 
     func randomLocation(excludedLocations: [CGPoint]? = nil) -> CGPoint {
-        let row = Int.random(in: 0..<rows)
-        let column = Int.random(in: 0..<columns)
-        //wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
-        
+        guard let excludedLocations
+        else {
+            let row = Int.random(in: 0..<rows)
+            let column = Int.random(in: 0..<columns)
+            //wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
+
+            return locations[Int(row)][Int(column)]
+        }
+
+        var row = 0
+        var column = 0
+        repeat {
+            row = Int.random(in: 0..<rows)
+            column = Int.random(in: 0..<columns)
+        } while(excludedLocations.contains(
+            where: { $0.x == locations[row][column].x && $0.y == locations[row][column].y })
+        )
         return locations[Int(row)][Int(column)]
     }
-
-//    func randomLocation(excludedLocations: [CGPoint]? = nil) -> CGPoint {
-//        let row = Int.random(in: 0..<rows)
-//        let column = Int.random(in: 0..<columns)
-//        //wsrLogger.info(message: "Random Location: [\(row)][\(column)]")
-//
-//        guard let excludedLocations, !excludedLocations.contains(
-//            where: { $0.x == CGFloat(row) && $0.y == CGFloat(column) }
-//        )
-//        else {
-//            randomLocation(excludedLocations: excludedLocations)
-//            return
-//        }
-//
-//        return locations[Int(row)][Int(column)]
-//    }
 
     func getInfo() -> SNKGridInfo {
         return SNKGridInfo(rows: rows, columns: columns, area: area, tileSize: tileSize)
