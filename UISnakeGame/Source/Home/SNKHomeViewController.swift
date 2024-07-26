@@ -26,19 +26,24 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.lineBreakMode = .byCharWrapping
 
         view.layer.shadowColor = UIColor.white.cgColor
-        view.layer.shadowRadius = 1.0
+        view.layer.shadowRadius = 2.0
         view.layer.shadowOpacity = 1.0
-        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        view.layer.shadowOffset = .zero
         view.layer.masksToBounds = false
         return view
     }()
     private lazy var snakeTextLabel: UILabel = {
+        let strokeTextAttributes = [
+            NSAttributedString.Key.strokeColor : UIColor.black,
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
+        as [NSAttributedString.Key : Any]
+
         let view = UILabel()
-        view.text = "S-N-A-K-E"
         view.textAlignment = .center
-        view.font = .headline
-        view.textColor = .white
         view.lineBreakMode = .byCharWrapping
+        view.attributedText = NSMutableAttributedString(string: "S-N-A-K-E", attributes: strokeTextAttributes)
+
         return view
     }()
     private lazy var medalImageView: UIImageView = {
@@ -59,6 +64,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.colorStyle = .primary
         view.font = .title3
         view.isUserInteractionEnabled = true
+        view.layer.cornerRadius = 20
         return view
     }()
     private lazy var playButton: SNKButton = {
@@ -66,6 +72,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "PLAY"
         view.colorStyle = .primary
         view.font = .title3
+        view.layer.cornerRadius = 20
         return view
     }()
     private lazy var settingsButton: SNKButton = {
@@ -73,6 +80,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "SETTINGS"
         view.colorStyle = .primary
         view.font = .title3
+        view.layer.cornerRadius = 20
         return view
     }()
     private lazy var leaderboardButton: SNKButton = {
@@ -80,6 +88,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "LEADERBOARD"
         view.colorStyle = .primary
         view.font = .title3
+        view.layer.cornerRadius = 20
         return view
     }()
     private lazy var aboutButton: SNKButton = {
@@ -87,14 +96,15 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "ABOUT"
         view.colorStyle = .primary
         view.font = .title3
+        view.layer.cornerRadius = 20
         return view
     }()
 
     private lazy var developerTextLabel: UILabel = {
         let view = UILabel()
-        view.text = "Developed by: WSR"
+        view.text = "Developed by: William S. Reña"
         view.textAlignment = .center
-        view.font = .callout
+        view.font = .footnote
         view.textColor = .gray
         view.lineBreakMode = .byCharWrapping
         return view

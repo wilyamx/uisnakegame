@@ -42,6 +42,10 @@ class SNKSettingsViewController: FormViewController {
             guard let value = row.value else { return }
             row.title = value == true ? "Portrait Orientation" : "Landscape Orientation"
         })
+        <<< SwitchRow() { row in
+            row.title = "Grid"
+            row.value = true
+        }
         +++ Section("Sounds")
         <<< SwitchRow() { row in
             row.title = "Background"

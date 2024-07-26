@@ -15,7 +15,7 @@ class SNKConstants {
     static var TILE_COLOR = UIColor.accentVariation4
     static var FOOD_COLOR = UIColor.red
     static var OBSTACLE_COLOR = UIColor.black
-    static var SNAKE_LENGTH = 8 //8
+    static var SNAKE_LENGTH = 20 //8
 
     static var keyWindow: UIWindow? {
         UIApplication.shared.connectedScenes
