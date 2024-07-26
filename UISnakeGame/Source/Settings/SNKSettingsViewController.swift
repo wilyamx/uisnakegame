@@ -21,7 +21,7 @@ class SNKSettingsViewController: FormViewController {
         
         form +++ Section("Gameplay")
         <<< TextRow() { row in
-            row.title = "User"
+            row.title = "Active User"
             row.placeholder = "Enter name to use"
         }
         <<< StepperRow() {
@@ -34,6 +34,13 @@ class SNKSettingsViewController: FormViewController {
             if let value = row.value {
                 row.cell.valueLabel.text = "\(Int(value))"
             }
+        })
+        <<< SwitchRow() { row in
+            row.title = "Portrait Orientation"
+            row.value = true
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            row.title = value == true ? "Portrait Orientation" : "Landscape Orientation"
         })
         +++ Section("Sounds")
         <<< SwitchRow() { row in

@@ -16,37 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c7d-oC-azO">
-                                <rect key="frame" x="144.33333333333334" y="386.33333333333331" width="104.33333333333334" height="104.33333333333331"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c7d-oC-azO">
+                                <rect key="frame" x="109.33333333333333" y="415.33333333333331" width="174.33333333333337" height="46.666666666666686"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skillful" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixD-9R-Eha">
-                                        <rect key="frame" x="15.333333333333314" y="0.0" width="73.666666666666671" height="36.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <color key="textColor" systemColor="systemPurpleColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNAKE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBQ-Fh-s0q">
-                                        <rect key="frame" x="0.0" y="36.333333333333371" width="104.33333333333333" height="44.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKILLFUL SNAKE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBQ-Fh-s0q">
+                                        <rect key="frame" x="0.0" y="0.0" width="174.33333333333334" height="26.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5S-yA-Ckd">
-                                        <rect key="frame" x="28.666666666666661" y="80.666666666666686" width="47.333333333333343" height="23.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5S-yA-Ckd">
+                                        <rect key="frame" x="63.666666666666671" y="26.333333333333371" width="47.333333333333329" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="c7d-oC-azO" secondAttribute="height" multiplier="1:1" id="uhP-hO-6eU"/>
-                                </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-snake" translatesAutoresizingMaskIntoConstraints="NO" id="l3d-7a-tnH">
+                                <rect key="frame" x="96.666666666666686" y="215.33333333333337" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="PIc-eR-jXU"/>
+                                    <constraint firstAttribute="width" constant="200" id="kYn-BQ-cHN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemMintColor"/>
                         <constraints>
                             <constraint firstItem="c7d-oC-azO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="O4c-fl-s2n"/>
+                            <constraint firstItem="c7d-oC-azO" firstAttribute="top" secondItem="l3d-7a-tnH" secondAttribute="bottom" id="XhF-4T-yEf"/>
+                            <constraint firstItem="l3d-7a-tnH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="clf-On-mwn"/>
                             <constraint firstItem="c7d-oC-azO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dtb-zh-aeu"/>
                         </constraints>
                     </view>
@@ -57,11 +57,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="green-snake" width="600" height="700"/>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

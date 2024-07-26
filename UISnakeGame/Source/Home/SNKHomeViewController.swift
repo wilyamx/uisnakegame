@@ -24,15 +24,26 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.font = .largeTitle
         view.textColor = .red
         view.lineBreakMode = .byCharWrapping
+
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowRadius = 1.0
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        view.layer.masksToBounds = false
         return view
     }()
     private lazy var snakeTextLabel: UILabel = {
         let view = UILabel()
-        view.text = "SNAKE"
+        view.text = "S-N-A-K-E"
         view.textAlignment = .center
         view.font = .title1
-        view.textColor = .black
+        view.textColor = .white
         view.lineBreakMode = .byCharWrapping
+        return view
+    }()
+    private lazy var medalImageView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "green-snake-crawl"))
+        view.contentMode = .scaleAspectFit
         return view
     }()
 
@@ -110,6 +121,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
 
     override func setupLayout() {
         addSubviews([
+            medalImageView,
             titleStackView.addArrangedSubviews([
                 skillfulTextLabel,
                 snakeTextLabel
@@ -123,6 +135,8 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
             ]),
             developerTextLabel
         ])
+
+        setGradientBackground()
     }
 
     override func setupActions() {
@@ -148,6 +162,11 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         titleStackView.left == view.left + 40
         titleStackView.right == view.right - 40
         titleStackView.top == view.topMargin + UIScreen.main.bounds.height * 0.2
+
+        medalImageView.centerX == titleStackView.centerX
+        medalImageView.centerY == titleStackView.centerY
+        medalImageView.width == 300
+        medalImageView.height == 300
 
         verticalStackView.left == view.left + 40
         verticalStackView.right == view.right - 40
@@ -181,5 +200,21 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         alert.addAction(submitAction)
 
         present(alert, animated: true)
+    }
+
+    func setGradientBackground() {
+        //let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+        //let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0).cgColor
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [
+            UIColor.init(hexString: "#5D8700").cgColor,
+            UIColor.init(hexString: "#A5D721").cgColor,
+            UIColor.init(hexString: "#EEFFBA").cgColor,
+        ]
+        gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientLayer.frame = self.view.bounds
+
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 }
