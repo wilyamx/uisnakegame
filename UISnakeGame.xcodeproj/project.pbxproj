@@ -53,6 +53,13 @@
 		A75D94FA2C54A30E00C23768 /* WSRPropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */; };
 		A75D94FC2C54A77700C23768 /* SNKSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94FB2C54A77700C23768 /* SNKSettingsViewModel.swift */; };
 		A75D94FE2C54A9CC00C23768 /* WSRConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */; };
+		A75D95012C54C44100C23768 /* WSRSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95002C54C44100C23768 /* WSRSoundPlayer.swift */; };
+		A75D95032C54C6E100C23768 /* WSRSoundPlayer+SNK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95022C54C6E100C23768 /* WSRSoundPlayer+SNK.swift */; };
+		A75D95092C54C99500C23768 /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95042C54C99500C23768 /* move.mp3 */; };
+		A75D950A2C54C99500C23768 /* audienceApplauding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95052C54C99500C23768 /* audienceApplauding.mp3 */; };
+		A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = A75D95062C54C99500C23768 /* collectCoin.wav */; };
+		A75D950C2C54C99500C23768 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95072C54C99500C23768 /* gameOver.mp3 */; };
+		A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95082C54C99500C23768 /* levelUp.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +128,13 @@
 		A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRPropertyWrappers.swift; sourceTree = "<group>"; };
 		A75D94FB2C54A77700C23768 /* SNKSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSettingsViewModel.swift; sourceTree = "<group>"; };
 		A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRConstants.swift; sourceTree = "<group>"; };
+		A75D95002C54C44100C23768 /* WSRSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRSoundPlayer.swift; sourceTree = "<group>"; };
+		A75D95022C54C6E100C23768 /* WSRSoundPlayer+SNK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WSRSoundPlayer+SNK.swift"; sourceTree = "<group>"; };
+		A75D95042C54C99500C23768 /* move.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move.mp3; sourceTree = "<group>"; };
+		A75D95052C54C99500C23768 /* audienceApplauding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audienceApplauding.mp3; sourceTree = "<group>"; };
+		A75D95062C54C99500C23768 /* collectCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collectCoin.wav; sourceTree = "<group>"; };
+		A75D95072C54C99500C23768 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
+		A75D95082C54C99500C23768 /* levelUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelUp.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				A75D94A12C4E43E400C23768 /* WSR */,
+				A75D94FF2C54C11A00C23768 /* Resources */,
 				A75D949A2C4E335600C23768 /* Source */,
 				A75D946A2C4DFE3500C23768 /* AppDelegate.swift */,
 				A75D946C2C4DFE3500C23768 /* SceneDelegate.swift */,
@@ -226,6 +241,7 @@
 			children = (
 				A75D94DB2C4FDFEA00C23768 /* UIView+SNK.swift */,
 				A75D94EA2C5094E200C23768 /* UIAlertController+SNK.swift */,
+				A75D95022C54C6E100C23768 /* WSRSoundPlayer+SNK.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -267,9 +283,10 @@
 		A75D94A12C4E43E400C23768 /* WSR */ = {
 			isa = PBXGroup;
 			children = (
+				A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */,
 				A75D94C72C4FB29F00C23768 /* WSRLogger.swift */,
 				A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */,
-				A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */,
+				A75D95002C54C44100C23768 /* WSRSoundPlayer.swift */,
 				A75D94AF2C4F818900C23768 /* Extensions */,
 				A75D94A22C4E43FF00C23768 /* Coordinator */,
 			);
@@ -354,6 +371,18 @@
 				A75D94F52C512C0200C23768 /* SNKTileView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A75D94FF2C54C11A00C23768 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A75D95052C54C99500C23768 /* audienceApplauding.mp3 */,
+				A75D95062C54C99500C23768 /* collectCoin.wav */,
+				A75D95072C54C99500C23768 /* gameOver.mp3 */,
+				A75D95082C54C99500C23768 /* levelUp.mp3 */,
+				A75D95042C54C99500C23768 /* move.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,8 +499,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75D950C2C54C99500C23768 /* gameOver.mp3 in Resources */,
 				A75D94742C4DFE3500C23768 /* Assets.xcassets in Resources */,
+				A75D950A2C54C99500C23768 /* audienceApplauding.mp3 in Resources */,
+				A75D95092C54C99500C23768 /* move.mp3 in Resources */,
+				A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */,
 				A75D94772C4DFE3500C23768 /* Base in Resources */,
+				A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */,
 				A75D94C62C4FACF700C23768 /* snake-game-config.json in Resources */,
 				A75D94722C4DFE3500C23768 /* Base in Resources */,
 			);
@@ -499,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A75D94B62C4F85EB00C23768 /* SNKButton.swift in Sources */,
+				A75D95032C54C6E100C23768 /* WSRSoundPlayer+SNK.swift in Sources */,
 				A75D94D72C4FDD6700C23768 /* SNKCollectionViewCell.swift in Sources */,
 				A75D94F22C50A42500C23768 /* SNKSnake.swift in Sources */,
 				A75D94D32C4FD14F00C23768 /* SNKAboutViewController.swift in Sources */,
@@ -522,6 +557,7 @@
 				A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */,
 				A75D94D52C4FD85100C23768 /* SNKLeaderboardViewModel.swift in Sources */,
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
+				A75D95012C54C44100C23768 /* WSRSoundPlayer.swift in Sources */,
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
 				A75D94DC2C4FDFEA00C23768 /* UIView+SNK.swift in Sources */,
 				A75D94FE2C54A9CC00C23768 /* WSRConstants.swift in Sources */,

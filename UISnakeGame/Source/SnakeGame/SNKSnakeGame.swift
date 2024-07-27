@@ -24,9 +24,8 @@ class SNKSnakeGame {
         case gameOver(Int)
     }
 
-    ///  all game objects will be added to this view
+    // all game objects will be added to this view
     var view: UIView = UIView()
-    
     var frame: CGRect = .zero
     var tileSize: CGFloat = 0
 
@@ -38,9 +37,9 @@ class SNKSnakeGame {
     // game management
     private(set) var state: SNKState = .stopped
     private(set) var timer: Timer?
-    private(set) var updateInterval: TimeInterval = SNKConstants.SPEED {
-        didSet { start() }
-    }
+    private(set) var updateInterval: TimeInterval = SNKConstants.SPEED { didSet {
+        start()
+    } }
 
     // plotted actors
     private(set) var foodLocations: [CGPoint] = []
@@ -52,6 +51,12 @@ class SNKSnakeGame {
     @Published var snakeLength: Int = 0
     @Published var alertState: SNKAlertState?
     lazy var cancellables = Set<AnyCancellable>()
+
+    // sound effects
+    private let collectSoundPlayer = WSRSoundPlayer(sound: .collectCoin, enabled: SNKConstants.shared.characterSound)
+    private let gameOverSoundPlayer = WSRSoundPlayer(sound: .gameOver, enabled: SNKConstants.shared.alertSound)
+
+    // MARK: - Constructor
 
     init(frame: CGRect, tileSize: CGFloat) {
         self.frame = frame
@@ -194,6 +199,7 @@ class SNKSnakeGame {
     func gameOver() {
         stop()
         alertState = .gameOver(score)
+        gameOverSoundPlayer.play()
     }
 
     func updateGameSpeed() {
@@ -228,7 +234,7 @@ class SNKSnakeGame {
         updateGameSpeed()
     }
 
-    // MARK: Collision Detection
+    // MARK: - Collision Detection
 
     private func snakeIntersectToFoodItems() -> CGPoint? {
         guard let snake, !foodLocations.isEmpty else { return nil }
@@ -254,13 +260,14 @@ class SNKSnakeGame {
                 item.removeFromSuperview()
 
                 score += 1
+                collectSoundPlayer.play()
                 //wsrLogger.info(message: "\(location)")
                 break
             }
         }
     }
 
-    // MARK: Speed Variation
+    // MARK: - Speed Variation
 
     private func speedForSnakeLength(_ snakeLength: Int, baseSpeed: TimeInterval = 0) -> TimeInterval {
         var speedVariation: Double = 0

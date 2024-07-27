@@ -203,8 +203,9 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         }
 
         let submitAction = UIAlertAction(title: "OK", style: .default) { [unowned alert] _ in
-            let answer = alert.textFields![0]
-            // do something interesting with "answer" here
+            // at least 3 characters
+            guard let answer = alert.textFields![0].text, answer.count >= 3 else { return }
+            SNKConstants.shared.activeUser = answer
         }
 
         alert.addAction(submitAction)
@@ -213,9 +214,6 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }
 
     private func setGradientBackground() {
-        //let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-        //let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0).cgColor
-
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
             UIColor.accent.cgColor,

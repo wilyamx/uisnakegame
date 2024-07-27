@@ -20,6 +20,7 @@ class SNKConstants: NSObject {
     static var shared = SNKConstants()
 
     enum SNKKeys: String {
+        case activeUser = "activeUser"
         case portraitOrientation = "portraitOrientation"
         case displayGrid = "displayGrid"
         case backgroundSound = "backgroundSound"
@@ -30,6 +31,9 @@ class SNKConstants: NSObject {
     // MARK: - Persistent Data
 
     // Gameplay
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.activeUser.rawValue, default: "")
+    var activeUser: String
 
     @WSRUserDefaultsReadAndWrite(SNKKeys.portraitOrientation.rawValue, default: true)
     var isPortraitOrientation: Bool

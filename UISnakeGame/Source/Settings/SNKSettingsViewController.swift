@@ -23,7 +23,12 @@ class SNKSettingsViewController: FormViewController {
         <<< TextRow() { row in
             row.title = "Active User"
             row.placeholder = "Enter name to use"
-        }
+            guard !SNKConstants.shared.activeUser.isEmpty else { return }
+            row.value = SNKConstants.shared.activeUser
+        }.onChange({ row in
+            guard let value = row.value, value.count >= 3 else { return }
+            SNKConstants.shared.activeUser = value
+        })
         <<< StepperRow() {
             $0.title = "Default Game Level"
             $0.value = 1
@@ -31,9 +36,8 @@ class SNKSettingsViewController: FormViewController {
             cell.stepper.minimumValue = 1
             cell.stepper.maximumValue = 10
         }).cellUpdate({ cell, row in
-            if let value = row.value {
-                row.cell.valueLabel.text = "\(Int(value))"
-            }
+            guard let value = row.value else { return }
+            row.cell.valueLabel.text = "\(Int(value))"
         })
         <<< SwitchRow() { row in
             row.title = "Portrait Orientation"
