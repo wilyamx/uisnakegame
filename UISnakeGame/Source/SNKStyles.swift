@@ -27,7 +27,7 @@ enum ColorStyle: Hashable {
 
     var textColor: UIColor {
         switch self {
-        case .primary: .black
+        case .primary: .white
         case .secondary: .white
         }
     }

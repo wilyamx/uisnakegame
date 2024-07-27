@@ -105,7 +105,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "Developed by: William S. Reña"
         view.textAlignment = .center
         view.font = .footnote
-        view.textColor = .gray
+        view.textColor = .contrast
         view.lineBreakMode = .byCharWrapping
         return view
     }()
