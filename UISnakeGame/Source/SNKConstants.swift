@@ -26,6 +26,7 @@ class SNKConstants: NSObject {
         case backgroundSound = "backgroundSound"
         case characterSound = "characterSound"
         case alertSound = "alertSound"
+        case leaderboard = "leaderboard"
     }
 
     // MARK: - Persistent Data
@@ -52,4 +53,7 @@ class SNKConstants: NSObject {
     @WSRUserDefaultsReadAndWrite(SNKKeys.alertSound.rawValue, default: true)
     var alertSound: Bool
 
+    func hasActiveUser() -> Bool {
+        return SNKConstants.shared.activeUser.count >= 3
+    }
 }

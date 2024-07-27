@@ -21,7 +21,7 @@ enum ColorStyle: Hashable {
 
     var disabledBackgroundColor: UIColor {
         switch self {
-        case .primary, .secondary: .black
+        case .primary, .secondary: .accentVariation4
         }
     }
 

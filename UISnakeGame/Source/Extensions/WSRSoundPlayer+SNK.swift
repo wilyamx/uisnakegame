@@ -10,7 +10,8 @@ import Foundation
 
 typealias WSRSound = WSRSoundPlayer.WSRSound
 
-// MARK: - Available sounds
+// MARK: - Available Sound Effects
+
 extension WSRSound {
     static let move = WSRSound(name: "customMove", withExtension: "mp3")
     static let collectCoin = WSRSound(name: "collectCoin", withExtension: "wav")

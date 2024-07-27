@@ -46,6 +46,10 @@ class SNKButton: UIButton {
         setup()
     }
 
+    override var isEnabled: Bool { didSet {
+        backgroundColor = isEnabled ? colorStyle.backgroundColor : colorStyle.disabledBackgroundColor
+    } }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
