@@ -245,6 +245,7 @@ extension SNKSnakeGameViewController {
     func initGame() {
         wsrLogger.info(message: "--------------")
         wsrLogger.info(message: "initGame...")
+        wsrLogger.info(message: "Play as \(SNKConstants.shared.activeUser)")
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
 
         view.layoutIfNeeded()

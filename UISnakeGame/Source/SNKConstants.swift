@@ -53,7 +53,13 @@ class SNKConstants: NSObject {
     @WSRUserDefaultsReadAndWrite(SNKKeys.alertSound.rawValue, default: true)
     var alertSound: Bool
 
+    // MARK: - Public Methods
+
     func hasActiveUser() -> Bool {
         return SNKConstants.shared.activeUser.count >= 3
     }
+
+    // MARK: Private Methods
+
+
 }

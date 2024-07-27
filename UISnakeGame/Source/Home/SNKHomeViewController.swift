@@ -68,7 +68,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }()
     private lazy var playButton: SNKButton = {
         let view = SNKButton()
-        view.text = SNKConstants.shared.activeUser.count < 3 ? "PLAY" : "CONTINUE"
+        view.text = SNKConstants.shared.hasActiveUser() ? "PLAY" : "CONTINUE"
         view.colorStyle = .primary
         view.font = .title3
         view.layer.cornerRadius = 20
@@ -231,8 +231,6 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }
 
     private func updateUI() {
-        newGameButton.isHidden = SNKConstants.shared.hasActiveUser()
-
         playButton.text = SNKConstants.shared.activeUser.count < 3 ? "PLAY" : "CONTINUE"
         playButton.isEnabled = SNKConstants.shared.activeUser.count >= 3
         playButton.isHidden = !SNKConstants.shared.hasActiveUser()
