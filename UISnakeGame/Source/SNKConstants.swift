@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SNKConstants {
+class SNKConstants: NSObject {
     static var TILE_SIZE = 15.0 //15
     static var SPEED = 0.15
     static var GRIDLINES_COLOR = UIColor.white
@@ -17,23 +17,35 @@ class SNKConstants {
     static var OBSTACLE_COLOR = UIColor.black
     static var SNAKE_LENGTH = 20 //8
 
-    static var keyWindow: UIWindow? {
-        UIApplication.shared.connectedScenes
-            .first(where: { $0 is UIWindowScene })
-            .flatMap({ $0 as? UIWindowScene })?
-            .windows
-            .first(where: \.isKeyWindow)
+    static var shared = SNKConstants()
+
+    enum SNKKeys: String {
+        case portraitOrientation = "portraitOrientation"
+        case displayGrid = "displayGrid"
+        case backgroundSound = "backgroundSound"
+        case characterSound = "characterSound"
+        case alertSound = "alertSound"
     }
 
-    static var safeAreaInsets: UIEdgeInsets {
-        guard let keyWindow
-        else { fatalError("There is no keyWindow. You must check source.") }
-        return keyWindow.safeAreaInsets
-    }
+    // MARK: - Persistent Data
 
-    static var statusBarHeight: CGFloat {
-        keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-    }
+    // Gameplay
 
-    static var hasSafeAreaBottomMargin: Bool { SNKConstants.safeAreaInsets.bottom > 0 }
+    @WSRUserDefaultsReadAndWrite(SNKKeys.portraitOrientation.rawValue, default: true)
+    var isPortraitOrientation: Bool
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.displayGrid.rawValue, default: true)
+    var displayGrid: Bool
+
+    // Sounds
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.backgroundSound.rawValue, default: true)
+    var backgroundSound: Bool
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.characterSound.rawValue, default: true)
+    var characterSound: Bool
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.alertSound.rawValue, default: true)
+    var alertSound: Bool
+
 }

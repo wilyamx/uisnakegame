@@ -37,27 +37,40 @@ class SNKSettingsViewController: FormViewController {
         })
         <<< SwitchRow() { row in
             row.title = "Portrait Orientation"
-            row.value = true
+            row.value = SNKConstants.shared.isPortraitOrientation
         }.onChange({ row in
             guard let value = row.value else { return }
-            row.title = value == true ? "Portrait Orientation" : "Landscape Orientation"
+            SNKConstants.shared.isPortraitOrientation = value
         })
         <<< SwitchRow() { row in
-            row.title = "Grid"
-            row.value = true
-        }
+            row.title = "Show Grid"
+            row.value = SNKConstants.shared.displayGrid
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            SNKConstants.shared.displayGrid = value
+        })
         +++ Section("Sounds")
         <<< SwitchRow() { row in
             row.title = "Background"
-            row.value = true
-        }
+            row.value = SNKConstants.shared.backgroundSound
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            SNKConstants.shared.backgroundSound = value
+        })
         <<< SwitchRow() { row in
             row.title = "Character"
-            row.value = true
-        }
+            row.value = SNKConstants.shared.characterSound
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            SNKConstants.shared.characterSound = value
+        })
         <<< SwitchRow() { row in
-            row.title = "Popups"
-        }
+            row.title = "Alerts"
+            row.value = SNKConstants.shared.alertSound
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            SNKConstants.shared.alertSound = value
+        })
 
         wsrLogger.info(message: "viewDidLoad")
     }

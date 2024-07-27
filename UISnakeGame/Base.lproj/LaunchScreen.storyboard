@@ -34,10 +34,10 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-snake" translatesAutoresizingMaskIntoConstraints="NO" id="l3d-7a-tnH">
-                                <rect key="frame" x="96.666666666666686" y="215.33333333333337" width="200" height="200"/>
+                                <rect key="frame" x="121.66666666666669" y="265.33333333333331" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="PIc-eR-jXU"/>
-                                    <constraint firstAttribute="width" constant="200" id="kYn-BQ-cHN"/>
+                                    <constraint firstAttribute="height" constant="150" id="PIc-eR-jXU"/>
+                                    <constraint firstAttribute="width" constant="150" id="kYn-BQ-cHN"/>
                                 </constraints>
                             </imageView>
                         </subviews>

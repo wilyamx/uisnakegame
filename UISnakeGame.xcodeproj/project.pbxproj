@@ -50,6 +50,9 @@
 		A75D94F42C50D09200C23768 /* SNKGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F32C50D09200C23768 /* SNKGridView.swift */; };
 		A75D94F62C512C0200C23768 /* SNKTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F52C512C0200C23768 /* SNKTileView.swift */; };
 		A75D94F82C51D6CD00C23768 /* SNKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F72C51D6CD00C23768 /* SNKConstants.swift */; };
+		A75D94FA2C54A30E00C23768 /* WSRPropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */; };
+		A75D94FC2C54A77700C23768 /* SNKSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94FB2C54A77700C23768 /* SNKSettingsViewModel.swift */; };
+		A75D94FE2C54A9CC00C23768 /* WSRConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +118,9 @@
 		A75D94F32C50D09200C23768 /* SNKGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGridView.swift; sourceTree = "<group>"; };
 		A75D94F52C512C0200C23768 /* SNKTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKTileView.swift; sourceTree = "<group>"; };
 		A75D94F72C51D6CD00C23768 /* SNKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKConstants.swift; sourceTree = "<group>"; };
+		A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRPropertyWrappers.swift; sourceTree = "<group>"; };
+		A75D94FB2C54A77700C23768 /* SNKSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSettingsViewModel.swift; sourceTree = "<group>"; };
+		A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				A75D94C72C4FB29F00C23768 /* WSRLogger.swift */,
+				A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */,
+				A75D94FD2C54A9CC00C23768 /* WSRConstants.swift */,
 				A75D94AF2C4F818900C23768 /* Extensions */,
 				A75D94A22C4E43FF00C23768 /* Coordinator */,
 			);
@@ -303,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				A75D94CE2C4FD12300C23768 /* SNKSettingsViewController.swift */,
+				A75D94FB2C54A77700C23768 /* SNKSettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -499,6 +508,7 @@
 				A75D94D12C4FD13D00C23768 /* SNKLeaderboardViewController.swift in Sources */,
 				A75D94DA2C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift in Sources */,
 				A75D94B12C4F81BE00C23768 /* UIViewController+WSR.swift in Sources */,
+				A75D94FA2C54A30E00C23768 /* WSRPropertyWrappers.swift in Sources */,
 				A75D94E72C507D9200C23768 /* SNKSnakeGameViewController.swift in Sources */,
 				A75D94ED2C509F8F00C23768 /* SNKGrid.swift in Sources */,
 				A75D94E92C507DA800C23768 /* SNKSnakeGameViewModel.swift in Sources */,
@@ -514,10 +524,12 @@
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
 				A75D94DC2C4FDFEA00C23768 /* UIView+SNK.swift in Sources */,
+				A75D94FE2C54A9CC00C23768 /* WSRConstants.swift in Sources */,
 				A75D94DE2C4FE27C00C23768 /* Sequence+WSR.swift in Sources */,
 				A75D94F42C50D09200C23768 /* SNKGridView.swift in Sources */,
 				A75D94EF2C50A2C300C23768 /* SNKSnakeGame.swift in Sources */,
 				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
+				A75D94FC2C54A77700C23768 /* SNKSettingsViewModel.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
 				A75D94F82C51D6CD00C23768 /* SNKConstants.swift in Sources */,
 				A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */,
