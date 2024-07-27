@@ -212,13 +212,13 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         present(alert, animated: true)
     }
 
-    func setGradientBackground() {
+    private func setGradientBackground() {
         //let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
         //let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0).cgColor
 
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
-            UIColor.init(hexString: "#5D8700").cgColor,
+            UIColor.accent.cgColor,
             UIColor.init(hexString: "#A5D721").cgColor,
             UIColor.init(hexString: "#EEFFBA").cgColor,
         ]

@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,7 +42,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                        <color key="backgroundColor" name="accentVariation2"/>
                         <constraints>
                             <constraint firstItem="c7d-oC-azO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="O4c-fl-s2n"/>
                             <constraint firstItem="c7d-oC-azO" firstAttribute="top" secondItem="l3d-7a-tnH" secondAttribute="bottom" id="XhF-4T-yEf"/>
@@ -58,8 +58,8 @@
     </scenes>
     <resources>
         <image name="green-snake" width="600" height="700"/>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="accentVariation2">
+            <color red="0.50800001621246338" green="0.78299999237060547" blue="0.37799999117851257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
