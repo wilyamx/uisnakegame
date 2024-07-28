@@ -60,6 +60,8 @@ class SNKConstants: NSObject {
     @WSRUserDefaultCodable(key: SNKKeys.leaderboard.rawValue)
     var leaderboard: [LeaderboardItemInfo]?
 
+    // MARK: - Calculated Variables
+
     var leaderboardSorted: [LeaderboardItemInfo]? {
         guard let leaderboard = leaderboard else { return leaderboard }
 
@@ -68,15 +70,11 @@ class SNKConstants: NSObject {
         }
     }
 
-    // MARK: - Calculated Variables
+    var hasActiveUser: Bool { SNKConstants.shared.activeUser.count >= 3 }
 
     // MARK: - Public Methods
 
-    func hasActiveUser() -> Bool {
-        return SNKConstants.shared.activeUser.count >= 3
-    }
-
-    // MARK: Private Methods
+    // MARK: - Private Methods
 
 
 }

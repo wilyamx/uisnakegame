@@ -128,7 +128,7 @@ extension SNKLeaderboardViewController {
     private func getLeaderboardCell(at indexPath: IndexPath, item: ItemInfo) -> SNKLeaderboardCollectionViewCell {
         let cell = SNKLeaderboardCollectionViewCell.dequeueCell(from: collectionView, for: indexPath)
         cell.rank = "\(indexPath.row + 1)"
-        cell.name = "\(item.name.uppercased())"
+        cell.name = "\(item.name)"
         cell.score = "\(item.score)"
         cell.cellBackgroundColor = indexPath.row % 2 == 0 ? .accentVariation2 : .accentVariation4
         cell.showMedal = item.isCompletedAllLevels

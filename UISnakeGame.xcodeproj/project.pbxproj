@@ -60,6 +60,9 @@
 		A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = A75D95062C54C99500C23768 /* collectCoin.wav */; };
 		A75D950C2C54C99500C23768 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95072C54C99500C23768 /* gameOver.mp3 */; };
 		A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95082C54C99500C23768 /* levelUp.mp3 */; };
+		A75D950F2C56254200C23768 /* WSRActionableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D950E2C56254200C23768 /* WSRActionableError.swift */; };
+		A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95112C56279A00C23768 /* SNKGameError.swift */; };
+		A75D95142C563C2600C23768 /* WSRAsyncAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		A75D95062C54C99500C23768 /* collectCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collectCoin.wav; sourceTree = "<group>"; };
 		A75D95072C54C99500C23768 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		A75D95082C54C99500C23768 /* levelUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelUp.mp3; sourceTree = "<group>"; };
+		A75D950E2C56254200C23768 /* WSRActionableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRActionableError.swift; sourceTree = "<group>"; };
+		A75D95112C56279A00C23768 /* SNKGameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameError.swift; sourceTree = "<group>"; };
+		A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRAsyncAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +229,7 @@
 			children = (
 				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
 				A75D94F72C51D6CD00C23768 /* SNKConstants.swift */,
+				A75D95102C56276800C23768 /* Errors */,
 				A75D949F2C4E33C600C23768 /* Components */,
 				A75D949D2C4E337D00C23768 /* ViewModels */,
 				A75D949C2C4E336F00C23768 /* Utilities */,
@@ -287,8 +294,10 @@
 				A75D94C72C4FB29F00C23768 /* WSRLogger.swift */,
 				A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */,
 				A75D95002C54C44100C23768 /* WSRSoundPlayer.swift */,
+				A75D950E2C56254200C23768 /* WSRActionableError.swift */,
 				A75D94AF2C4F818900C23768 /* Extensions */,
 				A75D94A22C4E43FF00C23768 /* Coordinator */,
+				A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */,
 			);
 			path = WSR;
 			sourceTree = "<group>";
@@ -383,6 +392,14 @@
 				A75D95042C54C99500C23768 /* move.mp3 */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A75D95102C56276800C23768 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A75D95112C56279A00C23768 /* SNKGameError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,6 +560,7 @@
 				A75D94D12C4FD13D00C23768 /* SNKLeaderboardViewController.swift in Sources */,
 				A75D94DA2C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift in Sources */,
 				A75D94B12C4F81BE00C23768 /* UIViewController+WSR.swift in Sources */,
+				A75D950F2C56254200C23768 /* WSRActionableError.swift in Sources */,
 				A75D94FA2C54A30E00C23768 /* WSRPropertyWrappers.swift in Sources */,
 				A75D94E72C507D9200C23768 /* SNKSnakeGameViewController.swift in Sources */,
 				A75D94ED2C509F8F00C23768 /* SNKGrid.swift in Sources */,
@@ -551,11 +569,13 @@
 				A75D94BD2C4F906A00C23768 /* UIColor+WSR.swift in Sources */,
 				A75D94C82C4FB29F00C23768 /* WSRLogger.swift in Sources */,
 				A75D94AE2C4E4B0F00C23768 /* SNKHomeCoordinator.swift in Sources */,
+				A75D95142C563C2600C23768 /* WSRAsyncAlertController.swift in Sources */,
 				A75D94AC2C4E494C00C23768 /* SNKHomeViewController.swift in Sources */,
 				A75D94AA2C4E48FA00C23768 /* SNKViewController.swift in Sources */,
 				A75D94A62C4E45C800C23768 /* WSRCoordinatorProtocol.swift in Sources */,
 				A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */,
 				A75D94D52C4FD85100C23768 /* SNKLeaderboardViewModel.swift in Sources */,
+				A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */,
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
 				A75D95012C54C44100C23768 /* WSRSoundPlayer.swift in Sources */,
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,

@@ -34,7 +34,7 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     private lazy var rankTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
-        view.font = .subhead
+        view.font = .headline
         view.textColor = .white
         view.lineBreakMode = .byCharWrapping
         return view

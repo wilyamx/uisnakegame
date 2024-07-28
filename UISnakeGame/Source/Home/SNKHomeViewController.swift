@@ -12,6 +12,8 @@ import SuperEasyLayout
 class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
 
+    private let viewModel = SNKHomeViewModel()
+
     private lazy var titleStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -70,7 +72,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }()
     private lazy var playButton: SNKButton = {
         let view = SNKButton()
-        view.text = SNKConstants.shared.hasActiveUser() ? "PLAY" : "CONTINUE"
+        view.text = SNKConstants.shared.hasActiveUser ? "PLAY" : "CONTINUE"
         view.colorStyle = .primary
         view.font = .title3
         view.layer.cornerRadius = 20
@@ -207,8 +209,17 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
 
         let submitAction = UIAlertAction(title: "OK", style: .default) { [self, unowned alert] _ in
             // at least 3 characters
-            guard let answer = alert.textFields![0].text, answer.count >= 3 else { return }
-            SNKConstants.shared.activeUser = answer
+            guard let name = alert.textFields![0].text, !name.isEmpty else { return }
+
+            do {
+                try viewModel.newUser(name: name)
+            } catch  {
+                guard let error = error as? SNKGameError else { return }
+                Task {
+                    await error.showAlert(in: self)
+                }
+            }
+
             self.updateUI()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -235,6 +246,6 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private func updateUI() {
         playButton.text = SNKConstants.shared.activeUser.count < 3 ? "PLAY" : "CONTINUE"
         playButton.isEnabled = SNKConstants.shared.activeUser.count >= 3
-        playButton.isHidden = !SNKConstants.shared.hasActiveUser()
+        playButton.isHidden = !SNKConstants.shared.hasActiveUser
     }
 }
