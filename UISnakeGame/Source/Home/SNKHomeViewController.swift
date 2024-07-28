@@ -10,6 +10,8 @@ import UIKit
 import SuperEasyLayout
 
 class SNKHomeViewController: SNKViewController, WSRStoryboarded {
+    private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
+
     private lazy var titleStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical

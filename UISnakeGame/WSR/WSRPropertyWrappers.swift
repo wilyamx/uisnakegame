@@ -79,7 +79,8 @@ extension Date: WSRConstantConvertible {
     static var defaultValue: Any? { Date() }
 }
 
-@propertyWrapper struct WSRUserDefaultsReadOnly<Value: WSRConstantConvertible> {
+@propertyWrapper
+struct WSRUserDefaultsReadOnly<Value: WSRConstantConvertible> {
     private var key: String
     private var defaultValue: Value
     private let container: UserDefaults = UserDefaults.standard
@@ -98,7 +99,8 @@ extension Date: WSRConstantConvertible {
     }
 }
 
-@propertyWrapper struct WSRUserDefaultsReadAndWrite<Value: WSRConstantConvertible> {
+@propertyWrapper
+struct WSRUserDefaultsReadAndWrite<Value: WSRConstantConvertible> {
     private let key: String
     private let defaultValue: Value
 
@@ -135,6 +137,33 @@ extension Date: WSRConstantConvertible {
     init(_ key: String, default: Value) {
         self.key = key
         defaultValue = `default`
+    }
+}
+
+@propertyWrapper
+struct WSRUserDefaultCodable<T: Codable> {
+    let key: String
+    let defaultValue: T? = nil
+
+    let container: UserDefaults = UserDefaults.standard
+
+    public var wrappedValue: T? {
+        get {
+            if let data = container.object(forKey: key) as? Data,
+               let object = try? JSONDecoder().decode(T.self, from: data) {
+                return object
+            }
+            else { return defaultValue}
+        }
+        set {
+            if let newValue = newValue {
+                let data = try! JSONEncoder().encode(newValue)
+                container.set(data, forKey: key)
+            }
+            else {
+                container.set(newValue, forKey: key)
+            }
+        }
     }
 }
 

@@ -17,15 +17,15 @@ final class SNKLeaderboardViewModel {
         case scoreItem(ItemInfo)
     }
 
-    struct ItemInfo: Hashable {
+    struct ItemInfo: Hashable, Codable {
         static func == (lhs: ItemInfo, rhs: ItemInfo) -> Bool {
             lhs.hashValue == rhs.hashValue
         }
 
         var id = UUID().uuidString
-        var name: String = ""
+        var name: String
         var score: Int = 0
-        var isCompletedAllLevels: Bool = false
+        var isCompletedAllLevels: Bool
     }
 
     private(set) var sections: [Section] = []
@@ -35,17 +35,36 @@ final class SNKLeaderboardViewModel {
     func load() async {
         sections = [.main]
 
-        items[.main] = [
-            .scoreItem(ItemInfo(name: "Player 1", score: 5000, isCompletedAllLevels: true)),
-            .scoreItem(ItemInfo(name: "Player 2", score: 4000, isCompletedAllLevels: true)),
-            .scoreItem(ItemInfo(name: "Player 3", score: 3000, isCompletedAllLevels: true)),
-            .scoreItem(ItemInfo(name: "Player 4", score: 2000, isCompletedAllLevels: false)),
-            .scoreItem(ItemInfo(name: "Player 5", score: 1000, isCompletedAllLevels: false)),
-            .scoreItem(ItemInfo(name: "Player 6", score: 2000, isCompletedAllLevels: false)),
-            .scoreItem(ItemInfo(name: "Player 7", score: 800, isCompletedAllLevels: false)),
-            .scoreItem(ItemInfo(name: "Player 8", score: 600, isCompletedAllLevels: false)),
-            .scoreItem(ItemInfo(name: "Player 9", score: 500, isCompletedAllLevels: false)),
-            .scoreItem(ItemInfo(name: "Player 10", score: 20, isCompletedAllLevels: false))
-        ]
+        guard let leaderboard = SNKConstants.shared.leaderboardSorted
+        else {
+            let leaderboard = dummyLeaderboard()
+            SNKConstants.shared.leaderboard = leaderboard
+            items[.main] = leaderboard.map({ itemInfo in
+                .scoreItem(itemInfo)
+            })
+            return
+        }
+
+        items[.main] = leaderboard.map({ itemInfo in
+            .scoreItem(itemInfo)
+        })
+    }
+
+    private func dummyLeaderboard() -> [ItemInfo] {
+        return [
+            ItemInfo(name: "Angelica", score: 1234, isCompletedAllLevels: true),
+            ItemInfo(name: "Jamaica", score: 567, isCompletedAllLevels: false),
+            ItemInfo(name: "William", score: 890, isCompletedAllLevels: true),
+            ItemInfo(name: "Lorem", score: 300, isCompletedAllLevels: false),
+            ItemInfo(name: "Ipsum", score: 54, isCompletedAllLevels: false),
+            ItemInfo(name: "Antonio", score: 1234, isCompletedAllLevels: true),
+            ItemInfo(name: "Dolor", score: 54, isCompletedAllLevels: false),
+            ItemInfo(name: "Dupidatat", score: 657, isCompletedAllLevels: true),
+            ItemInfo(name: "Excepteur", score: 231, isCompletedAllLevels: false),
+            ItemInfo(name: "Angela", score: 1234, isCompletedAllLevels: true),
+            ItemInfo(name: "Exercitation", score: 878, isCompletedAllLevels: true)
+        ].sorted { lhs, rhs in
+            return (lhs.score, rhs.name) > (rhs.score, lhs.name)
+        }
     }
 }

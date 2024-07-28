@@ -9,6 +9,8 @@
 import UIKit
 
 class SNKConstants: NSObject {
+    typealias LeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
+
     static var TILE_SIZE = 15.0 //15
     static var SPEED = 0.15
     static var GRIDLINES_COLOR = UIColor.white
@@ -52,6 +54,21 @@ class SNKConstants: NSObject {
 
     @WSRUserDefaultsReadAndWrite(SNKKeys.alertSound.rawValue, default: true)
     var alertSound: Bool
+
+    // Leaderboard
+
+    @WSRUserDefaultCodable(key: SNKKeys.leaderboard.rawValue)
+    var leaderboard: [LeaderboardItemInfo]?
+
+    var leaderboardSorted: [LeaderboardItemInfo]? {
+        guard let leaderboard = leaderboard else { return leaderboard }
+
+        return leaderboard.sorted { lhs, rhs in
+            return (lhs.score, rhs.name) > (rhs.score, lhs.name)
+        }
+    }
+
+    // MARK: - Calculated Variables
 
     // MARK: - Public Methods
 
