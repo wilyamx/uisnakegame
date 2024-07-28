@@ -85,7 +85,11 @@ extension SNKLeaderboardViewController {
         let unitSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(109))
         let item = NSCollectionLayoutItem(layoutSize: unitSize)
         let group = NSCollectionLayoutGroup.vertical(layoutSize: unitSize, subitems: [item])
-        return NSCollectionLayoutSection(group: group)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        return section
     }
 }
 
@@ -123,9 +127,10 @@ extension SNKLeaderboardViewController {
 
     private func getLeaderboardCell(at indexPath: IndexPath, item: ItemInfo) -> SNKLeaderboardCollectionViewCell {
         let cell = SNKLeaderboardCollectionViewCell.dequeueCell(from: collectionView, for: indexPath)
-        cell.name = "\(indexPath.row + 1). \(item.name)"
+        cell.rank = "\(indexPath.row + 1)"
+        cell.name = "\(item.name.uppercased())"
         cell.score = "\(item.score)"
-        cell.cellBackgroundColor = indexPath.row % 2 == 0 ? .accentVariation2 : .accentVariation3
+        cell.cellBackgroundColor = indexPath.row % 2 == 0 ? .accentVariation2 : .accentVariation4
         cell.showMedal = item.isCompletedAllLevels
         return cell
     }

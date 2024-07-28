@@ -13,6 +13,8 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     private lazy var backView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainBackground
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
         return view
     }()
 
@@ -23,32 +25,56 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
         view.alignment = .trailing
         return view
     }()
+    private lazy var numberContainer: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 15
+        view.backgroundColor = .contrast
+        return view
+    }()
+    private lazy var rankTextLabel: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.font = .subhead
+        view.textColor = .white
+        view.lineBreakMode = .byCharWrapping
+        return view
+    }()
     private lazy var nameTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .left
-        view.font = .title1
+        view.font = .title3
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
     }()
     private lazy var medalImageView: UIImageView = {
-        let image = UIImage(systemName: "medal")
+        let image = UIImage(systemName: "medal.fill")
         image?.applyingSymbolConfiguration(.init(font: .largeTitle, scale: .large))
 
         let view = UIImageView(image: image?.withRenderingMode(.alwaysTemplate))
         view.contentMode = .scaleAspectFit
         view.tintColor = .orange
+
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowRadius = 2.0
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowOffset = .zero
+        view.layer.masksToBounds = false
         return view
     }()
     private lazy var scoreTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .right
-        view.font = .title1
-        view.textColor = .black
+        view.font = .headline
+        view.textColor = .contrast
         view.lineBreakMode = .byCharWrapping
         return view
     }()
 
+    var rank: String? {
+        get { rankTextLabel.text }
+        set { rankTextLabel.text = newValue }
+    }
     var name: String? {
         get { nameTextLabel.text }
         set { nameTextLabel.text = newValue }
@@ -69,6 +95,9 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
         contentView.addSubviews([
             backView.addSubviews([
                 horizontalStackView.addArrangedSubviews([
+                    numberContainer.addSubviews([
+                        rankTextLabel
+                    ]),
                     nameTextLabel,
                     medalImageView,
                     scoreTextLabel
@@ -85,9 +114,20 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
         horizontalStackView.top == backView.top + 10
         horizontalStackView.bottom == backView.bottom - 10
 
-        scoreTextLabel.width == 80
+        numberContainer.width == 30
+        numberContainer.height == 30
+        numberContainer.centerY == horizontalStackView.centerY
 
-        medalImageView.width == 50
-        medalImageView.height == 40
+        rankTextLabel.centerX == numberContainer.centerX
+        rankTextLabel.centerY == numberContainer.centerY
+
+        nameTextLabel.centerY == horizontalStackView.centerY
+
+        scoreTextLabel.width == 80
+        scoreTextLabel.centerY == horizontalStackView.centerY
+
+        medalImageView.width == 30
+        medalImageView.height == 50
+        medalImageView.centerY == horizontalStackView.centerY
     }
 }
