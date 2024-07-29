@@ -55,7 +55,7 @@ class SNKSnakeGameViewController: SNKViewController {
     }()
     private lazy var levelTextLabel: UILabel = {
         let view = UILabel()
-        view.text = "LEVEL: 1"
+        view.text = "STAGE: 1"
         view.textAlignment = .right
         view.font = .body2
         view.textColor = .black
@@ -88,12 +88,10 @@ class SNKSnakeGameViewController: SNKViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        game?.start()
     }
 
     deinit {
@@ -103,6 +101,8 @@ class SNKSnakeGameViewController: SNKViewController {
     // MARK: - Setups
 
     override func setupNavigation() {
+        navigationController?.isNavigationBarHidden = false
+
         navigationItem.leftBarButtonItem = dismissButton
         navigationItem.rightBarButtonItems = [pausePlayButton, restartButton]
     }
@@ -190,6 +190,17 @@ class SNKSnakeGameViewController: SNKViewController {
 // MARK: - Alerts
 
 extension SNKSnakeGameViewController {
+    private func showGameStageAlert(level: Int) async {
+        await WSRAsyncAlertController<Bool>(
+            message: nil,
+            title: "Stage \(level)"
+        )
+        .addButton(title: "Ok", returnValue: true)
+        .register(in: self)
+    }
+
+    // -----
+
     private func showGameLevelAlert(level: Int) {
         // create the alert
         let alert = UIAlertController(
@@ -245,7 +256,7 @@ extension SNKSnakeGameViewController {
     func initGame() {
         wsrLogger.info(message: "--------------")
         wsrLogger.info(message: "initGame...")
-        wsrLogger.info(message: "Play as \(SNKConstants.shared.activeUser)")
+        wsrLogger.info(message: "You play as << \(SNKConstants.shared.activeUser) >>")
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
 
         view.layoutIfNeeded()
@@ -293,12 +304,15 @@ extension SNKSnakeGameViewController {
 
         game?.placeRandomFood(color: SNKConstants.FOOD_COLOR)
 
-        game?.makeSnake()
+        game?.makeSnake(row: 1, column: 1)
 
         setupBindings()
         updateUI()
 
-        game?.start()
+        Task {
+            await showGameStageAlert(level: viewModel.currentStage)
+            game?.start()
+        }
     }
     
     private func addSwipeGestures() {

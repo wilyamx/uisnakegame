@@ -120,8 +120,8 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
-        navigationController?.isNavigationBarHidden = true
 
+        viewModel.applyDummyLeaderboard()
         wsrLogger.info(message: "viewDidLoad")
     }
 
@@ -133,6 +133,10 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }
 
     // MARK: - Setups
+
+    override func setupNavigation() {
+        navigationController?.isNavigationBarHidden = true
+    }
 
     override func setupLayout() {
         addSubviews([

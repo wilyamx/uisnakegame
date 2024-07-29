@@ -31,4 +31,12 @@ final class SNKSnakeGameViewModel {
             else { self = .right }
         }
     }
+
+    var currentStage: Int {
+        SNKConstants.shared.currentStage
+    }
+
+    var nextStage: Int {
+        currentStage + 1
+    }
 }

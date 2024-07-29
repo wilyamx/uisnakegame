@@ -12,12 +12,12 @@ class SNKConstants: NSObject {
     typealias LeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
 
     static var TILE_SIZE = 15.0 //15
-    static var SPEED = 0.15
+    static var SPEED = 0.3 // 0
     static var GRIDLINES_COLOR = UIColor.white
     static var TILE_COLOR = UIColor.accentVariation4
     static var FOOD_COLOR = UIColor.red
     static var OBSTACLE_COLOR = UIColor.black
-    static var SNAKE_LENGTH = 20 //8
+    static var SNAKE_LENGTH = 4 //8
 
     static var shared = SNKConstants()
 
@@ -29,6 +29,7 @@ class SNKConstants: NSObject {
         case characterSound = "characterSound"
         case alertSound = "alertSound"
         case leaderboard = "leaderboard"
+        case currentStage = "currentStage"
     }
 
     // MARK: - Persistent Data
@@ -59,6 +60,11 @@ class SNKConstants: NSObject {
 
     @WSRUserDefaultCodable(key: SNKKeys.leaderboard.rawValue)
     var leaderboard: [LeaderboardItemInfo]?
+
+    // Game Progress
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.currentStage.rawValue, default: 1)
+    var currentStage: Int
 
     // MARK: - Calculated Variables
 

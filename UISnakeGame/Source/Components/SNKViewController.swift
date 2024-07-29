@@ -64,3 +64,21 @@ extension SNKViewController {
         navigationItem.backButtonTitle = ""
     }
 }
+
+// MARK: - Alerts
+
+extension SNKViewController {
+    func showErrorAlert(_ error: Error) {
+//        guard let error = error as? (any WSRActionableError) else { return }
+//
+//        Task {
+//            let value =  await WSRAsyncAlertController<Bool>(
+//                message: error.errorDescription,
+//                title: error.title
+//            )
+//            .addButton(title: "Action 1", returnValue: true)
+//            .addButton(title: "Action 2", returnValue: false)
+//            .register(in: <#T##UIViewController#>)
+//        }
+    }
+}

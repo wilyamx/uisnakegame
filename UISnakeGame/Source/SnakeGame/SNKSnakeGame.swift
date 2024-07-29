@@ -88,14 +88,18 @@ class SNKSnakeGame {
         self.gridView = gridView
     }
 
-    func makeSnake() {
+    func makeSnake(row: Int, column: Int) {
         guard let grid = grid, frame.size != .zero, tileSize != 0 else { return  }
+        guard grid.isValid(row: row, column: column)
+        else {
+            fatalError("Grid [\(row)][\(column)] is invalid! Limit will be [\(grid.rows - 1)][\(grid.columns - 1)]")
+        }
 
         if let previousSnake = snake {
             previousSnake.view.removeFromSuperview()
         }
 
-        let location = grid.locations[1][1]
+        let location = grid.locations[row][column]
         let snakeLength = SNKConstants.SNAKE_LENGTH
         let snake = SNKSnake(frame: frame, size: tileSize, location: location,
                              direction: .right, gridInfo: grid.getInfo(), length: snakeLength)

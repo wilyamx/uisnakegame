@@ -9,6 +9,8 @@
 import Foundation
 
 final class SNKHomeViewModel {
+    private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
+
     func isValidUser(name: String) -> Bool {
         return false
     }
@@ -20,6 +22,28 @@ final class SNKHomeViewModel {
         SNKConstants.shared.activeUser = name.uppercased()
     }
 
+    func applyDummyLeaderboard() {
+        guard SNKConstants.shared.leaderboard == nil else { return }
+
+        SNKConstants.shared.leaderboard = [
+            ItemInfo(name: "ANGELICA", score: 1234, isCompletedAllLevels: true),
+            ItemInfo(name: "JAMAICA", score: 567, isCompletedAllLevels: false),
+            ItemInfo(name: "WILLIAM", score: 890, isCompletedAllLevels: true),
+            ItemInfo(name: "LOREM", score: 300, isCompletedAllLevels: false),
+            ItemInfo(name: "IPSUM", score: 54, isCompletedAllLevels: false),
+            ItemInfo(name: "ANTONIO", score: 1234, isCompletedAllLevels: true),
+            ItemInfo(name: "DOLOR", score: 54, isCompletedAllLevels: false),
+            ItemInfo(name: "DUPIDATAR", score: 657, isCompletedAllLevels: true),
+            ItemInfo(name: "EXCEPTEUR", score: 231, isCompletedAllLevels: false),
+            ItemInfo(name: "ANGELA", score: 1234, isCompletedAllLevels: true),
+            ItemInfo(name: "EXERCITATION", score: 878, isCompletedAllLevels: true)
+        ].sorted { lhs, rhs in
+            return (lhs.score, rhs.name) > (rhs.score, lhs.name)
+        }
+    }
+
+    // MARK: - Private Methods
+    
     private func isAvailableUser(name: String) -> Bool {
         guard let leaderboard = SNKConstants.shared.leaderboardSorted else { return false }
         guard leaderboard.count > 0 else { return false }
