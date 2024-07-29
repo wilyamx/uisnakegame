@@ -19,8 +19,8 @@ class SNKSnakeGame {
     }
 
     enum SNKAlertState {
-        case newLevel
-        case levelComplete
+        case newStage
+        case stageComplete(Int)
         case gameOver(Int)
     }
 
@@ -47,7 +47,7 @@ class SNKSnakeGame {
 
     // game info
     @Published var score: Int = 0
-    @Published var level: Int = 0
+    @Published var stage: Int = 0
     @Published var snakeLength: Int = 0
     @Published var alertState: SNKAlertState?
     lazy var cancellables = Set<AnyCancellable>()

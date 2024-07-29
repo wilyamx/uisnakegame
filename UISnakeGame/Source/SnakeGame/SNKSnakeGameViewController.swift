@@ -171,6 +171,11 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
                 case .stop:
                     game?.stop()
+                case .stageComplete(let stage):
+                    Task { [weak self] in
+                        await self?.showGameStageCompleteAlert(stage: stage)
+                    }
+                    break
                 case .gameOver(let score):
                     Task { [weak self] in
                         let actionValue = await self?.showGameOverAlert(score: score) ?? false
@@ -179,8 +184,6 @@ class SNKSnakeGameViewController: SNKViewController {
                         // quit
                         else { self?.dismiss(animated: true) }
                     }
-                    //showGameOverAlert(score: score)
-                    break
                 }
             }
             .store(in: &cancellables)
@@ -236,34 +239,13 @@ extension SNKSnakeGameViewController {
         .register(in: self)
     }
 
-    // -----
-
-    private func showGameLevelAlert(level: Int) {
-        // create the alert
-        let alert = UIAlertController(
-            title: "Level \(level)", message: nil, preferredStyle: UIAlertController.Style.alert
+    private func showGameStageCompleteAlert(stage: Int) async {
+        await WSRAsyncAlertController(
+            message: "COMPLETED!",
+            title: "STAGE \(stage)"
         )
-        alert.view.tintColor = .accent
-
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-        // show the alert
-        present(alert, animated: true, completion: nil)
-    }
-
-    private func showGameLevelCompleteAlert(level: Int) {
-        // create the alert
-        let alert = UIAlertController(
-            title: "LEVEL \(level)", message: "COMPLETE!", preferredStyle: UIAlertController.Style.alert
-        )
-        alert.view.tintColor = .accent
-
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "CONTINUE", style: UIAlertAction.Style.default, handler: nil))
-
-        // show the alert
-        present(alert, animated: true, completion: nil)
+        .addButton(title: "CONTINUE", returnValue: false)
+        .register(in: self)
     }
 }
 
@@ -363,8 +345,8 @@ extension SNKSnakeGameViewController {
             .sink { [weak self] state in
                 guard let state else { return }
                 switch state {
-                case .levelComplete: break
-                case .newLevel: break
+                case .stageComplete: self?.viewModel.state = .stageComplete(game.stage)
+                case .newStage: break
                 case .gameOver(let score): self?.viewModel.state = .gameOver(score)
                 }
             }
@@ -412,6 +394,7 @@ extension SNKSnakeGameViewController {
         guard let game = game else { return }
 
         // gameover
-        viewModel.state = .gameOver(game.score)
+        //viewModel.state = .gameOver(game.score)
+        viewModel.state = .stageComplete(game.stage)
     }
 }

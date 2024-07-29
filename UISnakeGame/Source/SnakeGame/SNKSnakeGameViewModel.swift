@@ -16,6 +16,7 @@ final class SNKSnakeGameViewModel {
         case pause
         case restart
         case gameOver(Int)
+        case stageComplete(Int)
     }
 
     @Published var state: SNKGameState = .stop
