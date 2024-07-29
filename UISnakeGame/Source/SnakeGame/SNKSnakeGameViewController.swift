@@ -75,17 +75,13 @@ class SNKSnakeGameViewController: SNKViewController {
         return view
     }()
 
-    private lazy var progressBar: SNKTimerProgressBar = {
-        let view = SNKTimerProgressBar(frame: .zero)
-        return view
-    }()
-
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
 
-    let viewModel = SNKSnakeGameViewModel()
+    private let viewModel = SNKSnakeGameViewModel()
 
-    public var game: SNKSnakeGame?
-    public var userSwipeCallback: ((SNKDirection) -> ())?
+    private var game: SNKSnakeGame?
+    private var progressBar: SNKTimerProgressBar?
+    private var userSwipeCallback: ((SNKDirection) -> ())?
 
     // MARK: - View Lifecycle
 
@@ -121,9 +117,7 @@ class SNKSnakeGameViewController: SNKViewController {
     override func setupLayout() {
         addSubviews([
             containerView,
-            progressBarContainerView.addSubviews([
-                progressBar
-            ]),
+            progressBarContainerView,
             bottomStackView.addArrangedSubviews([
                 scoreTextLabel,
                 snakeLengthTextLabel,
@@ -140,12 +134,7 @@ class SNKSnakeGameViewController: SNKViewController {
         progressBarContainerView.left == containerView.left
         progressBarContainerView.right == containerView.right
         progressBarContainerView.bottom == containerView.bottom
-        progressBarContainerView.height == 2
-
-        progressBar.left == progressBarContainerView.left
-        progressBar.right == progressBarContainerView.right
-        progressBar.top == progressBarContainerView.top
-        progressBar.bottom == progressBarContainerView.bottom
+        progressBarContainerView.height == SNKConstants.PROGRESS_BAR_HEIGHT
 
         bottomStackView.top == progressBarContainerView.bottom
         bottomStackView.left == view.left + 20
@@ -154,21 +143,33 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     override func setupBindings() {
-        game?.$score
+        guard let game = game else { return }
+
+        game.$score
             .receive(on: DispatchQueue.main)
             .sink { [weak self] score in
                 self?.scoreTextLabel.text = "SCORE: \(score)"
             }
             .store(in: &cancellables)
 
-        game?.$snakeLength
+        game.$snakeLength
             .receive(on: DispatchQueue.main)
             .sink { [weak self] length in
                 self?.snakeLengthTextLabel.text = "SNAKE LENGTH: \(length)"
             }
             .store(in: &cancellables)
 
-        game?.$alertState
+        game.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                switch state {
+                case .started: self?.progressBar?.start(maxDuration: 20)
+                case .stopped: break
+                }
+            }
+            .store(in: &cancellables)
+
+        game.$alertState
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let state else { return }
@@ -289,56 +290,62 @@ extension SNKSnakeGameViewController {
         var frame = containerView.bounds
         frame.size.height = 695
 
-        let snakeGame = SNKSnakeGame(frame: frame, tileSize: SNKConstants.TILE_SIZE)
-        game = snakeGame
+        game = SNKSnakeGame(frame: frame, tileSize: SNKConstants.TILE_SIZE)
 
-        containerView.addSubview(snakeGame.view)
+        progressBar = SNKTimerProgressBar(
+            frame: CGRect(x: 0, y: 0, width: frame.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
+            color: SNKConstants.PROGRESS_BAR_COLOR
+        )
+
+        containerView.addSubview(game!.view)
+        progressBarContainerView.addSubview(progressBar!)
 
         // adding game actors
-        game?.makeGrid()
 
-        if viewModel.showGrid {
-            game?.makeGridView()
-        }
+        guard let game = game else { fatalError("Game not available!") }
 
-        game?.placeObstacle(row: 5, column: 25)
-        game?.placeObstacle(row: 6, column: 25)
-        game?.placeObstacle(row: 7, column: 25)
-        game?.placeObstacle(row: 8, column: 25)
-        game?.placeObstacle(row: 9, column: 25)
+        game.makeGrid()
 
-        game?.placeObstacle(row: 15, column: 5)
-        game?.placeObstacle(row: 15, column: 6)
-        game?.placeObstacle(row: 15, column: 7)
-        game?.placeObstacle(row: 15, column: 8)
+        if viewModel.showGrid { game.makeGridView() }
 
-        game?.placeObstacle(row: 25, column: 5)
-        game?.placeObstacle(row: 25, column: 6)
-        game?.placeObstacle(row: 25, column: 7)
-        game?.placeObstacle(row: 25, column: 8)
+        game.placeObstacle(row: 5, column: 25)
+        game.placeObstacle(row: 6, column: 25)
+        game.placeObstacle(row: 7, column: 25)
+        game.placeObstacle(row: 8, column: 25)
+        game.placeObstacle(row: 9, column: 25)
 
-        game?.placeObstacle(row: 32, column: 0)
-        game?.placeObstacle(row: 33, column: 0)
-        game?.placeObstacle(row: 34, column: 0)
-        game?.placeObstacle(row: 35, column: 0)
+        game.placeObstacle(row: 15, column: 5)
+        game.placeObstacle(row: 15, column: 6)
+        game.placeObstacle(row: 15, column: 7)
+        game.placeObstacle(row: 15, column: 8)
 
-        game?.placeObstacle(row: 39, column: 17)
-        game?.placeObstacle(row: 39, column: 18)
-        game?.placeObstacle(row: 39, column: 19)
-        game?.placeObstacle(row: 39, column: 20)
+        game.placeObstacle(row: 25, column: 5)
+        game.placeObstacle(row: 25, column: 6)
+        game.placeObstacle(row: 25, column: 7)
+        game.placeObstacle(row: 25, column: 8)
 
-        //game?.placeRandomObstacle(color: SNKConstants.OBSTACLE_COLOR)
+        game.placeObstacle(row: 32, column: 0)
+        game.placeObstacle(row: 33, column: 0)
+        game.placeObstacle(row: 34, column: 0)
+        game.placeObstacle(row: 35, column: 0)
 
-        game?.placeRandomFood(color: SNKConstants.FOOD_COLOR)
+        game.placeObstacle(row: 39, column: 17)
+        game.placeObstacle(row: 39, column: 18)
+        game.placeObstacle(row: 39, column: 19)
+        game.placeObstacle(row: 39, column: 20)
 
-        game?.makeSnake(row: 1, column: 1)
+        //game.placeRandomObstacle(color: SNKConstants.OBSTACLE_COLOR)
+
+        game.placeRandomFood(color: SNKConstants.FOOD_COLOR)
+
+        game.makeSnake(row: 1, column: 1)
 
         setupBindings()
         updateUI()
 
         Task {
             await showGameStageAlert(level: viewModel.currentStage)
-            game?.start()
+            game.start()
         }
     }
     

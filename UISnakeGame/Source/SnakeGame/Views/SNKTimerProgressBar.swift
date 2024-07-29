@@ -9,13 +9,12 @@
 import UIKit
 
 class SNKTimerProgressBar: UIView {
-    var bgColor: UIColor = .lightGray
-    var barColor: UIColor = .orange
-
+    var bgColor: UIColor = UIColor(hexString: "#F5F5F5", alpha: 1.0)
     var barView: UIView
 
     private(set) var timer: Timer?
     private(set) var durationInSecond: Int = 0
+    private(set) var maxDurationInSecond: Int = 0
 
     override func draw(_ rect: CGRect) {
         drawProgressBar()
@@ -33,9 +32,9 @@ class SNKTimerProgressBar: UIView {
         bgPath.fill()
     }
 
-    init(frame: CGRect, color: UIColor = .purple) {
-        self.barView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 2))
-        self.barView.backgroundColor = barColor
+    init(frame: CGRect, color: UIColor = .cyan) {
+        self.barView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: frame.height))
+        self.barView.backgroundColor = color
         super.init(frame: frame)
 
         addSubview(self.barView)
@@ -45,24 +44,32 @@ class SNKTimerProgressBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func start() {
-        stop()
+    func start(maxDuration: Int) {
+        durationInSecond = 0
+        maxDurationInSecond = maxDuration
+        play()
+    }
 
-        let timer = Timer(timeInterval: 1.0,
-                          target: self, selector: #selector(onTimerUpdate),
-                          userInfo: nil, repeats: true)
+    func play() {
+        pause()
+        let timer = Timer.scheduledTimer(
+            timeInterval: 1.0, target: self, selector: #selector(onTimerUpdate), userInfo: nil, repeats: true
+        )
         self.timer = timer
     }
 
-    func stop() {
-        durationInSecond = 0
-
+    func pause() {
         timer?.invalidate()
         timer = nil
     }
 
     @objc private func onTimerUpdate() {
         durationInSecond += 1
-        wsrLogger.info(message: "\(durationInSecond)")
+        
+        let percentage = Double(durationInSecond / maxDurationInSecond)
+        //barView.frame.size.width = frame.width * percentage
+
+        barView.frame.size.width += 10
+        wsrLogger.info(message: "\(durationInSecond)/\(maxDurationInSecond)")
     }
 }

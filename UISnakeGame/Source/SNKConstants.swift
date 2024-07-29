@@ -11,13 +11,15 @@ import UIKit
 class SNKConstants: NSObject {
     typealias LeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
 
-    static var TILE_SIZE = 15.0 //15
-    static var SPEED = 0.3 // 0
-    static var GRIDLINES_COLOR = UIColor.white
-    static var TILE_COLOR = UIColor.accentVariation4
-    static var FOOD_COLOR = UIColor.red
-    static var OBSTACLE_COLOR = UIColor.black
-    static var SNAKE_LENGTH = 4 //8
+    static let TILE_SIZE = 15.0 //15
+    static let SPEED = 0.3 // 0
+    static let GRIDLINES_COLOR = UIColor.white
+    static let TILE_COLOR = UIColor.accentVariation4
+    static let FOOD_COLOR = UIColor.red
+    static let OBSTACLE_COLOR = UIColor.black
+    static let SNAKE_LENGTH = 4 //8
+    static let PROGRESS_BAR_HEIGHT = 3.0
+    static let PROGRESS_BAR_COLOR = UIColor.orange
 
     static var shared = SNKConstants()
 
