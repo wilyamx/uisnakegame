@@ -23,6 +23,10 @@ final class SNKSnake {
     var facingDirection: SNKDirection
 
     var length: Int { return bodyParts.count }
+    var tileSize: CGFloat {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_SIZE }
+        return CGFloat(config.grid.size)
+    }
 
     init(frame: CGRect, size: CGFloat, location: CGPoint,
          direction: SNKDirection, gridInfo: SNKGridInfo, length: Int = 4) {
@@ -168,7 +172,7 @@ final class SNKSnake {
             bodyParts[0].frame.origin.x = gridInfo.rightMax - gridInfo.tileSize
         }
         else {
-            bodyParts[0].frame.origin.x -= SNKConstants.TILE_SIZE
+            bodyParts[0].frame.origin.x -= tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -182,7 +186,7 @@ final class SNKSnake {
         if x == gridInfo.rightMax - gridInfo.tileSize {
             bodyParts[0].frame.origin.x = 0
         } else {
-            bodyParts[0].frame.origin.x += SNKConstants.TILE_SIZE
+            bodyParts[0].frame.origin.x += tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -197,7 +201,7 @@ final class SNKSnake {
             bodyParts[0].frame.origin.y = gridInfo.bottomMax
         }
         else {
-            bodyParts[0].frame.origin.y -= SNKConstants.TILE_SIZE
+            bodyParts[0].frame.origin.y -= tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -211,7 +215,7 @@ final class SNKSnake {
         if y == gridInfo.bottomMax - gridInfo.tileSize {
             bodyParts[0].frame.origin.y = 0
         } else {
-            bodyParts[0].frame.origin.y += SNKConstants.TILE_SIZE
+            bodyParts[0].frame.origin.y += tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]

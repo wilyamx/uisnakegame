@@ -9,17 +9,20 @@
 import UIKit
 
 class SNKConstants: NSObject {
-    typealias LeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
+    typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
 
+    // Default Values without the Configuration File
     static let TILE_SIZE = 15.0 //15
-    static let SPEED = 0.18 // 0
-    static let GRIDLINES_COLOR = UIColor.white
     static let TILE_COLOR = UIColor.accentVariation4
+    static let GRIDLINES_COLOR = UIColor.white
     static let FOOD_COLOR = UIColor.red
     static let OBSTACLE_COLOR = UIColor.black
     static let SNAKE_LENGTH = 4 //8
-    static let PROGRESS_BAR_HEIGHT = 3.0
     static let PROGRESS_BAR_COLOR = UIColor.orange
+
+    // No Configurable
+    static let SPEED = 0.18 // 0
+    static let PROGRESS_BAR_HEIGHT = 3.0
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
 
     static var shared = SNKConstants()
@@ -33,6 +36,7 @@ class SNKConstants: NSObject {
         case alertSound = "alertSound"
         case leaderboard = "leaderboard"
         case currentStage = "currentStage"
+        case gameConfig = "gameConfig"
     }
 
     // MARK: - Persistent Data
@@ -62,7 +66,12 @@ class SNKConstants: NSObject {
     // Leaderboard
 
     @WSRUserDefaultCodable(key: SNKKeys.leaderboard.rawValue)
-    var leaderboard: [LeaderboardItemInfo]?
+    var leaderboard: [SNKLeaderboardItemInfo]?
+
+    // Game Configuration
+
+    @WSRUserDefaultCodable(key: SNKKeys.gameConfig.rawValue)
+    var gameConfig: SNKGameConfiguration?
 
     // Game Progress
 
@@ -71,7 +80,7 @@ class SNKConstants: NSObject {
 
     // MARK: - Calculated Variables
 
-    var leaderboardSorted: [LeaderboardItemInfo]? {
+    var leaderboardSorted: [SNKLeaderboardItemInfo]? {
         guard let leaderboard = leaderboard else { return leaderboard }
 
         return leaderboard.sorted { lhs, rhs in

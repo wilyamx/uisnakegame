@@ -21,8 +21,6 @@ final class SNKSnakeGameViewModel {
 
     @Published var state: SNKGameState = .stop
 
-    var configuration: SNKGameConfiguration?
-
     enum SNKDirection {
         case left
         case up

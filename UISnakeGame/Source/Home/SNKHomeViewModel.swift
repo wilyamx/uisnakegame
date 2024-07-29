@@ -13,10 +13,10 @@ final class SNKHomeViewModel {
 
     let fileLoader = WSRFileLoader()
 
-    var configuration: SNKGameConfiguration?
-
     func loadGameConfiguration(from filename: String) async throws {
-        configuration = try await fileLoader.loadJSON(
+        guard SNKConstants.shared.gameConfig == nil else { return }
+
+        SNKConstants.shared.gameConfig = try await fileLoader.loadJSON(
             "default-game-config.json", SNKGameConfiguration.self
         ) as? SNKGameConfiguration
     }
@@ -30,6 +30,7 @@ final class SNKHomeViewModel {
         guard isAvailableUser(name: name) else { throw SNKGameError.invalidUser(name) }
 
         SNKConstants.shared.activeUser = name.uppercased()
+        SNKConstants.shared.currentStage = 1
     }
 
     func applyDummyLeaderboard() async {

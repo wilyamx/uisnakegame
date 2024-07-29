@@ -1,7 +1,8 @@
 {
     "life": 10,
     "grid": {
-        "color": "#000000",
+        "color": "#BCDCAE",
+        "line_color": "#FFFFFF",
         "size": 15
     },
     "snake": {
@@ -12,6 +13,7 @@
     },
     "food_color": "#FF0000",
     "obstacle_color": "#000000",
+    "progress_bar_color": "#FFA500",
     "stages": [
         {
             "stage": 1,

@@ -8,30 +8,32 @@
 
 import Foundation
 
-struct SNKStageData: Decodable {
+struct SNKStageData: Codable {
     let stage: Int
     let durationInSeconds: Int
     let startingSpeed: Int
     let minimumScore: Int
 }
 
-struct SNKGridData: Decodable {
+struct SNKGridData: Codable {
     let color: String
+    let lineColor: String
     let size: Int
 }
 
-struct SNKSnakeData: Decodable {
+struct SNKSnakeData: Codable {
     let defaultLength: Int
     let defaultHeadColor: String
     let defaultBodyColor: String
     let defaultTailColor: String
 }
 
-struct SNKGameConfiguration: Decodable {
+struct SNKGameConfiguration: Codable {
     let life: Int
     let grid: SNKGridData
     let snake: SNKSnakeData
     let foodColor: String
     let obstacleColor: String
+    let progressBarColor: String
     let stages: [SNKStageData]
 }

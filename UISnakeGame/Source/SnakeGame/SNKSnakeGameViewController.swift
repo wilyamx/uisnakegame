@@ -67,7 +67,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = SNKConstants.TILE_COLOR
+        view.backgroundColor = tileColor
         return view
     }()
 
@@ -85,8 +85,22 @@ class SNKSnakeGameViewController: SNKViewController {
     private var progressBar: SNKTimerProgressBar?
     private var userSwipeCallback: ((SNKDirection) -> ())?
 
-    // temp
-    var configuration: SNKGameConfiguration?
+    private var tileColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_COLOR }
+        return UIColor(hexString: config.grid.color)
+    }
+    var foodColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
+        return UIColor(hexString: config.foodColor)
+    }
+    var obstacleColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.OBSTACLE_COLOR }
+        return UIColor(hexString: config.obstacleColor)
+    }
+    var progressBarColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.PROGRESS_BAR_COLOR }
+        return UIColor(hexString: config.progressBarColor)
+    }
 
     // MARK: - View Lifecycle
 
@@ -95,7 +109,6 @@ class SNKSnakeGameViewController: SNKViewController {
         title = "Skillful Snake"
 
         wsrLogger.info(message: "viewDidLoad")
-        viewModel.configuration = configuration
         viewModel.state = .start
     }
     
@@ -286,35 +299,35 @@ extension SNKSnakeGameViewController {
 
         if viewModel.showGrid { game.makeGridView() }
 
-        game.placeObstacle(row: 5, column: 25)
-        game.placeObstacle(row: 6, column: 25)
-        game.placeObstacle(row: 7, column: 25)
-        game.placeObstacle(row: 8, column: 25)
-        game.placeObstacle(row: 9, column: 25)
+        game.placeObstacle(row: 5, column: 25, color: obstacleColor)
+        game.placeObstacle(row: 6, column: 25, color: obstacleColor)
+        game.placeObstacle(row: 7, column: 25, color: obstacleColor)
+        game.placeObstacle(row: 8, column: 25, color: obstacleColor)
+        game.placeObstacle(row: 9, column: 25, color: obstacleColor)
 
-        game.placeObstacle(row: 15, column: 5)
-        game.placeObstacle(row: 15, column: 6)
-        game.placeObstacle(row: 15, column: 7)
-        game.placeObstacle(row: 15, column: 8)
+        game.placeObstacle(row: 15, column: 5, color: obstacleColor)
+        game.placeObstacle(row: 15, column: 6, color: obstacleColor)
+        game.placeObstacle(row: 15, column: 7, color: obstacleColor)
+        game.placeObstacle(row: 15, column: 8, color: obstacleColor)
 
-        game.placeObstacle(row: 25, column: 5)
-        game.placeObstacle(row: 25, column: 6)
-        game.placeObstacle(row: 25, column: 7)
-        game.placeObstacle(row: 25, column: 8)
+        game.placeObstacle(row: 25, column: 5, color: obstacleColor)
+        game.placeObstacle(row: 25, column: 6, color: obstacleColor)
+        game.placeObstacle(row: 25, column: 7, color: obstacleColor)
+        game.placeObstacle(row: 25, column: 8, color: obstacleColor)
 
-        game.placeObstacle(row: 32, column: 0)
-        game.placeObstacle(row: 33, column: 0)
-        game.placeObstacle(row: 34, column: 0)
-        game.placeObstacle(row: 35, column: 0)
+        game.placeObstacle(row: 32, column: 0, color: obstacleColor)
+        game.placeObstacle(row: 33, column: 0, color: obstacleColor)
+        game.placeObstacle(row: 34, column: 0, color: obstacleColor)
+        game.placeObstacle(row: 35, column: 0, color: obstacleColor)
 
-        game.placeObstacle(row: 39, column: 17)
-        game.placeObstacle(row: 39, column: 18)
-        game.placeObstacle(row: 39, column: 19)
-        game.placeObstacle(row: 39, column: 20)
+        game.placeObstacle(row: 39, column: 17, color: obstacleColor)
+        game.placeObstacle(row: 39, column: 18, color: obstacleColor)
+        game.placeObstacle(row: 39, column: 19, color: obstacleColor)
+        game.placeObstacle(row: 39, column: 20, color: obstacleColor)
 
-        //game.placeRandomObstacle(color: SNKConstants.OBSTACLE_COLOR)
+        //game.placeRandomObstacle(color: obstacleColor)
 
-        game.placeRandomFood(color: SNKConstants.FOOD_COLOR)
+        game.placeRandomFood(color: foodColor)
 
         game.makeSnake(row: 1, column: 1)
 
