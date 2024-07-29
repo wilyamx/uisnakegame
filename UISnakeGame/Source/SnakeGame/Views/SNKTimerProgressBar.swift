@@ -13,8 +13,10 @@ class SNKTimerProgressBar: UIView {
     var barView: UIView
 
     private(set) var timer: Timer?
-    private(set) var durationInSecond: Int = 0
-    private(set) var maxDurationInSecond: Int = 0
+    private(set) var durationInSecond: CGFloat = 0
+    private(set) var maxDurationInSecond: CGFloat = 0
+
+    @Published var durationComplete: Bool = false
 
     override func draw(_ rect: CGRect) {
         drawProgressBar()
@@ -44,9 +46,10 @@ class SNKTimerProgressBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func start(maxDuration: Int) {
+    func start(maxDuration: CGFloat) {
         durationInSecond = 0
         maxDurationInSecond = maxDuration
+        durationComplete = false
         play()
     }
 
@@ -64,12 +67,17 @@ class SNKTimerProgressBar: UIView {
     }
 
     @objc private func onTimerUpdate() {
+        guard durationInSecond < maxDurationInSecond
+        else {
+            pause()
+            durationComplete = true
+            return
+        }
+
         durationInSecond += 1
         
-        let percentage = Double(durationInSecond / maxDurationInSecond)
-        //barView.frame.size.width = frame.width * percentage
-
-        barView.frame.size.width += 10
-        wsrLogger.info(message: "\(durationInSecond)/\(maxDurationInSecond)")
+        let fraction = durationInSecond / maxDurationInSecond
+        barView.frame.size.width = frame.width * fraction
+        wsrLogger.info(message: "\(durationInSecond)/\(maxDurationInSecond), fraction: \(fraction)")
     }
 }

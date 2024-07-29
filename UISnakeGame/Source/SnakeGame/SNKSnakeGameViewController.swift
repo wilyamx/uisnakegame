@@ -144,6 +144,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     override func setupBindings() {
         guard let game = game else { return }
+        guard let progressBar = progressBar else { return }
 
         game.$score
             .receive(on: DispatchQueue.main)
@@ -163,7 +164,7 @@ class SNKSnakeGameViewController: SNKViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 switch state {
-                case .started: self?.progressBar?.start(maxDuration: 20)
+                case .started: self?.progressBar?.start(maxDuration: 5)
                 case .stopped: break
                 }
             }
@@ -178,6 +179,14 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .newLevel: break
                 case .gameOver(let score): self?.showGameOverAlert(score: score)
                 }
+            }
+            .store(in: &cancellables)
+
+        progressBar.$durationComplete
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completed in
+                guard completed else { return }
+                game.stop()
             }
             .store(in: &cancellables)
     }
