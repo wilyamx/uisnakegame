@@ -124,6 +124,22 @@ class SNKSnakeGameViewController: SNKViewController {
         game?.stop()
     }
     
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        for press in presses {
+            guard let key = press.key else { continue }
+
+            switch key.charactersIgnoringModifiers {
+            case UIKeyCommand.inputLeftArrow: changeDirection(to: .left)
+            case UIKeyCommand.inputRightArrow: changeDirection(to: .right)
+            case UIKeyCommand.inputUpArrow: changeDirection(to: .up)
+            case UIKeyCommand.inputDownArrow: changeDirection(to: .down)
+            default: break
+            }
+        }
+
+        super.pressesEnded(presses, with: event)
+    }
+
     // MARK: - Setups
 
     override func setupNavigation() {
@@ -170,29 +186,35 @@ class SNKSnakeGameViewController: SNKViewController {
                 updateUI()
 
                 switch state {
+
                 case .start:
                     game?.restart()
                     initGame()
+
                 case .play:
                     game?.start()
                     progressBar?.play()
                     progressBar?.start(maxDuration: 5)
+
                 case .pause:
                     let state = game?.pause()
                     pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
 
                     if state == .started { progressBar?.play() }
                     else { progressBar?.pause() }
+
                 case .restart:
                     game?.restart()
                     initGame()
+
                 case .stop:
                     game?.stop()
+
                 case .stageComplete(let stage):
                     Task { [weak self] in
                         await self?.showGameStageCompleteAlert(stage: stage)
                     }
-                    break
+
                 case .gameOver(let score):
                     Task { [weak self] in
                         let actionValue = await self?.showGameOverAlert(score: score) ?? false
@@ -201,6 +223,7 @@ class SNKSnakeGameViewController: SNKViewController {
                         // quit
                         else { self?.dismiss(animated: true) }
                     }
+
                 }
             }
             .store(in: &cancellables)
@@ -396,8 +419,12 @@ extension SNKSnakeGameViewController {
         let direction = SNKDirection(sender.direction)
         //wsrLogger.info(message: "\(direction)")
 
-        game?.snake?.changeDirection(to: direction)
+        changeDirection(to: direction)
         userSwipeCallback?(direction)
+    }
+
+    private func changeDirection(to direction: SNKDirection) {
+        game?.snake?.changeDirection(to: direction)
     }
 
     private func updateUI() {
