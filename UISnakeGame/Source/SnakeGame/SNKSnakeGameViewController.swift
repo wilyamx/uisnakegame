@@ -69,6 +69,17 @@ class SNKSnakeGameViewController: SNKViewController {
         return view
     }()
 
+    private lazy var progressBarContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
+
+    private lazy var progressBar: SNKTimerProgressBar = {
+        let view = SNKTimerProgressBar(frame: .zero)
+        return view
+    }()
+
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
 
     let viewModel = SNKSnakeGameViewModel()
@@ -110,6 +121,9 @@ class SNKSnakeGameViewController: SNKViewController {
     override func setupLayout() {
         addSubviews([
             containerView,
+            progressBarContainerView.addSubviews([
+                progressBar
+            ]),
             bottomStackView.addArrangedSubviews([
                 scoreTextLabel,
                 snakeLengthTextLabel,
@@ -123,7 +137,17 @@ class SNKSnakeGameViewController: SNKViewController {
         containerView.right == view.right
         containerView.top == view.topMargin
 
-        bottomStackView.top == containerView.bottom
+        progressBarContainerView.left == containerView.left
+        progressBarContainerView.right == containerView.right
+        progressBarContainerView.bottom == containerView.bottom
+        progressBarContainerView.height == 2
+
+        progressBar.left == progressBarContainerView.left
+        progressBar.right == progressBarContainerView.right
+        progressBar.top == progressBarContainerView.top
+        progressBar.bottom == progressBarContainerView.bottom
+
+        bottomStackView.top == progressBarContainerView.bottom
         bottomStackView.left == view.left + 20
         bottomStackView.right == view.right - 20
         bottomStackView.bottom == view.bottomMargin
@@ -272,7 +296,10 @@ extension SNKSnakeGameViewController {
 
         // adding game actors
         game?.makeGrid()
-        game?.makeGridView()
+
+        if viewModel.showGrid {
+            game?.makeGridView()
+        }
 
         game?.placeObstacle(row: 5, column: 25)
         game?.placeObstacle(row: 6, column: 25)

@@ -32,11 +32,7 @@ final class SNKSnakeGameViewModel {
         }
     }
 
-    var currentStage: Int {
-        SNKConstants.shared.currentStage
-    }
-
-    var nextStage: Int {
-        currentStage + 1
-    }
+    var currentStage: Int { SNKConstants.shared.currentStage }
+    var nextStage: Int { currentStage + 1 }
+    var showGrid: Bool { SNKConstants.shared.displayGrid }
 }

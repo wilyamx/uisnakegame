@@ -63,6 +63,7 @@
 		A75D950F2C56254200C23768 /* WSRActionableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D950E2C56254200C23768 /* WSRActionableError.swift */; };
 		A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95112C56279A00C23768 /* SNKGameError.swift */; };
 		A75D95142C563C2600C23768 /* WSRAsyncAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */; };
+		A75D95162C57210D00C23768 /* SNKTimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95152C57210C00C23768 /* SNKTimerProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		A75D950E2C56254200C23768 /* WSRActionableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRActionableError.swift; sourceTree = "<group>"; };
 		A75D95112C56279A00C23768 /* SNKGameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameError.swift; sourceTree = "<group>"; };
 		A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRAsyncAlertController.swift; sourceTree = "<group>"; };
+		A75D95152C57210C00C23768 /* SNKTimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKTimerProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +380,7 @@
 			children = (
 				A75D94F32C50D09200C23768 /* SNKGridView.swift */,
 				A75D94F52C512C0200C23768 /* SNKTileView.swift */,
+				A75D95152C57210C00C23768 /* SNKTimerProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				A75D94AA2C4E48FA00C23768 /* SNKViewController.swift in Sources */,
 				A75D94A62C4E45C800C23768 /* WSRCoordinatorProtocol.swift in Sources */,
 				A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */,
+				A75D95162C57210D00C23768 /* SNKTimerProgressBar.swift in Sources */,
 				A75D94D52C4FD85100C23768 /* SNKLeaderboardViewModel.swift in Sources */,
 				A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */,
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
