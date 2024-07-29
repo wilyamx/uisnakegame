@@ -35,7 +35,7 @@ class SNKSnakeGame {
     private(set) var gridView: SNKGridView?
 
     // game management
-    @Published var state: SNKState = .stopped
+    private(set) var state: SNKState = .stopped
     private(set) var timer: Timer?
     private(set) var updateInterval: TimeInterval = SNKConstants.SPEED { didSet {
         start()

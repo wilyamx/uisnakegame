@@ -90,7 +90,7 @@ class SNKSnakeGameViewController: SNKViewController {
         title = "Skillful Snake"
 
         wsrLogger.info(message: "viewDidLoad")
-        initGame()
+        viewModel.state = .start
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,50 +143,33 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     override func setupBindings() {
-        guard let game = game else { return }
-        guard let progressBar = progressBar else { return }
-
-        game.$score
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] score in
-                self?.scoreTextLabel.text = "SCORE: \(score)"
-            }
-            .store(in: &cancellables)
-
-        game.$snakeLength
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] length in
-                self?.snakeLengthTextLabel.text = "SNAKE LENGTH: \(length)"
-            }
-            .store(in: &cancellables)
-
-        game.$state
+        viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
-                switch state {
-                case .started: self?.progressBar?.start(maxDuration: 5)
-                case .stopped: break
-                }
-            }
-            .store(in: &cancellables)
+                guard let self else { return }
 
-        game.$alertState
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in
-                guard let state else { return }
+                updateUI()
+                
                 switch state {
-                case .levelComplete: break
-                case .newLevel: break
-                case .gameOver(let score): self?.showGameOverAlert(score: score)
-                }
-            }
-            .store(in: &cancellables)
+                case .start:
+                    game?.restart()
+                    initGame()
+                case .play:
+                    game?.start()
+                    progressBar?.play()
+                    progressBar?.start(maxDuration: 10)
+                case .pause:
+                    let state = game?.pause()
+                    pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
 
-        progressBar.$durationComplete
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completed in
-                guard completed else { return }
-                game.stop()
+                    if state == .started { progressBar?.play() }
+                    else { progressBar?.pause() }
+                case .restart:
+                    game?.restart()
+                    initGame()
+                case .stop:
+                    game?.stop()
+                }
             }
             .store(in: &cancellables)
     }
@@ -211,13 +194,11 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     @objc private func restartTheGame() {
-        game?.restart()
-        initGame()
+        viewModel.state = .restart
     }
 
     @objc private func pausePlayTheGame() {
-        let state = game?.pause()
-        pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
+        viewModel.state = .pause
     }
 }
 
@@ -349,15 +330,53 @@ extension SNKSnakeGameViewController {
 
         game.makeSnake(row: 1, column: 1)
 
-        setupBindings()
-        updateUI()
+        setupGameBindings()
 
         Task {
             await showGameStageAlert(level: viewModel.currentStage)
-            game.start()
+            viewModel.state = .play
         }
     }
     
+    private func setupGameBindings() {
+        guard let game = game else { return }
+        guard let progressBar = progressBar else { return }
+
+        game.$score
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] score in
+                self?.scoreTextLabel.text = "SCORE: \(score)"
+            }
+            .store(in: &cancellables)
+
+        game.$snakeLength
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] length in
+                self?.snakeLengthTextLabel.text = "SNAKE LENGTH: \(length)"
+            }
+            .store(in: &cancellables)
+
+        game.$alertState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let state else { return }
+                switch state {
+                case .levelComplete: break
+                case .newLevel: break
+                case .gameOver(let score): self?.showGameOverAlert(score: score)
+                }
+            }
+            .store(in: &cancellables)
+
+        progressBar.$durationComplete
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completed in
+                guard completed else { return }
+                self?.viewModel.state = .stop
+            }
+            .store(in: &cancellables)
+    }
+
     private func addSwipeGestures() {
         addSwipeGestureRecognizer(direction: .left)
         addSwipeGestureRecognizer(direction: .right)
@@ -379,8 +398,9 @@ extension SNKSnakeGameViewController {
         userSwipeCallback?(direction)
     }
 
-    // updates the collect coin label and the highscore label
     private func updateUI() {
-
+        // update based on game status
+        restartButton.isEnabled = viewModel.state != .stop
+        pausePlayButton.isEnabled = viewModel.state != .stop
     }
 }

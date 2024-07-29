@@ -9,6 +9,16 @@
 import UIKit
 
 final class SNKSnakeGameViewModel {
+    enum SNKGameState {
+        case start
+        case play
+        case stop
+        case pause
+        case restart
+    }
+
+    @Published var state: SNKGameState = .stop
+
     enum SNKDirection {
         case left
         case up
