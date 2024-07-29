@@ -37,6 +37,7 @@ class SNKConstants: NSObject {
         case leaderboard = "leaderboard"
         case currentStage = "currentStage"
         case gameConfig = "gameConfig"
+        case playMode = "playMode"
     }
 
     // MARK: - Persistent Data
@@ -72,6 +73,11 @@ class SNKConstants: NSObject {
 
     @WSRUserDefaultCodable(key: SNKKeys.gameConfig.rawValue)
     var gameConfig: SNKGameConfiguration?
+
+    // true: map based
+    // false: survival
+    @WSRUserDefaultsReadAndWrite(SNKKeys.playMode.rawValue, default: true)
+    var playMode: Bool
 
     // Game Progress
 

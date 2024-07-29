@@ -44,6 +44,8 @@ class SNKSettingsViewController: FormViewController {
             row.value = SNKConstants.shared.isPortraitOrientation
         }.onChange({ row in
             guard let value = row.value else { return }
+            row.title = value ? "Portrait Orientation" : "Landscape Orientation"
+            row.updateCell()
             SNKConstants.shared.isPortraitOrientation = value
         })
         <<< SwitchRow() { row in
@@ -52,6 +54,15 @@ class SNKSettingsViewController: FormViewController {
         }.onChange({ row in
             guard let value = row.value else { return }
             SNKConstants.shared.displayGrid = value
+        })
+        <<< SwitchRow() { row in
+            row.title = "Map Based Mode"
+            row.value = SNKConstants.shared.playMode
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            row.title = value ? "Map Based Mode" : "Survival Mode"
+            row.updateCell()
+            SNKConstants.shared.playMode = value
         })
         +++ Section("Sounds")
         <<< SwitchRow() { row in
