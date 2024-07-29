@@ -13,6 +13,7 @@ struct SNKStageData: Codable {
     let durationInSeconds: Int
     let startingSpeed: Int
     let minimumScore: Int
+    let map: [[Int]]
 }
 
 struct SNKGridData: Codable {
