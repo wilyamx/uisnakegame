@@ -15,18 +15,13 @@ struct SNKStageData: Decodable {
     let minimumScore: Int
 }
 
-struct SNKTileData: Decodable {
-    let width: Int
-    let height: Int
-    let color: String
-}
-
 struct SNKGridData: Decodable {
-    let spacing: Int
-    let tile: SNKTileData
+    let color: String
+    let size: Int
 }
 
 struct SNKSnakeData: Decodable {
+    let defaultLength: Int
     let defaultHeadColor: String
     let defaultBodyColor: String
     let defaultTailColor: String
@@ -36,5 +31,7 @@ struct SNKGameConfiguration: Decodable {
     let life: Int
     let grid: SNKGridData
     let snake: SNKSnakeData
+    let foodColor: String
+    let obstacleColor: String
     let stages: [SNKStageData]
 }

@@ -1,18 +1,17 @@
 {
     "life": 10,
     "grid": {
-        "spacing": 0,
-        "tile": {
-            "width": 5,
-            "height": 5,
-            "color": "#000000"
-        }
+        "color": "#000000",
+        "size": 15
     },
     "snake": {
+        "default_length": 4,
         "default_head_color": "#000000",
         "default_body_color": "#000000",
         "default_tail_color": "#000000"
     },
+    "food_color": "#FF0000",
+    "obstacle_color": "#000000",
     "stages": [
         {
             "stage": 1,

@@ -26,7 +26,7 @@ enum WSRFileLoaderError: Error, LocalizedError, WSRActionableError {
         switch self {
         case .fileNotFound(let filePath): "Invalid file path: \(filePath)"
         case .fileCannotLoad: "File is corrupted!"
-        case .parsing: "Parsing error!"
+        case .parsing(let error): "Parsing error! Please check the file source."
         }
     }
 

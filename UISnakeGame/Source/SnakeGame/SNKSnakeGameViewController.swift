@@ -95,6 +95,7 @@ class SNKSnakeGameViewController: SNKViewController {
         title = "Skillful Snake"
 
         wsrLogger.info(message: "viewDidLoad")
+        viewModel.configuration = configuration
         viewModel.state = .start
     }
     
