@@ -10,6 +10,8 @@ import UIKit
 import SuperEasyLayout
 
 class SNKSnakeGameViewController: SNKViewController {
+    typealias SNKGameState = SNKSnakeGameViewModel.SNKGameState
+
     private lazy var dismissButton: UIBarButtonItem = {
         let view = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: nil, action: nil)
         view.tintColor = .white
@@ -149,7 +151,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 guard let self else { return }
 
                 updateUI()
-                
+
                 switch state {
                 case .start:
                     game?.restart()
@@ -157,7 +159,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .play:
                     game?.start()
                     progressBar?.play()
-                    progressBar?.start(maxDuration: 10)
+                    progressBar?.start(maxDuration: 5)
                 case .pause:
                     let state = game?.pause()
                     pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
@@ -169,6 +171,16 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
                 case .stop:
                     game?.stop()
+                case .gameOver(let score):
+                    Task { [weak self] in
+                        let actionValue = await self?.showGameOverAlert(score: score) ?? false
+                        // play again
+                        if actionValue { self?.viewModel.state = .restart }
+                        // quit
+                        else { self?.dismiss(animated: true) }
+                    }
+                    //showGameOverAlert(score: score)
+                    break
                 }
             }
             .store(in: &cancellables)
@@ -214,6 +226,16 @@ extension SNKSnakeGameViewController {
         .register(in: self)
     }
 
+    private func showGameOverAlert(score: Int) async -> Bool {
+        return await WSRAsyncAlertController<Bool>(
+            message: "You got \(score) point(s)!",
+            title: "GAME OVER!"
+        )
+        .addButton(title: "PLAY AGAIN", isPreferred: true, returnValue: true)
+        .addButton(title: "QUIT", returnValue: false)
+        .register(in: self)
+    }
+
     // -----
 
     private func showGameLevelAlert(level: Int) {
@@ -239,26 +261,6 @@ extension SNKSnakeGameViewController {
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "CONTINUE", style: UIAlertAction.Style.default, handler: nil))
-
-        // show the alert
-        present(alert, animated: true, completion: nil)
-    }
-
-    private func showGameOverAlert(score: Int) {
-        // create the alert
-        let alert = UIAlertController(
-            title: "GAME OVER!", message: "You got \(score) point(s)!", preferredStyle: UIAlertController.Style.alert
-        )
-        alert.view.tintColor = .accent
-
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "PLAY AGAIN", style: UIAlertAction.Style.cancel) { [weak self] action in
-            self?.game?.restart()
-            self?.initGame()
-        })
-        alert.addAction(UIAlertAction(title: "QUIT", style: UIAlertAction.Style.default) { [weak self] action in
-            self?.dismiss(animated: true)
-        })
 
         // show the alert
         present(alert, animated: true, completion: nil)
@@ -363,7 +365,7 @@ extension SNKSnakeGameViewController {
                 switch state {
                 case .levelComplete: break
                 case .newLevel: break
-                case .gameOver(let score): self?.showGameOverAlert(score: score)
+                case .gameOver(let score): self?.viewModel.state = .gameOver(score)
                 }
             }
             .store(in: &cancellables)
@@ -373,6 +375,7 @@ extension SNKSnakeGameViewController {
             .sink { [weak self] completed in
                 guard completed else { return }
                 self?.viewModel.state = .stop
+                self?.checkForNextState()
             }
             .store(in: &cancellables)
     }
@@ -400,7 +403,15 @@ extension SNKSnakeGameViewController {
 
     private func updateUI() {
         // update based on game status
-        restartButton.isEnabled = viewModel.state != .stop
-        pausePlayButton.isEnabled = viewModel.state != .stop
+        //restartButton.isEnabled = viewModel.state != SNKGameState.stop
+        //pausePlayButton.isEnabled = viewModel.state != SNKGameState.stop
+    }
+
+    /// check next game state after game duration completed
+    private func checkForNextState() {
+        guard let game = game else { return }
+
+        // gameover
+        viewModel.state = .gameOver(game.score)
     }
 }

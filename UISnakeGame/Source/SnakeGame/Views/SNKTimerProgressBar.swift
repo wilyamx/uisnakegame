@@ -78,6 +78,6 @@ class SNKTimerProgressBar: UIView {
         
         let fraction = durationInSecond / maxDurationInSecond
         barView.frame.size.width = frame.width * fraction
-        wsrLogger.info(message: "\(durationInSecond)/\(maxDurationInSecond), fraction: \(fraction)")
+        //wsrLogger.info(message: "\(durationInSecond)/\(maxDurationInSecond), fraction: \(fraction)")
     }
 }

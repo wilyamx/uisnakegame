@@ -20,6 +20,7 @@ class WSRAsyncAlertController<T> {
         self.title = title
         self.message = message
         self.alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        self.alertController.view.tintColor = UIColor.accent
     }
 
     @discardableResult
