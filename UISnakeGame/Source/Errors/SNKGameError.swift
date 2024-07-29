@@ -11,17 +11,20 @@ import UIKit
 enum SNKGameError: Error, LocalizedError, WSRActionableError {
     typealias CustomErrorActionType = ActionType
 
+    case configurationFileInvalid(String)
     case minUserCharacterCount(String)
     case invalidUser(String)
 
     var title: String? {
         switch self {
+        case .configurationFileInvalid: "Configuration File Invalid"
         case .minUserCharacterCount, .invalidUser: "Invalid User"
         }
     }
 
     var errorDescription: String? {
         switch self {
+        case .configurationFileInvalid(let filename): "Invalid configuration file \(filename)"
         case .minUserCharacterCount: "User should have at least 3 characters."
         case .invalidUser(let name): "User [\(name)] already used!\nYou may check from the leaderboard."
         }
@@ -51,7 +54,7 @@ enum SNKGameError: Error, LocalizedError, WSRActionableError {
 
     var alertActions: [ActionType] {
         switch self {
-        case .minUserCharacterCount, .invalidUser: [.ok]
+        default: [.ok]
         }
     }
 }

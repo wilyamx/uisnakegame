@@ -418,7 +418,6 @@
 			isa = PBXGroup;
 			children = (
 				A75D95192C57744400C23768 /* WSRFileLoader.swift */,
-				A75D95182C57744400C23768 /* WSRFileLoaderError.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -426,6 +425,7 @@
 		A75D951C2C5774C200C23768 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				A75D95182C57744400C23768 /* WSRFileLoaderError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";

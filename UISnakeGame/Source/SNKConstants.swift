@@ -12,7 +12,7 @@ class SNKConstants: NSObject {
     typealias LeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
 
     static let TILE_SIZE = 15.0 //15
-    static let SPEED = 0.3 // 0
+    static let SPEED = 0.18 // 0
     static let GRIDLINES_COLOR = UIColor.white
     static let TILE_COLOR = UIColor.accentVariation4
     static let FOOD_COLOR = UIColor.red
@@ -20,6 +20,7 @@ class SNKConstants: NSObject {
     static let SNAKE_LENGTH = 4 //8
     static let PROGRESS_BAR_HEIGHT = 3.0
     static let PROGRESS_BAR_COLOR = UIColor.orange
+    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
 
     static var shared = SNKConstants()
 

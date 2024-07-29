@@ -85,6 +85,9 @@ class SNKSnakeGameViewController: SNKViewController {
     private var progressBar: SNKTimerProgressBar?
     private var userSwipeCallback: ((SNKDirection) -> ())?
 
+    // temp
+    var configuration: SNKGameConfiguration?
+
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {

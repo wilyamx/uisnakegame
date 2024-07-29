@@ -35,8 +35,10 @@ class SNKHomeCoordinator: WSRCoordinatorProtocol {
         window?.rootViewController = navigationController
     }
 
-    func playTheGame(on parentViewController: UIViewController) {
+    func playTheGame(on parentViewController: UIViewController, configuration: SNKGameConfiguration?) {
         let viewController = SNKSnakeGameViewController()
+        viewController.configuration = configuration
+
         let navController = UINavigationController(rootViewController: viewController)
         navController.modalPresentationStyle = .fullScreen
 

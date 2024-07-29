@@ -123,14 +123,15 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
 
         Task {
             do {
-                try await viewModel.loadGameConfiguration(from: "default-game-config.json")
+                try await viewModel.loadGameConfiguration(from: SNKConstants.DEFAULT_GAME_CONFIG_FILE)
+                await viewModel.applyDummyLeaderboard()
             } catch {
-                print(error)
-                print()
+                if let error = error as? WSRFileLoaderError {
+                    Task { await error.showAlert(in: self) }
+                }
             }
         }
 
-        viewModel.applyDummyLeaderboard()
         wsrLogger.info(message: "viewDidLoad")
     }
 
@@ -173,7 +174,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         }
         playButton.tapHandler = { [weak self] _ in
             guard let self else { return }
-            coordinator?.playTheGame(on: self)
+            coordinator?.playTheGame(on: self, configuration: viewModel.configuration)
         }
         settingsButton.tapHandler = { [weak self] _ in
             self?.coordinator?.showSettings()
