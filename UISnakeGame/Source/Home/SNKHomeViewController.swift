@@ -121,6 +121,15 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         super.viewDidLoad()
         title = "Home"
 
+        Task {
+            do {
+                try await viewModel.loadGameConfiguration(from: "default-game-config.json")
+            } catch {
+                print(error)
+                print()
+            }
+        }
+
         viewModel.applyDummyLeaderboard()
         wsrLogger.info(message: "viewDidLoad")
     }

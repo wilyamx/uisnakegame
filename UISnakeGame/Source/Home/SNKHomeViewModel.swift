@@ -6,10 +6,20 @@
 //  Copyright © 2024 Personal. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class SNKHomeViewModel {
     private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
+
+    let fileLoader = WSRFileLoader()
+
+    var defaultConfiguration: SNKGameConfiguration?
+
+    func loadGameConfiguration(from filename: String) async throws {
+        defaultConfiguration = try await fileLoader.loadJSON(
+            "default-game-config.json", SNKGameConfiguration.self
+        ) as? SNKGameConfiguration
+    }
 
     func isValidUser(name: String) -> Bool {
         return false

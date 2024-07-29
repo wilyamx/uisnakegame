@@ -1,12 +1,11 @@
 {
     "life": 10,
-    "scene": {
+    "grid": {
         "spacing": 0,
         "tile": {
             "width": 5,
             "height": 5,
-            "color": "#000000",
-            "image_asset": "tile"
+            "color": "#000000"
         }
     },
     "snake": {
@@ -14,10 +13,10 @@
         "default_body_color": "#000000",
         "default_tail_color": "#000000"
     },
-    "levels": [
+    "stages": [
         {
-            "level": 1,
-            "level_name": "Single Food",
+            "stage": 1,
+            "stage_name": "Single Food",
             "duration_in_seconds": 3000,
             "map":
             [[0,0,0,0,1,1,0],
@@ -25,12 +24,12 @@
                 [0,1,0,0,0,0,0],
                 [0,1,0,0,0,0,0],
             [0,0,0,0,0,0,0]],
-            "score": 5,
-            "speed": 1
+            "minimum_score": 5,
+            "starting_speed": 1
         },
         {
-            "level": 2,
-            "level_name": "Single Food",
+            "stage": 2,
+            "stage_name": "Single Food",
             "duration_in_seconds": 3000,
             "map":
             [[0,0,0,0,1,1,0],
@@ -38,8 +37,8 @@
                 [0,1,0,0,0,0,0],
                 [0,1,0,0,0,0,0],
             [0,0,0,0,0,0,0]],
-            "score": 10,
-            "speed": 2
+            "minimum_score": 10,
+            "starting_speed": 2
         }
     ]
 }

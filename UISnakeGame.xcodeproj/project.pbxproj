@@ -29,7 +29,7 @@
 		A75D94C02C4F924100C23768 /* SuperEasyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A75D94BF2C4F924100C23768 /* SuperEasyLayout */; };
 		A75D94C22C4F9ED300C23768 /* String+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C12C4F9ED300C23768 /* String+WSR.swift */; };
 		A75D94C42C4F9FAB00C23768 /* UIFont+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */; };
-		A75D94C62C4FACF700C23768 /* snake-game-config.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D94C52C4FACF700C23768 /* snake-game-config.json */; };
+		A75D94C62C4FACF700C23768 /* default-game-config.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D94C52C4FACF700C23768 /* default-game-config.json */; };
 		A75D94C82C4FB29F00C23768 /* WSRLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C72C4FB29F00C23768 /* WSRLogger.swift */; };
 		A75D94CA2C4FB48A00C23768 /* UIStackView+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */; };
 		A75D94CF2C4FD12300C23768 /* SNKSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94CE2C4FD12300C23768 /* SNKSettingsViewController.swift */; };
@@ -64,6 +64,9 @@
 		A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95112C56279A00C23768 /* SNKGameError.swift */; };
 		A75D95142C563C2600C23768 /* WSRAsyncAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */; };
 		A75D95162C57210D00C23768 /* SNKTimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95152C57210C00C23768 /* SNKTimerProgressBar.swift */; };
+		A75D951A2C57744400C23768 /* WSRFileLoaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95182C57744400C23768 /* WSRFileLoaderError.swift */; };
+		A75D951B2C57744400C23768 /* WSRFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95192C57744400C23768 /* WSRFileLoader.swift */; };
+		A75D951E2C57818600C23768 /* SNKGameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D951D2C57818600C23768 /* SNKGameConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +112,7 @@
 		A75D94BC2C4F906A00C23768 /* UIColor+WSR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WSR.swift"; sourceTree = "<group>"; };
 		A75D94C12C4F9ED300C23768 /* String+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+WSR.swift"; sourceTree = "<group>"; };
 		A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+WSR.swift"; sourceTree = "<group>"; };
-		A75D94C52C4FACF700C23768 /* snake-game-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "snake-game-config.json"; sourceTree = "<group>"; };
+		A75D94C52C4FACF700C23768 /* default-game-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-game-config.json"; sourceTree = "<group>"; };
 		A75D94C72C4FB29F00C23768 /* WSRLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRLogger.swift; sourceTree = "<group>"; };
 		A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+WSR.swift"; sourceTree = "<group>"; };
 		A75D94CE2C4FD12300C23768 /* SNKSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKSettingsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +146,9 @@
 		A75D95112C56279A00C23768 /* SNKGameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameError.swift; sourceTree = "<group>"; };
 		A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRAsyncAlertController.swift; sourceTree = "<group>"; };
 		A75D95152C57210C00C23768 /* SNKTimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKTimerProgressBar.swift; sourceTree = "<group>"; };
+		A75D95182C57744400C23768 /* WSRFileLoaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRFileLoaderError.swift; sourceTree = "<group>"; };
+		A75D95192C57744400C23768 /* WSRFileLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRFileLoader.swift; sourceTree = "<group>"; };
+		A75D951D2C57818600C23768 /* SNKGameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +209,7 @@
 				A75D94702C4DFE3500C23768 /* Main.storyboard */,
 				A75D94732C4DFE3500C23768 /* Assets.xcassets */,
 				A75D94752C4DFE3500C23768 /* LaunchScreen.storyboard */,
-				A75D94C52C4FACF700C23768 /* snake-game-config.json */,
+				A75D94C52C4FACF700C23768 /* default-game-config.json */,
 				A75D94782C4DFE3500C23768 /* Info.plist */,
 			);
 			path = UISnakeGame;
@@ -285,6 +291,7 @@
 				A75D94AB2C4E494C00C23768 /* SNKHomeViewController.swift */,
 				A75D94A72C4E488E00C23768 /* SNKHomeViewModel.swift */,
 				A75D94AD2C4E4B0F00C23768 /* SNKHomeCoordinator.swift */,
+				A75D951D2C57818600C23768 /* SNKGameConfiguration.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -297,9 +304,11 @@
 				A75D94F92C54A30E00C23768 /* WSRPropertyWrappers.swift */,
 				A75D95002C54C44100C23768 /* WSRSoundPlayer.swift */,
 				A75D950E2C56254200C23768 /* WSRActionableError.swift */,
-				A75D94AF2C4F818900C23768 /* Extensions */,
-				A75D94A22C4E43FF00C23768 /* Coordinator */,
 				A75D95132C563C2600C23768 /* WSRAsyncAlertController.swift */,
+				A75D94A22C4E43FF00C23768 /* Coordinator */,
+				A75D951C2C5774C200C23768 /* Errors */,
+				A75D94AF2C4F818900C23768 /* Extensions */,
+				A75D95172C57741100C23768 /* Loader */,
 			);
 			path = WSR;
 			sourceTree = "<group>";
@@ -401,6 +410,22 @@
 			isa = PBXGroup;
 			children = (
 				A75D95112C56279A00C23768 /* SNKGameError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		A75D95172C57741100C23768 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				A75D95192C57744400C23768 /* WSRFileLoader.swift */,
+				A75D95182C57744400C23768 /* WSRFileLoaderError.swift */,
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
+		A75D951C2C5774C200C23768 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -526,7 +551,7 @@
 				A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */,
 				A75D94772C4DFE3500C23768 /* Base in Resources */,
 				A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */,
-				A75D94C62C4FACF700C23768 /* snake-game-config.json in Resources */,
+				A75D94C62C4FACF700C23768 /* default-game-config.json in Resources */,
 				A75D94722C4DFE3500C23768 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +605,7 @@
 				A75D95162C57210D00C23768 /* SNKTimerProgressBar.swift in Sources */,
 				A75D94D52C4FD85100C23768 /* SNKLeaderboardViewModel.swift in Sources */,
 				A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */,
+				A75D951A2C57744400C23768 /* WSRFileLoaderError.swift in Sources */,
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
 				A75D95012C54C44100C23768 /* WSRSoundPlayer.swift in Sources */,
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
@@ -588,6 +614,8 @@
 				A75D94DE2C4FE27C00C23768 /* Sequence+WSR.swift in Sources */,
 				A75D94F42C50D09200C23768 /* SNKGridView.swift in Sources */,
 				A75D94EF2C50A2C300C23768 /* SNKSnakeGame.swift in Sources */,
+				A75D951E2C57818600C23768 /* SNKGameConfiguration.swift in Sources */,
+				A75D951B2C57744400C23768 /* WSRFileLoader.swift in Sources */,
 				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
 				A75D94FC2C54A77700C23768 /* SNKSettingsViewModel.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
