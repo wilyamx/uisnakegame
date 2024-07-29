@@ -194,7 +194,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .play:
                     game?.start()
                     progressBar?.play()
-                    progressBar?.start(maxDuration: 5)
+                    progressBar?.start(maxDuration: SNKConstants.GAME_DURATION_IN_SECONDS)
 
                 case .pause:
                     let state = game?.pause()
@@ -211,11 +211,13 @@ class SNKSnakeGameViewController: SNKViewController {
                     game?.stop()
 
                 case .stageComplete(let stage):
+                    progressBar?.pause()
                     Task { [weak self] in
                         await self?.showGameStageCompleteAlert(stage: stage)
                     }
 
                 case .gameOver(let score):
+                    progressBar?.pause()
                     Task { [weak self] in
                         let actionValue = await self?.showGameOverAlert(score: score) ?? false
                         // play again

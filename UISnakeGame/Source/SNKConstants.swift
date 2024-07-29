@@ -21,9 +21,12 @@ class SNKConstants: NSObject {
     static let PROGRESS_BAR_COLOR = UIColor.orange
 
     // No Configurable
-    static let SPEED = 0.18 // 0
     static let PROGRESS_BAR_HEIGHT = 3.0
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
+
+    static let SPEED = 0.18 // 0
+    static let GAME_DURATION_IN_SECONDS = 180.0
+
 
     static var shared = SNKConstants()
 
