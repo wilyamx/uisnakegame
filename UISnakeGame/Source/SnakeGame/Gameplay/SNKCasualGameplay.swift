@@ -60,6 +60,9 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         .register(in: viewController)
     }
 
-    mutating func nextStage() { currentStage = 1 }
+    mutating func nextStage() {
+        currentStage = 1
+        wsrLogger.info(message: "Current Stage: \(currentStage)")
+    }
     mutating func currentStageData() -> SNKStageData? { nil }
 }

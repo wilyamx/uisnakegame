@@ -15,7 +15,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         var tileSize = SNKConstants.TILE_SIZE
         var mapSize: (rows: Int, columns: Int) = (rows: 0, columns: 0)
         if let config = SNKConstants.shared.gameConfig, config.stages.count > 0 {
-            mapSize = stages[0].mapSize()
+            mapSize = stages[currentStage - 1].mapSize()
             let maxDivision = max(mapSize.rows, mapSize.columns)
             tileSize = CGFloat(min(
                 Int(containerFrame.width / CGFloat(maxDivision)),
@@ -70,6 +70,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
 
     mutating func nextStage() {
         currentStage += 1
+        wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
     mutating func currentStageData() -> SNKStageData? {
         return stages[currentStage]

@@ -233,7 +233,10 @@ class SNKSnakeGameViewController: SNKViewController {
                         }
                         // map based gameplay
                         else if actionName == "Next Stage" {
-                            game?.gameplay.nextStage()
+                            guard let game = game else { return }
+                            game.gameplay.nextStage()
+                            // pass updated gameplay from snakeGame to viewModel
+                            viewModel.gameplay = game.gameplay
                             viewModel.state = .start
                         }
                     }
@@ -338,13 +341,13 @@ extension SNKSnakeGameViewController {
         var frame = containerView.bounds
         frame.size.height = 695
 
-        let gameplay = viewModel.newGameplay()
-        let gridInfo = gameplay.gridInfo(in: frame)
+        wsrLogger.info(message: "Gameplay Current Stage: \(viewModel.gameplay.currentStage)")
+        let gridInfo = viewModel.gameplay.gridInfo(in: frame)
 
         game = SNKSnakeGame(
             frame: CGRect(x: 0, y: 0, width: gridInfo.area.width, height: gridInfo.area.height),
             tileSize: gridInfo.tileSize,
-            gameplay: gameplay
+            gameplay: viewModel.gameplay
         )
 
         progressBar = SNKTimerProgressBar(
