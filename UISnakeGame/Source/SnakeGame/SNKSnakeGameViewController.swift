@@ -353,7 +353,7 @@ extension SNKSnakeGameViewController {
 
         game.placeRandomFood(color: foodColor)
 
-        //game.makeSnake(row: 1, column: 1)
+        game.makeSnake(row: 1, column: 1)
 
         setupGameBindings()
 

@@ -141,13 +141,26 @@ class SNKSnakeGame {
     }
 
     func placeObstacles() {
+        guard let grid = grid else { fatalError("Grid not available!") }
+
         // map game
         guard let gridLocations = gameplay.nextStage()?.obstacleGridLocations()
         else {
             // casual game
+//            var locations: [CGPoint] = []
+//            for i in 0..<5 {
+//                locations.append(grid.randomLocation(excludedLocations: locations))
+//            }
+
+//            for location in SNKCasualGameplay.obstacles {
+//                placeObstacle(row: location.row, column: location.column, color: obstacleColor)
+//            }
+
             for location in SNKCasualGameplay.obstacles {
                 placeObstacle(row: location.row, column: location.column, color: obstacleColor)
             }
+
+            //placeRandomObstacle(color: <#T##UIColor#>)
             return
         }
 
