@@ -16,7 +16,8 @@ protocol SNKGameplayProtocol {
 
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid
     func gridView(frame: CGRect, tileSize: CGFloat) -> SNKGridView
-    func welcomeStageAlert(in viewController: UIViewController, level: Int) async
+    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async
+    func completedStageAlert(in viewController: UIViewController, stage: Int) async
     mutating func nextStage() -> SNKStageData?
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo
 }

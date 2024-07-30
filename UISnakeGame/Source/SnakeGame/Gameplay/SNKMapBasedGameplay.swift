@@ -47,12 +47,22 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     }
 
     @MainActor
-    func welcomeStageAlert(in viewController: UIViewController, level: Int) async {
-        await WSRAsyncAlertController<Bool>(
+    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async {
+        await WSRAsyncAlertController<String>(
             message: nil,
-            title: "Stage \(level)"
+            title: "STAGE \(stage)"
         )
-        .addButton(title: "Ok", returnValue: true)
+        .addButton(title: "Ok", returnValue: "Ok")
+        .register(in: viewController)
+    }
+
+    @MainActor
+    func completedStageAlert(in viewController: UIViewController, stage: Int) async {
+        await WSRAsyncAlertController<String>(
+            message: "You will proceed to the next stage.",
+            title: "STAGE \(stage) COMPLETE!"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
         .register(in: viewController)
     }
 
