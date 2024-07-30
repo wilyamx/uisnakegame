@@ -67,6 +67,9 @@
 		A75D951A2C57744400C23768 /* WSRFileLoaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95182C57744400C23768 /* WSRFileLoaderError.swift */; };
 		A75D951B2C57744400C23768 /* WSRFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95192C57744400C23768 /* WSRFileLoader.swift */; };
 		A75D951E2C57818600C23768 /* SNKGameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D951D2C57818600C23768 /* SNKGameConfiguration.swift */; };
+		A75D95202C5864B000C23768 /* SNKCasualGameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */; };
+		A75D95222C5864E200C23768 /* SNKMapBasedGameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */; };
+		A75D95252C58654400C23768 /* SNKGameplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +152,9 @@
 		A75D95182C57744400C23768 /* WSRFileLoaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRFileLoaderError.swift; sourceTree = "<group>"; };
 		A75D95192C57744400C23768 /* WSRFileLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSRFileLoader.swift; sourceTree = "<group>"; };
 		A75D951D2C57818600C23768 /* SNKGameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameConfiguration.swift; sourceTree = "<group>"; };
+		A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKCasualGameplay.swift; sourceTree = "<group>"; };
+		A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKMapBasedGameplay.swift; sourceTree = "<group>"; };
+		A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameplayProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,8 +241,9 @@
 		A75D949A2C4E335600C23768 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
+				A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */,
 				A75D94F72C51D6CD00C23768 /* SNKConstants.swift */,
+				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
 				A75D95102C56276800C23768 /* Errors */,
 				A75D949F2C4E33C600C23768 /* Components */,
 				A75D949D2C4E337D00C23768 /* ViewModels */,
@@ -374,6 +381,8 @@
 		A75D94E52C507D4E00C23768 /* SnakeGame */ = {
 			isa = PBXGroup;
 			children = (
+				A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */,
+				A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */,
 				A75D94E62C507D9200C23768 /* SNKSnakeGameViewController.swift */,
 				A75D94E82C507DA800C23768 /* SNKSnakeGameViewModel.swift */,
 				A75D94EC2C509F8F00C23768 /* SNKGrid.swift */,
@@ -590,7 +599,9 @@
 				A75D94B12C4F81BE00C23768 /* UIViewController+WSR.swift in Sources */,
 				A75D950F2C56254200C23768 /* WSRActionableError.swift in Sources */,
 				A75D94FA2C54A30E00C23768 /* WSRPropertyWrappers.swift in Sources */,
+				A75D95222C5864E200C23768 /* SNKMapBasedGameplay.swift in Sources */,
 				A75D94E72C507D9200C23768 /* SNKSnakeGameViewController.swift in Sources */,
+				A75D95202C5864B000C23768 /* SNKCasualGameplay.swift in Sources */,
 				A75D94ED2C509F8F00C23768 /* SNKGrid.swift in Sources */,
 				A75D94E92C507DA800C23768 /* SNKSnakeGameViewModel.swift in Sources */,
 				A75D94C42C4F9FAB00C23768 /* UIFont+WSR.swift in Sources */,
@@ -616,6 +627,7 @@
 				A75D94EF2C50A2C300C23768 /* SNKSnakeGame.swift in Sources */,
 				A75D951E2C57818600C23768 /* SNKGameConfiguration.swift in Sources */,
 				A75D951B2C57744400C23768 /* WSRFileLoader.swift in Sources */,
+				A75D95252C58654400C23768 /* SNKGameplayProtocol.swift in Sources */,
 				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
 				A75D94FC2C54A77700C23768 /* SNKSettingsViewModel.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,

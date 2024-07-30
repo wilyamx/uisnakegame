@@ -9,7 +9,7 @@
 import UIKit
 
 final class SNKSnakeGameViewModel {
-    enum SNKGameState {
+    enum SNKGameState: Equatable {
         case start
         case play
         case stop

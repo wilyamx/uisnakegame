@@ -431,8 +431,8 @@ extension SNKSnakeGameViewController {
 
     private func updateUI() {
         // update based on game status
-        //restartButton.isEnabled = viewModel.state != SNKGameState.stop
-        //pausePlayButton.isEnabled = viewModel.state != SNKGameState.stop
+        restartButton.isEnabled = viewModel.state != SNKGameState.stop
+        pausePlayButton.isEnabled = viewModel.state != SNKGameState.stop
     }
 
     /// check next game state after game duration completed
@@ -442,5 +442,6 @@ extension SNKSnakeGameViewController {
         // gameover
         //viewModel.state = .gameOver(game.score)
         viewModel.state = .stageComplete(game.stage)
+        print()
     }
 }
