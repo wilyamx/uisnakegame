@@ -11,35 +11,6 @@ import UIKit
 struct SNKCasualGameplay: SNKGameplayProtocol {
     typealias SNKGridLocation = SNKGrid.SNKGridLocation
 
-    static var obstacles: [SNKGridLocation] {
-        return [
-            SNKGridLocation(row: 5, column: 25),
-            SNKGridLocation(row: 6, column: 25),
-            SNKGridLocation(row: 7, column: 25),
-            SNKGridLocation(row: 8, column: 25),
-            SNKGridLocation(row: 9, column: 25),
-
-            SNKGridLocation(row: 15, column: 5),
-            SNKGridLocation(row: 15, column: 6),
-            SNKGridLocation(row: 15, column: 7),
-            SNKGridLocation(row: 15, column: 8),
-
-            SNKGridLocation(row: 25, column: 5),
-            SNKGridLocation(row: 25, column: 6),
-            SNKGridLocation(row: 25, column: 7),
-            SNKGridLocation(row: 25, column: 8),
-
-            SNKGridLocation(row: 32, column: 0),
-            SNKGridLocation(row: 33, column: 0),
-            SNKGridLocation(row: 34, column: 0),
-            SNKGridLocation(row: 35, column: 0),
-
-            SNKGridLocation(row: 39, column: 17),
-            SNKGridLocation(row: 39, column: 18),
-            SNKGridLocation(row: 39, column: 19),
-            SNKGridLocation(row: 39, column: 20)
-        ]
-    }
     var currentStage: Int = 0
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
