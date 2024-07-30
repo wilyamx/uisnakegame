@@ -9,11 +9,29 @@
 import Foundation
 
 struct SNKStageData: Codable {
+    typealias SNKGridLocation = SNKGrid.SNKGridLocation
+
     let stage: Int
     let durationInSeconds: Int
     let startingSpeed: Int
     let minimumScore: Int
     let mapping: [[Int]]
+
+    func obstacleGridLocations() -> [SNKGridLocation] {
+        var locations: [SNKGridLocation] = []
+        for (rowIndex, row) in mapping.enumerated() {
+            for (columnIndex, element) in row.enumerated() {
+                if element == 1 {
+                    locations.append(SNKGridLocation(row: rowIndex, column: columnIndex))
+                }
+            }
+        }
+        return locations
+    }
+
+    func mapSize() -> (rows: Int, columns: Int) {
+        return (rows: mapping.count, columns: mapping[0].count)
+    }
 }
 
 struct SNKGridData: Codable {

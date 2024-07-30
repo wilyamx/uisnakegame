@@ -45,7 +45,7 @@ final class SNKSnakeGameViewModel {
         }
     }
 
-    var gameplay: SNKGameplayProtocol {
+    func newGameplay() -> SNKGameplayProtocol {
         SNKConstants.shared.playMode ? SNKMapBasedGameplay() : SNKCasualGameplay()
     }
     

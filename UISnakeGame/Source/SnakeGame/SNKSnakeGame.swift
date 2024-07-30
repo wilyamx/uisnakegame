@@ -12,6 +12,7 @@ import Combine
 
 class SNKSnakeGame {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
+    typealias SNKGridLocation = SNKGrid.SNKGridLocation
 
     enum SNKState: Equatable {
         case stopped
@@ -32,7 +33,7 @@ class SNKSnakeGame {
 
     // game management
     @Published var state: SNKState = .stopped
-    private var gameplay: SNKGameplayProtocol
+    var gameplay: SNKGameplayProtocol
     private(set) var timer: Timer?
     private(set) var updateInterval: TimeInterval = SNKConstants.SPEED { didSet {
         start()
@@ -52,6 +53,10 @@ class SNKSnakeGame {
     var foodColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
         return UIColor(hexString: config.foodColor)
+    }
+    private var obstacleColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.OBSTACLE_COLOR }
+        return UIColor(hexString: config.obstacleColor)
     }
     var defaultSnakeLength: Int {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
@@ -135,21 +140,20 @@ class SNKSnakeGame {
         view.addSubview(food)
     }
 
-    func placeRandomObstacle(color: UIColor, excludedLocations: [CGPoint]? = nil) {
-        guard let grid = grid else { fatalError("Grid not available!") }
-        guard let snake = snake else { return }
+    func placeObstacles() {
+        // map game
+        guard let gridLocations = gameplay.nextStage()?.obstacleGridLocations()
+        else {
+            // casual game
+            for location in SNKCasualGameplay.obstacles {
+                placeObstacle(row: location.row, column: location.column, color: obstacleColor)
+            }
+            return
+        }
 
-        var location: CGPoint
-        repeat {
-            location = grid.randomLocation(excludedLocations: excludedLocations)
-        } while(snake.intersect(with: location))
-
-        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKTileView(frame: foodFrame, color: .orange)
-
-        wsrLogger.info(message: "\(location)")
-        foodLocations.append(location)
-        view.addSubview(food)
+        for location in gridLocations {
+            placeObstacle(row: location.row, column: location.column, color: obstacleColor)
+        }
     }
 
     func placeObstacle(row: Int, column: Int, color: UIColor) {
@@ -168,6 +172,23 @@ class SNKSnakeGame {
         view.addSubview(item)
     }
 
+    func placeRandomObstacle(color: UIColor, excludedLocations: [CGPoint]? = nil) {
+        guard let grid = grid else { fatalError("Grid not available!") }
+        guard let snake = snake else { return }
+
+        var location: CGPoint
+        repeat {
+            location = grid.randomLocation(excludedLocations: excludedLocations)
+        } while(snake.intersect(with: location))
+
+        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let food = SNKTileView(frame: foodFrame, color: .orange)
+
+        wsrLogger.info(message: "\(location)")
+        foodLocations.append(location)
+        view.addSubview(food)
+    }
+
     // MARK: - Directions
 
     func changeSnakeDirection(to direction: SNKDirection) {
@@ -177,8 +198,7 @@ class SNKSnakeGame {
     // MARK: - Game Control
 
     func start() {
-        guard let grid else { fatalError("Missing grid!") }
-        guard let snake else { fatalError("Missing snake!") }
+        guard grid != nil else { fatalError("Missing grid!") }
 
         stop()
 

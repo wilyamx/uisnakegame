@@ -9,6 +9,11 @@
 import Foundation
 
 class SNKGrid {
+    struct SNKGridLocation {
+        var row: Int
+        var column: Int
+    }
+
     struct SNKGridInfo {
         var rows: Int
         var columns: Int

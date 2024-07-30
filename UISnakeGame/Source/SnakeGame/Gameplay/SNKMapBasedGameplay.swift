@@ -9,11 +9,32 @@
 import UIKit
 
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
-    var tileSize: CGFloat {
-        guard let config = SNKConstants.shared.gameConfig,
-              config.stages.count > 0 else { return SNKConstants.TILE_SIZE }
-        return CGFloat(config.grid.size + 10)
+    var currentStage: Int = 0
+
+    func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
+        var tileSize = SNKConstants.TILE_SIZE
+        var mapSize: (rows: Int, columns: Int) = (rows: 0, columns: 0)
+        if let config = SNKConstants.shared.gameConfig, config.stages.count > 0 {
+            mapSize = stages[0].mapSize()
+            let maxDivision = max(mapSize.rows, mapSize.columns)
+            tileSize = CGFloat(min(
+                Int(containerFrame.width / CGFloat(maxDivision)),
+                Int(containerFrame.height / CGFloat(maxDivision))
+            ))
+        }
+        let area = CGSize(
+            width: tileSize * CGFloat(mapSize.columns),
+            height: tileSize * CGFloat(mapSize.rows)
+        )
+        return SNKGridInfo(rows: mapSize.rows, columns: mapSize.columns, area: area, tileSize: tileSize)
     }
+
+    var stages: [SNKStageData] {
+        guard let config = SNKConstants.shared.gameConfig else { return [] }
+        return config.stages
+    }
+
+    // MARK: - Methods
 
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
@@ -33,5 +54,10 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         )
         .addButton(title: "Ok", returnValue: true)
         .register(in: viewController)
+    }
+
+    mutating func nextStage() -> SNKStageData? {
+        currentStage += 1
+        return stages[currentStage - 1]
     }
 }
