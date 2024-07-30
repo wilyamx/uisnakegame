@@ -187,7 +187,7 @@ class SNKSnakeGame {
         view.addSubview(item)
     }
 
-    func placeRandomFood(color: UIColor) {
+    func placeRandomFood() {
         guard let grid = grid else { fatalError("Grid not available!") }
 
         var location: CGPoint = grid.randomLocation(excludedLocations: obstacleLocations)
@@ -198,7 +198,7 @@ class SNKSnakeGame {
         }
 
         let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKTileView(frame: foodFrame, color: color)
+        let food = SNKTileView(frame: foodFrame, color: foodColor)
 
         //wsrLogger.info(message: "\(location)")
         foodLocations.append(location)
@@ -295,7 +295,7 @@ class SNKSnakeGame {
             if let foodItemLocation = snakeIntersectToFoodItems() {
                 eatFoodItem(from: foodItemLocation)
                 snakeLength = snake.grow()
-                placeRandomFood(color: foodColor)
+                placeRandomFood()
             }
         }
 

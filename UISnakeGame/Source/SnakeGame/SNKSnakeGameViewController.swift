@@ -56,7 +56,7 @@ class SNKSnakeGameViewController: SNKViewController {
         view.lineBreakMode = .byCharWrapping
         return view
     }()
-    private lazy var levelTextLabel: UILabel = {
+    private lazy var stageTextLabel: UILabel = {
         let view = UILabel()
         view.text = "STAGE: 1"
         view.textAlignment = .right
@@ -158,7 +158,7 @@ class SNKSnakeGameViewController: SNKViewController {
             bottomStackView.addArrangedSubviews([
                 scoreTextLabel,
                 snakeLengthTextLabel,
-                levelTextLabel
+                stageTextLabel
             ])
         ])
     }
@@ -216,6 +216,7 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
 
+                        //game?.stage = game?.gameplay.currentStage ?? 0
                         await game?.gameplay.welcomeStageAlert(in: self)
                         viewModel.state = .play
                     }
@@ -334,11 +335,12 @@ extension SNKSnakeGameViewController {
 
         game.placeObstacles()
         //game.placeFoods()
-        game.placeRandomFood(color: foodColor)
+        game.placeRandomFood()
 
         game.makeSnake(row: 1, column: 1)
 
         setupGameBindings()
+        game.stage = viewModel.gameplay.currentStage
 
         viewModel.state = .newStageAlert
     }
@@ -351,6 +353,13 @@ extension SNKSnakeGameViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] score in
                 self?.scoreTextLabel.text = "SCORE: \(score)"
+            }
+            .store(in: &cancellables)
+
+        game.$stage
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] stage in
+                self?.stageTextLabel.text = "STAGE: \(stage)"
             }
             .store(in: &cancellables)
 
@@ -379,6 +388,8 @@ extension SNKSnakeGameViewController {
                 self?.viewModel.state = .stageComplete(game.stage)
             }
             .store(in: &cancellables)
+
+        wsrLogger.info(message: "setupGameBindings")
     }
 
     private func addSwipeGestures() {
