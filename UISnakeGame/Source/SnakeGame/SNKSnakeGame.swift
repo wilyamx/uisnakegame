@@ -185,7 +185,7 @@ class SNKSnakeGame {
             let item = SNKTileView(frame: frame, color: color)
 
             //wsrLogger.info(message: "\(location)")
-            foodLocations.append(location)
+            obstacleLocations.append(location)
             view.addSubview(item)
         }
     }
