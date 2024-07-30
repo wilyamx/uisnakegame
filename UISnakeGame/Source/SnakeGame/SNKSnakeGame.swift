@@ -75,14 +75,13 @@ class SNKSnakeGame {
 
     func makeGrid() {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
-
-        self.grid = SNKGrid(frame: frame, size: tileSize)
+        self.grid = gameplay.grid(frame: frame, tileSize: tileSize)
     }
 
     func makeGridView() {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
-        let gridView = SNKGridView(frame: frame, size: tileSize)
+        let gridView = gameplay.gridView(frame: frame, tileSize: tileSize)
         gridView.backgroundColor = .clear
         view.addSubview(gridView)
 
@@ -107,8 +106,10 @@ class SNKSnakeGame {
         }
 
         let location = grid.locations[row][column]
-        let snake = SNKSnake(frame: frame, size: tileSize, location: location,
-                             direction: .right, gridInfo: grid.getInfo(), length: defaultSnakeLength)
+        let snake = SNKSnake(
+            frame: frame, location: location, direction: .right,
+            gridInfo: grid.getInfo(), length: defaultSnakeLength
+        )
 
         view.addSubview(snake.view)
 
@@ -176,6 +177,9 @@ class SNKSnakeGame {
     // MARK: - Game Control
 
     func start() {
+        guard let grid else { fatalError("Missing grid!") }
+        guard let snake else { fatalError("Missing snake!") }
+
         stop()
 
         let timer = Timer(timeInterval: updateInterval,

@@ -215,7 +215,6 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
 
-                        //await showGameStageAlert(level: viewModel.currentStage)
                         await viewModel.gameplay.welcomeStageAlert(in: self, level: viewModel.currentStage)
                         viewModel.state = .play
                     }
@@ -325,7 +324,7 @@ extension SNKSnakeGameViewController {
         var frame = containerView.bounds
         frame.size.height = 695
 
-        game = SNKSnakeGame(frame: frame, tileSize: SNKConstants.TILE_SIZE, gameplay: viewModel.gameplay)
+        game = SNKSnakeGame(frame: frame, tileSize: viewModel.gameplay.tileSize, gameplay: viewModel.gameplay)
 
         progressBar = SNKTimerProgressBar(
             frame: CGRect(x: 0, y: 0, width: frame.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
@@ -343,33 +342,31 @@ extension SNKSnakeGameViewController {
 
         if viewModel.showGrid { game.makeGridView() }
 
-        game.placeObstacle(row: 5, column: 25, color: obstacleColor)
-        game.placeObstacle(row: 6, column: 25, color: obstacleColor)
-        game.placeObstacle(row: 7, column: 25, color: obstacleColor)
-        game.placeObstacle(row: 8, column: 25, color: obstacleColor)
-        game.placeObstacle(row: 9, column: 25, color: obstacleColor)
-
-        game.placeObstacle(row: 15, column: 5, color: obstacleColor)
-        game.placeObstacle(row: 15, column: 6, color: obstacleColor)
-        game.placeObstacle(row: 15, column: 7, color: obstacleColor)
-        game.placeObstacle(row: 15, column: 8, color: obstacleColor)
-
-        game.placeObstacle(row: 25, column: 5, color: obstacleColor)
-        game.placeObstacle(row: 25, column: 6, color: obstacleColor)
-        game.placeObstacle(row: 25, column: 7, color: obstacleColor)
-        game.placeObstacle(row: 25, column: 8, color: obstacleColor)
-
-        game.placeObstacle(row: 32, column: 0, color: obstacleColor)
-        game.placeObstacle(row: 33, column: 0, color: obstacleColor)
-        game.placeObstacle(row: 34, column: 0, color: obstacleColor)
-        game.placeObstacle(row: 35, column: 0, color: obstacleColor)
-
-        game.placeObstacle(row: 39, column: 17, color: obstacleColor)
-        game.placeObstacle(row: 39, column: 18, color: obstacleColor)
-        game.placeObstacle(row: 39, column: 19, color: obstacleColor)
-        game.placeObstacle(row: 39, column: 20, color: obstacleColor)
-
-        //game.placeRandomObstacle(color: obstacleColor)
+//        game.placeObstacle(row: 5, column: 25, color: obstacleColor)
+//        game.placeObstacle(row: 6, column: 25, color: obstacleColor)
+//        game.placeObstacle(row: 7, column: 25, color: obstacleColor)
+//        game.placeObstacle(row: 8, column: 25, color: obstacleColor)
+//        game.placeObstacle(row: 9, column: 25, color: obstacleColor)
+//
+//        game.placeObstacle(row: 15, column: 5, color: obstacleColor)
+//        game.placeObstacle(row: 15, column: 6, color: obstacleColor)
+//        game.placeObstacle(row: 15, column: 7, color: obstacleColor)
+//        game.placeObstacle(row: 15, column: 8, color: obstacleColor)
+//
+//        game.placeObstacle(row: 25, column: 5, color: obstacleColor)
+//        game.placeObstacle(row: 25, column: 6, color: obstacleColor)
+//        game.placeObstacle(row: 25, column: 7, color: obstacleColor)
+//        game.placeObstacle(row: 25, column: 8, color: obstacleColor)
+//
+//        game.placeObstacle(row: 32, column: 0, color: obstacleColor)
+//        game.placeObstacle(row: 33, column: 0, color: obstacleColor)
+//        game.placeObstacle(row: 34, column: 0, color: obstacleColor)
+//        game.placeObstacle(row: 35, column: 0, color: obstacleColor)
+//
+//        game.placeObstacle(row: 39, column: 17, color: obstacleColor)
+//        game.placeObstacle(row: 39, column: 18, color: obstacleColor)
+//        game.placeObstacle(row: 39, column: 19, color: obstacleColor)
+//        game.placeObstacle(row: 39, column: 20, color: obstacleColor)
 
         game.placeRandomFood(color: foodColor)
 

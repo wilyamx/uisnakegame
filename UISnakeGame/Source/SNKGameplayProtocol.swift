@@ -9,5 +9,9 @@
 import UIKit
 
 protocol SNKGameplayProtocol {
+    var tileSize: CGFloat { get }
+    
+    func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid
+    func gridView(frame: CGRect, tileSize: CGFloat) -> SNKGridView
     func welcomeStageAlert(in viewController: UIViewController, level: Int) async
 }

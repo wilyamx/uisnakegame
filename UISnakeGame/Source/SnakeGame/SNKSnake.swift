@@ -16,30 +16,23 @@ final class SNKSnake {
     let view = UIView()
 
     var bodyParts: [SNKTileView] = []
-    var stepSize: CGFloat = 0
     var gridInfo: SNKGridInfo
 
     var previousFacingDirection: SNKDirection
     var facingDirection: SNKDirection
 
     var length: Int { return bodyParts.count }
-    var tileSize: CGFloat {
-        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_SIZE }
-        return CGFloat(config.grid.size)
-    }
 
-    init(frame: CGRect, size: CGFloat, location: CGPoint,
-         direction: SNKDirection, gridInfo: SNKGridInfo, length: Int = 4) {
+    init(frame: CGRect, location: CGPoint, direction: SNKDirection, gridInfo: SNKGridInfo, length: Int = 4) {
         self.facingDirection = direction
         self.previousFacingDirection = direction
         self.gridInfo = gridInfo
-        self.stepSize = size
         view.frame = frame
 
         // support right direction only for now
-        if length == 1 { barbados(location: location, direction: direction, size: size) }
-        else if length == 4 { python(location: location, direction: direction, size: size) }
-        else { anaconda(location: location, direction: direction, size: size, length: length) }
+        if length == 1 { barbados(location: location, direction: direction, size: gridInfo.tileSize) }
+        else if length == 4 { python(location: location, direction: direction, size: gridInfo.tileSize) }
+        else { anaconda(location: location, direction: direction, size: gridInfo.tileSize, length: length) }
     }
 
     required init?(coder: NSCoder) {
@@ -172,7 +165,7 @@ final class SNKSnake {
             bodyParts[0].frame.origin.x = gridInfo.rightMax - gridInfo.tileSize
         }
         else {
-            bodyParts[0].frame.origin.x -= tileSize
+            bodyParts[0].frame.origin.x -= gridInfo.tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -186,7 +179,7 @@ final class SNKSnake {
         if x == gridInfo.rightMax - gridInfo.tileSize {
             bodyParts[0].frame.origin.x = 0
         } else {
-            bodyParts[0].frame.origin.x += tileSize
+            bodyParts[0].frame.origin.x += gridInfo.tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -201,7 +194,7 @@ final class SNKSnake {
             bodyParts[0].frame.origin.y = gridInfo.bottomMax
         }
         else {
-            bodyParts[0].frame.origin.y -= tileSize
+            bodyParts[0].frame.origin.y -= gridInfo.tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
@@ -215,7 +208,7 @@ final class SNKSnake {
         if y == gridInfo.bottomMax - gridInfo.tileSize {
             bodyParts[0].frame.origin.y = 0
         } else {
-            bodyParts[0].frame.origin.y += tileSize
+            bodyParts[0].frame.origin.y += gridInfo.tileSize
         }
         for i in 1..<bodyParts.count {
             bodyParts[i].frame.origin = locations[i - 1]
