@@ -147,20 +147,7 @@ class SNKSnakeGame {
         guard let gridLocations = gameplay.nextStage()?.obstacleGridLocations()
         else {
             // casual game
-//            var locations: [CGPoint] = []
-//            for i in 0..<5 {
-//                locations.append(grid.randomLocation(excludedLocations: locations))
-//            }
-
-//            for location in SNKCasualGameplay.obstacles {
-//                placeObstacle(row: location.row, column: location.column, color: obstacleColor)
-//            }
-
-            for location in SNKCasualGameplay.obstacles {
-                placeObstacle(row: location.row, column: location.column, color: obstacleColor)
-            }
-
-            //placeRandomObstacle(color: <#T##UIColor#>)
+            placeRandomObstacles(color: obstacleColor, count: SNKConstants.CASUAL_PLAY_MODE_OBSTACLE_COUNT)
             return
         }
 
@@ -185,21 +172,22 @@ class SNKSnakeGame {
         view.addSubview(item)
     }
 
-    func placeRandomObstacle(color: UIColor, excludedLocations: [CGPoint]? = nil) {
+    func placeRandomObstacles(color: UIColor, count: Int = 1, excludedLocations: [CGPoint]? = nil) {
         guard let grid = grid else { fatalError("Grid not available!") }
-        guard let snake = snake else { return }
 
-        var location: CGPoint
-        repeat {
-            location = grid.randomLocation(excludedLocations: excludedLocations)
-        } while(snake.intersect(with: location))
+        var excludedLocations: [CGPoint] = []
+        for _ in 0..<count {
+            excludedLocations.append(grid.randomLocation(excludedLocations: excludedLocations))
+        }
 
-        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKTileView(frame: foodFrame, color: .orange)
+        for location in excludedLocations {
+            let frame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+            let item = SNKTileView(frame: frame, color: color)
 
-        wsrLogger.info(message: "\(location)")
-        foodLocations.append(location)
-        view.addSubview(food)
+            //wsrLogger.info(message: "\(location)")
+            foodLocations.append(location)
+            view.addSubview(item)
+        }
     }
 
     // MARK: - Directions
