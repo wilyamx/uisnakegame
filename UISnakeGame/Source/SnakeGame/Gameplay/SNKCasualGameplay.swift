@@ -11,7 +11,7 @@ import UIKit
 struct SNKCasualGameplay: SNKGameplayProtocol {
     typealias SNKGridLocation = SNKGrid.SNKGridLocation
 
-    var currentStage: Int = 0
+    var currentStage: Int = 1
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE
@@ -39,8 +39,9 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     }
 
     @MainActor
-    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async {
-        await WSRAsyncAlertController<String>(
+    @discardableResult
+    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async -> String {
+        return await WSRAsyncAlertController<String>(
             message: "Play the classic game mode and gain more points.",
             title: "SURVIVAL MODE"
         )
@@ -49,14 +50,16 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     }
 
     @MainActor
-    func completedStageAlert(in viewController: UIViewController, stage: Int) async {
-        await WSRAsyncAlertController<String>(
-            message: "You survived within the time limit.",
+    @discardableResult
+    func completedStageAlert(in viewController: UIViewController, stage: Int, score: Int) async -> String {
+        return await WSRAsyncAlertController<String>(
+            message: "You survived within the time limit.\nYou got \(score) point(s).",
             title: "CONGRATULATIONS!"
         )
-        .addButton(title: "Play More", returnValue: "Play More")
+        .addButton(title: "Play Again", returnValue: "Play Again")
         .register(in: viewController)
     }
 
-    mutating func nextStage() -> SNKStageData? { nil }
+    mutating func nextStage() { currentStage = 1 }
+    mutating func currentStageData() -> SNKStageData? { nil }
 }

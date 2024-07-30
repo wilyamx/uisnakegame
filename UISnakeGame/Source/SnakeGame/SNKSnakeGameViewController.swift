@@ -226,7 +226,16 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
 
-                        await game?.gameplay.completedStageAlert(in: self, stage: stage)
+                        let actionName = await game?.gameplay.completedStageAlert(
+                            in: self, stage: stage, score: game?.score ?? 0
+                        )
+                        // casual game
+                        if actionName == "Play Again" {
+                            viewModel.state = .restart
+                        }
+                        else if actionName == "Next Stage" {
+                            print()
+                        }
                     }
 
                 case .gameOver(let score):

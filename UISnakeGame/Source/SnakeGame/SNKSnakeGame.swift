@@ -144,7 +144,7 @@ class SNKSnakeGame {
         guard let grid = grid else { fatalError("Grid not available!") }
 
         // map game
-        guard let gridLocations = gameplay.nextStage()?.obstacleGridLocations()
+        guard let gridLocations = gameplay.currentStageData()?.obstacleGridLocations()
         else {
             // casual game
             placeRandomObstacles(color: obstacleColor, count: SNKConstants.CASUAL_PLAY_MODE_OBSTACLE_COUNT)

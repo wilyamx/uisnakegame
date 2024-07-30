@@ -9,7 +9,7 @@
 import UIKit
 
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
-    var currentStage: Int = 0
+    var currentStage: Int = 1
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE
@@ -47,27 +47,31 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     }
 
     @MainActor
-    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async {
-        await WSRAsyncAlertController<String>(
+    @discardableResult
+    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async -> String {
+        return await WSRAsyncAlertController<String>(
             message: nil,
-            title: "STAGE \(stage)"
+            title: "STAGE \(currentStage)"
         )
         .addButton(title: "Ok", returnValue: "Ok")
         .register(in: viewController)
     }
 
     @MainActor
-    func completedStageAlert(in viewController: UIViewController, stage: Int) async {
+    @discardableResult
+    func completedStageAlert(in viewController: UIViewController, stage: Int, score: Int) async -> String {
         await WSRAsyncAlertController<String>(
-            message: "You will proceed to the next stage.",
-            title: "STAGE \(stage) COMPLETE!"
+            message: "You will proceed to the next stage.\nYou got \(score) point(s).",
+            title: "STAGE \(currentStage) COMPLETE!"
         )
-        .addButton(title: "Ok", returnValue: "Ok")
+        .addButton(title: "Next Stage", returnValue: "Next Stage")
         .register(in: viewController)
     }
 
-    mutating func nextStage() -> SNKStageData? {
+    mutating func nextStage() {
         currentStage += 1
-        return stages[currentStage - 1]
+    }
+    mutating func currentStageData() -> SNKStageData? {
+        return stages[currentStage]
     }
 }
