@@ -11,17 +11,23 @@ import Foundation
 struct SNKStageData: Codable {
     typealias SNKGridLocation = SNKGrid.SNKGridLocation
 
+    enum SNKGridItem: Int {
+        case space = 0
+        case obstacle = 1
+        case food = 2
+    }
+
     let stage: Int
     let durationInSeconds: Int
     let startingSpeed: Int
     let minimumScore: Int
     let mapping: [[Int]]
 
-    func obstacleGridLocations() -> [SNKGridLocation] {
+    func gridLocations(of item: SNKGridItem) -> [SNKGridLocation] {
         var locations: [SNKGridLocation] = []
         for (rowIndex, row) in mapping.enumerated() {
             for (columnIndex, element) in row.enumerated() {
-                if element == 1 {
+                if element == item.rawValue {
                     locations.append(SNKGridLocation(row: rowIndex, column: columnIndex))
                 }
             }

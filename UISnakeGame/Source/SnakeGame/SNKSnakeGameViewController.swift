@@ -11,6 +11,7 @@ import SuperEasyLayout
 
 class SNKSnakeGameViewController: SNKViewController {
     typealias SNKGameState = SNKSnakeGameViewModel.SNKGameState
+    typealias SNKGridItem = SNKStageData.SNKGridItem
 
     private lazy var dismissButton: UIBarButtonItem = {
         let view = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: nil, action: nil)
@@ -332,7 +333,7 @@ extension SNKSnakeGameViewController {
         if SNKConstants.shared.displayGrid { game.makeGridView() }
 
         game.placeObstacles()
-
+        //game.placeFoods()
         game.placeRandomFood(color: foodColor)
 
         game.makeSnake(row: 1, column: 1)
