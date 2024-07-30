@@ -11,6 +11,7 @@ import UIKit
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
     var currentStage: Int = 1
     var score: Int = 0
+    var snakeLength: Int = 4
 
     var stages: [SNKStageData] {
         guard let config = SNKConstants.shared.gameConfig else { return [] }

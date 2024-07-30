@@ -49,7 +49,7 @@ class SNKSnakeGameViewController: SNKViewController {
     }()
     private lazy var snakeLengthTextLabel: UILabel = {
         let view = UILabel()
-        view.text = "SNAKE LENGTH: 0"
+        view.text = "SNAKE: 0"
         view.textAlignment = .left
         view.font = .body2
         view.textColor = .black
@@ -224,6 +224,7 @@ class SNKSnakeGameViewController: SNKViewController {
                     game?.stop()
                     progressBar?.pause()
                     game?.gameplay.score = game?.score ?? 0
+                    game?.gameplay.snakeLength = game?.snakeLength ?? 0
 
                     Task { [weak self] in
                         guard let self else { return }
@@ -246,9 +247,6 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .gameOver(let score):
                     progressBar?.pause()
                     guard let game else { return }
-                    game.gameplay.score = game.score
-                    // pass updated gameplay from snakeGame to viewModel
-                    viewModel.gameplay = game.gameplay
 
                     Task { [weak self] in
                         guard let self else { return }
@@ -341,11 +339,14 @@ extension SNKSnakeGameViewController {
         //game.placeFoods()
         game.placeRandomFood()
 
-        game.makeSnake(row: 1, column: 1)
+        game.makeSnake(row: 1, column: 1, length: viewModel.gameplay.snakeLength)
 
         setupGameBindings()
+
+        //viewModel.gameplay = game.gameplay
         game.score = viewModel.gameplay.score
         game.stage = viewModel.gameplay.currentStage
+        game.snakeLength = viewModel.gameplay.snakeLength
 
         viewModel.state = .newStageAlert
     }
@@ -371,7 +372,7 @@ extension SNKSnakeGameViewController {
         game.$snakeLength
             .receive(on: DispatchQueue.main)
             .sink { [weak self] length in
-                self?.snakeLengthTextLabel.text = "SNAKE LENGTH: \(length)"
+                self?.snakeLengthTextLabel.text = "SNAKE: \(length)"
             }
             .store(in: &cancellables)
 

@@ -13,6 +13,7 @@ protocol SNKGameplayProtocol {
 
     var currentStage: Int { get set }
     var score: Int { get set }
+    var snakeLength: Int { get set }
     var stages: [SNKStageData] { get }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo
