@@ -11,6 +11,11 @@ import UIKit
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
     var currentStage: Int = 1
 
+    var stages: [SNKStageData] {
+        guard let config = SNKConstants.shared.gameConfig else { return [] }
+        return config.stages
+    }
+
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE
         var mapSize: (rows: Int, columns: Int) = (rows: 0, columns: 0)
@@ -28,13 +33,6 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         )
         return SNKGridInfo(rows: mapSize.rows, columns: mapSize.columns, area: area, tileSize: tileSize)
     }
-
-    var stages: [SNKStageData] {
-        guard let config = SNKConstants.shared.gameConfig else { return [] }
-        return config.stages
-    }
-
-    // MARK: - Methods
 
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
@@ -68,10 +66,23 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         .register(in: viewController)
     }
 
+    @MainActor
+    @discardableResult
+    func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String {
+        return await WSRAsyncAlertController<String>(
+            message: "You got \(score) point(s).",
+            title: "GAME OVER!"
+        )
+        .addButton(title: "Play Again", isPreferred: true, returnValue: "Play Again")
+        .addButton(title: "Quit", returnValue: "Quit")
+        .register(in: viewController)
+    }
+
     mutating func nextStage() {
         currentStage += 1
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
+    
     mutating func currentStageData() -> SNKStageData? {
         return stages[currentStage - 1]
     }

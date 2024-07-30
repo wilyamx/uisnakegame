@@ -245,11 +245,17 @@ class SNKSnakeGameViewController: SNKViewController {
                     progressBar?.pause()
                     
                     Task { [weak self] in
-                        let actionValue = await self?.showGameOverAlert(score: score) ?? false
+                        guard let self else { return }
+
+                        let actionName = await game?.gameplay.gameOverStageAlert(in: self, score: game?.score ?? 0)
                         // play again
-                        if actionValue { self?.viewModel.state = .restart }
+                        if actionName == "Play Again" {
+                            viewModel.state = .restart
+                        }
                         // quit
-                        else { self?.dismiss(animated: true) }
+                        else if actionName == "Quit" {
+                            dismiss(animated: true)
+                        }
                     }
 
                 }
@@ -282,47 +288,6 @@ class SNKSnakeGameViewController: SNKViewController {
 
     @objc private func pausePlayTheGame() {
         viewModel.state = .pause
-    }
-}
-
-// MARK: - Alerts
-
-extension SNKSnakeGameViewController {
-    private func showCasualGameStageAlert(level: Int) async {
-        await WSRAsyncAlertController<Bool>(
-            message: "Play the classic game mode and gain more points.",
-            title: "Survival Mode"
-        )
-        .addButton(title: "Ok", returnValue: true)
-        .register(in: self)
-    }
-
-    private func showGameStageAlert(level: Int) async {
-        await WSRAsyncAlertController<Bool>(
-            message: nil,
-            title: "Stage \(level)"
-        )
-        .addButton(title: "Ok", returnValue: true)
-        .register(in: self)
-    }
-
-    private func showGameOverAlert(score: Int) async -> Bool {
-        return await WSRAsyncAlertController<Bool>(
-            message: "You got \(score) point(s)!",
-            title: "GAME OVER!"
-        )
-        .addButton(title: "PLAY AGAIN", isPreferred: true, returnValue: true)
-        .addButton(title: "QUIT", returnValue: false)
-        .register(in: self)
-    }
-
-    private func showGameStageCompleteAlert(stage: Int) async {
-        await WSRAsyncAlertController(
-            message: "COMPLETED!",
-            title: "STAGE \(stage)"
-        )
-        .addButton(title: "CONTINUE", returnValue: false)
-        .register(in: self)
     }
 }
 

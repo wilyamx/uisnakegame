@@ -14,11 +14,15 @@ protocol SNKGameplayProtocol {
     var currentStage: Int { get set }
     var stages: [SNKStageData] { get }
 
+    func gridInfo(in containerFrame: CGRect) -> SNKGridInfo
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid
     func gridView(frame: CGRect, tileSize: CGFloat) -> SNKGridView
+
     func welcomeStageAlert(in viewController: UIViewController) async -> String
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String
+    func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
+
     mutating func nextStage()
     mutating func currentStageData() -> SNKStageData?
-    func gridInfo(in containerFrame: CGRect) -> SNKGridInfo
+
 }
