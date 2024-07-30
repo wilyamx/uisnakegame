@@ -12,6 +12,7 @@ protocol SNKGameplayProtocol {
     typealias SNKGridInfo = SNKGrid.SNKGridInfo
 
     var currentStage: Int { get set }
+    var score: Int { get set }
     var stages: [SNKStageData] { get }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo

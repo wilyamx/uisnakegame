@@ -12,6 +12,7 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     typealias SNKGridLocation = SNKGrid.SNKGridLocation
 
     var currentStage: Int = 1
+    var score: Int = 0
 
     var stages: [SNKStageData] { [] }
 

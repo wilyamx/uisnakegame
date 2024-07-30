@@ -27,7 +27,7 @@ class SNKConstants: NSObject {
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
 
     static let SPEED = 0.18 // 0
-    static let GAME_DURATION_IN_SECONDS = 5.0
+    static let GAME_DURATION_IN_SECONDS = 15.0
     //static let GAME_DURATION_IN_SECONDS = 180.0
 
     static var shared = SNKConstants()
