@@ -73,6 +73,6 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
     mutating func currentStageData() -> SNKStageData? {
-        return stages[currentStage]
+        return stages[currentStage - 1]
     }
 }

@@ -364,7 +364,7 @@ extension SNKSnakeGameViewController {
 
         game.makeGrid()
 
-        if viewModel.showGrid { game.makeGridView() }
+        if SNKConstants.shared.displayGrid { game.makeGridView() }
 
         game.placeObstacles()
 
