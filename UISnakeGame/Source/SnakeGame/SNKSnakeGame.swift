@@ -13,13 +13,9 @@ import Combine
 class SNKSnakeGame {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
 
-    enum SNKState {
+    enum SNKState: Equatable {
         case stopped
         case started
-    }
-
-    enum SNKAlertState {
-        case newStage
         case stageComplete(Int)
         case gameOver(Int)
     }
@@ -35,13 +31,14 @@ class SNKSnakeGame {
     private(set) var gridView: SNKGridView?
 
     // game management
-    private(set) var state: SNKState = .stopped
+    @Published var state: SNKState = .stopped
+    private var gameplay: SNKGameplayProtocol
     private(set) var timer: Timer?
     private(set) var updateInterval: TimeInterval = SNKConstants.SPEED { didSet {
         start()
     } }
 
-    // plotted actors
+    // plotted actors in coordinates
     private(set) var foodLocations: [CGPoint] = []
     private(set) var obstacleLocations: [CGPoint] = []
 
@@ -49,9 +46,9 @@ class SNKSnakeGame {
     @Published var score: Int = 0
     @Published var stage: Int = 0
     @Published var snakeLength: Int = 0
-    @Published var alertState: SNKAlertState?
     lazy var cancellables = Set<AnyCancellable>()
 
+    // theming
     var foodColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
         return UIColor(hexString: config.foodColor)
@@ -67,9 +64,10 @@ class SNKSnakeGame {
 
     // MARK: - Constructor
 
-    init(frame: CGRect, tileSize: CGFloat) {
+    init(frame: CGRect, tileSize: CGFloat, gameplay: SNKGameplayProtocol) {
         self.frame = frame
         self.tileSize = tileSize
+        self.gameplay = gameplay
         wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize)")
     }
 
@@ -210,8 +208,8 @@ class SNKSnakeGame {
 
     func gameOver() {
         stop()
-        alertState = .gameOver(score)
         gameOverSoundPlayer.play()
+        state = .gameOver(score)
     }
 
     func updateGameSpeed() {
@@ -224,6 +222,10 @@ class SNKSnakeGame {
         updateInterval = newUpdateInterval
     }
 
+    func timeUp() {
+        
+    }
+    
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {

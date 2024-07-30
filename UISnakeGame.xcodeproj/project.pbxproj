@@ -241,9 +241,9 @@
 		A75D949A2C4E335600C23768 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */,
 				A75D94F72C51D6CD00C23768 /* SNKConstants.swift */,
 				A75D94B82C4F868800C23768 /* SNKStyles.swift */,
+				A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */,
 				A75D95102C56276800C23768 /* Errors */,
 				A75D949F2C4E33C600C23768 /* Components */,
 				A75D949D2C4E337D00C23768 /* ViewModels */,
@@ -381,13 +381,12 @@
 		A75D94E52C507D4E00C23768 /* SnakeGame */ = {
 			isa = PBXGroup;
 			children = (
-				A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */,
-				A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */,
 				A75D94E62C507D9200C23768 /* SNKSnakeGameViewController.swift */,
 				A75D94E82C507DA800C23768 /* SNKSnakeGameViewModel.swift */,
 				A75D94EC2C509F8F00C23768 /* SNKGrid.swift */,
 				A75D94EE2C50A2C300C23768 /* SNKSnakeGame.swift */,
 				A75D94F12C50A42500C23768 /* SNKSnake.swift */,
+				A75D95262C58793D00C23768 /* Gameplay */,
 				A75D94F02C50A3B300C23768 /* Views */,
 			);
 			path = SnakeGame;
@@ -437,6 +436,15 @@
 				A75D95182C57744400C23768 /* WSRFileLoaderError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		A75D95262C58793D00C23768 /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */,
+				A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */,
+			);
+			path = Gameplay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

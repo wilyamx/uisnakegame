@@ -85,19 +85,20 @@ class SNKSnakeGameViewController: SNKViewController {
     private var progressBar: SNKTimerProgressBar?
     private var userSwipeCallback: ((SNKDirection) -> ())?
 
+    // configurations
     private var tileColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_COLOR }
         return UIColor(hexString: config.grid.color)
     }
-    var foodColor: UIColor {
+    private var foodColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
         return UIColor(hexString: config.foodColor)
     }
-    var obstacleColor: UIColor {
+    private var obstacleColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.OBSTACLE_COLOR }
         return UIColor(hexString: config.obstacleColor)
     }
-    var progressBarColor: UIColor {
+    private var progressBarColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.PROGRESS_BAR_COLOR }
         return UIColor(hexString: config.progressBarColor)
     }
@@ -121,7 +122,7 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     deinit {
-        game?.stop()
+        viewModel.state = .stop
     }
     
     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
@@ -210,6 +211,15 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .stop:
                     game?.stop()
 
+                case .newStageAlert:
+                    Task { [weak self] in
+                        guard let self else { return }
+
+                        //await showGameStageAlert(level: viewModel.currentStage)
+                        await viewModel.gameplay.welcomeStageAlert(in: self, level: viewModel.currentStage)
+                        viewModel.state = .play
+                    }
+
                 case .stageComplete(let stage):
                     progressBar?.pause()
                     Task { [weak self] in
@@ -262,6 +272,15 @@ class SNKSnakeGameViewController: SNKViewController {
 // MARK: - Alerts
 
 extension SNKSnakeGameViewController {
+    private func showCasualGameStageAlert(level: Int) async {
+        await WSRAsyncAlertController<Bool>(
+            message: "Play the classic game mode and gain more points.",
+            title: "Survival Mode"
+        )
+        .addButton(title: "Ok", returnValue: true)
+        .register(in: self)
+    }
+
     private func showGameStageAlert(level: Int) async {
         await WSRAsyncAlertController<Bool>(
             message: nil,
@@ -306,7 +325,7 @@ extension SNKSnakeGameViewController {
         var frame = containerView.bounds
         frame.size.height = 695
 
-        game = SNKSnakeGame(frame: frame, tileSize: SNKConstants.TILE_SIZE)
+        game = SNKSnakeGame(frame: frame, tileSize: SNKConstants.TILE_SIZE, gameplay: viewModel.gameplay)
 
         progressBar = SNKTimerProgressBar(
             frame: CGRect(x: 0, y: 0, width: frame.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
@@ -358,10 +377,7 @@ extension SNKSnakeGameViewController {
 
         setupGameBindings()
 
-        Task {
-            await showGameStageAlert(level: viewModel.currentStage)
-            viewModel.state = .play
-        }
+        viewModel.state = .newStageAlert
     }
     
     private func setupGameBindings() {
@@ -382,14 +398,13 @@ extension SNKSnakeGameViewController {
             }
             .store(in: &cancellables)
 
-        game.$alertState
+        game.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
-                guard let state else { return }
                 switch state {
                 case .stageComplete: self?.viewModel.state = .stageComplete(game.stage)
-                case .newStage: break
                 case .gameOver(let score): self?.viewModel.state = .gameOver(score)
+                default: break
                 }
             }
             .store(in: &cancellables)
@@ -399,7 +414,7 @@ extension SNKSnakeGameViewController {
             .sink { [weak self] completed in
                 guard completed else { return }
                 self?.viewModel.state = .stop
-                self?.checkForNextState()
+                self?.game?.timeUp()
             }
             .store(in: &cancellables)
     }
@@ -442,6 +457,5 @@ extension SNKSnakeGameViewController {
         // gameover
         //viewModel.state = .gameOver(game.score)
         viewModel.state = .stageComplete(game.stage)
-        print()
     }
 }

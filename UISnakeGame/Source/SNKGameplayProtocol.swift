@@ -6,8 +6,8 @@
 //  Copyright © 2024 Personal. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol SNKGameplayProtocol {
-    
+    func welcomeStageAlert(in viewController: UIViewController, level: Int) async
 }

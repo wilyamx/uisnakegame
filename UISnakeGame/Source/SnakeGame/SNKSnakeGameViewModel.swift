@@ -15,6 +15,7 @@ final class SNKSnakeGameViewModel {
         case stop
         case pause
         case restart
+        case newStageAlert
         case gameOver(Int)
         case stageComplete(Int)
     }
@@ -44,6 +45,10 @@ final class SNKSnakeGameViewModel {
         }
     }
 
+    var gameplay: SNKGameplayProtocol {
+        SNKConstants.shared.playMode ? SNKMapBasedGameplay() : SNKCasualGameplay()
+    }
+    
     var showGrid: Bool { SNKConstants.shared.displayGrid }
 
     var currentStage: Int { SNKConstants.shared.currentStage }
