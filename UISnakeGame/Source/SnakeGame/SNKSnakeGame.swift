@@ -247,10 +247,6 @@ class SNKSnakeGame {
         updateInterval = newUpdateInterval
     }
 
-    func timeUp() {
-        
-    }
-    
     // MARK: - Realtime Display
 
     @objc private func onEnterframe() {

@@ -48,7 +48,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
 
     @MainActor
     @discardableResult
-    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async -> String {
+    func welcomeStageAlert(in viewController: UIViewController) async -> String {
         return await WSRAsyncAlertController<String>(
             message: nil,
             title: "STAGE \(currentStage)"
@@ -59,7 +59,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
 
     @MainActor
     @discardableResult
-    func completedStageAlert(in viewController: UIViewController, stage: Int, score: Int) async -> String {
+    func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
         await WSRAsyncAlertController<String>(
             message: "You will proceed to the next stage.\nYou got \(score) point(s).",
             title: "STAGE \(currentStage) COMPLETE!"

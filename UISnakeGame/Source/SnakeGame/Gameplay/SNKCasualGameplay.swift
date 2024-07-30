@@ -40,7 +40,7 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
 
     @MainActor
     @discardableResult
-    func welcomeStageAlert(in viewController: UIViewController, stage: Int) async -> String {
+    func welcomeStageAlert(in viewController: UIViewController) async -> String {
         return await WSRAsyncAlertController<String>(
             message: "Play the classic game mode and gain more points.",
             title: "SURVIVAL MODE"
@@ -51,7 +51,7 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
 
     @MainActor
     @discardableResult
-    func completedStageAlert(in viewController: UIViewController, stage: Int, score: Int) async -> String {
+    func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
         return await WSRAsyncAlertController<String>(
             message: "You survived within the time limit.\nYou got \(score) point(s).",
             title: "CONGRATULATIONS!"

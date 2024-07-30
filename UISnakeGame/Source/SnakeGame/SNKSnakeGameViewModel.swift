@@ -22,6 +22,8 @@ final class SNKSnakeGameViewModel {
 
     @Published var state: SNKGameState = .stop
 
+    var gameplay: SNKGameplayProtocol?
+
     enum SNKDirection {
         case left
         case up
@@ -45,12 +47,12 @@ final class SNKSnakeGameViewModel {
         }
     }
 
-    func newGameplay() -> SNKGameplayProtocol {
-        SNKConstants.shared.playMode ? SNKMapBasedGameplay() : SNKCasualGameplay()
-    }
-    
     var showGrid: Bool { SNKConstants.shared.displayGrid }
 
     var currentStage: Int { SNKConstants.shared.currentStage }
     var nextStage: Int { currentStage + 1 }
+
+    func newGameplay() -> SNKGameplayProtocol {
+        SNKConstants.shared.playMode ? SNKMapBasedGameplay() : SNKCasualGameplay()
+    }
 }

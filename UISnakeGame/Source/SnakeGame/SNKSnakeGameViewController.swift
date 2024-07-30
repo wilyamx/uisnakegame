@@ -215,7 +215,7 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
 
-                        await game?.gameplay.welcomeStageAlert(in: self, stage: viewModel.currentStage)
+                        await game?.gameplay.welcomeStageAlert(in: self)
                         viewModel.state = .play
                     }
 
@@ -226,20 +226,21 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
 
-                        let actionName = await game?.gameplay.completedStageAlert(
-                            in: self, stage: stage, score: game?.score ?? 0
-                        )
-                        // casual game
+                        let actionName = await game?.gameplay.completedStageAlert(in: self, score: game?.score ?? 0)
+                        // casual gameplay
                         if actionName == "Play Again" {
                             viewModel.state = .restart
                         }
+                        // map based gameplay
                         else if actionName == "Next Stage" {
-                            print()
+                            game?.gameplay.nextStage()
+                            viewModel.state = .start
                         }
                     }
 
                 case .gameOver(let score):
                     progressBar?.pause()
+                    
                     Task { [weak self] in
                         let actionValue = await self?.showGameOverAlert(score: score) ?? false
                         // play again
