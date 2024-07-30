@@ -215,8 +215,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .newStageAlert:
                     Task { [weak self] in
                         guard let self else { return }
-
-                        //game?.stage = game?.gameplay.currentStage ?? 0
+                        
                         await game?.gameplay.welcomeStageAlert(in: self)
                         viewModel.state = .play
                     }
