@@ -39,6 +39,7 @@ class SNKSnakeGame {
     private(set) var updateInterval: TimeInterval = SNKConstants.MINIMUM_SPEED { didSet {
         start()
     } }
+    private(set) var foodCredit: Int = 0
 
     // plotted actors in coordinates
     private(set) var foodLocations: [CGPoint] = []
@@ -51,7 +52,7 @@ class SNKSnakeGame {
     lazy var cancellables = Set<AnyCancellable>()
 
     // theming
-    var foodColor: UIColor {
+    private var foodColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
         return UIColor(hexString: config.foodColor)
     }
@@ -59,7 +60,7 @@ class SNKSnakeGame {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.OBSTACLE_COLOR }
         return UIColor(hexString: config.obstacleColor)
     }
-    var defaultSnakeLength: Int {
+    private var defaultSnakeLength: Int {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
         return config.snake.defaultLength
     }
@@ -74,7 +75,8 @@ class SNKSnakeGame {
         self.frame = frame
         self.tileSize = tileSize
         self.gameplay = gameplay
-        wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize)")
+        self.foodCredit = gameplay.minimumFoodCredit
+        wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize), foodCredit: \(gameplay.minimumFoodCredit)")
     }
 
     // MARK: - Actor Creator
@@ -280,7 +282,19 @@ class SNKSnakeGame {
         guard updateInterval != newUpdateInterval else { return }
 
         updateInterval = newUpdateInterval
-        wsrLogger.info(message: "[Gameplay] Minimum Speed: \(gameplay.minimumSpeed), Variable Snake Speed: \(variableSpeed), Update Speed: \(updateInterval)")
+        wsrLogger.info(message: "[Gameplay] Minimum Speed: \(gameplay.minimumSpeed), Variable Snake Speed: \(variableSpeed), Update Speed: \(String(format: "%.2f", updateInterval))")
+    }
+
+    func updateFoodCredit() {
+        guard let snake = snake else { return }
+
+        let variableFoodCredit = (snakeLength - gameplay.defaultSnakeLength) * 2
+        let newFoodCredit = gameplay.minimumFoodCredit + variableFoodCredit
+
+        guard foodCredit != newFoodCredit else { return }
+
+        foodCredit = newFoodCredit
+        wsrLogger.info(message: "[Gameplay] Minimum Food Credit: \(gameplay.minimumFoodCredit), Variable Food Credit: \(variableFoodCredit), Food Credit: \(foodCredit)")
     }
 
     // MARK: - Realtime Display
@@ -303,6 +317,7 @@ class SNKSnakeGame {
         }
 
         updateGameSpeed()
+        updateFoodCredit()
     }
 
     // MARK: - Collision Detection
@@ -330,12 +345,16 @@ class SNKSnakeGame {
                 foodLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
                 item.removeFromSuperview()
 
-                score += 1
+                score += gameplay.minimumFoodCredit
                 collectSoundPlayer.play()
                 //wsrLogger.info(message: "\(location)")
                 break
             }
         }
+    }
+
+    private func foodCreditVariation() -> Int {
+        return snakeLength
     }
 
     // MARK: - Speed Variation

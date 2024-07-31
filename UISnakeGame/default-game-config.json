@@ -16,7 +16,7 @@
     "progress_bar_color": "#FFA500",
     "duration_in_seconds": 300,
     "minimum_speed": 0.18,
-    "minimum_food_credit": 1,
+    "minimum_food_credit": 2,
     "stages": [
         {
             "stage": 1,
@@ -41,7 +41,7 @@
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             ],
-            "minimum_food_credit": 5,
+            "minimum_food_credit": 2,
             "minimum_speed": 0.35
         },
         {
@@ -69,7 +69,7 @@
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             ],
-            "minimum_food_credit": 10,
+            "minimum_food_credit": 4,
             "minimum_speed": 0.3
         },
         {
@@ -107,7 +107,7 @@
                 [0,0,1,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0]
             ],
-            "minimum_food_credit": 20,
+            "minimum_food_credit": 6,
             "minimum_speed": 0.2
         },
         {
@@ -121,7 +121,7 @@
                 [0,0,0,0,0,0,0,0,0,0],
                 [1,0,0,0,0,0,0,0,0,1]
             ],
-            "minimum_food_credit": 25,
+            "minimum_food_credit": 8,
             "minimum_speed": 0.18
         },
         {
@@ -136,7 +136,7 @@
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
             ],
-            "minimum_food_credit": 30,
+            "minimum_food_credit": 10,
             "minimum_speed": 0.15
         }
     ]
