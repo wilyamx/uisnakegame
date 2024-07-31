@@ -17,8 +17,8 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
 
     var stages: [SNKStageData] { [] }
     var duration: Int {
-        guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
-        return stageData.durationInSeconds
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
+        return config.durationInSeconds
     }
     var defaultSnakeLength: Int {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
