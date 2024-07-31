@@ -14,8 +14,10 @@ typealias WSRSound = WSRSoundPlayer.WSRSound
 
 extension WSRSound {
     static let move = WSRSound(name: "move", withExtension: "mp3")
-    static let collectCoin = WSRSound(name: "collectCoin", withExtension: "wav")
+    static let foodCollect = WSRSound(name: "collectCoin", withExtension: "wav")
     static let gameOver = WSRSound(name: "game-over-arcade", withExtension: "mp3")
-    static let audienceApplauding = WSRSound(name: "audienceApplauding", withExtension: "mp3")
-    static let levelUp = WSRSound(name: "levelUp", withExtension: "mp3")
+    static let hiscore = WSRSound(name: "audienceApplauding", withExtension: "mp3")
+    static let stageComplete = WSRSound(name: "levelUp", withExtension: "mp3")
+    static let stageWelcome = WSRSound(name: "advertising-logo", withExtension: "mp3")
+    static let background = WSRSound(name: "typical-trap-loop", withExtension: "mp3")
 }

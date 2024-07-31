@@ -65,7 +65,7 @@ class SNKSnakeGame {
     }
 
     // sound effects
-    private let collectSoundPlayer = WSRSoundPlayer(sound: .collectCoin, enabled: SNKConstants.shared.characterSound)
+    private let collectSoundPlayer = WSRSoundPlayer(sound: .foodCollect, enabled: SNKConstants.shared.characterSound)
     private let gameOverSoundPlayer = WSRSoundPlayer(sound: .gameOver, enabled: SNKConstants.shared.alertSound)
 
     // MARK: - Constructor

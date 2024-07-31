@@ -27,10 +27,12 @@ class WSRSoundPlayer {
     private var audioPlayer: AVAudioPlayer?
     private var enabled: Bool
 
-    init(sound: WSRSound, enabled: Bool = true) {
+    init(sound: WSRSound, enabled: Bool = true, numberOfLoops: Int = 0) {
         self.sound = sound
         self.enabled = enabled
+
         self.audioPlayer = try! AVAudioPlayer(contentsOf: sound.url!)
+        self.audioPlayer?.numberOfLoops = numberOfLoops
     }
 
     func play() {
@@ -38,5 +40,9 @@ class WSRSoundPlayer {
 
         audioPlayer?.currentTime = 0
         audioPlayer?.play()
+    }
+
+    func stop() {
+        audioPlayer?.stop()
     }
 }

@@ -70,6 +70,8 @@
 		A75D95222C5864E200C23768 /* SNKMapBasedGameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */; };
 		A75D95252C58654400C23768 /* SNKGameplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */; };
 		A75D95282C59C33100C23768 /* game-over-arcade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95272C59C33100C23768 /* game-over-arcade.mp3 */; };
+		A75D952A2C59CBC600C23768 /* advertising-logo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95292C59CBC600C23768 /* advertising-logo.mp3 */; };
+		A75D952C2C59CE2900C23768 /* typical-trap-loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D952B2C59CE2900C23768 /* typical-trap-loop.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +157,8 @@
 		A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKMapBasedGameplay.swift; sourceTree = "<group>"; };
 		A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameplayProtocol.swift; sourceTree = "<group>"; };
 		A75D95272C59C33100C23768 /* game-over-arcade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-over-arcade.mp3"; sourceTree = "<group>"; };
+		A75D95292C59CBC600C23768 /* advertising-logo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "advertising-logo.mp3"; sourceTree = "<group>"; };
+		A75D952B2C59CE2900C23768 /* typical-trap-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "typical-trap-loop.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +409,8 @@
 		A75D94FF2C54C11A00C23768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A75D952B2C59CE2900C23768 /* typical-trap-loop.mp3 */,
+				A75D95292C59CBC600C23768 /* advertising-logo.mp3 */,
 				A75D95272C59C33100C23768 /* game-over-arcade.mp3 */,
 				A75D95052C54C99500C23768 /* audienceApplauding.mp3 */,
 				A75D95062C54C99500C23768 /* collectCoin.wav */,
@@ -564,7 +570,9 @@
 				A75D94742C4DFE3500C23768 /* Assets.xcassets in Resources */,
 				A75D950A2C54C99500C23768 /* audienceApplauding.mp3 in Resources */,
 				A75D95092C54C99500C23768 /* move.mp3 in Resources */,
+				A75D952C2C59CE2900C23768 /* typical-trap-loop.mp3 in Resources */,
 				A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */,
+				A75D952A2C59CBC600C23768 /* advertising-logo.mp3 in Resources */,
 				A75D94772C4DFE3500C23768 /* Base in Resources */,
 				A75D95282C59C33100C23768 /* game-over-arcade.mp3 in Resources */,
 				A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */,

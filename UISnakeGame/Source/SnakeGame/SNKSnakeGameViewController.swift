@@ -105,7 +105,9 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     // sound effects
-    private let levelUpSoundPlayer = WSRSoundPlayer(sound: .levelUp, enabled: SNKConstants.shared.alertSound)
+    private let stageWelcomeSoundPlayer = WSRSoundPlayer(sound: .stageWelcome, enabled: SNKConstants.shared.alertSound)
+    private let stageCompleteSoundPlayer = WSRSoundPlayer(sound: .stageComplete, enabled: SNKConstants.shared.alertSound)
+    private let bgSoundPlayer = WSRSoundPlayer(sound: .background, enabled: SNKConstants.shared.backgroundSound, numberOfLoops: -1)
 
     // MARK: - View Lifecycle
 
@@ -197,6 +199,8 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
 
                 case .play:
+                    bgSoundPlayer.play()
+
                     game?.start()
                     progressBar?.play()
                     progressBar?.start(maxDuration: SNKConstants.GAME_DURATION_IN_SECONDS)
@@ -213,9 +217,13 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
 
                 case .stop:
+                    bgSoundPlayer.stop()
                     game?.stop()
 
                 case .newStageAlert:
+                    bgSoundPlayer.stop()
+                    stageWelcomeSoundPlayer.play()
+
                     Task { [weak self] in
                         guard let self else { return }
                         
@@ -233,7 +241,8 @@ class SNKSnakeGameViewController: SNKViewController {
                     game.gameplay.nextStage()
                     viewModel.update(gameplay: game.gameplay)
 
-                    levelUpSoundPlayer.play()
+                    bgSoundPlayer.stop()
+                    stageCompleteSoundPlayer.play()
 
                     Task { [weak self] in
                         guard let self else { return }
@@ -252,6 +261,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .gameOver(let score):
                     guard let game = game, let progressBar else { return }
 
+                    bgSoundPlayer.stop()
                     progressBar.pause()
 
                     Task { [weak self] in
