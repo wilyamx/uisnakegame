@@ -39,11 +39,4 @@ class WSRSoundPlayer {
         audioPlayer?.currentTime = 0
         audioPlayer?.play()
     }
-
-    func play(with settingsEnabled: Bool) {
-        guard settingsEnabled == true else { return }
-
-        audioPlayer?.currentTime = 0
-        audioPlayer?.play()
-    }
 }

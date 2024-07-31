@@ -104,6 +104,9 @@ class SNKSnakeGameViewController: SNKViewController {
         return UIColor(hexString: config.progressBarColor)
     }
 
+    // sound effects
+    private let levelUpSoundPlayer = WSRSoundPlayer(sound: .levelUp, enabled: SNKConstants.shared.alertSound)
+
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -229,6 +232,8 @@ class SNKSnakeGameViewController: SNKViewController {
                     game.gameplay.earnedNewPoints(stageScore: game.score)
                     game.gameplay.nextStage()
                     viewModel.update(gameplay: game.gameplay)
+
+                    levelUpSoundPlayer.play()
 
                     Task { [weak self] in
                         guard let self else { return }

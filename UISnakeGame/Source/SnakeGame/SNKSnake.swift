@@ -23,6 +23,9 @@ final class SNKSnake {
 
     var length: Int { return bodyParts.count }
 
+    // sound effects
+    private let changeDirectionSoundPlayer = WSRSoundPlayer(sound: .move, enabled: SNKConstants.shared.characterSound)
+
     init(frame: CGRect, location: CGPoint, direction: SNKDirection, gridInfo: SNKGridInfo, length: Int = 4) {
         self.facingDirection = direction
         self.previousFacingDirection = direction
@@ -144,6 +147,7 @@ final class SNKSnake {
 
         // valid different direction
         facingDirection = direction
+        changeDirectionSoundPlayer.play()
     }
 
     func move() {

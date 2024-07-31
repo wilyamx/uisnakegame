@@ -58,7 +58,6 @@
 		A75D95092C54C99500C23768 /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95042C54C99500C23768 /* move.mp3 */; };
 		A75D950A2C54C99500C23768 /* audienceApplauding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95052C54C99500C23768 /* audienceApplauding.mp3 */; };
 		A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = A75D95062C54C99500C23768 /* collectCoin.wav */; };
-		A75D950C2C54C99500C23768 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95072C54C99500C23768 /* gameOver.mp3 */; };
 		A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95082C54C99500C23768 /* levelUp.mp3 */; };
 		A75D950F2C56254200C23768 /* WSRActionableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D950E2C56254200C23768 /* WSRActionableError.swift */; };
 		A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95112C56279A00C23768 /* SNKGameError.swift */; };
@@ -70,6 +69,7 @@
 		A75D95202C5864B000C23768 /* SNKCasualGameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */; };
 		A75D95222C5864E200C23768 /* SNKMapBasedGameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */; };
 		A75D95252C58654400C23768 /* SNKGameplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */; };
+		A75D95282C59C33100C23768 /* game-over-arcade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A75D95272C59C33100C23768 /* game-over-arcade.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +143,6 @@
 		A75D95042C54C99500C23768 /* move.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move.mp3; sourceTree = "<group>"; };
 		A75D95052C54C99500C23768 /* audienceApplauding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audienceApplauding.mp3; sourceTree = "<group>"; };
 		A75D95062C54C99500C23768 /* collectCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collectCoin.wav; sourceTree = "<group>"; };
-		A75D95072C54C99500C23768 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		A75D95082C54C99500C23768 /* levelUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelUp.mp3; sourceTree = "<group>"; };
 		A75D950E2C56254200C23768 /* WSRActionableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSRActionableError.swift; sourceTree = "<group>"; };
 		A75D95112C56279A00C23768 /* SNKGameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameError.swift; sourceTree = "<group>"; };
@@ -155,6 +154,7 @@
 		A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKCasualGameplay.swift; sourceTree = "<group>"; };
 		A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKMapBasedGameplay.swift; sourceTree = "<group>"; };
 		A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKGameplayProtocol.swift; sourceTree = "<group>"; };
+		A75D95272C59C33100C23768 /* game-over-arcade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-over-arcade.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,9 +405,9 @@
 		A75D94FF2C54C11A00C23768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A75D95272C59C33100C23768 /* game-over-arcade.mp3 */,
 				A75D95052C54C99500C23768 /* audienceApplauding.mp3 */,
 				A75D95062C54C99500C23768 /* collectCoin.wav */,
-				A75D95072C54C99500C23768 /* gameOver.mp3 */,
 				A75D95082C54C99500C23768 /* levelUp.mp3 */,
 				A75D95042C54C99500C23768 /* move.mp3 */,
 			);
@@ -561,12 +561,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A75D950C2C54C99500C23768 /* gameOver.mp3 in Resources */,
 				A75D94742C4DFE3500C23768 /* Assets.xcassets in Resources */,
 				A75D950A2C54C99500C23768 /* audienceApplauding.mp3 in Resources */,
 				A75D95092C54C99500C23768 /* move.mp3 in Resources */,
 				A75D950D2C54C99500C23768 /* levelUp.mp3 in Resources */,
 				A75D94772C4DFE3500C23768 /* Base in Resources */,
+				A75D95282C59C33100C23768 /* game-over-arcade.mp3 in Resources */,
 				A75D950B2C54C99500C23768 /* collectCoin.wav in Resources */,
 				A75D94C62C4FACF700C23768 /* default-game-config.json in Resources */,
 				A75D94722C4DFE3500C23768 /* Base in Resources */,

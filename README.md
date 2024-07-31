@@ -4,30 +4,34 @@ Snake game built using **UIKit**. Our different way to study Swift Language.
 
 ## Featured List
 
-1. Menu
+1. Home
 	- Leaderboard
 	- Settings
 	- About
 
 2. Game
 	- New Game / Continue
+	- 2 Play mode (map based, casual)
 	- Snake Collision (itself, obstacles)
 	- Pause / Play / Restart
 	- Timer Enabled Play
-	- Swipe Gesture
+	- Swipe or Keyboard Gesture
 	- Configurable
 
 3. Game Levels
-	- Level Design via JSON file
+	- Custom Level Design via JSON file
 	- Sound Effects (Eating, Collision, Background, Gameover)
 
 4. Skills
-	- Allow body collision (flexible body)
-	- Hard headed snake (can destroy obstacles)
+	- Allow body collision (flexible body) - PENDING
+	- Hard headed snake (can destroy obstacles) - PENDING
 
 
 ## GAME MECHANICS
 
+- [Gameplay] Use can play either map-based (default) or casual from app settings.
+- [Sound] Sound effects can be on/off from the app settings.
+- [Sound] Sound effects for character (Eating, Change Direction), popups (Game Over, Level Up, Hiscore) 
 - [Stage] A stage is cleared or completed if game is not over yet until time is up.
 - [Score] User will earn stage points only if completed the stage. 
 - [Snake] Snake will update it's length only if completed the stage.
@@ -42,7 +46,7 @@ PROJECT SPECIFICATIONS
 
 ## Technical Implementations
 
-- MVVM
+- MVVM + Combine
 - Property Wrappers
 - Custom Logger
 - User Defaults

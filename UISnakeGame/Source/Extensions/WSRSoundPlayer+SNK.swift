@@ -13,9 +13,9 @@ typealias WSRSound = WSRSoundPlayer.WSRSound
 // MARK: - Available Sound Effects
 
 extension WSRSound {
-    static let move = WSRSound(name: "customMove", withExtension: "mp3")
+    static let move = WSRSound(name: "move", withExtension: "mp3")
     static let collectCoin = WSRSound(name: "collectCoin", withExtension: "wav")
-    static let gameOver = WSRSound(name: "gameOver", withExtension: "mp3")
+    static let gameOver = WSRSound(name: "game-over-arcade", withExtension: "mp3")
     static let audienceApplauding = WSRSound(name: "audienceApplauding", withExtension: "mp3")
     static let levelUp = WSRSound(name: "levelUp", withExtension: "mp3")
 }
