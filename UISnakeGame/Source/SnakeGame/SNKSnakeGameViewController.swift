@@ -221,32 +221,33 @@ class SNKSnakeGameViewController: SNKViewController {
                     }
 
                 case .stageComplete(let stage):
-                    game?.stop()
-                    progressBar?.pause()
-                    game?.gameplay.score = game?.score ?? 0
-                    game?.gameplay.snakeLength = game?.snakeLength ?? 0
+                    guard let game = game, let progressBar else { return }
+
+                    progressBar.pause()
+                    game.stop()
+                    game.gameplay.snakeLength = game.snakeLength
+                    game.gameplay.earnedNewPoints(stageScore: game.score)
+                    game.gameplay.nextStage()
+                    viewModel.update(gameplay: game.gameplay)
 
                     Task { [weak self] in
                         guard let self else { return }
 
-                        let actionName = await game?.gameplay.completedStageAlert(in: self, score: game?.score ?? 0)
+                        let actionName = await game.gameplay.completedStageAlert(in: self, score: game.score)
                         // casual gameplay
                         if actionName == "Play Again" {
                             viewModel.state = .restart
                         }
                         // map based gameplay
                         else if actionName == "Next Stage" {
-                            guard let game = game else { return }
-                            game.gameplay.nextStage()
-                            // pass updated gameplay from snakeGame to viewModel
-                            viewModel.gameplay = game.gameplay
                             viewModel.state = .start
                         }
                     }
 
                 case .gameOver(let score):
-                    progressBar?.pause()
-                    guard let game else { return }
+                    guard let game = game, let progressBar else { return }
+
+                    progressBar.pause()
 
                     Task { [weak self] in
                         guard let self else { return }
@@ -310,7 +311,7 @@ extension SNKSnakeGameViewController {
         var frame = containerView.bounds
         frame.size.height = 695
 
-        wsrLogger.info(message: "Gameplay Current Stage: \(viewModel.gameplay.currentStage)")
+        wsrLogger.info(message: "[Gameplay] Current Stage: \(viewModel.gameplay.currentStage), Total Score: \(viewModel.gameplay.score)")
         let gridInfo = viewModel.gameplay.gridInfo(in: frame)
 
         game = SNKSnakeGame(
@@ -343,8 +344,6 @@ extension SNKSnakeGameViewController {
 
         setupGameBindings()
 
-        //viewModel.gameplay = game.gameplay
-        game.score = viewModel.gameplay.score
         game.stage = viewModel.gameplay.currentStage
         game.snakeLength = viewModel.gameplay.snakeLength
 

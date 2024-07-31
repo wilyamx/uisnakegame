@@ -24,6 +24,7 @@ protocol SNKGameplayProtocol {
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
 
+    mutating func earnedNewPoints(stageScore: Int)
     mutating func nextStage()
     mutating func currentStageData() -> SNKStageData?
 

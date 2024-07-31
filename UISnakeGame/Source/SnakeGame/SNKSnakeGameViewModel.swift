@@ -50,4 +50,12 @@ final class SNKSnakeGameViewModel {
     init() {
         gameplay = SNKConstants.shared.playMode ? SNKMapBasedGameplay() : SNKCasualGameplay()
     }
+
+    /**
+        The gameplay from SNKSnakeGame will deinit everytime new stage will create.
+        We need to save the progress of previous stage.
+     */
+    func update(gameplay: SNKGameplayProtocol) {
+        self.gameplay = gameplay
+    }
 }

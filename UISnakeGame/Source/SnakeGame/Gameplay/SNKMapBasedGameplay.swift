@@ -80,6 +80,11 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         .register(in: viewController)
     }
 
+    mutating func earnedNewPoints(stageScore: Int) {
+        score += stageScore
+        wsrLogger.info(message: "Stage Score: \(stageScore), Total Score: \(score)")
+    }
+
     mutating func nextStage() {
         currentStage += 1
         wsrLogger.info(message: "Current Stage: \(currentStage)")

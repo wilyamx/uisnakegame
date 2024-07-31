@@ -60,8 +60,6 @@ class SNKSettingsViewController: FormViewController {
             row.value = SNKConstants.shared.playMode
         }.onChange({ row in
             guard let value = row.value else { return }
-            row.title = value ? "Map Based Mode" : "Survival Mode"
-            row.updateCell()
             SNKConstants.shared.playMode = value
         })
         +++ Section("Sounds")

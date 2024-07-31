@@ -25,11 +25,18 @@ Snake game built using **UIKit**. Our different way to study Swift Language.
 	- Allow body collision (flexible body)
 	- Hard headed snake (can destroy obstacles)
 
+
+## GAME MECHANICS
+
+- [Stage] A stage is cleared or completed if game is not over yet until time is up.
+- [Score] User will earn stage points only if completed the stage. 
+- [Snake] Snake will update it's length only if completed the stage.
+
 ## Technology
 
 PROJECT SPECIFICATIONS
 
-- **IDE:** `Code 15.4 for iOS 17.5`
+- **IDE:** `XCode 15.4 for iOS 17.5`
 - **Language:** `Swift 5`
 - **Interface:** `Storyboard`
 
