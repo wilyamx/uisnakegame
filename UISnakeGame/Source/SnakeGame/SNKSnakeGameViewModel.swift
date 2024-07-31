@@ -65,18 +65,32 @@ final class SNKSnakeGameViewModel {
         guard var leaderboard = SNKConstants.shared.leaderboardSorted, gameplay.score > 0 else { return 0 }
         wsrLogger.info(message: "Total Score: \(gameplay.score)")
 
-        var rank = 0
+        let score = gameplay.score
         let activeUser = SNKConstants.shared.activeUser
+        var rank = 0
+        var userInfo: SNKLeaderboardItemInfo = SNKLeaderboardItemInfo(
+            name: activeUser, score: score, isCompletedAllLevels: false
+        )
+
+        if let existingRank = leaderboard.firstIndex(where: { $0.name == activeUser }) {
+            rank = existingRank + 1
+
+            if score > leaderboard[existingRank].score {
+                userInfo = leaderboard.remove(at: existingRank)
+                userInfo.score = score
+            }
+            else {
+                wsrLogger.info(message: "Same Rank as #\(rank)!")
+                return rank
+            }
+        }
 
         for (index, item) in leaderboard.enumerated() {
             wsrLogger.info(message: "\(gameplay.score) >= \(item.score)")
-            if gameplay.score >= item.score && item.name != activeUser  {
-                let userInfo = SNKLeaderboardItemInfo(
-                    name: activeUser, score: gameplay.score, isCompletedAllLevels: false
-                )
+            if gameplay.score > item.score  {
                 leaderboard.insert(userInfo, at: index)
                 rank = index + 1
-                wsrLogger.info(message: "You rank as #\(rank)!")
+                wsrLogger.info(message: "Rank as #\(rank)!")
                 break
             }
         }
