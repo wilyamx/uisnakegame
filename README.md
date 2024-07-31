@@ -53,8 +53,9 @@ PROJECT SPECIFICATIONS
 - Property Wrappers
 - Custom Logger
 - User Defaults
+- Target Schemes (Production and Development Environment)
 - Package Dependencies
-	- [Eureka](https://eurekacommunity.github.io/) - iOS form builder
+	- [Eureka](https://eurekacommunity.github.io/) - [iOS form builder](https://github.com/xmartlabs/eureka)
 	- [SuperEasyLayout](https://github.com/doil6317/SuperEasyLayout) - apply UI constraints programmatically
 
 ## Screenshots
