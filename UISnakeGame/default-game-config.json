@@ -6,7 +6,7 @@
         "size": 15
     },
     "snake": {
-        "default_length": 8,
+        "default_length": 4,
         "default_head_color": "#000000",
         "default_body_color": "#000000",
         "default_tail_color": "#000000"
@@ -14,7 +14,7 @@
     "food_color": "#FF0000",
     "obstacle_color": "#000000",
     "progress_bar_color": "#FFA500",
-    "duration_in_seconds": 15,
+    "duration_in_seconds": 300,
     "minimum_speed": 0.18,
     "minimum_food_credit": 1,
     "stages": [

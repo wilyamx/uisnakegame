@@ -66,6 +66,7 @@ final class SNKSnakeGameViewModel {
         self.gameplay = gameplay
     }
 
+    @discardableResult
     func updateForLeaderboard() -> Int {
         guard var leaderboard = SNKConstants.shared.leaderboardSorted, gameplay.score > 0 else { return 0 }
         wsrLogger.info(message: "Total Score: \(gameplay.score)")
