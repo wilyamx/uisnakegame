@@ -61,7 +61,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     @discardableResult
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
         await WSRAsyncAlertController<String>(
-            message: "You will proceed to the next stage.\nYou got \(score) point(s).",
+            message: "You will proceed to the next stage.\n\(score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s).")",
             title: "STAGE \(currentStage) COMPLETE!"
         )
         .addButton(title: "Next Stage", returnValue: "Next Stage")
@@ -72,7 +72,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     @discardableResult
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String {
         return await WSRAsyncAlertController<String>(
-            message: "You got \(score) point(s).",
+            message: "\(score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s).")",
             title: "GAME OVER!"
         )
         .addButton(title: "Play Again", isPreferred: true, returnValue: "Play Again")

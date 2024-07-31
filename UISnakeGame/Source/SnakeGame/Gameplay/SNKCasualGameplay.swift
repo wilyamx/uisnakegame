@@ -52,8 +52,9 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     @MainActor
     @discardableResult
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
+        let pointsMessage = score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s)."
         return await WSRAsyncAlertController<String>(
-            message: "You survived within the time limit.\nYou got \(score) point(s).",
+            message: "You survived within the time limit.\n\(pointsMessage)",
             title: "CONGRATULATIONS!"
         )
         .addButton(title: "Play Again", returnValue: "Play Again")
@@ -63,8 +64,9 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     @MainActor
     @discardableResult
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String {
+        let pointsMessage = score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s)."
         return await WSRAsyncAlertController<String>(
-            message: "You got \(score) point(s).",
+            message: "\(pointsMessage)",
             title: "GAME OVER!"
         )
         .addButton(title: "Play Again", isPreferred: true, returnValue: "Play Again")
