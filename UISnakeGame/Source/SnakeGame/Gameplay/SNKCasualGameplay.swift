@@ -28,6 +28,10 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.MINIMUM_SPEED }
         return config.minimumSpeed
     }
+    var minimumFoodCredit: Int {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.MINIMUM_FOOD_CREDIT }
+        return config.minimumFoodCredit
+    }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE

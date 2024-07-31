@@ -30,6 +30,10 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         guard let stageData = currentStageData() else { return SNKConstants.MINIMUM_SPEED }
         return stageData.minimumSpeed
     }
+    var minimumFoodCredit: Int {
+        guard let stageData = currentStageData() else { return SNKConstants.MINIMUM_FOOD_CREDIT }
+        return stageData.minimumFoodCredit
+    }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE
