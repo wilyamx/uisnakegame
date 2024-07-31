@@ -132,6 +132,7 @@ extension SNKLeaderboardViewController {
         cell.score = "\(item.score)"
         cell.cellBackgroundColor = indexPath.row % 2 == 0 ? .accentVariation2 : .accentVariation4
         cell.showMedal = item.isCompletedAllLevels
+        cell.highlight = item.name == SNKConstants.shared.activeUser
         return cell
     }
 }

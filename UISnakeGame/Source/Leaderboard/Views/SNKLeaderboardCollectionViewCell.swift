@@ -90,6 +90,18 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     var showMedal: Bool = false { didSet {
         medalImageView.isHidden = !showMedal
     }}
+    var highlight: Bool? {
+        get { backView.layer.borderWidth != 0 }
+        set {
+            if newValue ?? false {
+                backView.layer.borderWidth = 3.0
+                backView.layer.borderColor = UIColor.black.cgColor
+            }
+            else {
+                backView.layer.borderWidth = 0
+            }
+        }
+    }
 
     override func setupLayout() {
         contentView.addSubviews([

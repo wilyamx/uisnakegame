@@ -62,7 +62,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
         await WSRAsyncAlertController<String>(
             message: "You will proceed to the next stage.\n\(score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s).")",
-            title: "STAGE \(currentStage) COMPLETE!"
+            title: "STAGE \(currentStage - 1) COMPLETE!"
         )
         .addButton(title: "Next Stage", returnValue: "Next Stage")
         .register(in: viewController)

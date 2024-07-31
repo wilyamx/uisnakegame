@@ -231,7 +231,7 @@ class SNKSnakeGameViewController: SNKViewController {
                         viewModel.state = .play
                     }
 
-                case .stageComplete(let stage):
+                case .stageComplete(_):
                     guard let game = game, let progressBar else { return }
 
                     progressBar.pause()
@@ -258,11 +258,13 @@ class SNKSnakeGameViewController: SNKViewController {
                         }
                     }
 
-                case .gameOver(let score):
+                case .gameOver(_):
                     guard let game = game, let progressBar else { return }
 
                     bgSoundPlayer.stop()
                     progressBar.pause()
+
+                    viewModel.updateForLeaderboard()
 
                     Task { [weak self] in
                         guard let self else { return }

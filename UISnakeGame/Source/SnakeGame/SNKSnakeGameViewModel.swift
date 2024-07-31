@@ -9,6 +9,8 @@
 import UIKit
 
 final class SNKSnakeGameViewModel {
+    typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
+
     enum SNKGameState: Equatable {
         case start
         case play
@@ -57,5 +59,33 @@ final class SNKSnakeGameViewModel {
      */
     func update(gameplay: SNKGameplayProtocol) {
         self.gameplay = gameplay
+    }
+
+    func updateForLeaderboard() -> Int {
+        guard var leaderboard = SNKConstants.shared.leaderboardSorted, gameplay.score > 0 else { return 0 }
+        wsrLogger.info(message: "Total Score: \(gameplay.score)")
+
+        var rank = 0
+        let activeUser = SNKConstants.shared.activeUser
+
+        for (index, item) in leaderboard.enumerated() {
+            wsrLogger.info(message: "\(gameplay.score) >= \(item.score)")
+            if gameplay.score >= item.score && item.name != activeUser  {
+                let userInfo = SNKLeaderboardItemInfo(
+                    name: activeUser, score: gameplay.score, isCompletedAllLevels: false
+                )
+                leaderboard.insert(userInfo, at: index)
+                rank = index + 1
+                wsrLogger.info(message: "You rank as #\(rank)!")
+                break
+            }
+        }
+
+        if leaderboard.count > SNKConstants.LEADERBOARD_COUNT {
+            leaderboard.removeSubrange(SNKConstants.LEADERBOARD_COUNT...leaderboard.count - 1)
+        }
+        
+        SNKConstants.shared.leaderboard = leaderboard
+        return rank
     }
 }
