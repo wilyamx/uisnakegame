@@ -17,6 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
+        #if DEV
+            print("DEVELOPMENT Environment")
+        #else
+            print("PRODUCTION Environment")
+        #endif
+
         let navController = UINavigationController()
         coordinator = SNKHomeCoordinator(window: windowScene.windows.first, navigationController: navController)
         coordinator?.start()
