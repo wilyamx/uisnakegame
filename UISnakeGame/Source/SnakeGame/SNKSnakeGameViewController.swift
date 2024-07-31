@@ -113,7 +113,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Skillful Snake"
+        title = "-- \(SNKConstants.shared.activeUser) --"
 
         wsrLogger.info(message: "viewDidLoad")
         viewModel.state = .start
