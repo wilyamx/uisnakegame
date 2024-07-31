@@ -1,6 +1,6 @@
 # Skillful Snake
 
-Snake game built using **UIKit**. Our different way to study Swift Language.
+Snake game built using **UIKit**. Our different way to study iOS Swift Language.
 
 ## Featured List
 
@@ -20,7 +20,7 @@ Snake game built using **UIKit**. Our different way to study Swift Language.
 
 3. Game Levels
 	- Custom Level Design via JSON file
-	- Sound Effects (Eating, Collision, Background, Gameover)
+	- On/Off Sound Effects (Eating, Collision, Background, Gameover)
 
 4. Skills
 	- Allow body collision (flexible body) - PENDING
