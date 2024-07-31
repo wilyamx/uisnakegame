@@ -16,8 +16,13 @@ final class SNKHomeViewModel {
     func loadGameConfiguration(from filename: String) async throws {
         guard SNKConstants.shared.gameConfig == nil else { return }
 
+#if DEV
+        let configFile = "default-game-config-dev.json"
+#else
+        let configFile = "default-game-config.json"
+#endif
         SNKConstants.shared.gameConfig = try await fileLoader.loadJSON(
-            "default-game-config.json", SNKGameConfiguration.self
+            configFile, SNKGameConfiguration.self
         ) as? SNKGameConfiguration
     }
 

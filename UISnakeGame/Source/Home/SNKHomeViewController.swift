@@ -124,7 +124,9 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         Task {
             do {
                 try await viewModel.loadGameConfiguration(from: SNKConstants.DEFAULT_GAME_CONFIG_FILE)
+#if DEV
                 await viewModel.applyDummyLeaderboard()
+#endif
             } catch {
                 if let error = error as? WSRFileLoaderError {
                     Task { await error.showAlert(in: self) }
