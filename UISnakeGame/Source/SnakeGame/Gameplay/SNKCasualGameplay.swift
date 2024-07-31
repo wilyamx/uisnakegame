@@ -13,12 +13,16 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
 
     var currentStage: Int = 1
     var score: Int = 0
-    var snakeLength: Int = 4
+    var snakeLength: Int = 0
 
     var stages: [SNKStageData] { [] }
     var duration: Int {
         guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
         return stageData.durationInSeconds
+    }
+    var defaultSnakeLength: Int {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
+        return config.snake.defaultLength
     }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {

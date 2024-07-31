@@ -6,7 +6,7 @@
         "size": 15
     },
     "snake": {
-        "default_length": 4,
+        "default_length": 8,
         "default_head_color": "#000000",
         "default_body_color": "#000000",
         "default_tail_color": "#000000"

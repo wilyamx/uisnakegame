@@ -359,13 +359,12 @@ extension SNKSnakeGameViewController {
         game.placeObstacles()
         //game.placeFoods()
         game.placeRandomFood()
-
-        game.makeSnake(row: 1, column: 1, length: viewModel.gameplay.snakeLength)
+        game.makeSnake(row: 1, column: 1)
 
         setupGameBindings()
 
         game.stage = viewModel.gameplay.currentStage
-        game.snakeLength = viewModel.gameplay.snakeLength
+        game.snakeLength = viewModel.snakeLength
 
         viewModel.state = .newStageAlert
     }

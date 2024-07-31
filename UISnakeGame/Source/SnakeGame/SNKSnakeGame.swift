@@ -100,7 +100,7 @@ class SNKSnakeGame {
         self.gridView = gridView
     }
 
-    func makeSnake(row: Int, column: Int, length: Int) {
+    func makeSnake(row: Int, column: Int) {
         guard let grid = grid, frame.size != .zero, tileSize != 0 else { return  }
         guard grid.isValid(row: row, column: column)
         else {
@@ -112,6 +112,7 @@ class SNKSnakeGame {
         }
 
         let location = grid.locations[row][column]
+        let length = gameplay.snakeLength == 0 ? gameplay.defaultSnakeLength : gameplay.snakeLength
         let snake = SNKSnake(
             frame: frame, location: location, direction: .right,
             gridInfo: grid.getInfo(), length: length

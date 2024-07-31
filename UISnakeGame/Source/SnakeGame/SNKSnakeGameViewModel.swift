@@ -26,6 +26,10 @@ final class SNKSnakeGameViewModel {
 
     var gameplay: SNKGameplayProtocol
 
+    var snakeLength: Int {
+        return gameplay.snakeLength == 0 ? gameplay.defaultSnakeLength : gameplay.snakeLength
+    }
+
     enum SNKDirection {
         case left
         case up
