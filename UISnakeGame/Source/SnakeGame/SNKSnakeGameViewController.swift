@@ -207,11 +207,19 @@ class SNKSnakeGameViewController: SNKViewController {
                     progressBar.start()
 
                 case .pause:
-                    let state = game?.pause()
+                    guard let game = game, let progressBar else { return }
+
+                    let state = game.pause()
                     pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
 
-                    if state == .started { progressBar?.play() }
-                    else { progressBar?.pause() }
+                    if state == .started {
+                        progressBar.play()
+                        bgSoundPlayer.play()
+                    }
+                    else {
+                        progressBar.pause()
+                        bgSoundPlayer.stop()
+                    }
 
                 case .restart:
                     game?.restart()

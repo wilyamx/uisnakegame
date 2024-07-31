@@ -30,10 +30,11 @@ Snake game built using **UIKit**. Our different way to study iOS Swift Language.
 ## GAME MECHANICS
 
 - [Gameplay] Use can play either map-based (default) or casual from app settings.
-- [Gameplay] As the snake grows the speed increases.
 - [Leaderboard] Active user will be highlighted in the leaderboard to motivate increase ranking.
 - [Score] User will earn stage points only if completed the stage.
-- [Snake] Snake will update it's length only if completed the stage. 
+- [Score] Food score = 
+- [Snake] Snake will update it's length only if completed the stage.
+- [Snake] As the snake grows the speed increases.
 - [Sound] Sound effects can be on/off from the app settings.
 - [Sound] Sound effects for character (Eating, Change Direction), popups (Game Over, Level Up), background 
 - [Stage] A stage is cleared or completed if game is not over yet until time is up.
