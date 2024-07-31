@@ -34,9 +34,10 @@ class SNKTimerProgressBar: UIView {
         bgPath.fill()
     }
 
-    init(frame: CGRect, color: UIColor = .cyan) {
+    init(frame: CGRect, color: UIColor = .cyan, durationInSecond: Int) {
         self.barView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: frame.height))
         self.barView.backgroundColor = color
+        self.maxDurationInSecond = CGFloat(durationInSecond)
         super.init(frame: frame)
 
         addSubview(self.barView)
@@ -46,9 +47,10 @@ class SNKTimerProgressBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func start(maxDuration: CGFloat) {
+    func start() {
+        guard maxDurationInSecond > 0 else { fatalError("Max duration invalid!") }
+
         durationInSecond = 0
-        maxDurationInSecond = maxDuration
         durationComplete = false
         play()
     }

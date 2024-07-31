@@ -9,6 +9,7 @@
 import UIKit
 
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
+
     var currentStage: Int = 1
     var score: Int = 0
     var snakeLength: Int = 4
@@ -16,6 +17,10 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     var stages: [SNKStageData] {
         guard let config = SNKConstants.shared.gameConfig else { return [] }
         return config.stages
+    }
+    var duration: Int {
+        guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
+        return stageData.durationInSeconds
     }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
@@ -90,7 +95,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
     
-    mutating func currentStageData() -> SNKStageData? {
+    func currentStageData() -> SNKStageData? {
         return stages[currentStage - 1]
     }
 }

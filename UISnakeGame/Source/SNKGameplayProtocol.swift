@@ -14,7 +14,9 @@ protocol SNKGameplayProtocol {
     var currentStage: Int { get set }
     var score: Int { get set }
     var snakeLength: Int { get set }
+
     var stages: [SNKStageData] { get }
+    var duration: Int { get }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid
@@ -24,8 +26,8 @@ protocol SNKGameplayProtocol {
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
 
+    func currentStageData() -> SNKStageData?
+
     mutating func earnedNewPoints(stageScore: Int)
     mutating func nextStage()
-    mutating func currentStageData() -> SNKStageData?
-
 }

@@ -16,6 +16,10 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     var snakeLength: Int = 4
 
     var stages: [SNKStageData] { [] }
+    var duration: Int {
+        guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
+        return stageData.durationInSeconds
+    }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE
@@ -84,5 +88,5 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
     
-    mutating func currentStageData() -> SNKStageData? { nil }
+    func currentStageData() -> SNKStageData? { nil }
 }

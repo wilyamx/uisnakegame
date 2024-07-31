@@ -60,5 +60,6 @@ struct SNKGameConfiguration: Codable {
     let foodColor: String
     let obstacleColor: String
     let progressBarColor: String
+    let durationInSeconds: Int
     let stages: [SNKStageData]
 }

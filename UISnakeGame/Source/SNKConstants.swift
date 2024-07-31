@@ -19,6 +19,7 @@ class SNKConstants: NSObject {
     static let OBSTACLE_COLOR = UIColor.black
     static let SNAKE_LENGTH = 4 //8
     static let PROGRESS_BAR_COLOR = UIColor.orange
+    static let GAME_DURATION_IN_SECONDS = 15 // 300
 
     // No Configurable
     static let LEADERBOARD_COUNT = 20
@@ -27,7 +28,7 @@ class SNKConstants: NSObject {
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
 
     static let SPEED = 0.18 // 0
-    static let GAME_DURATION_IN_SECONDS = 15.0
+
     //static let GAME_DURATION_IN_SECONDS = 180.0
 
     static var shared = SNKConstants()

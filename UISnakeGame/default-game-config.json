@@ -14,11 +14,12 @@
     "food_color": "#FF0000",
     "obstacle_color": "#000000",
     "progress_bar_color": "#FFA500",
+    "duration_in_seconds": 15,
     "stages": [
         {
             "stage": 1,
             "stage_name": "Single Food",
-            "duration_in_seconds": 3000,
+            "duration_in_seconds": 300,
             "mapping":[
                 [0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -44,7 +45,7 @@
         {
             "stage": 2,
             "stage_name": "Single Food",
-            "duration_in_seconds": 3000,
+            "duration_in_seconds": 300,
             "mapping":[
                 [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -72,7 +73,7 @@
         {
             "stage": 3,
             "stage_name": "Single Food",
-            "duration_in_seconds": 3000,
+            "duration_in_seconds": 180,
             "mapping": [
                 [0,0,0,0,1,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -91,7 +92,7 @@
         {
             "stage": 4,
             "stage_name": "Single Food",
-            "duration_in_seconds": 3000,
+            "duration_in_seconds": 180,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -110,7 +111,7 @@
         {
             "stage": 5,
             "stage_name": "Single Food",
-            "duration_in_seconds": 3000,
+            "duration_in_seconds": 120,
             "mapping": [
                 [0,0,0,0,0,1,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -124,7 +125,7 @@
         {
             "stage": 6,
             "stage_name": "Single Food",
-            "duration_in_seconds": 3000,
+            "duration_in_seconds": 120,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],

@@ -199,11 +199,12 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
 
                 case .play:
+                    guard let game = game, let progressBar else { return }
+
                     bgSoundPlayer.play()
 
-                    game?.start()
-                    progressBar?.play()
-                    progressBar?.start(maxDuration: SNKConstants.GAME_DURATION_IN_SECONDS)
+                    game.start()
+                    progressBar.start()
 
                 case .pause:
                     let state = game?.pause()
@@ -321,6 +322,8 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "initGame...")
         wsrLogger.info(message: "You play as << \(SNKConstants.shared.activeUser) >>")
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
+        wsrLogger.info(message: "[Gameplay] Current Stage: \(viewModel.gameplay.currentStage), Total Score: \(viewModel.gameplay.score)")
+        wsrLogger.info(message: "[Gameplay] Duration: \(viewModel.gameplay.duration) seconds")
 
         view.layoutIfNeeded()
 
@@ -328,7 +331,6 @@ extension SNKSnakeGameViewController {
         var frame = containerView.bounds
         frame.size.height = 695
 
-        wsrLogger.info(message: "[Gameplay] Current Stage: \(viewModel.gameplay.currentStage), Total Score: \(viewModel.gameplay.score)")
         let gridInfo = viewModel.gameplay.gridInfo(in: frame)
 
         game = SNKSnakeGame(
@@ -339,7 +341,8 @@ extension SNKSnakeGameViewController {
 
         progressBar = SNKTimerProgressBar(
             frame: CGRect(x: 0, y: 0, width: frame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
-            color: SNKConstants.PROGRESS_BAR_COLOR
+            color: SNKConstants.PROGRESS_BAR_COLOR,
+            durationInSecond: viewModel.gameplay.duration
         )
 
         containerView.addSubview(game!.view)
