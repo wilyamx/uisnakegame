@@ -27,6 +27,7 @@ final class SNKSnakeGameViewModel {
     var gameplay: SNKGameplayProtocol
 
     var snakeLength: Int {
+        if gameplay is SNKCasualGameplay { return gameplay.defaultSnakeLength}
         return gameplay.snakeLength == 0 ? gameplay.defaultSnakeLength : gameplay.snakeLength
     }
 
