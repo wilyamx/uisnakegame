@@ -91,7 +91,6 @@ final class SNKSnakeGameViewModel {
         }
 
         for (index, item) in leaderboard.enumerated() {
-            wsrLogger.info(message: "\(gameplay.score) >= \(item.score)")
             if gameplay.score > item.score  {
                 leaderboard.insert(userInfo, at: index)
                 rank = index + 1

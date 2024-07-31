@@ -19,7 +19,7 @@ struct SNKStageData: Codable {
 
     let stage: Int
     let durationInSeconds: Int
-    let startingSpeed: Int
+    let minimumSpeed: CGFloat
     let minimumScore: Int
     let mapping: [[Int]]
 
@@ -61,5 +61,6 @@ struct SNKGameConfiguration: Codable {
     let obstacleColor: String
     let progressBarColor: String
     let durationInSeconds: Int
+    let minimumSpeed: CGFloat
     let stages: [SNKStageData]
 }

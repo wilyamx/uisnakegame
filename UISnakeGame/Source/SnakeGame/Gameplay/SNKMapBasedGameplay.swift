@@ -26,6 +26,10 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
         return config.snake.defaultLength
     }
+    var minimumSpeed: CGFloat {
+        guard let stageData = currentStageData() else { return SNKConstants.MINIMUM_SPEED }
+        return stageData.minimumSpeed
+    }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE

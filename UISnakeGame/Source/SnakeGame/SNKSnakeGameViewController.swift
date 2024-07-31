@@ -324,6 +324,7 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
         wsrLogger.info(message: "[Gameplay] Current Stage: \(viewModel.gameplay.currentStage), Total Score: \(viewModel.gameplay.score)")
         wsrLogger.info(message: "[Gameplay] Duration: \(viewModel.gameplay.duration) seconds")
+        wsrLogger.info(message: "[Gameplay] Min Speed: \(viewModel.gameplay.minimumSpeed)")
 
         view.layoutIfNeeded()
 

@@ -36,7 +36,7 @@ class SNKSnakeGame {
     @Published var state: SNKState = .stopped
     var gameplay: SNKGameplayProtocol
     private(set) var timer: Timer?
-    private(set) var updateInterval: TimeInterval = SNKConstants.SPEED { didSet {
+    private(set) var updateInterval: TimeInterval = SNKConstants.MINIMUM_SPEED { didSet {
         start()
     } }
 
@@ -274,11 +274,13 @@ class SNKSnakeGame {
     func updateGameSpeed() {
         guard let snake = snake else { return }
 
-        let newUpdateInterval = speedForSnakeLength(snake.length, baseSpeed: SNKConstants.SPEED)
+        let variableSpeed = speedForSnakeLength(snake.length)
+        let newUpdateInterval = gameplay.minimumSpeed - variableSpeed
+
         guard updateInterval != newUpdateInterval else { return }
 
-        wsrLogger.info(message: "new speed: \(updateInterval)")
         updateInterval = newUpdateInterval
+        wsrLogger.info(message: "[Gameplay] Minimum Speed: \(gameplay.minimumSpeed), Variable Snake Speed: \(variableSpeed), Update Speed: \(updateInterval)")
     }
 
     // MARK: - Realtime Display
@@ -338,7 +340,7 @@ class SNKSnakeGame {
 
     // MARK: - Speed Variation
 
-    private func speedForSnakeLength(_ snakeLength: Int, baseSpeed: TimeInterval = 0) -> TimeInterval {
+    private func speedForSnakeLength(_ snakeLength: Int) -> TimeInterval {
         var speedVariation: Double = 0
 
         if snakeLength <= 4 {
@@ -361,6 +363,6 @@ class SNKSnakeGame {
             speedVariation = 0.3
         }
 
-        return baseSpeed - Double(speedVariation)
+        return Double(speedVariation)
     }
 }

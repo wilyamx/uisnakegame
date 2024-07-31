@@ -26,8 +26,7 @@ class SNKConstants: NSObject {
     static let PROGRESS_BAR_HEIGHT = 3.0
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
-
-    static let SPEED = 0.18 // 0
+    static let MINIMUM_SPEED = 0.18 // 0.18
 
     //static let GAME_DURATION_IN_SECONDS = 180.0
 

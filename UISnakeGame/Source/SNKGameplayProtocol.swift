@@ -18,6 +18,7 @@ protocol SNKGameplayProtocol {
     var stages: [SNKStageData] { get }
     var duration: Int { get }
     var defaultSnakeLength: Int { get }
+    var minimumSpeed: CGFloat { get }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid
