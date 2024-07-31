@@ -40,7 +40,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         var mapSize: (rows: Int, columns: Int) = (rows: 0, columns: 0)
         if let config = SNKConstants.shared.gameConfig, config.stages.count > 0 {
             mapSize = stages[currentStage - 1].mapSize()
-            let maxDivision = max(mapSize.rows, mapSize.columns)
+            let maxDivision = min(mapSize.rows, mapSize.columns)
             tileSize = CGFloat(min(
                 Int(containerFrame.width / CGFloat(maxDivision)),
                 Int(containerFrame.height / CGFloat(maxDivision))

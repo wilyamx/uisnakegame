@@ -61,8 +61,8 @@ final class SNKHomeViewModel {
     // MARK: - Private Methods
     
     private func isAvailableUser(name: String) -> Bool {
-        guard let leaderboard = SNKConstants.shared.leaderboardSorted else { return false }
-        guard leaderboard.count > 0 else { return false }
+        guard let leaderboard = SNKConstants.shared.leaderboardSorted else { return true }
+        guard leaderboard.count > 0 else { return true }
 
         return !leaderboard.contains(where: { $0.name.uppercased() == name.uppercased() })
     }
