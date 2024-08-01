@@ -347,8 +347,15 @@ extension SNKSnakeGameViewController {
         view.layoutIfNeeded()
 
         let containerFrame = containerView.bounds
+        
+        let safeAreaInsets = view.safeAreaInsets
+        let safeAreContainerFrame = CGRect(
+            x: 0, y: 0,
+            width: containerFrame.width,
+            height: containerFrame.height - safeAreaInsets.top - safeAreaInsets.bottom
+        )
 
-        let gridInfo = viewModel.gameplay.gridInfo(in: containerFrame)
+        let gridInfo = viewModel.gameplay.gridInfo(in: safeAreContainerFrame)
 
         game = SNKSnakeGame(
             frame: CGRect(x: 0, y: 0, width: gridInfo.area.width, height: gridInfo.area.height),
