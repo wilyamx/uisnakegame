@@ -25,7 +25,7 @@ final class SNKLeaderboardViewModel {
         var id = UUID().uuidString
         var name: String
         var score: Int = 0
-        var isCompletedAllLevels: Bool
+        var isCompletedAllLevels: Bool = false
     }
 
     private(set) var sections: [Section] = []
@@ -35,7 +35,8 @@ final class SNKLeaderboardViewModel {
     func load() async {
         sections = [.main]
 
-        guard let leaderboard = SNKConstants.shared.leaderboardSorted
+        let datasource = SNKConstants.shared.playMode ? SNKConstants.shared.leaderboardSorted : SNKConstants.shared.leaderboardCasualSorted
+        guard let leaderboard = datasource
         else {
             items[.main] = []
             return

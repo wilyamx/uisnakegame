@@ -39,6 +39,7 @@ class SNKConstants: NSObject {
         case characterSound = "characterSound"
         case alertSound = "alertSound"
         case leaderboard = "leaderboard"
+        case leaderboardCasual = "leaderboardCasual"
         case currentStage = "currentStage"
         case gameConfig = "gameConfig"
         case playMode = "playMode"
@@ -73,6 +74,9 @@ class SNKConstants: NSObject {
     @WSRUserDefaultCodable(key: SNKKeys.leaderboard.rawValue)
     var leaderboard: [SNKLeaderboardItemInfo]?
 
+    @WSRUserDefaultCodable(key: SNKKeys.leaderboardCasual.rawValue)
+    var leaderboardCasual: [SNKLeaderboardItemInfo]?
+
     // Game Configuration
 
     @WSRUserDefaultCodable(key: SNKKeys.gameConfig.rawValue)
@@ -92,6 +96,14 @@ class SNKConstants: NSObject {
 
     var leaderboardSorted: [SNKLeaderboardItemInfo]? {
         guard let leaderboard = leaderboard else { return leaderboard }
+
+        return leaderboard.sorted { lhs, rhs in
+            return (lhs.score, rhs.name) > (rhs.score, lhs.name)
+        }
+    }
+
+    var leaderboardCasualSorted: [SNKLeaderboardItemInfo]? {
+        guard let leaderboard = leaderboardCasual else { return leaderboard }
 
         return leaderboard.sorted { lhs, rhs in
             return (lhs.score, rhs.name) > (rhs.score, lhs.name)

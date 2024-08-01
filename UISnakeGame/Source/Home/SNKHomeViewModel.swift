@@ -58,10 +58,31 @@ final class SNKHomeViewModel {
         }
     }
 
+    func applyDummyLeaderboardCasual() async {
+        guard SNKConstants.shared.leaderboardCasual == nil else { return }
+
+        SNKConstants.shared.leaderboardCasual = [
+            ItemInfo(name: "GOKOU", score: 1234),
+            ItemInfo(name: "VEGETA", score: 300),
+            ItemInfo(name: "FERNANDO", score: 555),
+            ItemInfo(name: "JM", score: 300),
+            ItemInfo(name: "SIX", score: 1),
+            ItemInfo(name: "DEXTER", score: 1234),
+            ItemInfo(name: "ANTONIO", score: 1),
+            ItemInfo(name: "PEDRO", score: 45),
+            ItemInfo(name: "EUGENE", score: 231),
+            ItemInfo(name: "CASS", score: 100),
+            ItemInfo(name: "MIA", score: 878)
+        ].sorted { lhs, rhs in
+            return (lhs.score, rhs.name) > (rhs.score, lhs.name)
+        }
+    }
+
     // MARK: - Private Methods
     
     private func isAvailableUser(name: String) -> Bool {
-        guard let leaderboard = SNKConstants.shared.leaderboardSorted else { return true }
+        let datasource = SNKConstants.shared.playMode ? SNKConstants.shared.leaderboardSorted : SNKConstants.shared.leaderboardCasualSorted
+        guard let leaderboard = datasource else { return true }
         guard leaderboard.count > 0 else { return true }
 
         return !leaderboard.contains(where: { $0.name.uppercased() == name.uppercased() })
