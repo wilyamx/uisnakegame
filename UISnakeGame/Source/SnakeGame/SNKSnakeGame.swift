@@ -82,6 +82,7 @@ class SNKSnakeGame {
         self.foodCredit = gameplay.minimumFoodCredit
 
         self.view.frame = frame
+        self.view.clipsToBounds = true
         wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize), foodCredit: \(gameplay.minimumFoodCredit)")
     }
 
