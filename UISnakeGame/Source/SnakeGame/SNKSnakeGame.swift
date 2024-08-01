@@ -293,7 +293,7 @@ class SNKSnakeGame {
     }
 
     func updateFoodCredit() {
-        guard let snake = snake else { return }
+        guard snake != nil else { return }
 
         let variableFoodCredit = (snakeLength - gameplay.defaultSnakeLength) * 2
         let newFoodCredit = gameplay.minimumFoodCredit + variableFoodCredit

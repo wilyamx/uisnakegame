@@ -237,6 +237,8 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
 
                 case .stop:
+                    viewModel.updateForLeaderboard()
+                    
                     bgSoundPlayer.stop()
                     game?.stop()
 
@@ -394,7 +396,6 @@ extension SNKSnakeGameViewController {
         setupGameBindings()
 
         game.stage = viewModel.gameplay.currentStage
-        game.score = viewModel.gameplay.score
         game.snakeLength = viewModel.snakeLength
 
         viewModel.state = .newStageAlert
