@@ -11,26 +11,6 @@ import UIKit
 class SNKConstants: NSObject {
     typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
 
-#if DEV
-    // Default Values without the Configuration File
-    static let TILE_SIZE = 15.0 //15
-    static let TILE_COLOR = UIColor.accentVariation4
-    static let TILE_BG_COLOR = UIColor.white
-    static let GRIDLINES_COLOR = UIColor.white
-    static let FOOD_COLOR = UIColor.red
-    static let OBSTACLE_COLOR = UIColor.black
-    static let SNAKE_LENGTH = 4 //8
-    static let PROGRESS_BAR_COLOR = UIColor.orange
-    static let GAME_DURATION_IN_SECONDS = 15 // 300
-
-    // Not Configurable
-    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
-    static let LEADERBOARD_COUNT = 20
-    static let PROGRESS_BAR_HEIGHT = 3.0
-    static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
-    static let MINIMUM_SPEED = 0.18
-    static let MINIMUM_FOOD_CREDIT = 2
-#else
     // Default Values without the Configuration File
     static let TILE_SIZE = 15.0
     static let TILE_COLOR = UIColor.accentVariation4
@@ -43,13 +23,16 @@ class SNKConstants: NSObject {
     static let GAME_DURATION_IN_SECONDS = 15
 
     // Not Configurable
+#if DEV
+    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
+#else
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
+#endif
     static let LEADERBOARD_COUNT = 20
     static let PROGRESS_BAR_HEIGHT = 3.0
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
     static let MINIMUM_SPEED = 0.18
     static let MINIMUM_FOOD_CREDIT = 2
-#endif
 
     static var shared = SNKConstants()
 
