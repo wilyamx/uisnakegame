@@ -134,6 +134,8 @@
 		A75D95702C5A66FE00C23768 /* collectCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = A75D95062C54C99500C23768 /* collectCoin.wav */; };
 		A75D95722C5A66FE00C23768 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A75D94712C4DFE3500C23768 /* Base */; };
 		A75D959B2C5A82A300C23768 /* default-game-config-dev.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D95992C5A812C00C23768 /* default-game-config-dev.json */; };
+		A75D959D2C5B15EC00C23768 /* UIApplication+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */; };
+		A75D959E2C5B16AC00C23768 /* UIApplication+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +226,7 @@
 		A75D95762C5A66FE00C23768 /* UISnakeGame_DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISnakeGame_DEV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75D95772C5A66FE00C23768 /* DEV-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DEV-Info.plist"; path = "/Users/WilliamRS/Documents/ui-snakegame/DEV-Info.plist"; sourceTree = "<absolute>"; };
 		A75D95992C5A812C00C23768 /* default-game-config-dev.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-game-config-dev.json"; sourceTree = "<group>"; };
+		A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+WSR.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +423,7 @@
 				A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */,
 				A75D94C92C4FB48A00C23768 /* UIStackView+WSR.swift */,
 				A75D94DD2C4FE27C00C23768 /* Sequence+WSR.swift */,
+				A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -762,6 +766,7 @@
 				A75D951B2C57744400C23768 /* WSRFileLoader.swift in Sources */,
 				A75D95252C58654400C23768 /* SNKGameplayProtocol.swift in Sources */,
 				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
+				A75D959D2C5B15EC00C23768 /* UIApplication+WSR.swift in Sources */,
 				A75D94FC2C54A77700C23768 /* SNKSettingsViewModel.swift in Sources */,
 				A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */,
 				A75D94F82C51D6CD00C23768 /* SNKConstants.swift in Sources */,
@@ -835,6 +840,7 @@
 				A75D955B2C5A66FE00C23768 /* WSRFileLoader.swift in Sources */,
 				A75D955C2C5A66FE00C23768 /* SNKGameplayProtocol.swift in Sources */,
 				A75D955D2C5A66FE00C23768 /* UIAlertController+SNK.swift in Sources */,
+				A75D959E2C5B16AC00C23768 /* UIApplication+WSR.swift in Sources */,
 				A75D955E2C5A66FE00C23768 /* SNKSettingsViewModel.swift in Sources */,
 				A75D955F2C5A66FE00C23768 /* SNKStyles.swift in Sources */,
 				A75D95602C5A66FE00C23768 /* SNKConstants.swift in Sources */,
@@ -1145,8 +1151,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1176,8 +1182,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -147,6 +147,16 @@ class SNKSnakeGameViewController: SNKViewController {
         super.pressesEnded(presses, with: event)
     }
 
+    // MARK: - Orientations
+
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        SNKConstants.shared.isPortraitOrientation ? .portrait : .landscape
+    }
+
     // MARK: - Setups
 
     override func setupNavigation() {

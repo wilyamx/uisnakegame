@@ -27,6 +27,21 @@ class SNKViewController: UIViewController {
         setupActions()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsUpdateOfSupportedInterfaceOrientations()
+    }
+    
+    // MARK: - Orientations
+
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+
     // MARK: - Setup Methods
 
     func setupNavigation() {}
