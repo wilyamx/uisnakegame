@@ -24,7 +24,7 @@ class SNKConstants: NSObject {
     static let GAME_DURATION_IN_SECONDS = 15 // 300
 
     // Not Configurable
-    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-devx.json"
+    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
     static let LEADERBOARD_COUNT = 20
     static let PROGRESS_BAR_HEIGHT = 3.0
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
