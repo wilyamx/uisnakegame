@@ -32,8 +32,8 @@ protocol SNKGameplayProtocol {
 
     func currentStageData() -> SNKStageData?
     func saveProgress()
-    func getProgress() -> SNKGameProgressData?
 
     mutating func earnedNewPoints(stageScore: Int)
     mutating func nextStage()
+    mutating func restoreProgress()
 }

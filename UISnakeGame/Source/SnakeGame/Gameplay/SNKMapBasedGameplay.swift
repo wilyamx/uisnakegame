@@ -107,15 +107,19 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         currentStage += 1
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
-    
+
+    mutating func restoreProgress() {
+        guard let progress = SNKUserGameProgress().getUserProgress(for: SNKConstants.shared.activeUser) else { return }
+        currentStage = progress.stage
+        score = progress.score
+        wsrLogger.info(message: "\(progress)")
+    }
+
     func currentStageData() -> SNKStageData? {
         return stages[currentStage - 1]
     }
 
     func saveProgress() {
         SNKUserGameProgress().saveProgress(for: SNKConstants.shared.activeUser, stage: currentStage, score: score)
-    }
-    func getProgress() -> SNKGameProgressData? {
-        SNKUserGameProgress().getUserProgress(for: SNKConstants.shared.activeUser)
     }
 }

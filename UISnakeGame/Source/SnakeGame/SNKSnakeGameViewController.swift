@@ -205,6 +205,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 switch state {
 
                 case .start:
+                    viewModel.gameplay.restoreProgress()
                     game?.restart()
                     initGame()
 
@@ -393,6 +394,7 @@ extension SNKSnakeGameViewController {
         setupGameBindings()
 
         game.stage = viewModel.gameplay.currentStage
+        game.score = viewModel.gameplay.score
         game.snakeLength = viewModel.snakeLength
 
         viewModel.state = .newStageAlert

@@ -100,14 +100,20 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
     
+    mutating func restoreProgress() {
+        guard let progress = SNKUserGameProgress().getUserProgress(
+            for: SNKConstants.shared.activeUser, casualGameplay: true
+        ) else { return }
+        currentStage = progress.stage
+        score = progress.score
+        wsrLogger.info(message: "\(progress)")
+    }
+
     func currentStageData() -> SNKStageData? { nil }
 
     func saveProgress() {
         SNKUserGameProgress().saveProgress(
             for: SNKConstants.shared.activeUser, stage: currentStage, score: score, casualGameplay: true
         )
-    }
-    func getProgress() -> SNKGameProgressData? {
-        SNKUserGameProgress().getUserProgress(for: SNKConstants.shared.activeUser, casualGameplay: true)
     }
 }
