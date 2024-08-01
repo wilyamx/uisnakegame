@@ -68,7 +68,8 @@ final class SNKSnakeGameViewModel {
 
     @discardableResult
     func updateForLeaderboard() -> Int {
-        guard var leaderboard = SNKConstants.shared.leaderboardSorted, gameplay.score > 0 else { return 0 }
+        let datasource = SNKConstants.shared.playMode ? SNKConstants.shared.leaderboardSorted : SNKConstants.shared.leaderboardCasualSorted
+        guard var leaderboard = datasource, gameplay.score > 0 else { return 0 }
         wsrLogger.info(message: "Total Score: \(gameplay.score)")
 
         let score = gameplay.score
@@ -104,7 +105,12 @@ final class SNKSnakeGameViewModel {
             leaderboard.removeSubrange(SNKConstants.LEADERBOARD_COUNT...leaderboard.count - 1)
         }
         
-        SNKConstants.shared.leaderboard = leaderboard
+        if SNKConstants.shared.playMode {
+            SNKConstants.shared.leaderboard = leaderboard
+        }
+        else {
+            SNKConstants.shared.leaderboardCasual = leaderboard
+        }
         return rank
     }
 }
