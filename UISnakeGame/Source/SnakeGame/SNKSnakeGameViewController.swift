@@ -346,11 +346,9 @@ extension SNKSnakeGameViewController {
 
         view.layoutIfNeeded()
 
-        // BUG: wrong height
-        var frame = containerView.bounds
-        frame.size.height = 695
+        let containerFrame = containerView.bounds
 
-        let gridInfo = viewModel.gameplay.gridInfo(in: frame)
+        let gridInfo = viewModel.gameplay.gridInfo(in: containerFrame)
 
         game = SNKSnakeGame(
             frame: CGRect(x: 0, y: 0, width: gridInfo.area.width, height: gridInfo.area.height),
@@ -359,26 +357,30 @@ extension SNKSnakeGameViewController {
         )
 
         progressBar = SNKTimerProgressBar(
-            frame: CGRect(x: 0, y: 0, width: frame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
+            frame: CGRect(x: 0, y: 0, width: containerFrame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
             color: SNKConstants.PROGRESS_BAR_COLOR,
             durationInSecond: viewModel.gameplay.duration
         )
 
-        containerView.addSubview(game!.view)
+        guard let game = game else { fatalError("Game not available!") }
+
+        containerView.addSubview(game.view)
+        game.view.layer.borderColor = UIColor.black.cgColor
+        game.view.layer.borderWidth = 2.0
+        game.view.frame.origin.x = (containerFrame.size.width - game.view.frame.width) / 2
+        game.view.frame.origin.y = (containerFrame.size.height - game.view.frame.height) / 2
+
         progressBarContainerView.addSubview(progressBar!)
 
         // adding game actors
-
-        guard let game = game else { fatalError("Game not available!") }
 
         game.makeGrid()
 
         if SNKConstants.shared.displayGrid { game.makeGridView() }
 
-        //game.placeObstacles()
-        //game.placeFoods()
-        //game.placeRandomFood()
-        //game.makeSnake(row: 1, column: 1)
+        game.placeObstacles()
+        game.placeRandomFood()
+        game.makeSnake(row: 1, column: 1)
 
         setupGameBindings()
 

@@ -2,7 +2,7 @@
     "life": 10,
     "grid": {
         "color": "#BCDCAE",
-        "background_color": "#649D49",
+        "background_color": "#FFFFFF",
         "line_color": "#FFFFFF",
         "size": 15
     },

@@ -26,6 +26,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.94509804249999996" green="0.74901962280000001" blue="0.29803922770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Screenshot 2024-08-01 at 1.50.38 PM" translatesAutoresizingMaskIntoConstraints="NO" id="awu-la-NwY">
+                                <rect key="frame" x="11" y="511" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ocu-2g-v2y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -39,6 +44,7 @@
     <resources>
         <image name="Screenshot 2024-07-23 at 12.21.47 PM" width="574" height="816"/>
         <image name="Screenshot 2024-07-28 at 1.04.33 PM" width="678" height="758"/>
+        <image name="Screenshot 2024-08-01 at 1.50.38 PM" width="150" height="196"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
