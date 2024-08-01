@@ -23,10 +23,10 @@ class SNKConstants: NSObject {
     static let PROGRESS_BAR_COLOR = UIColor.orange
     static let GAME_DURATION_IN_SECONDS = 15 // 300
 
-    // No Configurable
+    // Not Configurable
+    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-devx.json"
     static let LEADERBOARD_COUNT = 20
     static let PROGRESS_BAR_HEIGHT = 3.0
-    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
     static let MINIMUM_SPEED = 0.18
     static let MINIMUM_FOOD_CREDIT = 2
@@ -42,10 +42,10 @@ class SNKConstants: NSObject {
     static let PROGRESS_BAR_COLOR = UIColor.orange
     static let GAME_DURATION_IN_SECONDS = 15
 
-    // No Configurable
+    // Not Configurable
+    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
     static let LEADERBOARD_COUNT = 20
     static let PROGRESS_BAR_HEIGHT = 3.0
-    static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
     static let CASUAL_PLAY_MODE_OBSTACLE_COUNT = 10
     static let MINIMUM_SPEED = 0.18
     static let MINIMUM_FOOD_CREDIT = 2
