@@ -131,6 +131,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         Task {
             do {
                 try await viewModel.loadGameConfiguration(from: SNKConstants.DEFAULT_GAME_CONFIG_FILE)
+                await viewModel.loadUserGameProgress(of: SNKConstants.shared.activeUser)
 #if DEV
                 await viewModel.applyDummyLeaderboard()
                 await viewModel.applyDummyLeaderboardCasual()
@@ -232,7 +233,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
             guard let name = alert.textFields![0].text, !name.isEmpty else { return }
 
             do {
-                try viewModel.newUser(name: name)
+                try viewModel.newUser(user: name)
             } catch  {
                 guard let error = error as? SNKGameError else { return }
                 Task {

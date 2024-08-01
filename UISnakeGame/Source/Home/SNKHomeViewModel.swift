@@ -10,9 +10,13 @@ import UIKit
 
 final class SNKHomeViewModel {
     private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
+    typealias SNKUserGameProgressData = SNKSnakeGameViewModel.SNKUserGameProgressData
+    typealias SNKGameProgressData = SNKSnakeGameViewModel.SNKGameProgressData
 
     private let fileLoader = WSRFileLoader()
     private let gameProgress = SNKUserGameProgress()
+    
+    private var userGameProgressData: SNKGameProgressData?
 
     func loadGameConfiguration(from filename: String) async throws {
         guard SNKConstants.shared.gameConfig == nil else { return }
@@ -22,11 +26,23 @@ final class SNKHomeViewModel {
         ) as? SNKGameConfiguration
     }
 
-    func newUser(name: String) throws {
-        guard name.count >= 3 else { throw SNKGameError.minUserCharacterCount(name) }
-        guard isAvailableUser(name: name) else { throw SNKGameError.invalidUser(name) }
+    func loadUserGameProgress(of user: String) async {
+        userGameProgressData = gameProgress.getUserProgress(
+            for: SNKConstants.shared.activeUser, casualGameplay: !SNKConstants.shared.playMode
+        )
+        if let userGameProgressData = userGameProgressData {
+            wsrLogger.info(message: "Progress: \(userGameProgressData)")
+        }
+        else {
+            wsrLogger.info(message: "NO Progress for \(user)")
+        }
+    }
 
-        let nameToSave = name.uppercased()
+    func newUser(user: String) throws {
+        guard user.count >= 3 else { throw SNKGameError.minUserCharacterCount(user) }
+        guard isAvailableUser(name: user) else { throw SNKGameError.invalidUser(user) }
+
+        let nameToSave = user.uppercased()
         SNKConstants.shared.activeUser = nameToSave
         gameProgress.newUserProgress(for: nameToSave)
     }

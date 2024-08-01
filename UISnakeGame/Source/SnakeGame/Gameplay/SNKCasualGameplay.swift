@@ -101,4 +101,13 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     }
     
     func currentStageData() -> SNKStageData? { nil }
+
+    func saveProgress() {
+        SNKUserGameProgress().saveProgress(
+            for: SNKConstants.shared.activeUser, stage: currentStage, score: score, casualGameplay: true
+        )
+    }
+    func getProgress() -> SNKGameProgressData? {
+        SNKUserGameProgress().getUserProgress(for: SNKConstants.shared.activeUser, casualGameplay: true)
+    }
 }

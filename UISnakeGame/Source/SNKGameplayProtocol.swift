@@ -10,6 +10,7 @@ import UIKit
 
 protocol SNKGameplayProtocol {
     typealias SNKGridInfo = SNKGrid.SNKGridInfo
+    typealias SNKGameProgressData = SNKSnakeGameViewModel.SNKGameProgressData
 
     var currentStage: Int { get set }
     var score: Int { get set }
@@ -30,6 +31,8 @@ protocol SNKGameplayProtocol {
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
 
     func currentStageData() -> SNKStageData?
+    func saveProgress()
+    func getProgress() -> SNKGameProgressData?
 
     mutating func earnedNewPoints(stageScore: Int)
     mutating func nextStage()

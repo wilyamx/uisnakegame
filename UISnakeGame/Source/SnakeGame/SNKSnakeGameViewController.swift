@@ -258,6 +258,7 @@ class SNKSnakeGameViewController: SNKViewController {
                     game.gameplay.snakeLength = game.snakeLength
                     game.gameplay.earnedNewPoints(stageScore: game.score)
                     game.gameplay.nextStage()
+                    game.gameplay.saveProgress()
                     viewModel.update(gameplay: game.gameplay)
 
                     bgSoundPlayer.stop()

@@ -30,6 +30,7 @@ Snake game built using **UIKit**. Our different way to study iOS Swift Language.
 ## GAME MECHANICS
 
 - [Gameplay] Use can play either map-based (default) or casual from app settings.
+- [Gameplay] User will force to play casual game if unable to load game configuration file.
 - [Leaderboard] Active user will be highlighted in the leaderboard to motivate increase ranking.
 - [Leaderboard] Separate leaderboard map-based and casual play mode.
 - [Score] User will earn stage points only if completed the stage.

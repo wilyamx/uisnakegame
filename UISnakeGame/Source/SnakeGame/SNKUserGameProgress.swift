@@ -34,22 +34,32 @@ class SNKUserGameProgress {
         }
 
         allProgress.append(progress)
-        SNKConstants.shared.gameProgress = gameProgress
+        gameProgress = allProgress
+        SNKConstants.shared.gameProgress = allProgress
         wsrLogger.info(message: "User: \(user), Casual Gameplay: \(casualGameplay)")
     }
 
     func saveProgress(for user: String, stage: Int, score: Int, casualGameplay: Bool = false) {
-        guard var gameProgress = gameProgress else { return }
-        guard let index = gameProgress.firstIndex(where: { $0.user == user }) else { return }
+        guard score > 0 else { return }
+        guard var allProgress = gameProgress else { return }
+        guard let index = allProgress.firstIndex(where: { $0.user == user }) else { return }
 
         if casualGameplay {
-            gameProgress[index].casualGameplay = SNKGameProgressData(stage: stage, score: score)
+            allProgress[index].casualGameplay = SNKGameProgressData(stage: stage, score: score)
         }
         else {
-            gameProgress[index].mapGameplay = SNKGameProgressData(stage: stage, score: score)
+            allProgress[index].mapGameplay = SNKGameProgressData(stage: stage, score: score)
         }
 
-        SNKConstants.shared.gameProgress = gameProgress
+        gameProgress = allProgress
+        SNKConstants.shared.gameProgress = allProgress
         wsrLogger.info(message: "User: \(user), Stage: \(stage), Score: \(score)")
+    }
+
+    func getUserProgress(for user: String, casualGameplay: Bool = false) -> SNKGameProgressData? {
+        guard let allProgress = gameProgress else { return nil }
+        guard let index = allProgress.firstIndex(where: { $0.user == user }) else { return nil }
+
+        return casualGameplay ? allProgress[index].casualGameplay : allProgress[index].mapGameplay
     }
 }

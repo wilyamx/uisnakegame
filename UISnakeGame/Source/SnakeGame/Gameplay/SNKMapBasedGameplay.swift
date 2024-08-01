@@ -9,6 +9,7 @@
 import UIKit
 
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
+    typealias SNKGameProgressData = SNKSnakeGameViewModel.SNKGameProgressData
 
     var currentStage: Int = 1
     var score: Int = 0
@@ -109,5 +110,12 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     
     func currentStageData() -> SNKStageData? {
         return stages[currentStage - 1]
+    }
+
+    func saveProgress() {
+        SNKUserGameProgress().saveProgress(for: SNKConstants.shared.activeUser, stage: currentStage, score: score)
+    }
+    func getProgress() -> SNKGameProgressData? {
+        SNKUserGameProgress().getUserProgress(for: SNKConstants.shared.activeUser)
     }
 }
