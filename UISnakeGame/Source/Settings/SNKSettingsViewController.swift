@@ -56,7 +56,7 @@ class SNKSettingsViewController: FormViewController {
             SNKConstants.shared.displayGrid = value
         })
         <<< SwitchRow() { row in
-            row.title = "Map Based Mode"
+            row.title = "Map Based Play Mode"
             row.value = SNKConstants.shared.playMode
         }.onChange({ row in
             guard let value = row.value else { return }

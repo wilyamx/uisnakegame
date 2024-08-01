@@ -14,6 +14,7 @@ class SNKConstants: NSObject {
     // Default Values without the Configuration File
     static let TILE_SIZE = 15.0 //15
     static let TILE_COLOR = UIColor.accentVariation4
+    static let TILE_BG_COLOR = UIColor.accentVariation1
     static let GRIDLINES_COLOR = UIColor.white
     static let FOOD_COLOR = UIColor.red
     static let OBSTACLE_COLOR = UIColor.black

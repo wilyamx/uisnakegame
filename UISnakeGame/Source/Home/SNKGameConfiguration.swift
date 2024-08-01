@@ -43,6 +43,7 @@ struct SNKStageData: Codable {
 struct SNKGridData: Codable {
     let color: String
     let lineColor: String
+    let backgroundColor: String
     let size: Int
 }
 

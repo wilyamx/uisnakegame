@@ -528,8 +528,8 @@
 		A75D95262C58793D00C23768 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
-				A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */,
 				A75D95212C5864E200C23768 /* SNKMapBasedGameplay.swift */,
+				A75D951F2C5864B000C23768 /* SNKCasualGameplay.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";

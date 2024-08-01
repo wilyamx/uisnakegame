@@ -31,6 +31,7 @@ Snake game built using **UIKit**. Our different way to study iOS Swift Language.
 
 - [Gameplay] Use can play either map-based (default) or casual from app settings.
 - [Leaderboard] Active user will be highlighted in the leaderboard to motivate increase ranking.
+- [Leaderboard] Separate leaderboard map-based and casual play mode.
 - [Score] User will earn stage points only if completed the stage.
 - [Score] As the snake length increases the food credit also vary. 
 - [Snake] Snake will update it's length only if completed the stage.

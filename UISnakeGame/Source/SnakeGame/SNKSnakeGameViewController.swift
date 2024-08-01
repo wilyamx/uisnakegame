@@ -68,7 +68,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = tileColor
+        view.backgroundColor = tileBgColor
         return view
     }()
 
@@ -87,9 +87,9 @@ class SNKSnakeGameViewController: SNKViewController {
     private var userSwipeCallback: ((SNKDirection) -> ())?
 
     // configurations
-    private var tileColor: UIColor {
-        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_COLOR }
-        return UIColor(hexString: config.grid.color)
+    private var tileBgColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_BG_COLOR }
+        return UIColor(hexString: config.grid.backgroundColor)
     }
     private var foodColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
@@ -375,10 +375,10 @@ extension SNKSnakeGameViewController {
 
         if SNKConstants.shared.displayGrid { game.makeGridView() }
 
-        game.placeObstacles()
+        //game.placeObstacles()
         //game.placeFoods()
-        game.placeRandomFood()
-        game.makeSnake(row: 1, column: 1)
+        //game.placeRandomFood()
+        //game.makeSnake(row: 1, column: 1)
 
         setupGameBindings()
 

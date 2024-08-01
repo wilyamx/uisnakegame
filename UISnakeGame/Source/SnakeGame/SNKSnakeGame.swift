@@ -52,6 +52,10 @@ class SNKSnakeGame {
     lazy var cancellables = Set<AnyCancellable>()
 
     // theming
+    private var tileColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.TILE_COLOR }
+        return UIColor(hexString: config.grid.color)
+    }
     private var foodColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
         return UIColor(hexString: config.foodColor)
@@ -90,7 +94,7 @@ class SNKSnakeGame {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
         let gridView = gameplay.gridView(frame: frame, tileSize: tileSize)
-        gridView.backgroundColor = .clear
+        gridView.backgroundColor = tileColor
         view.addSubview(gridView)
 
 //        gridView.translatesAutoresizingMaskIntoConstraints = false
