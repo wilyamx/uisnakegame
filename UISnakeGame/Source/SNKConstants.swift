@@ -10,6 +10,7 @@ import UIKit
 
 class SNKConstants: NSObject {
     typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
+    typealias SNKUserGameProgressData = SNKSnakeGameViewModel.SNKUserGameProgressData
 
 #if DEV
     // Default Values without the Configuration File
@@ -21,7 +22,7 @@ class SNKConstants: NSObject {
     static let OBSTACLE_COLOR = UIColor.black
     static let SNAKE_LENGTH = 4
     static let PROGRESS_BAR_COLOR = UIColor.orange
-    static let GAME_DURATION_IN_SECONDS = 15
+    static let GAME_DURATION_IN_SECONDS = 5
 
     // Not Configurable
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
@@ -62,9 +63,9 @@ class SNKConstants: NSObject {
         case alertSound = "alertSound"
         case leaderboard = "leaderboard"
         case leaderboardCasual = "leaderboardCasual"
-        case currentStage = "currentStage"
         case gameConfig = "gameConfig"
         case playMode = "playMode"
+        case gameProgress = "gameProgress"
     }
 
     // MARK: - Persistent Data
@@ -111,8 +112,8 @@ class SNKConstants: NSObject {
 
     // Game Progress
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.currentStage.rawValue, default: 1)
-    var currentStage: Int
+    @WSRUserDefaultCodable(key: SNKKeys.gameProgress.rawValue)
+    var gameProgress: [SNKUserGameProgressData]?
 
     // MARK: - Calculated Variables
 

@@ -22,15 +22,6 @@ final class SNKSnakeGameViewModel {
         case gameOver(Int)
     }
 
-    @Published var state: SNKGameState = .stop
-
-    var gameplay: SNKGameplayProtocol
-
-    var snakeLength: Int {
-        if gameplay is SNKCasualGameplay { return gameplay.defaultSnakeLength}
-        return gameplay.snakeLength == 0 ? gameplay.defaultSnakeLength : gameplay.snakeLength
-    }
-
     enum SNKDirection {
         case left
         case up
@@ -52,6 +43,26 @@ final class SNKSnakeGameViewModel {
             else if swipeDirection.contains(.left) { self = .left }
             else { self = .right }
         }
+    }
+
+    struct SNKGameProgressData: Codable {
+        var stage: Int = 1
+        var score: Int = 0
+    }
+
+    struct SNKUserGameProgressData: Codable {
+        var user: String
+        var casualGameplay: SNKGameProgressData?
+        var mapGameplay: SNKGameProgressData?
+    }
+
+    @Published var state: SNKGameState = .stop
+
+    var gameplay: SNKGameplayProtocol
+
+    var snakeLength: Int {
+        if gameplay is SNKCasualGameplay { return gameplay.defaultSnakeLength}
+        return gameplay.snakeLength == 0 ? gameplay.defaultSnakeLength : gameplay.snakeLength
     }
 
     init() {

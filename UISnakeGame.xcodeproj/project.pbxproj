@@ -136,6 +136,8 @@
 		A75D959B2C5A82A300C23768 /* default-game-config-dev.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D95992C5A812C00C23768 /* default-game-config-dev.json */; };
 		A75D959D2C5B15EC00C23768 /* UIApplication+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */; };
 		A75D959E2C5B16AC00C23768 /* UIApplication+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */; };
+		A75D95A02C5BA72700C23768 /* SNKUserGameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D959F2C5BA72700C23768 /* SNKUserGameProgress.swift */; };
+		A75D95A12C5BC6E400C23768 /* SNKUserGameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D959F2C5BA72700C23768 /* SNKUserGameProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +229,7 @@
 		A75D95772C5A66FE00C23768 /* DEV-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DEV-Info.plist"; path = "/Users/WilliamRS/Documents/ui-snakegame/DEV-Info.plist"; sourceTree = "<absolute>"; };
 		A75D95992C5A812C00C23768 /* default-game-config-dev.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-game-config-dev.json"; sourceTree = "<group>"; };
 		A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+WSR.swift"; sourceTree = "<group>"; };
+		A75D959F2C5BA72700C23768 /* SNKUserGameProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKUserGameProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +474,7 @@
 				A75D94EC2C509F8F00C23768 /* SNKGrid.swift */,
 				A75D94EE2C50A2C300C23768 /* SNKSnakeGame.swift */,
 				A75D94F12C50A42500C23768 /* SNKSnake.swift */,
+				A75D959F2C5BA72700C23768 /* SNKUserGameProgress.swift */,
 				A75D95262C58793D00C23768 /* Gameplay */,
 				A75D94F02C50A3B300C23768 /* Views */,
 			);
@@ -745,6 +749,7 @@
 				A75D94BD2C4F906A00C23768 /* UIColor+WSR.swift in Sources */,
 				A75D94C82C4FB29F00C23768 /* WSRLogger.swift in Sources */,
 				A75D94AE2C4E4B0F00C23768 /* SNKHomeCoordinator.swift in Sources */,
+				A75D95A02C5BA72700C23768 /* SNKUserGameProgress.swift in Sources */,
 				A75D95142C563C2600C23768 /* WSRAsyncAlertController.swift in Sources */,
 				A75D94AC2C4E494C00C23768 /* SNKHomeViewController.swift in Sources */,
 				A75D94AA2C4E48FA00C23768 /* SNKViewController.swift in Sources */,
@@ -819,6 +824,7 @@
 				A75D95462C5A66FE00C23768 /* UIColor+WSR.swift in Sources */,
 				A75D95472C5A66FE00C23768 /* WSRLogger.swift in Sources */,
 				A75D95482C5A66FE00C23768 /* SNKHomeCoordinator.swift in Sources */,
+				A75D95A12C5BC6E400C23768 /* SNKUserGameProgress.swift in Sources */,
 				A75D95492C5A66FE00C23768 /* WSRAsyncAlertController.swift in Sources */,
 				A75D954A2C5A66FE00C23768 /* SNKHomeViewController.swift in Sources */,
 				A75D954B2C5A66FE00C23768 /* SNKViewController.swift in Sources */,

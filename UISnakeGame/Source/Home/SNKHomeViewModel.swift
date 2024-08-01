@@ -11,7 +11,8 @@ import UIKit
 final class SNKHomeViewModel {
     private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
 
-    let fileLoader = WSRFileLoader()
+    private let fileLoader = WSRFileLoader()
+    private let gameProgress = SNKUserGameProgress()
 
     func loadGameConfiguration(from filename: String) async throws {
         guard SNKConstants.shared.gameConfig == nil else { return }
@@ -21,16 +22,13 @@ final class SNKHomeViewModel {
         ) as? SNKGameConfiguration
     }
 
-    func isValidUser(name: String) -> Bool {
-        return false
-    }
-
     func newUser(name: String) throws {
         guard name.count >= 3 else { throw SNKGameError.minUserCharacterCount(name) }
         guard isAvailableUser(name: name) else { throw SNKGameError.invalidUser(name) }
 
-        SNKConstants.shared.activeUser = name.uppercased()
-        SNKConstants.shared.currentStage = 1
+        let nameToSave = name.uppercased()
+        SNKConstants.shared.activeUser = nameToSave
+        gameProgress.newUserProgress(for: nameToSave)
     }
 
     func applyDummyLeaderboard() async {

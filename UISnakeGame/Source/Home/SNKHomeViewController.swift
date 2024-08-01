@@ -140,7 +140,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
                     Task { await error.showAlert(in: self) }
                 }
 
-                // force to play the casual gameplay
+                // force to play the casual gameplay if error load game config
                 SNKConstants.shared.playMode = false
             }
         }
