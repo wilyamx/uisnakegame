@@ -40,7 +40,6 @@ class SNKUserGameProgress {
     }
 
     func saveProgress(for user: String, stage: Int, score: Int, casualGameplay: Bool = false) {
-        guard score > 0 else { return }
         guard var allProgress = gameProgress else { return }
         guard let index = allProgress.firstIndex(where: { $0.user == user }) else { return }
 
