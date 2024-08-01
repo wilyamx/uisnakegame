@@ -121,6 +121,13 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         super.viewDidLoad()
         title = "Home"
 
+        wsrLogger.info(message: "viewDidLoad")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+
         Task {
             do {
                 try await viewModel.loadGameConfiguration(from: SNKConstants.DEFAULT_GAME_CONFIG_FILE)
@@ -132,15 +139,11 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
                 if let error = error as? WSRFileLoaderError {
                     Task { await error.showAlert(in: self) }
                 }
+
+                // force to play the casual gameplay
+                SNKConstants.shared.playMode = false
             }
         }
-
-        wsrLogger.info(message: "viewDidLoad")
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
 
         updateUI()
     }
