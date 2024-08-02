@@ -8,11 +8,11 @@
     },
     "snake": {
         "default_length": 4,
-        "default_head_color": "#E5243F",
+        "default_head_color": "#2F5755",
         "default_body_color": "#F65C51",
-        "default_tail_color": "#2F5755"
+        "default_tail_color": "#E5243F"
     },
-    "food_color": "#FF0000",
+    "food_color": "#841EF5",
     "obstacle_color": "#000000",
     "progress_bar_color": "#E5243F",
     "duration_in_seconds": 10,
