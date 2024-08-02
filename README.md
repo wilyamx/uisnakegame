@@ -7,7 +7,7 @@ Snake game built using **UIKit**. Our different way to study iOS Swift Language.
 1. Home
 	- Leaderboard
 	- Settings
-	- About
+	- About - PENDING
 
 2. Game
 	- New Game / Continue
@@ -31,8 +31,10 @@ Snake game built using **UIKit**. Our different way to study iOS Swift Language.
 
 - [Gameplay] Use can play either map-based (default) or casual from app settings.
 - [Gameplay] User will force to play casual game if unable to load game configuration file.
+- [Gameplay] Save the user last game progress and continue to play.
 - [Leaderboard] Active user will be highlighted in the leaderboard to motivate increase ranking.
 - [Leaderboard] Separate leaderboard map-based and casual play mode.
+- [Leaderboard] User ranking will update every complete of the stage.
 - [Score] User will earn stage points only if completed the stage.
 - [Score] As the snake length increases the food credit also vary. 
 - [Snake] Snake will update it's length only if completed the stage.
