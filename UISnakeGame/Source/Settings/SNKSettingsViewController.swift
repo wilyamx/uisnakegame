@@ -64,7 +64,7 @@ class SNKSettingsViewController: FormViewController {
         })
         +++ Section("Sounds")
         <<< SwitchRow() { row in
-            row.title = "Background"
+            row.title = "Music"
             row.value = SNKConstants.shared.backgroundSound
         }.onChange({ row in
             guard let value = row.value else { return }
