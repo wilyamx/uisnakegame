@@ -83,6 +83,7 @@ PROJECT SPECIFICATIONS
 </p>
 
 <p float="left">
+	<img src="screenshots/06_snk_map_game_stage_1.png" alt="06_snk_map_game_stage_1" height="500">
 	<img src="screenshots/06_snk_map_game_stage_2.png" alt="06_snk_map_game_stage_2" height="500">
 	<img src="screenshots/06_snk_map_game_stage_4.png" alt="06_snk_map_game_stage_4" height="500">
 	<img src="screenshots/06_snk_map_game_stage_5.png" alt="06_snk_map_game_stage_5" height="500">
