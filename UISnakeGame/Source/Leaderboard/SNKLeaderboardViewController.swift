@@ -33,7 +33,7 @@ class SNKLeaderboardViewController: SNKViewController {
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundView = nil
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .color5
 
         SNKLeaderboardCollectionViewCell.registerCell(to: view)
         return view
@@ -130,7 +130,7 @@ extension SNKLeaderboardViewController {
         cell.rank = "\(indexPath.row + 1)"
         cell.name = "\(item.name)"
         cell.score = "\(item.score)"
-        cell.cellBackgroundColor = indexPath.row % 2 == 0 ? .accentVariation2 : .accentVariation4
+        cell.cellBackgroundColor = indexPath.row % 2 == 0 ? .color3 : .color4
         cell.showMedal = item.isCompletedAllLevels
         cell.highlight = item.name == SNKConstants.shared.activeUser
         return cell

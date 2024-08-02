@@ -28,7 +28,7 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     private lazy var numberContainer: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.backgroundColor = .contrast
+        view.backgroundColor = .color1
         return view
     }()
     private lazy var rankTextLabel: UILabel = {
@@ -48,12 +48,12 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
         return view
     }()
     private lazy var medalImageView: UIImageView = {
-        let image = UIImage(systemName: "medal.fill")
+        let image = UIImage(systemName: "star.fill")
         image?.applyingSymbolConfiguration(.init(font: .largeTitle, scale: .large))
 
         let view = UIImageView(image: image?.withRenderingMode(.alwaysTemplate))
         view.contentMode = .scaleAspectFit
-        view.tintColor = .orange
+        view.tintColor = .color1
 
         view.layer.shadowColor = UIColor.white.cgColor
         view.layer.shadowRadius = 2.0
@@ -66,7 +66,7 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
         let view = UILabel()
         view.textAlignment = .right
         view.font = .headline
-        view.textColor = .contrast
+        view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
     }()
@@ -95,7 +95,7 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
         set {
             if newValue ?? false {
                 backView.layer.borderWidth = 3.0
-                backView.layer.borderColor = UIColor.black.cgColor
+                backView.layer.borderColor = UIColor.white.cgColor
             }
             else {
                 backView.layer.borderWidth = 0
