@@ -87,6 +87,6 @@ extension SNKButton {
     }
 
     @objc func touchDownButton(_: Any) {
-        backgroundColor = .accentVariation2
+        backgroundColor = .color3
     }
 }

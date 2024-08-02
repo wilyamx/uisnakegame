@@ -25,7 +25,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "SKILLFUL"
         view.textAlignment = .center
         view.font = .largeTitle
-        view.textColor = .contrast
+        view.textColor = .color1
         view.lineBreakMode = .byCharWrapping
 
         view.layer.shadowColor = UIColor.white.cgColor
@@ -53,7 +53,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = UILabel()
         view.textAlignment = .center
         view.font = .title1
-        view.textColor = .white
+        view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         view.layer.shadowColor = UIColor.white.cgColor
         view.layer.shadowRadius = 2.0
@@ -119,15 +119,15 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private lazy var developerTextLabel: UILabel = {
         let view = UILabel()
 #if DEV
-        view.text = "Developed by: William S. Reña (DEV)"
+        view.text = "Developed by: William S. Reña (@DEV)"
 #elseif TEST
-        view.text = "Developed by: William S. Reña (TEST)"
+        view.text = "Developed by: William S. Reña (@TEST)"
 #else
         view.text = "Developed by: William S. Reña"
 #endif
         view.textAlignment = .center
         view.font = .footnote
-        view.textColor = .contrast
+        view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
     }()
@@ -291,9 +291,9 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private func setGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
-            UIColor.accent.cgColor,
-            UIColor.init(hexString: "#A5D721").cgColor,
-            UIColor.init(hexString: "#EEFFBA").cgColor,
+            UIColor.color2.cgColor,
+            UIColor.color3.cgColor,
+            UIColor.color4.cgColor,
         ]
         gradientLayer.locations = [0.0, 0.5, 1.0]
         gradientLayer.frame = self.view.bounds

@@ -22,7 +22,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKILLFUL SNAKE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBQ-Fh-s0q">
                                         <rect key="frame" x="0.0" y="0.0" width="174.33333333333334" height="26.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="color1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5S-yA-Ckd">
@@ -42,7 +42,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="accentVariation2"/>
+                        <color key="backgroundColor" name="color3"/>
                         <constraints>
                             <constraint firstItem="c7d-oC-azO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="O4c-fl-s2n"/>
                             <constraint firstItem="c7d-oC-azO" firstAttribute="top" secondItem="l3d-7a-tnH" secondAttribute="bottom" id="XhF-4T-yEf"/>
@@ -58,8 +58,11 @@
     </scenes>
     <resources>
         <image name="green-snake" width="600" height="700"/>
-        <namedColor name="accentVariation2">
-            <color red="0.50800001621246338" green="0.78299999237060547" blue="0.37799999117851257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="color1">
+            <color red="0.89803921568627454" green="0.14117647058823529" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color3">
+            <color red="0.96862745098039216" green="0.69411764705882351" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

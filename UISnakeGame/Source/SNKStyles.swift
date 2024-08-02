@@ -14,7 +14,7 @@ enum ColorStyle: Hashable {
 
     var backgroundColor: UIColor {
         switch self {
-        case .primary: UIColor(hexString: "#649D49")
+        case .primary: .color1
         case .secondary: .red
         }
     }
