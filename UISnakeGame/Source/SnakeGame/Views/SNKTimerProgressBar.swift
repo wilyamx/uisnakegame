@@ -68,6 +68,15 @@ class SNKTimerProgressBar: UIView {
         timer = nil
     }
 
+    func stop() {
+        pause()
+
+        durationInSecond = 0
+        durationComplete = false
+
+        barView.frame.size.width = 0
+    }
+    
     @objc private func onTimerUpdate() {
         guard durationInSecond < maxDurationInSecond
         else {

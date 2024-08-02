@@ -23,7 +23,7 @@
         {
             "stage": 1,
             "stage_name": "Stage one",
-            "duration_in_seconds": 10,
+            "duration_in_seconds": 5,
             "food_spawn_count": 3,
             "mapping":[
                 [0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
@@ -50,7 +50,7 @@
         {
             "stage": 2,
             "stage_name": "Stage Two",
-            "duration_in_seconds": 10,
+            "duration_in_seconds": 0,
             "food_spawn_count": 3,
             "mapping":[
                 [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],

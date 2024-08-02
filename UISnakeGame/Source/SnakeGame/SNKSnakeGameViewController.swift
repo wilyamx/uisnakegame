@@ -224,7 +224,13 @@ class SNKSnakeGameViewController: SNKViewController {
                     bgSoundPlayer.play()
 
                     game.start()
-                    progressBar?.start()
+
+                    if game.gameplay.isTimeBasedStage {
+                        progressBar?.start()
+                    }
+                    else {
+                        progressBar?.stop()
+                    }
 
                 case .pause:
                     guard let game = game else { return }
@@ -397,6 +403,13 @@ extension SNKSnakeGameViewController {
             gameplay: viewModel.gameplay
         )
 
+        progressBar = SNKTimerProgressBar(
+            frame: CGRect(x: 0, y: 0, width: containerFrame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
+            color: progressBarColor,
+            durationInSecond: viewModel.gameplay.duration
+        )
+        progressBarContainerView.addSubview(progressBar!)
+
         guard let game = game else { fatalError("Game not available!") }
 
         containerView.addSubview(game.view)
@@ -404,15 +417,6 @@ extension SNKSnakeGameViewController {
         game.view.layer.borderWidth = 2.0
         game.view.frame.origin.x = (containerFrame.size.width - game.view.frame.width) / 2
         game.view.frame.origin.y = (containerFrame.size.height - game.view.frame.height) / 2
-
-        if viewModel.gameplay.isTimeBasedStage {
-            progressBar = SNKTimerProgressBar(
-                frame: CGRect(x: 0, y: 0, width: containerFrame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
-                color: progressBarColor,
-                durationInSecond: viewModel.gameplay.duration
-            )
-            progressBarContainerView.addSubview(progressBar!)
-        }
 
         // adding game actors
 
