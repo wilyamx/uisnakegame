@@ -43,6 +43,10 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.MINIMUM_FOOD_CREDIT }
         return config.minimumFoodCredit
     }
+    var isTimeBasedStage: Bool {
+        guard let config = SNKConstants.shared.gameConfig else { return true }
+        return config.durationInSeconds > 0 && config.foodSpawnCount == 0
+    }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE

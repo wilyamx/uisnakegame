@@ -46,6 +46,10 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         guard let stageData = currentStageData() else { return SNKConstants.MINIMUM_FOOD_CREDIT }
         return stageData.minimumFoodCredit
     }
+    var isTimeBasedStage: Bool {
+        guard let stageData = currentStageData() else { return true }
+        return stageData.durationInSeconds > 0 && stageData.foodSpawnCount == 0
+    }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {
         var tileSize = SNKConstants.TILE_SIZE
