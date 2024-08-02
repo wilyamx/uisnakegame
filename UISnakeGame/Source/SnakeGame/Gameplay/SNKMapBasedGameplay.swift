@@ -15,12 +15,8 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     var score: Int = 0
     var snakeLength: Int = 0
     var isLastStage: Bool {
-        get {
-             currentStage == stages.count
-        }
-        set {
-
-        }
+        get { currentStage == stages.count }
+        set { }
     }
 
     var stages: [SNKStageData] {

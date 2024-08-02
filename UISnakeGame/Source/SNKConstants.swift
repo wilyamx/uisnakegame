@@ -126,7 +126,7 @@ class SNKConstants: NSObject {
     // MARK: - Calculated Variables
 
     var leaderboardSorted: [SNKLeaderboardItemInfo]? {
-        guard let leaderboard = leaderboard else { return leaderboard }
+        guard let leaderboard = leaderboard else { return nil }
 
         return leaderboard.sorted { lhs, rhs in
             return (lhs.score, rhs.name) > (rhs.score, lhs.name)
@@ -134,7 +134,7 @@ class SNKConstants: NSObject {
     }
 
     var leaderboardCasualSorted: [SNKLeaderboardItemInfo]? {
-        guard let leaderboard = leaderboardCasual else { return leaderboard }
+        guard let leaderboard = leaderboardCasual else { return nil }
 
         return leaderboard.sorted { lhs, rhs in
             return (lhs.score, rhs.name) > (rhs.score, lhs.name)

@@ -15,8 +15,9 @@ final class SNKHomeViewModel {
 
     private let fileLoader = WSRFileLoader()
     private let gameProgress = SNKUserGameProgress()
-    
     private var userGameProgressData: SNKUserGameProgressData?
+
+    @Published var activeUser: String?
 
     func loadGameConfiguration(from filename: String) async throws {
         guard SNKConstants.shared.gameConfig == nil else { return }
@@ -48,6 +49,8 @@ final class SNKHomeViewModel {
         let nameToSave = user.uppercased()
         SNKConstants.shared.activeUser = nameToSave
         gameProgress.newUserProgress(for: nameToSave)
+        
+        activeUser = nameToSave
     }
 
     func applyDummyLeaderboard() async {

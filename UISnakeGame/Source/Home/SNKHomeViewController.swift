@@ -25,7 +25,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "SKILLFUL"
         view.textAlignment = .center
         view.font = .largeTitle
-        view.textColor = .red
+        view.textColor = .contrast
         view.lineBreakMode = .byCharWrapping
 
         view.layer.shadowColor = UIColor.white.cgColor
@@ -47,6 +47,19 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.lineBreakMode = .byCharWrapping
         view.attributedText = NSMutableAttributedString(string: "S-N-A-K-E", attributes: strokeTextAttributes)
 
+        return view
+    }()
+    private lazy var userTextLabel: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.font = .title1
+        view.textColor = .white
+        view.lineBreakMode = .byCharWrapping
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowRadius = 2.0
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowOffset = .zero
+        view.layer.masksToBounds = false
         return view
     }()
     private lazy var medalImageView: UIImageView = {
@@ -138,6 +151,8 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
 
+        userTextLabel.text = "-- \(SNKConstants.shared.activeUser) --"
+
         Task {
             do {
                 try await viewModel.loadGameConfiguration(from: SNKConstants.DEFAULT_GAME_CONFIG_FILE)
@@ -170,7 +185,8 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
             medalImageView,
             titleStackView.addArrangedSubviews([
                 skillfulTextLabel,
-                snakeTextLabel
+                snakeTextLabel,
+                userTextLabel
             ]),
             verticalStackView.addArrangedSubviews([
                 newGameButton,
@@ -227,6 +243,16 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         developerTextLabel.right == view.right - 40
         developerTextLabel.top == verticalStackView.bottom + 40
         developerTextLabel.bottom == view.bottomMargin
+    }
+
+    override func setupBindings() {
+        viewModel.$activeUser
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
+                guard let user else { return }
+                self?.userTextLabel.text = "-- \(user) --"
+            }
+            .store(in: &cancellables)
     }
 
     // MARK: - Private Methods
