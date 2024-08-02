@@ -74,7 +74,7 @@ class SNKSnakeGameViewController: SNKViewController {
 
     private lazy var progressBarContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
+        view.backgroundColor = UIColor(hexString: "#F5F5F5")
         return view
     }()
 
@@ -112,7 +112,6 @@ class SNKSnakeGameViewController: SNKViewController {
     private var needToDisplayMapGameplayAlert: Bool {
         return !SNKConstants.shared.showTheMapGameplayObjective && SNKConstants.shared.playMode
     }
-
     private var needToDisplayCasualGameplayAlert: Bool {
         return !SNKConstants.shared.showTheCasualGameplayObjective && !SNKConstants.shared.playMode
     }
@@ -220,25 +219,25 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
 
                 case .play:
-                    guard let game = game, let progressBar else { return }
+                    guard let game = game else { return }
 
                     bgSoundPlayer.play()
 
                     game.start()
-                    progressBar.start()
+                    progressBar?.start()
 
                 case .pause:
-                    guard let game = game, let progressBar else { return }
+                    guard let game = game else { return }
 
                     let state = game.pause()
                     pausePlayButton.image = UIImage(systemName: state == .started ? "pause" : "play")
 
                     if state == .started {
-                        progressBar.play()
+                        progressBar?.play()
                         bgSoundPlayer.play()
                     }
                     else {
-                        progressBar.pause()
+                        progressBar?.pause()
                         bgSoundPlayer.stop()
                     }
 
@@ -270,10 +269,10 @@ class SNKSnakeGameViewController: SNKViewController {
                     }
 
                 case .stageComplete(_):
-                    guard let game = game, let progressBar else { return }
+                    guard let game = game else { return }
 
                     wsrLogger.info(message: "isLastStage-1: \(game.gameplay.isLastStage)")
-                    progressBar.pause()
+                    progressBar?.pause()
                     game.stop()
                     game.gameplay.snakeLength = game.snakeLength
                     game.gameplay.earnedNewPoints(stageScore: game.score)
@@ -313,10 +312,10 @@ class SNKSnakeGameViewController: SNKViewController {
                     }
 
                 case .gameOver(_):
-                    guard let game = game, let progressBar else { return }
+                    guard let game = game else { return }
 
                     bgSoundPlayer.stop()
-                    progressBar.pause()
+                    progressBar?.pause()
 
                     viewModel.updateForLeaderboard()
 
@@ -398,12 +397,6 @@ extension SNKSnakeGameViewController {
             gameplay: viewModel.gameplay
         )
 
-        progressBar = SNKTimerProgressBar(
-            frame: CGRect(x: 0, y: 0, width: containerFrame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
-            color: progressBarColor,
-            durationInSecond: viewModel.gameplay.duration
-        )
-
         guard let game = game else { fatalError("Game not available!") }
 
         containerView.addSubview(game.view)
@@ -412,7 +405,14 @@ extension SNKSnakeGameViewController {
         game.view.frame.origin.x = (containerFrame.size.width - game.view.frame.width) / 2
         game.view.frame.origin.y = (containerFrame.size.height - game.view.frame.height) / 2
 
-        progressBarContainerView.addSubview(progressBar!)
+        if viewModel.gameplay.isTimeBasedStage {
+            progressBar = SNKTimerProgressBar(
+                frame: CGRect(x: 0, y: 0, width: containerFrame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
+                color: progressBarColor,
+                durationInSecond: viewModel.gameplay.duration
+            )
+            progressBarContainerView.addSubview(progressBar!)
+        }
 
         // adding game actors
 
@@ -434,7 +434,6 @@ extension SNKSnakeGameViewController {
     
     private func setupGameBindings() {
         guard let game = game else { return }
-        guard let progressBar = progressBar else { return }
 
         game.$score
             .receive(on: DispatchQueue.main)
@@ -468,7 +467,7 @@ extension SNKSnakeGameViewController {
             }
             .store(in: &cancellables)
 
-        progressBar.$durationComplete
+        progressBar?.$durationComplete
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completed in
                 guard completed else { return }

@@ -48,7 +48,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     }
     var isTimeBasedStage: Bool {
         guard let stageData = currentStageData() else { return true }
-        return stageData.durationInSeconds > 0 && stageData.foodSpawnCount == 0
+        return (stageData.durationInSeconds > 0 && stageData.foodSpawnCount == 0) || stageData.durationInSeconds > 0
     }
 
     func gridInfo(in containerFrame: CGRect) -> SNKGridInfo {

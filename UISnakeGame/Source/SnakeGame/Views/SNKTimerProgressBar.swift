@@ -9,7 +9,7 @@
 import UIKit
 
 class SNKTimerProgressBar: UIView {
-    var bgColor: UIColor = UIColor(hexString: "#F5F5F5", alpha: 1.0)
+    var bgColor: UIColor = UIColor(hexString: "#F5F5F5")
     var barView: UIView
 
     private(set) var timer: Timer?
