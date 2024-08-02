@@ -49,6 +49,7 @@ class SNKSnakeGame {
     @Published var score: Int = 0
     @Published var stage: Int = 0
     @Published var snakeLength: Int = 0
+    @Published var foodEatenCount: Int = 0
     lazy var cancellables = Set<AnyCancellable>()
 
     // theming
@@ -348,6 +349,7 @@ class SNKSnakeGame {
                 item.removeFromSuperview()
 
                 score += gameplay.minimumFoodCredit
+                foodEatenCount += 1
                 collectSoundPlayer.play()
                 //wsrLogger.info(message: "\(location)")
                 break

@@ -73,7 +73,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
         return SNKGrid(frame: frame, size: tileSize)
     }
-    
+
     func gridView(frame: CGRect, tileSize: CGFloat) -> SNKGridView {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
         return SNKGridView(frame: frame, size: tileSize)
@@ -122,7 +122,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         .addButton(title: "Quit", returnValue: "Quit")
         .register(in: viewController)
     }
-    
+
     @MainActor
     func gameplayAlert(in viewController: UIViewController) async {
         await WSRAsyncAlertController<String>(
@@ -155,6 +155,11 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     mutating func restart() {
         currentStage = 1
         SNKUserGameProgress().saveProgress(for: SNKConstants.shared.activeUser, stage: 1, score: score)
+    }
+
+    func hasMoreFoodAvailable(eatenFoodCount: Int) -> Bool {
+        guard let stageData = currentStageData() else { return true }
+        return eatenFoodCount == stageData.foodSpawnCount
     }
 
     func currentStageData() -> SNKStageData? {

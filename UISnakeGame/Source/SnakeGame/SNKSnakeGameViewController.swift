@@ -479,6 +479,16 @@ extension SNKSnakeGameViewController {
             }
             .store(in: &cancellables)
 
+        game.$foodEatenCount
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] foodEatenCount in
+                guard let self else { return }
+                guard viewModel.gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount) else { return }
+                
+                viewModel.state = .stageComplete(game.stage)
+            }
+            .store(in: &cancellables)
+
         wsrLogger.info(message: "setupGameBindings")
     }
 

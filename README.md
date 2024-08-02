@@ -44,6 +44,7 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 - [Sound] Sound effects can be on/off from the app settings.
 - [Sound] Sound effects for character (Eating, Change Direction), popups (Game Over, Level Up), background 
 - [Stage] A stage is cleared or completed if game is not over yet until time is up.
+- [Stage] Configurable either time-based or eat all spawn food item to clear the stage.
 
 ## Technology
 
