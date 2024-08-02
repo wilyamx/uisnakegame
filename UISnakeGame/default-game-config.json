@@ -21,7 +21,7 @@
     "stages": [
         {
             "stage": 1,
-            "stage_name": "Target",
+            "stage_name": "The target practice",
             "duration_in_seconds": 300,
             "mapping":[
                 [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
@@ -181,7 +181,7 @@
         },
         {
             "stage": 5,
-            "stage_name": "Slantings",
+            "stage_name": "Slants",
             "duration_in_seconds": 120,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],

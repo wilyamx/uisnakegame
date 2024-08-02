@@ -15,17 +15,17 @@ class SNKConstants: NSObject {
 #if DEV
     // Default Values without the Configuration File
     static let TILE_SIZE = 15.0
-    static let TILE_COLOR = UIColor.accentVariation4
-    static let TILE_BG_COLOR = UIColor.white
+    static let TILE_COLOR = UIColor(hexString: "#F7B15C")
+    static let TILE_BG_COLOR = UIColor(hexString: "#2F5755")
     static let GRIDLINES_COLOR = UIColor.white
-    static let FOOD_COLOR = UIColor.red
-    static let OBSTACLE_COLOR = UIColor.black
+    static let FOOD_COLOR = UIColor(hexString: "#841EF5")
+    static let OBSTACLE_COLOR = UIColor(hexString: "#000000")
     static let SNAKE_LENGTH = 4
     static let PROGRESS_BAR_COLOR = UIColor.orange
     static let GAME_DURATION_IN_SECONDS = 5
-    static let SNAKE_HEAD_COLOR = UIColor.color1
-    static let SNAKE_BODY_COLOR = UIColor.color3
-    static let SNAKE_TAIL_COLOR = UIColor.color4
+    static let SNAKE_HEAD_COLOR = UIColor(hexString: "#E5243F")
+    static let SNAKE_BODY_COLOR = UIColor(hexString: "#F65C51")
+    static let SNAKE_TAIL_COLOR = UIColor(hexString: "#2F5755")
 
     // Not Configurable
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
@@ -37,17 +37,17 @@ class SNKConstants: NSObject {
 #else
     // Default Values without the Configuration File
     static let TILE_SIZE = 15.0
-    static let TILE_COLOR = UIColor.accentVariation4
-    static let TILE_BG_COLOR = UIColor.white
+    static let TILE_COLOR = UIColor(hexString: "#F7B15C")
+    static let TILE_BG_COLOR = UIColor(hexString: "#2F5755")
     static let GRIDLINES_COLOR = UIColor.white
-    static let FOOD_COLOR = UIColor.red
-    static let OBSTACLE_COLOR = UIColor.black
+    static let FOOD_COLOR = UIColor(hexString: "#841EF5")
+    static let OBSTACLE_COLOR = UIColor(hexString: "#000000")
     static let SNAKE_LENGTH = 8
     static let PROGRESS_BAR_COLOR = UIColor.orange
     static let GAME_DURATION_IN_SECONDS = 15
-    static let SNAKE_HEAD_COLOR = UIColor.color1
-    static let SNAKE_BODY_COLOR = UIColor.color3
-    static let SNAKE_TAIL_COLOR = UIColor.color4
+    static let SNAKE_HEAD_COLOR = UIColor(hexString: "#E5243F")
+    static let SNAKE_BODY_COLOR = UIColor(hexString: "#F65C51")
+    static let SNAKE_TAIL_COLOR = UIColor(hexString: "#2F5755")
 
     // Not Configurable
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
