@@ -276,8 +276,9 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }
 
     private func updateUI() {
-        playButton.text = SNKConstants.shared.activeUser.count < 3 ? "PLAY" : continueTitle
-        playButton.isEnabled = SNKConstants.shared.activeUser.count >= 3
+        let activeUser = SNKConstants.shared.activeUser
+        playButton.text = activeUser.count < 3 ? "PLAY" : continueTitle
+        playButton.isEnabled = activeUser.count >= 3
         playButton.isHidden = !SNKConstants.shared.hasActiveUser
     }
 }

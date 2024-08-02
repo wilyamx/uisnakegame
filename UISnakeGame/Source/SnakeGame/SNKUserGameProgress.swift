@@ -27,13 +27,11 @@ class SNKUserGameProgress {
         guard var allProgress = gameProgress else { return }
         guard !allProgress.contains(where: { $0.user == user }) else { return }
 
-        var progress: SNKUserGameProgressData
-        if casualGameplay {
-            progress = SNKUserGameProgressData(user: user, mapGameplay: SNKGameProgressData())
-        }
-        else {
-            progress = SNKUserGameProgressData(user: user, mapGameplay: SNKGameProgressData())
-        }
+        var progress = SNKUserGameProgressData(
+            user: user,
+            casualGameplay: SNKGameProgressData(),
+            mapGameplay: SNKGameProgressData()
+        )
 
         allProgress.append(progress)
         gameProgress = allProgress
