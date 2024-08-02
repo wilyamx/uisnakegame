@@ -16,6 +16,7 @@
     "obstacle_color": "#000000",
     "progress_bar_color": "#E5243F",
     "duration_in_seconds": 300,
+    "food_spawn_count": 20,
     "minimum_speed": 0.18,
     "minimum_food_credit": 2,
     "stages": [
@@ -23,6 +24,7 @@
             "stage": 1,
             "stage_name": "The target practice",
             "duration_in_seconds": 300,
+            "food_spawn_count": 10,
             "mapping":[
                 [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
                 [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
@@ -62,7 +64,8 @@
         {
             "stage": 2,
             "stage_name": "Clocking",
-            "duration_in_seconds": 300,
+            "duration_in_seconds": 0,
+            "food_spawn_count": 10,
             "mapping":[
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -103,6 +106,7 @@
             "stage": 3,
             "stage_name": "Plus sign",
             "duration_in_seconds": 180,
+            "food_spawn_count": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -142,7 +146,8 @@
         {
             "stage": 4,
             "stage_name": "Faces",
-            "duration_in_seconds": 180,
+            "duration_in_seconds": 0,
+            "food_spawn_count": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -183,6 +188,7 @@
             "stage": 5,
             "stage_name": "Slants",
             "duration_in_seconds": 120,
+            "food_spawn_count": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -222,7 +228,8 @@
         {
             "stage": 6,
             "stage_name": "Question Mark",
-            "duration_in_seconds": 120,
+            "duration_in_seconds": 0,
+            "food_spawn_count": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
