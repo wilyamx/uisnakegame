@@ -400,7 +400,7 @@ extension SNKSnakeGameViewController {
 
         progressBar = SNKTimerProgressBar(
             frame: CGRect(x: 0, y: 0, width: containerFrame.size.width, height: SNKConstants.PROGRESS_BAR_HEIGHT),
-            color: SNKConstants.PROGRESS_BAR_COLOR,
+            color: progressBarColor,
             durationInSecond: viewModel.gameplay.duration
         )
 

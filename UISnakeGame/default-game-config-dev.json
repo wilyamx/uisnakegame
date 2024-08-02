@@ -14,14 +14,14 @@
     },
     "food_color": "#FF0000",
     "obstacle_color": "#000000",
-    "progress_bar_color": "#FFA500",
+    "progress_bar_color": "#E5243F",
     "duration_in_seconds": 10,
     "minimum_speed": 0.18,
     "minimum_food_credit": 2,
     "stages": [
         {
             "stage": 1,
-            "stage_name": "Single Food",
+            "stage_name": "Stage one",
             "duration_in_seconds": 10,
             "mapping":[
                 [0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
@@ -47,7 +47,7 @@
         },
         {
             "stage": 2,
-            "stage_name": "Single Food",
+            "stage_name": "Stage Two",
             "duration_in_seconds": 10,
             "mapping":[
                 [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
@@ -75,7 +75,7 @@
         },
         {
             "stage": 3,
-            "stage_name": "Single Food",
+            "stage_name": "Stage Three",
             "duration_in_seconds": 10,
             "mapping": [
                 [0,0,0,0,1,0,0,0,0,0],
@@ -94,7 +94,7 @@
         },
         {
             "stage": 4,
-            "stage_name": "Single Food",
+            "stage_name": "Stage Four",
             "duration_in_seconds": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0],
@@ -113,7 +113,7 @@
         },
         {
             "stage": 5,
-            "stage_name": "Single Food",
+            "stage_name": "Stage Five",
             "duration_in_seconds": 10,
             "mapping": [
                 [0,0,0,0,0,1,0,0,0,0],
@@ -127,7 +127,7 @@
         },
         {
             "stage": 6,
-            "stage_name": "Single Food",
+            "stage_name": "Stage Six",
             "duration_in_seconds": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -142,7 +142,7 @@
         },
         {
             "stage": 7,
-            "stage_name": "Empty",
+            "stage_name": "Emptiness",
             "duration_in_seconds": 10,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],

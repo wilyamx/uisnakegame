@@ -43,7 +43,7 @@ class SNKConstants: NSObject {
     static let FOOD_COLOR = UIColor(hexString: "#841EF5")
     static let OBSTACLE_COLOR = UIColor(hexString: "#000000")
     static let SNAKE_LENGTH = 8
-    static let PROGRESS_BAR_COLOR = UIColor.orange
+    static let PROGRESS_BAR_COLOR = UIColor(hexString: "#E5243F")
     static let GAME_DURATION_IN_SECONDS = 15
     static let SNAKE_HEAD_COLOR = UIColor(hexString: "#E5243F")
     static let SNAKE_BODY_COLOR = UIColor(hexString: "#F65C51")
