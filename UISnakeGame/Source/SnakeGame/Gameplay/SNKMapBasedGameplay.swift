@@ -20,8 +20,16 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         return config.stages
     }
     var duration: Int {
+#if DEV
         guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
         return stageData.durationInSeconds
+#elseif TEST
+        return SNKConstants.GAME_DURATION_IN_SECONDS
+#else
+        guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
+        return stageData.durationInSeconds
+#endif
+
     }
     var defaultSnakeLength: Int {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }

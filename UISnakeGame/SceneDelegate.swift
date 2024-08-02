@@ -18,9 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         #if DEV
-            print("DEVELOPMENT Environment")
+            print("[INFO]>> DEVELOPMENT Environment")
+        #elseif TEST
+            print("[INFO]>> TEST Environment")
         #else
-            print("PRODUCTION Environment")
+            print("[INFO]>> PRODUCTION Environment")
         #endif
 
         let navController = UINavigationController()

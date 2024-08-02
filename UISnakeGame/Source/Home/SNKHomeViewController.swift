@@ -105,7 +105,13 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
 
     private lazy var developerTextLabel: UILabel = {
         let view = UILabel()
+#if DEV
+        view.text = "Developed by: William S. Reña (DEV)"
+#elseif TEST
+        view.text = "Developed by: William S. Reña (TEST)"
+#else
         view.text = "Developed by: William S. Reña"
+#endif
         view.textAlignment = .center
         view.font = .footnote
         view.textColor = .contrast
