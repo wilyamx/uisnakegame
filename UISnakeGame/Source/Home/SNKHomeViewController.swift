@@ -107,6 +107,14 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.layer.cornerRadius = 20
         return view
     }()
+    private lazy var resetButton: SNKButton = {
+        let view = SNKButton()
+        view.text = "RESET SAVE"
+        view.colorStyle = .primary
+        view.font = .title3
+        view.layer.cornerRadius = 20
+        return view
+    }()
     private lazy var aboutButton: SNKButton = {
         let view = SNKButton()
         view.text = "ABOUT"
@@ -193,6 +201,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
                 playButton,
                 settingsButton,
                 leaderboardButton,
+                resetButton,
                 aboutButton
             ]),
             developerTextLabel
@@ -214,6 +223,12 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         }
         leaderboardButton.tapHandler = { [weak self] _ in
             self?.coordinator?.showLeaderboard()
+        }
+        resetButton.tapHandlerAsync = { [weak self] _ in
+            guard let self else { return }
+            if await showResetAlert(in: self) {
+                viewModel.resetData()
+            }
         }
         aboutButton.tapHandler = { [weak self] _ in
             self?.coordinator?.showAbout()
@@ -286,6 +301,16 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         alert.addAction(cancelAction)
 
         present(alert, animated: true)
+    }
+
+    func showResetAlert(in viewController: UIViewController) async -> Bool {
+        return await WSRAsyncAlertController<Bool>(
+            message: "Are you sure you want to reset all saved data?",
+            title: "RESET DATA"
+        )
+        .addButton(title: "Yes", returnValue: true)
+        .addButton(title: "Cancel", isPreferred: true, returnValue: false)
+        .register(in: viewController)
     }
 
     private func setGradientBackground() {

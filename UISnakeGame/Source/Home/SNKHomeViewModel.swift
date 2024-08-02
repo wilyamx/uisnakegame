@@ -93,6 +93,22 @@ final class SNKHomeViewModel {
         }
     }
 
+    func resetData() {
+        // leaderboards
+        SNKConstants.shared.leaderboard = []
+        SNKConstants.shared.leaderboardCasual = []
+
+        // game progress
+        SNKConstants.shared.showTheMapGameplayObjective = false
+        SNKConstants.shared.showTheCasualGameplayObjective = false
+
+        guard let gameProgress = SNKConstants.shared.gameProgress,
+              let activeUser,
+              let userProgress = gameProgress.first(where: { $0.user == activeUser }) else { return }
+
+        SNKConstants.shared.gameProgress = [userProgress]
+    }
+
     // MARK: - Private Methods
     
     private func isAvailableUser(name: String) -> Bool {
