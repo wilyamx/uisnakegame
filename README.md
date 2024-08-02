@@ -32,6 +32,7 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 - [Gameplay] Use can play either map-based (default) or casual from app settings.
 - [Gameplay] User will force to play casual game if unable to load game configuration file.
 - [Gameplay] Save the user last game progress and continue to play.
+- [Gameplay] Support both orientation in the game environment only.
 - [Leaderboard] Active user will be highlighted in the leaderboard to motivate increase ranking.
 - [Leaderboard] Separate leaderboard map-based and casual play mode.
 - [Leaderboard] User ranking will update every complete of the stage.

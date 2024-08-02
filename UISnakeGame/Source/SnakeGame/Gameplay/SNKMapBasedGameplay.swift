@@ -79,7 +79,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     @discardableResult
     func welcomeStageAlert(in viewController: UIViewController) async -> String {
         return await WSRAsyncAlertController<String>(
-            message: nil,
+            message: currentStageData()?.stageName,
             title: "STAGE \(currentStage)"
         )
         .addButton(title: "Ok", returnValue: "Ok")

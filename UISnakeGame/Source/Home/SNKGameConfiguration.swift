@@ -18,6 +18,7 @@ struct SNKStageData: Codable {
     }
 
     let stage: Int
+    let stageName: String
     let durationInSeconds: Int
     let minimumSpeed: CGFloat
     let minimumFoodCredit: Int
