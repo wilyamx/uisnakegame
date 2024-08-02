@@ -122,6 +122,16 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         .addButton(title: "Quit", returnValue: "Quit")
         .register(in: viewController)
     }
+    
+    @MainActor
+    func gameplayAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
+            message: "Eat more foods to increase your points within the time limit. SURVIVE! Amazing and challenging obtacle maps awaits you. Happy gaming!",
+            title: "OBJECTIVE"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
+        .register(in: viewController)
+    }
 
     mutating func earnedNewPoints(stageScore: Int) {
         score += stageScore

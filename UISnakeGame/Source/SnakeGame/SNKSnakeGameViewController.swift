@@ -109,6 +109,14 @@ class SNKSnakeGameViewController: SNKViewController {
     private let stageCompleteSoundPlayer = WSRSoundPlayer(sound: .stageComplete, enabled: SNKConstants.shared.alertSound)
     private let bgSoundPlayer = WSRSoundPlayer(sound: .background, enabled: SNKConstants.shared.backgroundSound, numberOfLoops: -1)
 
+    private var needToDisplayMapGameplayAlert: Bool {
+        return !SNKConstants.shared.showTheMapGameplayObjective && SNKConstants.shared.playMode
+    }
+
+    private var needToDisplayCasualGameplayAlert: Bool {
+        return !SNKConstants.shared.showTheCasualGameplayObjective && !SNKConstants.shared.playMode
+    }
+
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -249,6 +257,14 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
                         
+                        if needToDisplayMapGameplayAlert {
+                            await game?.gameplay.gameplayAlert(in: self)
+                            SNKConstants.shared.showTheMapGameplayObjective = true
+                        }
+                        if needToDisplayCasualGameplayAlert {
+                            await game?.gameplay.gameplayAlert(in: self)
+                            SNKConstants.shared.showTheCasualGameplayObjective = true
+                        }
                         await game?.gameplay.welcomeStageAlert(in: self)
                         viewModel.state = .play
                     }

@@ -66,6 +66,8 @@ class SNKConstants: NSObject {
         case gameConfig = "gameConfig"
         case playMode = "playMode"
         case gameProgress = "gameProgress"
+        case showTheMapGameplayObjective = "showTheMapGameplayObjective"
+        case showTheCasualGameplayObjective = "showTheCasualGameplayObjective"
     }
 
     // MARK: - Persistent Data
@@ -111,6 +113,12 @@ class SNKConstants: NSObject {
     var playMode: Bool
 
     // Game Progress
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.showTheMapGameplayObjective.rawValue, default: false)
+    var showTheMapGameplayObjective: Bool
+
+    @WSRUserDefaultsReadAndWrite(SNKKeys.showTheCasualGameplayObjective.rawValue, default: false)
+    var showTheCasualGameplayObjective: Bool
 
     @WSRUserDefaultCodable(key: SNKKeys.gameProgress.rawValue)
     var gameProgress: [SNKUserGameProgressData]?

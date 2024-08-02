@@ -73,7 +73,7 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     @discardableResult
     func welcomeStageAlert(in viewController: UIViewController) async -> String {
         return await WSRAsyncAlertController<String>(
-            message: "Eat more foods to gain more points and increase your ranking.\nHave fun!",
+            message: "Avoid these randomized obstacles to survive. The fastest time to eat more foods, the better!",
             title: "SURVIVAL MODE"
         )
         .addButton(title: "Ok", returnValue: "Ok")
@@ -102,6 +102,16 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         )
         .addButton(title: "Play Again", isPreferred: true, returnValue: "Play Again")
         .addButton(title: "Quit", returnValue: "Quit")
+        .register(in: viewController)
+    }
+
+    @MainActor
+    func gameplayAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
+            message: "Eat more foods to increase your points within the time limit. Beat the users in the leaderboard!",
+            title: "OBJECTIVE"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
         .register(in: viewController)
     }
 

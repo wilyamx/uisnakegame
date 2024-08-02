@@ -30,6 +30,7 @@ protocol SNKGameplayProtocol {
     func welcomeStageAlert(in viewController: UIViewController) async -> String
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
+    func gameplayAlert(in viewController: UIViewController) async
 
     func currentStageData() -> SNKStageData?
     func saveProgress()
