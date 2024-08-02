@@ -305,7 +305,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
 
     func showResetAlert(in viewController: UIViewController) async -> Bool {
         return await WSRAsyncAlertController<Bool>(
-            message: "Are you sure you want to reset all saved data?",
+            message: "Are you sure you want to reset all saved data? You cannot revert this process.",
             title: "RESET DATA"
         )
         .addButton(title: "Yes", returnValue: true)
