@@ -101,12 +101,6 @@ class SNKSnakeGame {
         gridView.backgroundColor = .clear
         view.addSubview(gridView)
 
-//        gridView.translatesAutoresizingMaskIntoConstraints = false
-//        gridView.left == view.left
-//        gridView.right == view.right
-//        gridView.top == view.top
-//        gridView.bottom == view.bottom
-
         self.gridView = gridView
     }
 
