@@ -112,7 +112,12 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     }
 
     mutating func nextStage() {
-        currentStage += 1
+        if currentStage < stages.count {
+            currentStage += 1
+        }
+        else {
+            currentStage = 1
+        }
         wsrLogger.info(message: "Current Stage: \(currentStage)")
     }
 
