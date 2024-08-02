@@ -280,7 +280,6 @@ class SNKSnakeGameViewController: SNKViewController {
                     game.gameplay.nextStage()
                     game.gameplay.saveProgress()
                     viewModel.update(gameplay: game.gameplay)
-                    viewModel.updateForLeaderboard()
 
                     bgSoundPlayer.stop()
                     stageCompleteSoundPlayer.play()
@@ -293,6 +292,9 @@ class SNKSnakeGameViewController: SNKViewController {
                         wsrLogger.info(message: "isLastStage-3: \(game.gameplay.isLastStage)")
 
                         let actionName = await game.gameplay.completedStageAlert(in: self, score: game.score)
+
+                        viewModel.updateForLeaderboard(stagesCompleted: game.gameplay.isLastStage)
+
                         // casual gameplay
                         if actionName == "Play Again" {
                             viewModel.state = .restart

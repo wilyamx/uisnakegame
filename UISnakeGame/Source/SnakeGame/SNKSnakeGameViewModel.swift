@@ -48,6 +48,7 @@ final class SNKSnakeGameViewModel {
     struct SNKGameProgressData: Codable {
         var stage: Int = 1
         var score: Int = 0
+        var levelsCompleted: Bool = false
     }
 
     struct SNKUserGameProgressData: Codable {
@@ -78,7 +79,7 @@ final class SNKSnakeGameViewModel {
     }
 
     @discardableResult
-    func updateForLeaderboard() -> Int {
+    func updateForLeaderboard(stagesCompleted: Bool = false) -> Int {
         var datasource = SNKConstants.shared.playMode ? SNKConstants.shared.leaderboardSorted : SNKConstants.shared.leaderboardCasualSorted
         if datasource == nil {
             datasource = []
@@ -90,16 +91,20 @@ final class SNKSnakeGameViewModel {
         let activeUser = SNKConstants.shared.activeUser
         var rank = 0
         var userInfo: SNKLeaderboardItemInfo = SNKLeaderboardItemInfo(
-            name: activeUser, score: score, isCompletedAllLevels: false
+            name: activeUser,
+            score: score,
+            isCompletedAllLevels: stagesCompleted
         )
 
         // remove user from existing leaderboard
         if let existingRank = leaderboard.firstIndex(where: { $0.name == activeUser }) {
             rank = existingRank + 1
 
+            let currentIsCompletedAllLevels = leaderboard[existingRank].isCompletedAllLevels
             if score > leaderboard[existingRank].score {
                 userInfo = leaderboard.remove(at: existingRank)
                 userInfo.score = score
+                userInfo.isCompletedAllLevels = currentIsCompletedAllLevels || stagesCompleted
             }
             else {
                 wsrLogger.info(message: "Same Rank as #\(rank)!")
