@@ -16,7 +16,7 @@ final class SNKHomeViewModel {
     private let fileLoader = WSRFileLoader()
     private let gameProgress = SNKUserGameProgress()
     
-    private var userGameProgressData: SNKGameProgressData?
+    private var userGameProgressData: SNKUserGameProgressData?
 
     func loadGameConfiguration(from filename: String) async throws {
         guard SNKConstants.shared.gameConfig == nil else { return }
@@ -27,11 +27,14 @@ final class SNKHomeViewModel {
     }
 
     func loadUserGameProgress(of user: String) async {
-        userGameProgressData = gameProgress.getUserProgress(
-            for: SNKConstants.shared.activeUser, casualGameplay: !SNKConstants.shared.playMode
-        )
+        userGameProgressData = gameProgress.getUserGameProgress(for: SNKConstants.shared.activeUser)
         if let userGameProgressData = userGameProgressData {
-            wsrLogger.info(message: "Progress: \(userGameProgressData)")
+            if let gameplay = userGameProgressData.mapGameplay {
+                wsrLogger.info(message: "Progress (Map Gameplay): \(gameplay)")
+            }
+            if let gameplay = userGameProgressData.casualGameplay {
+                wsrLogger.info(message: "Progress (Casual Gameplay): \(gameplay)")
+            }
         }
         else {
             wsrLogger.info(message: "NO Progress for \(user)")

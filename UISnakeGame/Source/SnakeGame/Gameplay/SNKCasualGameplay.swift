@@ -14,6 +14,14 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     var currentStage: Int = 1
     var score: Int = 0
     var snakeLength: Int = 0
+    var isLastStage: Bool {
+        get {
+            stages.count == currentStage
+        }
+        set {
+
+        }
+    }
 
     var stages: [SNKStageData] { [] }
     var duration: Int {
@@ -65,7 +73,7 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     @discardableResult
     func welcomeStageAlert(in viewController: UIViewController) async -> String {
         return await WSRAsyncAlertController<String>(
-            message: "Play the classic game mode and gain more points.",
+            message: "Eat more foods to gain more points and increase your ranking.\nHave fun!",
             title: "SURVIVAL MODE"
         )
         .addButton(title: "Ok", returnValue: "Ok")
@@ -104,16 +112,20 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     
     mutating func nextStage() {
         currentStage = 1
-        wsrLogger.info(message: "Current Stage: \(currentStage)")
+        wsrLogger.info(message: "Next Stage: \(currentStage)")
     }
     
     mutating func restoreProgress() {
-        guard let progress = SNKUserGameProgress().getUserProgress(
+        guard let progress = SNKUserGameProgress().getGameProgress(
             for: SNKConstants.shared.activeUser, casualGameplay: true
         ) else { return }
         currentStage = progress.stage
         score = progress.score
         wsrLogger.info(message: "\(progress)")
+    }
+
+    mutating func restart() {
+        currentStage = 1
     }
 
     func currentStageData() -> SNKStageData? { nil }

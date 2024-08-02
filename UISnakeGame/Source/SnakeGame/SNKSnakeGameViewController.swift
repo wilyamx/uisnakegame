@@ -205,6 +205,8 @@ class SNKSnakeGameViewController: SNKViewController {
                 switch state {
 
                 case .start:
+                    wsrLogger.info(message: "isLastStage-1: \(viewModel.gameplay.isLastStage), Stage: \(viewModel.gameplay.currentStage)")
+
                     viewModel.gameplay.restoreProgress()
                     game?.restart()
                     initGame()
@@ -254,6 +256,7 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .stageComplete(_):
                     guard let game = game, let progressBar else { return }
 
+                    wsrLogger.info(message: "isLastStage-1: \(game.gameplay.isLastStage)")
                     progressBar.pause()
                     game.stop()
                     game.gameplay.snakeLength = game.snakeLength
@@ -266,8 +269,12 @@ class SNKSnakeGameViewController: SNKViewController {
                     bgSoundPlayer.stop()
                     stageCompleteSoundPlayer.play()
 
+                    wsrLogger.info(message: "isLastStage-2: \(game.gameplay.isLastStage)")
+
                     Task { [weak self] in
                         guard let self else { return }
+
+                        wsrLogger.info(message: "isLastStage-3: \(game.gameplay.isLastStage)")
 
                         let actionName = await game.gameplay.completedStageAlert(in: self, score: game.score)
                         // casual gameplay
@@ -276,6 +283,13 @@ class SNKSnakeGameViewController: SNKViewController {
                         }
                         // map based gameplay
                         else if actionName == "Next Stage" {
+                            viewModel.state = .start
+                        }
+                        // map based gameplay
+                        else if actionName == "Play From Beginning" {
+                            viewModel.gameplay.restart()
+
+                            wsrLogger.info(message: "isLastStage-4: \(viewModel.gameplay.isLastStage), Stage: \(viewModel.gameplay.currentStage)")
                             viewModel.state = .start
                         }
                     }

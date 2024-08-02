@@ -72,7 +72,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }()
     private lazy var playButton: SNKButton = {
         let view = SNKButton()
-        view.text = SNKConstants.shared.hasActiveUser ? "PLAY" : "CONTINUE"
+        view.text = SNKConstants.shared.hasActiveUser ? "PLAY" : continueTitle
         view.colorStyle = .primary
         view.font = .title3
         view.layer.cornerRadius = 20
@@ -118,6 +118,10 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.lineBreakMode = .byCharWrapping
         return view
     }()
+
+    private var continueTitle: String {
+        SNKConstants.shared.playMode ? "CONTINUE" : "CONTINUE in Casual Game"
+    }
 
     weak var coordinator: SNKHomeCoordinator?
 
@@ -228,7 +232,8 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     // MARK: - Private Methods
 
     private func showNewUserAlert() {
-        let alert = UIAlertController(title: "NEW GAME PROFILE", message: nil, preferredStyle: .alert)
+        let message = SNKConstants.shared.playMode ? "for Map Based Gameplay" : "for Casual Gameplay"
+        let alert = UIAlertController(title: "NEW GAME PROFILE", message: message, preferredStyle: .alert)
         alert.view.tintColor = .accent
         alert.addTextField { textField in
             textField.placeholder = "Your name"
@@ -271,7 +276,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     }
 
     private func updateUI() {
-        playButton.text = SNKConstants.shared.activeUser.count < 3 ? "PLAY" : "CONTINUE"
+        playButton.text = SNKConstants.shared.activeUser.count < 3 ? "PLAY" : continueTitle
         playButton.isEnabled = SNKConstants.shared.activeUser.count >= 3
         playButton.isHidden = !SNKConstants.shared.hasActiveUser
     }

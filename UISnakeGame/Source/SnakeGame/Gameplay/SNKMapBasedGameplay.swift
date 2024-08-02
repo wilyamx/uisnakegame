@@ -14,6 +14,14 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     var currentStage: Int = 1
     var score: Int = 0
     var snakeLength: Int = 0
+    var isLastStage: Bool {
+        get {
+             currentStage == stages.count
+        }
+        set {
+
+        }
+    }
 
     var stages: [SNKStageData] {
         guard let config = SNKConstants.shared.gameConfig else { return [] }
@@ -29,7 +37,6 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         guard let stageData = currentStageData() else { return SNKConstants.GAME_DURATION_IN_SECONDS }
         return stageData.durationInSeconds
 #endif
-
     }
     var defaultSnakeLength: Int {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_LENGTH }
@@ -86,12 +93,22 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     @MainActor
     @discardableResult
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
-        await WSRAsyncAlertController<String>(
-            message: "You will proceed to the next stage.\n\(score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s).")",
-            title: "STAGE \(currentStage - 1) COMPLETE!"
-        )
-        .addButton(title: "Next Stage", returnValue: "Next Stage")
-        .register(in: viewController)
+        if isLastStage {
+            await WSRAsyncAlertController<String>(
+                message: "ALL STAGES COMPLETED!\n\(score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s).")",
+                title: "C O N G R A T U L A T I O N S !"
+            )
+            .addButton(title: "Play From Beginning", returnValue: "Play From Beginning")
+            .register(in: viewController)
+        }
+        else {
+            await WSRAsyncAlertController<String>(
+                message: "You will proceed to the next stage.\n\(score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s).")",
+                title: "STAGE \(currentStage - 1) COMPLETE!"
+            )
+            .addButton(title: "Next Stage", returnValue: "Next Stage")
+            .register(in: viewController)
+        }
     }
 
     @MainActor
@@ -115,17 +132,19 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         if currentStage < stages.count {
             currentStage += 1
         }
-        else {
-            currentStage = 1
-        }
-        wsrLogger.info(message: "Current Stage: \(currentStage)")
+        wsrLogger.info(message: "Next Stage: \(currentStage)")
     }
 
     mutating func restoreProgress() {
-        guard let progress = SNKUserGameProgress().getUserProgress(for: SNKConstants.shared.activeUser) else { return }
+        guard let progress = SNKUserGameProgress().getGameProgress(for: SNKConstants.shared.activeUser) else { return }
         currentStage = progress.stage
         score = progress.score
         wsrLogger.info(message: "\(progress)")
+    }
+
+    mutating func restart() {
+        currentStage = 1
+        SNKUserGameProgress().saveProgress(for: SNKConstants.shared.activeUser, stage: 1, score: score)
     }
 
     func currentStageData() -> SNKStageData? {

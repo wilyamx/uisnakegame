@@ -82,6 +82,7 @@ class SNKSnakeGame {
         self.foodCredit = gameplay.minimumFoodCredit
 
         self.view.frame = frame
+        self.view.backgroundColor = tileColor
         self.view.clipsToBounds = true
         wsrLogger.info(message: "frame: \(frame), tileSize: \(tileSize), foodCredit: \(gameplay.minimumFoodCredit)")
     }
@@ -97,7 +98,7 @@ class SNKSnakeGame {
         guard frame.size != .zero, tileSize != 0 else { fatalError("Check parameter values!") }
 
         let gridView = gameplay.gridView(frame: frame, tileSize: tileSize)
-        gridView.backgroundColor = tileColor
+        gridView.backgroundColor = .clear
         view.addSubview(gridView)
 
 //        gridView.translatesAutoresizingMaskIntoConstraints = false

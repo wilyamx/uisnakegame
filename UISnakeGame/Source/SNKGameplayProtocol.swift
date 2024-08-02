@@ -15,6 +15,7 @@ protocol SNKGameplayProtocol {
     var currentStage: Int { get set }
     var score: Int { get set }
     var snakeLength: Int { get set }
+    var isLastStage: Bool { get set }
 
     var stages: [SNKStageData] { get }
     var duration: Int { get }
@@ -36,4 +37,5 @@ protocol SNKGameplayProtocol {
     mutating func earnedNewPoints(stageScore: Int)
     mutating func nextStage()
     mutating func restoreProgress()
+    mutating func restart()
 }

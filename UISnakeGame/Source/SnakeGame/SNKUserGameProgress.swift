@@ -22,6 +22,8 @@ class SNKUserGameProgress {
     }
 
     func newUserProgress(for user: String, casualGameplay: Bool = false) {
+        self.gameProgress = SNKConstants.shared.gameProgress
+
         guard var allProgress = gameProgress else { return }
         guard !allProgress.contains(where: { $0.user == user }) else { return }
 
@@ -40,6 +42,8 @@ class SNKUserGameProgress {
     }
 
     func saveProgress(for user: String, stage: Int, score: Int, casualGameplay: Bool = false) {
+        self.gameProgress = SNKConstants.shared.gameProgress
+
         guard var allProgress = gameProgress else { return }
         guard let index = allProgress.firstIndex(where: { $0.user == user }) else { return }
 
@@ -52,13 +56,25 @@ class SNKUserGameProgress {
 
         gameProgress = allProgress
         SNKConstants.shared.gameProgress = allProgress
-        wsrLogger.info(message: "User: \(user), Stage: \(stage), Score: \(score)")
+        wsrLogger.info(message: "User: \(user), Stage: \(stage), Score: \(score), Casual Gameplay: \(casualGameplay)")
     }
 
-    func getUserProgress(for user: String, casualGameplay: Bool = false) -> SNKGameProgressData? {
+    func getGameProgress(for user: String, casualGameplay: Bool = false) -> SNKGameProgressData? {
+        self.gameProgress = SNKConstants.shared.gameProgress
+
         guard let allProgress = gameProgress else { return nil }
         guard let index = allProgress.firstIndex(where: { $0.user == user }) else { return nil }
 
         return casualGameplay ? allProgress[index].casualGameplay : allProgress[index].mapGameplay
     }
+    
+    func getUserGameProgress(for user: String) -> SNKUserGameProgressData? {
+        self.gameProgress = SNKConstants.shared.gameProgress
+
+        guard let allProgress = gameProgress else { return nil }
+        guard let index = allProgress.firstIndex(where: { $0.user == user }) else { return nil }
+
+        return allProgress[index]
+    }
+
 }
