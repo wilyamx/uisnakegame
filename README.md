@@ -66,9 +66,31 @@ PROJECT SPECIFICATIONS
 ## Screenshots
 
 <p float="left">
-		<img src="screenshots/01_snk_launch_screen.png" alt="ChatPeopleViewController" height="500">
-		<img src="screenshots/02_snk_home_screen.png" alt="ChatMessagingViewController" height="500">
-		<img src="screenshots/03_snk_settings.png" alt="ChatMessagingViewController" height="500">
-		<img src="screenshots/04_snk_leaderboard.png" alt="ChatMessagingViewController" height="500">
-		<img src="screenshots/05_snk_snake_game.png" alt="ChatMessagingViewController" height="500">
-	<p float="left">
+	<img src="screenshots/01_snk_launch_screen.png" alt="01_snk_launch_screen" height="500">
+	<img src="screenshots/02_snk_new_game_profile.png" alt="02_snk_new_game_profile" height="500">
+	<img src="screenshots/03_snk_home_screen.png" alt="03_snk_home_screen" height="500">
+	<img src="screenshots/04_snk_settings_screen.png" alt="04_snk_settings_screen" height="500">
+	<img src="screenshots/08_snk_leaderboard.png" alt="08_snk_leaderboard" height="500">
+</p>
+
+<p float="left">
+	<img src="screenshots/05_snk_map_game_1_objective.png" alt="05_snk_map_game_1_objective" height="500">
+	<img src="screenshots/05_snk_map_game_2_welcome_stage.png" alt="05_snk_map_game_2_welcome_stage" height="500">
+	<img src="screenshots/05_snk_map_game_3_game.png" alt="05_snk_map_game_3_game" height="500">
+	<img src="screenshots/05_snk_map_game_4_stage_complete.png" alt="05_snk_map_game_4_stage_complete" height="500">
+	<img src="screenshots/05_snk_map_game_5_game_over.png" alt="05_snk_map_game_5_game_over" height="500">
+	<img src="screenshots/05_snk_map_game_6_stage_all_completed.png" alt="05_snk_map_game_6_stage_all_completed" height="500">
+</p>
+
+<p float="left">
+	<img src="screenshots/06_snk_map_game_stage_2.png" alt="06_snk_map_game_stage_2" height="500">
+	<img src="screenshots/06_snk_map_game_stage_4.png" alt="06_snk_map_game_stage_4" height="500">
+	<img src="screenshots/06_snk_map_game_stage_5.png" alt="06_snk_map_game_stage_5" height="500">
+</p>
+
+<p float="left">
+	<img src="screenshots/07_snk_casual_game_1_objective.png" alt="07_snk_casual_game_1_objective" height="500">
+	<img src="screenshots/07_snk_casual_game_2_welcome_stage.png" alt="07_snk_casual_game_2_welcome_stage" height="500">
+	<img src="screenshots/07_snk_casual_game_3_game.png" alt="07_snk_casual_game_3_game" height="500">
+	<img src="screenshots/07_snk_casual_game_4_stage_complete.png" alt="07_snk_casual_game_4_stage_complete" height="500">
+</p>
