@@ -23,6 +23,19 @@ final class SNKSnake {
 
     var length: Int { return bodyParts.count }
 
+    private var headColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_HEAD_COLOR }
+        return UIColor(hexString: config.snake.defaultHeadColor)
+    }
+    private var bodyColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_BODY_COLOR }
+        return UIColor(hexString: config.snake.defaultBodyColor)
+    }
+    private var tailColor: UIColor {
+        guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_TAIL_COLOR }
+        return UIColor(hexString: config.snake.defaultTailColor)
+    }
+
     // sound effects
     private let changeDirectionSoundPlayer = WSRSoundPlayer(sound: .move, enabled: SNKConstants.shared.characterSound)
 
@@ -47,7 +60,7 @@ final class SNKSnake {
     private func barbados(location: CGPoint, direction: SNKDirection, size: CGFloat) {
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
-        let head = SNKTileView(frame: headFrame, color: .accentVariation1)
+        let head = SNKTileView(frame: headFrame, color: headColor)
 
         view.addSubview(head)
         bodyParts.append(head)
@@ -56,19 +69,19 @@ final class SNKSnake {
     private func python(location: CGPoint, direction: SNKDirection, size: CGFloat) {
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
-        let head = SNKTileView(frame: headFrame, color: .accentVariation1)
+        let head = SNKTileView(frame: headFrame, color: headColor)
 
         // [1] body 1
         let body1Frame = CGRect(x: location.x - size * 1, y: location.y, width: size, height: size)
-        let body1 = SNKTileView(frame: body1Frame, color: .accentVariation2)
+        let body1 = SNKTileView(frame: body1Frame, color: bodyColor)
 
         // [2] body 2
         let body2Frame = CGRect(x: location.x - size * 2, y: location.y, width: size, height: size)
-        let body2 = SNKTileView(frame: body2Frame, color: .accentVariation2)
+        let body2 = SNKTileView(frame: body2Frame, color: bodyColor)
 
         // [3] tail
         let tailFrame = CGRect(x: location.x - size * 3, y: location.y, width: size, height: size)
-        let tail = SNKTileView(frame: tailFrame, color: .accentVariation3)
+        let tail = SNKTileView(frame: tailFrame, color: tailColor)
 
         view.addSubview(head)
         view.addSubview(body1)
@@ -86,7 +99,7 @@ final class SNKSnake {
 
         // [0] head
         let headFrame = CGRect(x: location.x, y: location.y, width: size, height: size)
-        let head = SNKTileView(frame: headFrame, color: .accentVariation1)
+        let head = SNKTileView(frame: headFrame, color: headColor)
         parts.append(head)
 
         // bodies
@@ -94,13 +107,13 @@ final class SNKSnake {
             let xPosition = location.x - size * (CGFloat(i) + 1)
             let bodyFrame = CGRect(x: xPosition, y: location.y, width: size, height: size)
 
-            let body = SNKTileView(frame: bodyFrame, color: .accentVariation2)
+            let body = SNKTileView(frame: bodyFrame, color: bodyColor)
             parts.append(body)
         }
 
         // [last] tail
         let tailFrame = CGRect(x: location.x - size * CGFloat(parts.count), y: location.y, width: size, height: size)
-        let tail = SNKTileView(frame: tailFrame, color: .accentVariation3)
+        let tail = SNKTileView(frame: tailFrame, color: tailColor)
         parts.append(tail)
 
         for part in parts {
@@ -127,13 +140,13 @@ final class SNKSnake {
         guard let insertLocation = locations.last else { return 0 }
 
         let frame = CGRect(x: insertLocation.x, y: insertLocation.y, width: gridInfo.tileSize, height: gridInfo.tileSize)
-        let body = SNKTileView(frame: frame, color: .accentVariation3)
+        let body = SNKTileView(frame: frame, color: tailColor)
 
         view.addSubview(body)
         bodyParts.append(body)
 
         let previousTailPart = bodyParts[bodyParts.count - 2]
-        previousTailPart.fillColor = .accentVariation2
+        previousTailPart.fillColor = bodyColor
         previousTailPart.setNeedsDisplay()
 
         return bodyParts.count

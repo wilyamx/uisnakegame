@@ -17,8 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="new-color-scheme" translatesAutoresizingMaskIntoConstraints="NO" id="WLe-0g-sLt">
-                                <rect key="frame" x="45" y="339" width="303" height="174"/>
+                                <rect key="frame" x="45" y="181" width="303" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Screenshot 2024-08-02 at 11.58.13 PM" translatesAutoresizingMaskIntoConstraints="NO" id="ErO-tJ-gac">
+                                <rect key="frame" x="45" y="289" width="303" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.51764705882352935" green="0.11764705882352941" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ocu-2g-v2y"/>
@@ -31,6 +36,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Screenshot 2024-08-02 at 11.58.13 PM" width="1216" height="224"/>
         <image name="new-color-scheme" width="1222" height="248"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

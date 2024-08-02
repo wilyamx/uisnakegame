@@ -1,18 +1,18 @@
 {
     "life": 10,
     "grid": {
-        "color": "#BCDCAE",
-        "background_color": "#FFFFFF",
+        "color": "#F7B15C",
+        "background_color": "#2F5755",
         "line_color": "#FFFFFF",
         "size": 15
     },
     "snake": {
         "default_length": 4,
-        "default_head_color": "#000000",
-        "default_body_color": "#000000",
-        "default_tail_color": "#000000"
+        "default_head_color": "#E5243F",
+        "default_body_color": "#F65C51",
+        "default_tail_color": "#2F5755"
     },
-    "food_color": "#FF0000",
+    "food_color": "#841EF5",
     "obstacle_color": "#000000",
     "progress_bar_color": "#FFA500",
     "duration_in_seconds": 300,
