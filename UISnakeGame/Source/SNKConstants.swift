@@ -23,6 +23,9 @@ class SNKConstants: NSObject {
     static let SNAKE_LENGTH = 4
     static let PROGRESS_BAR_COLOR = UIColor.orange
     static let GAME_DURATION_IN_SECONDS = 5
+    static let SNAKE_HEAD_COLOR = UIColor.color1
+    static let SNAKE_BODY_COLOR = UIColor.color3
+    static let SNAKE_TAIL_COLOR = UIColor.color4
 
     // Not Configurable
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config-dev.json"
