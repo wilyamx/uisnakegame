@@ -237,8 +237,6 @@ class SNKSnakeGameViewController: SNKViewController {
                     initGame()
 
                 case .stop:
-                    viewModel.updateForLeaderboard()
-                    
                     bgSoundPlayer.stop()
                     game?.stop()
 
@@ -263,6 +261,7 @@ class SNKSnakeGameViewController: SNKViewController {
                     game.gameplay.nextStage()
                     game.gameplay.saveProgress()
                     viewModel.update(gameplay: game.gameplay)
+                    viewModel.updateForLeaderboard()
 
                     bgSoundPlayer.stop()
                     stageCompleteSoundPlayer.play()

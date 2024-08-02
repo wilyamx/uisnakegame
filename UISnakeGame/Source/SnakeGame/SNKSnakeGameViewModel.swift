@@ -79,9 +79,12 @@ final class SNKSnakeGameViewModel {
 
     @discardableResult
     func updateForLeaderboard() -> Int {
-        let datasource = SNKConstants.shared.playMode ? SNKConstants.shared.leaderboardSorted : SNKConstants.shared.leaderboardCasualSorted
+        var datasource = SNKConstants.shared.playMode ? SNKConstants.shared.leaderboardSorted : SNKConstants.shared.leaderboardCasualSorted
+        if datasource == nil {
+            datasource = []
+        }
         guard var leaderboard = datasource, gameplay.score > 0 else { return 0 }
-        wsrLogger.info(message: "Total Score: \(gameplay.score)")
+        wsrLogger.info(message: "Check for Ranking. Score: \(gameplay.score)")
 
         let score = gameplay.score
         let activeUser = SNKConstants.shared.activeUser
@@ -90,6 +93,7 @@ final class SNKSnakeGameViewModel {
             name: activeUser, score: score, isCompletedAllLevels: false
         )
 
+        // remove user from existing leaderboard
         if let existingRank = leaderboard.firstIndex(where: { $0.name == activeUser }) {
             rank = existingRank + 1
 
@@ -103,6 +107,7 @@ final class SNKSnakeGameViewModel {
             }
         }
 
+        // insert user for ranking
         for (index, item) in leaderboard.enumerated() {
             if gameplay.score > item.score  {
                 leaderboard.insert(userInfo, at: index)
@@ -112,6 +117,15 @@ final class SNKSnakeGameViewModel {
             }
         }
 
+        // add user
+        if !leaderboard.contains(where: { $0.name == activeUser }) {
+            userInfo.score = score
+            leaderboard.append(userInfo)
+
+            wsrLogger.info(message: "Rank as #\(leaderboard.count)!")
+        }
+
+        // remove outside limit count in ranking
         if leaderboard.count > SNKConstants.LEADERBOARD_COUNT {
             leaderboard.removeSubrange(SNKConstants.LEADERBOARD_COUNT...leaderboard.count - 1)
         }
