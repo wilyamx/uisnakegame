@@ -16,6 +16,7 @@
     "obstacle_color": "#000000",
     "progress_bar_color": "#E5243F",
     "duration_in_seconds": 10,
+    "food_spawn_count": 3,
     "minimum_speed": 0.18,
     "minimum_food_credit": 2,
     "stages": [
@@ -23,6 +24,7 @@
             "stage": 1,
             "stage_name": "Stage one",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping":[
                 [0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -49,6 +51,7 @@
             "stage": 2,
             "stage_name": "Stage Two",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping":[
                 [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -77,6 +80,7 @@
             "stage": 3,
             "stage_name": "Stage Three",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping": [
                 [0,0,0,0,1,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -96,6 +100,7 @@
             "stage": 4,
             "stage_name": "Stage Four",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -115,6 +120,7 @@
             "stage": 5,
             "stage_name": "Stage Five",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping": [
                 [0,0,0,0,0,1,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -129,6 +135,7 @@
             "stage": 6,
             "stage_name": "Stage Six",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -144,6 +151,7 @@
             "stage": 7,
             "stage_name": "Emptiness",
             "duration_in_seconds": 10,
+            "food_spawn_count": 3,
             "mapping": [
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
