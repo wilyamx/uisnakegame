@@ -126,7 +126,7 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     @MainActor
     func gameplayAlert(in viewController: UIViewController) async {
         await WSRAsyncAlertController<String>(
-            message: "Eat more foods to increase your points within the time limit. SURVIVE! Amazing and challenging obtacle maps awaits you. Happy gaming!",
+            message: "Eat these spawn foods to increase your points within the time stage limit. SURVIVE! Amazing and challenging obtacle maps awaits you. Happy gaming!",
             title: "OBJECTIVE"
         )
         .addButton(title: "Ok", returnValue: "Ok")

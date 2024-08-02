@@ -1,6 +1,6 @@
 # Skillful Snake
 
-Snake game built using **UIKit**. Our different way to study iOS Swift Language.
+Snake game built using **UIKit**. Our different way to study and explore iOS Swift Language.
 
 ## Featured List
 
@@ -54,6 +54,7 @@ PROJECT SPECIFICATIONS
 ## Technical Implementations
 
 - MVVM + Combine
+- Coordinator Design Pattern for Navigations
 - Property Wrappers
 - Custom Logger
 - User Defaults
