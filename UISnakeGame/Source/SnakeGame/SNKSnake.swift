@@ -91,7 +91,9 @@ final class SNKSnake {
 
         // bodies
         for i in 0..<length - 2 {
-            let bodyFrame = CGRect(x: location.x - size * CGFloat(i) + 1, y: location.y, width: size, height: size)
+            let xPosition = location.x - size * (CGFloat(i) + 1)
+            let bodyFrame = CGRect(x: xPosition, y: location.y, width: size, height: size)
+
             let body = SNKTileView(frame: bodyFrame, color: .accentVariation2)
             parts.append(body)
         }
