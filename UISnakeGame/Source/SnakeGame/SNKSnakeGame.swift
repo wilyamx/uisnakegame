@@ -211,6 +211,25 @@ class SNKSnakeGame {
         view.addSubview(food)
     }
 
+    func placeRandomFoodEnhancer() {
+        guard let grid = grid else { fatalError("Grid not available!") }
+
+        let excludedLocations = obstacleLocations + foodLocations
+        var location: CGPoint = grid.randomLocation(excludedLocations: excludedLocations)
+        if let snake = snake {
+            repeat {
+                location = grid.randomLocation(excludedLocations: excludedLocations)
+            } while(snake.intersect(with: location))
+        }
+
+        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let food = SNKTileView(frame: foodFrame, color: .yellow)
+
+        //wsrLogger.info(message: "\(location)")
+        foodLocations.append(location)
+        view.addSubview(food)
+    }
+
     func placeRandomObstacles(color: UIColor, count: Int = 1, excludedLocations: [CGPoint]? = nil) {
         guard let grid = grid else { fatalError("Grid not available!") }
 

@@ -165,7 +165,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
             do {
                 try await viewModel.loadGameConfiguration(from: SNKConstants.DEFAULT_GAME_CONFIG_FILE)
                 await viewModel.loadUserGameProgress(of: SNKConstants.shared.activeUser)
-#if DEV
+#if DEV || TEST
                 await viewModel.applyDummyLeaderboard()
                 await viewModel.applyDummyLeaderboardCasual()
 #endif

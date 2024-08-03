@@ -70,6 +70,16 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     }
 
     @MainActor
+    func gameplayAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
+            message: "Eat more foods to increase your points. Beat the users in the leaderboard!",
+            title: "OBJECTIVE"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
+        .register(in: viewController)
+    }
+
+    @MainActor
     @discardableResult
     func welcomeStageAlert(in viewController: UIViewController) async -> String {
         return await WSRAsyncAlertController<String>(
@@ -85,7 +95,7 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String {
         let pointsMessage = score == 0 ? "Sorry, you got no point!" : "You got \(score) point(s)."
         return await WSRAsyncAlertController<String>(
-            message: "You survived within the time limit.\n\(pointsMessage)",
+            message: "You survived!\n\(pointsMessage)",
             title: "CONGRATULATIONS!"
         )
         .addButton(title: "Play Again", returnValue: "Play Again")
@@ -102,16 +112,6 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
         )
         .addButton(title: "Play Again", isPreferred: true, returnValue: "Play Again")
         .addButton(title: "Quit", returnValue: "Quit")
-        .register(in: viewController)
-    }
-
-    @MainActor
-    func gameplayAlert(in viewController: UIViewController) async {
-        await WSRAsyncAlertController<String>(
-            message: "Eat more foods to increase your points within the time limit. Beat the users in the leaderboard!",
-            title: "OBJECTIVE"
-        )
-        .addButton(title: "Ok", returnValue: "Ok")
         .register(in: viewController)
     }
 

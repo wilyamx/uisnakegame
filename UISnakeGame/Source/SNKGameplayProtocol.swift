@@ -28,10 +28,10 @@ protocol SNKGameplayProtocol {
     func grid(frame: CGRect, tileSize: CGFloat) -> SNKGrid
     func gridView(frame: CGRect, tileSize: CGFloat) -> SNKGridView
 
+    func gameplayAlert(in viewController: UIViewController) async
     func welcomeStageAlert(in viewController: UIViewController) async -> String
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
-    func gameplayAlert(in viewController: UIViewController) async
 
     func hasMoreFoodAvailable(eatenFoodCount: Int) -> Bool
     func currentStageData() -> SNKStageData?
