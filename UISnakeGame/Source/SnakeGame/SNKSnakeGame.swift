@@ -315,11 +315,10 @@ class SNKSnakeGame {
             if let foodItemLocation = snakeIntersectToFoodItems() {
                 eatFoodItem(from: foodItemLocation)
                 snakeLength = snake.grow()
+
                 placeRandomFood()
 
-                // TODO:
-//                if gameplay.isTimeBasedStage &&
-//                    (!gameplay.isTimeBasedStage && gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount)) {
+//                if (!gameplay.isTimeBasedStage && gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount)) {
 //                    placeRandomFood()
 //                }
             }

@@ -160,11 +160,11 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
     func hasMoreFoodAvailable(eatenFoodCount: Int) -> Bool {
         guard let stageData = currentStageData() else { return true }
 #if DEV
-        return eatenFoodCount == stageData.foodSpawnCount
+        return eatenFoodCount < stageData.foodSpawnCount
 #elseif TEST
         return eatenFoodCount == SNKConstants.FOOD_SPAWN_COUNT
 #else
-        return eatenFoodCount == stageData.foodSpawnCount
+        return eatenFoodCount < stageData.foodSpawnCount
 #endif
     }
 
