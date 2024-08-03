@@ -161,7 +161,8 @@ class SNKSnakeGameViewController: SNKViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        SNKConstants.shared.isPortraitOrientation ? .portrait : .landscape
+        guard let game else { return SNKConstants.shared.isPortraitOrientation ? .portrait : .landscape }
+        return game.frame.width > game.frame.height ? .landscape : .portrait
     }
 
     // MARK: - Setups
@@ -380,6 +381,7 @@ extension SNKSnakeGameViewController {
         wsrLogger.info(message: "initGame...")
         wsrLogger.info(message: "You play as << \(SNKConstants.shared.activeUser) >>")
         wsrLogger.info(message: "UIScreen: \(UIScreen.main.bounds)")
+        wsrLogger.info(message: "Safe Area: \(view.safeAreaInsets)")
         wsrLogger.info(message: "[Gameplay] Current Stage: \(viewModel.gameplay.currentStage), Total Score: \(viewModel.gameplay.score)")
         wsrLogger.info(message: "[Gameplay] Duration: \(viewModel.gameplay.duration) seconds")
         wsrLogger.info(message: "[Gameplay] Min Speed: \(viewModel.gameplay.minimumSpeed)")
@@ -391,10 +393,11 @@ extension SNKSnakeGameViewController {
         let safeAreaInsets = view.safeAreaInsets
         let safeAreContainerFrame = CGRect(
             x: 0, y: 0,
-            width: containerFrame.width,
+            width: containerFrame.width - safeAreaInsets.left - safeAreaInsets.right,
             height: containerFrame.height - safeAreaInsets.top - safeAreaInsets.bottom
         )
-
+        
+        wsrLogger.info(message: "Safe Area: \(safeAreaInsets)")
         let gridInfo = viewModel.gameplay.gridInfo(in: safeAreContainerFrame)
 
         game = SNKSnakeGame(
@@ -409,6 +412,8 @@ extension SNKSnakeGameViewController {
             durationInSecond: viewModel.gameplay.duration
         )
         progressBarContainerView.addSubview(progressBar!)
+
+        setNeedsUpdateOfSupportedInterfaceOrientations()
 
         guard let game = game else { fatalError("Game not available!") }
 
@@ -426,6 +431,7 @@ extension SNKSnakeGameViewController {
 
         game.placeObstacles()
         game.placeRandomFood()
+        // TODO:
         //game.placeRandomFoodEnhancer()
         game.makeSnake(row: 1, column: 1)
 

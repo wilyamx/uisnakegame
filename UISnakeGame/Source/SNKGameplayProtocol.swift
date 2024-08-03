@@ -29,7 +29,7 @@ protocol SNKGameplayProtocol {
     func gridView(frame: CGRect, tileSize: CGFloat) -> SNKGridView
 
     func gameplayAlert(in viewController: UIViewController) async
-    func welcomeStageAlert(in viewController: UIViewController) async -> String
+    func welcomeStageAlert(in viewController: UIViewController) async
     func completedStageAlert(in viewController: UIViewController, score: Int) async -> String
     func gameOverStageAlert(in viewController: UIViewController, score: Int) async -> String
 

@@ -80,9 +80,8 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
     }
 
     @MainActor
-    @discardableResult
-    func welcomeStageAlert(in viewController: UIViewController) async -> String {
-        return await WSRAsyncAlertController<String>(
+    func welcomeStageAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
             message: "Avoid these randomized obstacles to survive. The fastest time to eat more foods, the better!",
             title: "SURVIVAL MODE"
         )
