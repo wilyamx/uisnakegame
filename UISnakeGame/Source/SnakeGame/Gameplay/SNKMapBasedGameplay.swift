@@ -21,7 +21,9 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
 
     var stages: [SNKStageData] {
         guard let config = SNKConstants.shared.gameConfig else { return [] }
-        return config.stages
+        return config.stages.sorted { lhs, rhs in
+            return lhs.stage < rhs.stage
+        }
     }
     var duration: Int {
 #if DEV
