@@ -345,6 +345,7 @@ class SNKSnakeGame {
         snake.move()
 
         if snakeIntersectWithItself()  {
+            snake.moveToPreviousLocation()
             gameOver()
         }
         else if snakeIntersectWithObstacles() {
@@ -379,7 +380,7 @@ class SNKSnakeGame {
     // MARK: - Collision Detection
 
     private func snakeIntersectWithItself() -> Bool {
-        guard let snake else { return false }
+        guard let snake, !snake.flexibility else { return false }
         return snake.intersectWithItself()
     }
 

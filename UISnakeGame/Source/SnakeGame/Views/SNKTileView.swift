@@ -42,4 +42,18 @@ class SNKTileView: UIView {
         layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 1.0
     }
+
+    func drawX() {
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 1.0
+
+        let imageView = UIImageView(image: UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate))
+        imageView.contentMode = .scaleToFill
+        imageView.tintColor = UIColor.white
+        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+
+        addSubview(imageView)
+
+        fillColor = .clear
+    }
 }

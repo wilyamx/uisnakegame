@@ -178,7 +178,7 @@ final class SNKSnake {
     }
 
     func hardHeadedParts() {
-        //bodyParts[0]
+        bodyParts[0].drawX()
     }
 
     // MARK: - Change Directions
