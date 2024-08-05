@@ -15,6 +15,7 @@ final class SNKSnake {
     /// the view containing all body parts of the snake
     let view = UIView()
 
+    var previousLocations: [CGPoint] = []
     var bodyParts: [SNKTileView] = []
     var gridInfo: SNKGridInfo
 
@@ -166,6 +167,8 @@ final class SNKSnake {
     }
 
     func move() {
+        previousLocations = getLocations()
+
         switch facingDirection {
         case .left: moveLeft()
         case .right: moveRight()
@@ -174,6 +177,12 @@ final class SNKSnake {
         }
 
         previousFacingDirection = facingDirection
+    }
+
+    func moveToPreviousLocation() {
+        for (index, _) in previousLocations.enumerated() {
+            bodyParts[index].frame.origin = previousLocations[index]
+        }
     }
 
     private func moveLeft() {

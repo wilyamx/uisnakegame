@@ -344,7 +344,11 @@ class SNKSnakeGame {
 
         snake.move()
 
-        if snakeIntersectWithItself() || snakeIntersectWithObstacles() {
+        if snakeIntersectWithItself()  {
+            gameOver()
+        }
+        else if snakeIntersectWithObstacles() {
+            snake.moveToPreviousLocation()
             gameOver()
         }
         else {
