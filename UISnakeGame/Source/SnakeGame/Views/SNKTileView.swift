@@ -38,4 +38,8 @@ class SNKTileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func drawBorder() {
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 1.0
+    }
 }

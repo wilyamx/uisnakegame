@@ -24,6 +24,21 @@ final class SNKSnake {
 
     var length: Int { return bodyParts.count }
 
+    var flexibility: Bool = false {
+        didSet {
+            if flexibility {
+                flexibleBodyParts()
+            }
+        }
+    }
+    var hardHead: Bool = false {
+        didSet {
+            if hardHead {
+                hardHeadedParts()
+            }
+        }
+    }
+
     private var headColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_HEAD_COLOR }
         return UIColor(hexString: config.snake.defaultHeadColor)
@@ -142,6 +157,9 @@ final class SNKSnake {
 
         let frame = CGRect(x: insertLocation.x, y: insertLocation.y, width: gridInfo.tileSize, height: gridInfo.tileSize)
         let body = SNKTileView(frame: frame, color: tailColor)
+        if flexibility {
+            body.drawBorder()
+        }
 
         view.addSubview(body)
         bodyParts.append(body)
@@ -151,6 +169,16 @@ final class SNKSnake {
         previousTailPart.setNeedsDisplay()
 
         return bodyParts.count
+    }
+
+    func flexibleBodyParts() {
+        for bodyPart in bodyParts {
+            bodyPart.drawBorder()
+        }
+    }
+
+    func hardHeadedParts() {
+        //bodyParts[0]
     }
 
     // MARK: - Change Directions

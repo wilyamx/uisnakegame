@@ -364,9 +364,11 @@ class SNKSnakeGame {
             }
             else if let location = snakeIntersectWithPill() {
                 eatPillItem(from: location)
+                snake.hardHead = true
             }
             else if let location = snakeIntersectWithWave() {
                 eatWaveItem(from: location)
+                snake.flexibility = true
             }
         }
 
