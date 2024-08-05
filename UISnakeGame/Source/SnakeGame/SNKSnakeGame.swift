@@ -397,7 +397,7 @@ class SNKSnakeGame {
         return snake.intersect(with: waveLocations)
     }
 
-    // MARK: - Food
+    // MARK: - Eating
 
     private func eatFoodItem(from location: CGPoint) {
         for item in view.subviews {
@@ -407,6 +407,7 @@ class SNKSnakeGame {
 
                 score += gameplay.minimumFoodCredit
                 foodEatenCount += 1
+
                 collectSoundPlayer.play()
                 //wsrLogger.info(message: "\(location)")
                 break
