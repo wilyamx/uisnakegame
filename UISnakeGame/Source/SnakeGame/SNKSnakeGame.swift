@@ -45,6 +45,8 @@ class SNKSnakeGame {
     // plotted actors in coordinates
     private(set) var foodLocations: [CGPoint] = []
     private(set) var obstacleLocations: [CGPoint] = []
+    private(set) var waveLocations: [CGPoint] = []
+    private(set) var pillLocations: [CGPoint] = []
 
     // game info
     @Published var score: Int = 0
@@ -219,13 +221,15 @@ class SNKSnakeGame {
 
         var type: SNKImageTileType = .wave
 
-        if number % 5 == 0 {
-            type = .wave
-        }
-        else if number % 10 == 0 {
-            type = .pill
-        }
+#if DEV
+        type = number % 2 == 0 ? .pill : .wave
+#elseif TEST
+        type = number % 2 == 0 ? .wave : .pill
+#else
+        if number % 5 == 0 { type = .wave }
+        else if number % 10 == 0 { type = .pill }
         else { return }
+#endif
 
         let excludedLocations = obstacleLocations + foodLocations
         var location: CGPoint = grid.randomLocation(excludedLocations: excludedLocations)
@@ -239,7 +243,7 @@ class SNKSnakeGame {
         let food = SNKImageTileView(frame: foodFrame, type: type)
 
         //wsrLogger.info(message: "\(location)")
-        foodLocations.append(location)
+        type == .wave ? waveLocations.append(location) : pillLocations.append(location)
         view.addSubview(food)
     }
 
@@ -344,8 +348,8 @@ class SNKSnakeGame {
             gameOver()
         }
         else {
-            if let foodItemLocation = snakeIntersectToFoodItems() {
-                eatFoodItem(from: foodItemLocation)
+            if let location = snakeIntersectToFoodItems() {
+                eatFoodItem(from: location)
                 snakeLength = snake.grow()
 
                 placeRandomFood()
@@ -353,6 +357,12 @@ class SNKSnakeGame {
 //                if (!gameplay.isTimeBasedStage && gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount)) {
 //                    placeRandomFood()
 //                }
+            }
+            else if let location = snakeIntersectWithPill() {
+                eatPillItem(from: location)
+            }
+            else if let location = snakeIntersectWithWave() {
+                eatWaveItem(from: location)
             }
         }
 
@@ -362,11 +372,6 @@ class SNKSnakeGame {
 
     // MARK: - Collision Detection
 
-    private func snakeIntersectToFoodItems() -> CGPoint? {
-        guard let snake, !foodLocations.isEmpty else { return nil }
-        return snake.intersect(with: foodLocations)
-    }
-
     private func snakeIntersectWithItself() -> Bool {
         guard let snake else { return false }
         return snake.intersectWithItself()
@@ -375,6 +380,21 @@ class SNKSnakeGame {
     private func snakeIntersectWithObstacles() -> Bool {
         guard let snake else { return false }
         return snake.intersect(with: obstacleLocations) != nil
+    }
+
+    private func snakeIntersectToFoodItems() -> CGPoint? {
+        guard let snake, !foodLocations.isEmpty else { return nil }
+        return snake.intersect(with: foodLocations)
+    }
+
+    private func snakeIntersectWithPill() -> CGPoint? {
+        guard let snake, !pillLocations.isEmpty else { return nil }
+        return snake.intersect(with: pillLocations)
+    }
+
+    private func snakeIntersectWithWave() -> CGPoint? {
+        guard let snake, !waveLocations.isEmpty else { return nil }
+        return snake.intersect(with: waveLocations)
     }
 
     // MARK: - Food
@@ -389,6 +409,32 @@ class SNKSnakeGame {
                 foodEatenCount += 1
                 collectSoundPlayer.play()
                 //wsrLogger.info(message: "\(location)")
+                break
+            }
+        }
+    }
+
+    private func eatPillItem(from location: CGPoint) {
+        for item in view.subviews {
+            if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
+                pillLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
+                item.removeFromSuperview()
+
+                collectSoundPlayer.play()
+                wsrLogger.info(message: "\(location)")
+                break
+            }
+        }
+    }
+
+    private func eatWaveItem(from location: CGPoint) {
+        for item in view.subviews {
+            if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
+                waveLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
+                item.removeFromSuperview()
+
+                collectSoundPlayer.play()
+                wsrLogger.info(message: "\(location)")
                 break
             }
         }
