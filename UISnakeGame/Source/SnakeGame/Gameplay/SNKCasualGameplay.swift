@@ -139,7 +139,13 @@ struct SNKCasualGameplay: SNKGameplayProtocol {
 
     func hasMoreFoodAvailable(eatenFoodCount: Int) -> Bool {
         guard let config = SNKConstants.shared.gameConfig else { return true }
-        return eatenFoodCount < config.foodSpawnCount
+#if DEV
+        return eatenFoodCount == stageData.foodSpawnCount
+#elseif TEST
+        return eatenFoodCount == SNKConstants.FOOD_SPAWN_COUNT
+#else
+        return eatenFoodCount == config.foodSpawnCount
+#endif
     }
     
     func currentStageData() -> SNKStageData? { nil }

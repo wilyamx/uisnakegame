@@ -431,7 +431,6 @@ extension SNKSnakeGameViewController {
 
         game.placeObstacles()
         game.placeRandomFood()
-        // TODO:
         game.placeRandomSkill()
         game.makeSnake(row: 1, column: 1)
 
