@@ -202,6 +202,9 @@
 		A75D95E72C5C580500C23768 /* collectCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = A75D95062C54C99500C23768 /* collectCoin.wav */; };
 		A75D95E82C5C580500C23768 /* default-game-config.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D94C52C4FACF700C23768 /* default-game-config.json */; };
 		A75D95E92C5C580500C23768 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A75D94712C4DFE3500C23768 /* Base */; };
+		A75D95F02C5EEF5000C23768 /* SNKImageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */; };
+		A75D95F12C5EEF5000C23768 /* SNKImageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */; };
+		A75D95F22C5EEF5000C23768 /* SNKImageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +299,7 @@
 		A75D959F2C5BA72700C23768 /* SNKUserGameProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKUserGameProgress.swift; sourceTree = "<group>"; };
 		A75D95ED2C5C580500C23768 /* UISnakeGame_TEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISnakeGame_TEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75D95EE2C5C580500C23768 /* TEST-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TEST-Info.plist"; path = "/Users/WilliamRS/Documents/ui-snakegame/TEST-Info.plist"; sourceTree = "<absolute>"; };
+		A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKImageTileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +568,7 @@
 				A75D94F32C50D09200C23768 /* SNKGridView.swift */,
 				A75D94F52C512C0200C23768 /* SNKTileView.swift */,
 				A75D95152C57210C00C23768 /* SNKTimerProgressBar.swift */,
+				A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -885,6 +890,7 @@
 				A75D94F42C50D09200C23768 /* SNKGridView.swift in Sources */,
 				A75D94EF2C50A2C300C23768 /* SNKSnakeGame.swift in Sources */,
 				A75D951E2C57818600C23768 /* SNKGameConfiguration.swift in Sources */,
+				A75D95F02C5EEF5000C23768 /* SNKImageTileView.swift in Sources */,
 				A75D951B2C57744400C23768 /* WSRFileLoader.swift in Sources */,
 				A75D95252C58654400C23768 /* SNKGameplayProtocol.swift in Sources */,
 				A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */,
@@ -960,6 +966,7 @@
 				A75D95582C5A66FE00C23768 /* SNKGridView.swift in Sources */,
 				A75D95592C5A66FE00C23768 /* SNKSnakeGame.swift in Sources */,
 				A75D955A2C5A66FE00C23768 /* SNKGameConfiguration.swift in Sources */,
+				A75D95F12C5EEF5000C23768 /* SNKImageTileView.swift in Sources */,
 				A75D955B2C5A66FE00C23768 /* WSRFileLoader.swift in Sources */,
 				A75D955C2C5A66FE00C23768 /* SNKGameplayProtocol.swift in Sources */,
 				A75D955D2C5A66FE00C23768 /* UIAlertController+SNK.swift in Sources */,
@@ -1018,6 +1025,7 @@
 				A75D95CE2C5C580500C23768 /* SNKGridView.swift in Sources */,
 				A75D95CF2C5C580500C23768 /* SNKSnakeGame.swift in Sources */,
 				A75D95D02C5C580500C23768 /* SNKGameConfiguration.swift in Sources */,
+				A75D95F22C5EEF5000C23768 /* SNKImageTileView.swift in Sources */,
 				A75D95D12C5C580500C23768 /* WSRFileLoader.swift in Sources */,
 				A75D95D22C5C580500C23768 /* SNKGameplayProtocol.swift in Sources */,
 				A75D95D32C5C580500C23768 /* UIAlertController+SNK.swift in Sources */,

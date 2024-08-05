@@ -14,6 +14,7 @@ class SNKSnakeGame {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection
     typealias SNKGridLocation = SNKGrid.SNKGridLocation
     typealias SNKGridItem = SNKStageData.SNKGridItem
+    typealias SNKImageTileType = SNKImageTileView.SNKImageTileType
 
     enum SNKState: Equatable {
         case stopped
@@ -170,7 +171,7 @@ class SNKSnakeGame {
 
         let coordinates = grid.coordinates(row: row, column: column)
         let frame = CGRect(x: coordinates.x, y: coordinates.y, width: grid.tileSize, height: grid.tileSize)
-        let item = SNKTileView(frame: frame, color: color)
+        let item = SNKImageTileView(frame: frame, type: .obstacle)
 
         //wsrLogger.info(message: "\(coordinates)")
         obstacleLocations.append(coordinates)
@@ -203,16 +204,28 @@ class SNKSnakeGame {
             } while(snake.intersect(with: location))
         }
 
-        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKTileView(frame: foodFrame, color: foodColor)
+        let frame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let item = SNKImageTileView(frame: frame, type: .food)
 
         //wsrLogger.info(message: "\(location)")
         foodLocations.append(location)
-        view.addSubview(food)
+        view.addSubview(item)
     }
 
-    func placeRandomFoodEnhancer() {
+    func placeRandomSkill() {
         guard let grid = grid else { fatalError("Grid not available!") }
+
+        let number = Int.random(in: 0 ... 100)
+
+        var type: SNKImageTileType = .wave
+
+        if number % 5 == 0 {
+            type = .wave
+        }
+        else if number % 10 == 0 {
+            type = .pill
+        }
+        else { return }
 
         let excludedLocations = obstacleLocations + foodLocations
         var location: CGPoint = grid.randomLocation(excludedLocations: excludedLocations)
@@ -223,7 +236,7 @@ class SNKSnakeGame {
         }
 
         let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKTileView(frame: foodFrame, color: .yellow)
+        let food = SNKImageTileView(frame: foodFrame, type: type)
 
         //wsrLogger.info(message: "\(location)")
         foodLocations.append(location)
@@ -240,7 +253,7 @@ class SNKSnakeGame {
 
         for location in excludedLocations {
             let frame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-            let item = SNKTileView(frame: frame, color: color)
+            let item = SNKImageTileView(frame: frame, type: .obstacle)
 
             //wsrLogger.info(message: "\(location)")
             obstacleLocations.append(location)
