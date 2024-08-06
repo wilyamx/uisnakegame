@@ -283,9 +283,6 @@ class SNKSnakeGameViewController: SNKViewController {
                     game.stop()
                     game.gameplay.snakeLength = game.snakeLength
                     game.gameplay.earnedNewPoints(stageScore: game.score)
-                    game.gameplay.nextStage()
-                    game.gameplay.saveProgress()
-                    viewModel.update(gameplay: game.gameplay)
 
                     bgSoundPlayer.stop()
                     stageCompleteSoundPlayer.play()
@@ -295,9 +292,13 @@ class SNKSnakeGameViewController: SNKViewController {
                     Task { [weak self] in
                         guard let self else { return }
 
-                        wsrLogger.info(message: "isLastStage-3: \(game.gameplay.isLastStage)")
+                        wsrLogger.info(message: "isLastStage-3: \(game.gameplay.isLastStage), \(game.gameplay.currentStage)/\(game.gameplay.stages.count)")
 
                         let actionName = await game.gameplay.completedStageAlert(in: self, score: game.score)
+
+                        game.gameplay.nextStage()
+                        game.gameplay.saveProgress()
+                        viewModel.update(gameplay: game.gameplay)
 
                         viewModel.updateForLeaderboard(stagesCompleted: game.gameplay.isLastStage)
 
