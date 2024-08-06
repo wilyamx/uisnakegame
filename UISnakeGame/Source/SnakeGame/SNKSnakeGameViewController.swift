@@ -489,8 +489,9 @@ extension SNKSnakeGameViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] foodEatenCount in
                 guard let self else { return }
-                guard viewModel.gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount) else { return }
-                
+                guard !viewModel.gameplay.isTimeBasedStage,
+                      viewModel.gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount) else { return }
+
                 viewModel.state = .stageComplete(game.stage)
             }
             .store(in: &cancellables)
