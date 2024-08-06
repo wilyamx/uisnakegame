@@ -477,14 +477,6 @@ extension SNKSnakeGameViewController {
             }
             .store(in: &cancellables)
 
-        progressBar?.$durationComplete
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completed in
-                guard completed else { return }
-                self?.viewModel.state = .stageComplete(game.stage)
-            }
-            .store(in: &cancellables)
-
         game.$foodEatenCount
             .receive(on: DispatchQueue.main)
             .sink { [weak self] foodEatenCount in
@@ -493,6 +485,14 @@ extension SNKSnakeGameViewController {
                       viewModel.gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount) else { return }
 
                 viewModel.state = .stageComplete(game.stage)
+            }
+            .store(in: &cancellables)
+
+        progressBar?.$durationComplete
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completed in
+                guard completed else { return }
+                self?.viewModel.state = .stageComplete(game.stage)
             }
             .store(in: &cancellables)
 
