@@ -103,14 +103,16 @@ final class SNKHomeViewModel {
         SNKConstants.shared.showTheCasualGameplayObjective = false
 
         let activeUser = SNKConstants.shared.activeUser
-        guard let gameProgress = SNKConstants.shared.gameProgress,
-              activeUser.count > 3,
-              var userProgress = gameProgress.first(where: { $0.user == activeUser }) else { return }
+        guard activeUser.count >= 3 else { return }
 
-        userProgress.casualGameplay = SNKGameProgressData()
-        userProgress.mapGameplay = SNKGameProgressData()
-        SNKConstants.shared.gameProgress = [userProgress]
-        
+        SNKConstants.shared.gameProgress = [
+            SNKUserGameProgressData(
+                user: activeUser,
+                casualGameplay: SNKGameProgressData(),
+                mapGameplay: SNKGameProgressData()
+            )
+        ]
+
         wsrLogger.info(message: "User: \(activeUser)")
     }
 
