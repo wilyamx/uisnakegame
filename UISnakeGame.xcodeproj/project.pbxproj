@@ -205,6 +205,12 @@
 		A75D95F02C5EEF5000C23768 /* SNKImageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */; };
 		A75D95F12C5EEF5000C23768 /* SNKImageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */; };
 		A75D95F22C5EEF5000C23768 /* SNKImageTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */; };
+		A75D95F42C62F71400C23768 /* SNKAboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95F32C62F71400C23768 /* SNKAboutViewModel.swift */; };
+		A75D95F52C62FD9100C23768 /* SNKAboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95F32C62F71400C23768 /* SNKAboutViewModel.swift */; };
+		A75D95F62C62FD9200C23768 /* SNKAboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D95F32C62F71400C23768 /* SNKAboutViewModel.swift */; };
+		A75D95F82C63042800C23768 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = A75D95F72C63042800C23768 /* about.html */; };
+		A75D95F92C63042800C23768 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = A75D95F72C63042800C23768 /* about.html */; };
+		A75D95FA2C63042800C23768 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = A75D95F72C63042800C23768 /* about.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +306,8 @@
 		A75D95ED2C5C580500C23768 /* UISnakeGame_TEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISnakeGame_TEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75D95EE2C5C580500C23768 /* TEST-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TEST-Info.plist"; path = "/Users/WilliamRS/Documents/ui-snakegame/TEST-Info.plist"; sourceTree = "<absolute>"; };
 		A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKImageTileView.swift; sourceTree = "<group>"; };
+		A75D95F32C62F71400C23768 /* SNKAboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKAboutViewModel.swift; sourceTree = "<group>"; };
+		A75D95F72C63042800C23768 /* about.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				A75D94D22C4FD14F00C23768 /* SNKAboutViewController.swift */,
+				A75D95F32C62F71400C23768 /* SNKAboutViewModel.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -583,6 +592,7 @@
 				A75D95062C54C99500C23768 /* collectCoin.wav */,
 				A75D95082C54C99500C23768 /* levelUp.mp3 */,
 				A75D95042C54C99500C23768 /* move.mp3 */,
+				A75D95F72C63042800C23768 /* about.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -778,6 +788,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75D95F82C63042800C23768 /* about.html in Resources */,
 				A75D94742C4DFE3500C23768 /* Assets.xcassets in Resources */,
 				A75D950A2C54C99500C23768 /* audienceApplauding.mp3 in Resources */,
 				A75D95092C54C99500C23768 /* move.mp3 in Resources */,
@@ -810,6 +821,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75D95F92C63042800C23768 /* about.html in Resources */,
 				A75D959B2C5A82A300C23768 /* default-game-config-dev.json in Resources */,
 				A75D95682C5A66FE00C23768 /* Assets.xcassets in Resources */,
 				A75D95692C5A66FE00C23768 /* audienceApplauding.mp3 in Resources */,
@@ -828,6 +840,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75D95FA2C63042800C23768 /* about.html in Resources */,
 				A75D95DF2C5C580500C23768 /* Assets.xcassets in Resources */,
 				A75D95E02C5C580500C23768 /* audienceApplauding.mp3 in Resources */,
 				A75D95E12C5C580500C23768 /* move.mp3 in Resources */,
@@ -882,6 +895,7 @@
 				A75D95122C56279A00C23768 /* SNKGameError.swift in Sources */,
 				A75D951A2C57744400C23768 /* WSRFileLoaderError.swift in Sources */,
 				A75D94B32C4F81F600C23768 /* UIView+WSR.swift in Sources */,
+				A75D95F42C62F71400C23768 /* SNKAboutViewModel.swift in Sources */,
 				A75D95012C54C44100C23768 /* WSRSoundPlayer.swift in Sources */,
 				A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */,
 				A75D94DC2C4FDFEA00C23768 /* UIView+SNK.swift in Sources */,
@@ -958,6 +972,7 @@
 				A75D95502C5A66FE00C23768 /* SNKGameError.swift in Sources */,
 				A75D95512C5A66FE00C23768 /* WSRFileLoaderError.swift in Sources */,
 				A75D95522C5A66FE00C23768 /* UIView+WSR.swift in Sources */,
+				A75D95F52C62FD9100C23768 /* SNKAboutViewModel.swift in Sources */,
 				A75D95532C5A66FE00C23768 /* WSRSoundPlayer.swift in Sources */,
 				A75D95542C5A66FE00C23768 /* AppDelegate.swift in Sources */,
 				A75D95552C5A66FE00C23768 /* UIView+SNK.swift in Sources */,
@@ -1017,6 +1032,7 @@
 				A75D95C62C5C580500C23768 /* SNKGameError.swift in Sources */,
 				A75D95C72C5C580500C23768 /* WSRFileLoaderError.swift in Sources */,
 				A75D95C82C5C580500C23768 /* UIView+WSR.swift in Sources */,
+				A75D95F62C62FD9200C23768 /* SNKAboutViewModel.swift in Sources */,
 				A75D95C92C5C580500C23768 /* WSRSoundPlayer.swift in Sources */,
 				A75D95CA2C5C580500C23768 /* AppDelegate.swift in Sources */,
 				A75D95CB2C5C580500C23768 /* UIView+SNK.swift in Sources */,

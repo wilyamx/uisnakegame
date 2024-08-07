@@ -24,8 +24,6 @@ extension String {
 
         let attributedString = NSMutableAttributedString(string: self)
 
-        // attributedのNSRangeのNSStringはutf-16がベースになっている。
-        // 通常は指定しなくても問題ないが、絵文字を含むケースでは長さを指定しないと文字化けの原因になる。
         attributedString.addAttributes(attr, range: NSRange(location: 0, length: utf16.count))
 
         return attributedString
