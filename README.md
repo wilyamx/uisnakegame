@@ -29,7 +29,7 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 
 ## GAME MECHANICS
 
-- [Gameplay] Use can play either map-based (default) or casual from app settings.
+- [Gameplay] User can play either map-based (default) or casual from app settings.
 - [Gameplay] User will force to play casual game if unable to load game configuration file.
 - [Gameplay] Save the user last game progress and continue to play.
 - [Gameplay] Support both orientation in the game environment only.
