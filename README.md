@@ -51,16 +51,13 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 <p float="left">
 	<img src="images/light.panel.fill.png" alt="light.panel.fill" height="100">
 	<img src="images/rotate.3d.fill.png" alt="rotate.3d.fill" height="100">
+</p>
+
+<p float="left">
 	<img src="images/water.waves.png" alt="water.waves" height="100">
 	<img src="images/pill.fill.png" alt="pill.fill" height="100">
 	<img src="images/staroflife.circle.fill.png" alt="staroflife.circle.fill" height="100">
 </p>
-
-- Obstacle
-- Food
-- Wave
-- Pill
-- Eye
 
 ## Technology
 
