@@ -15,6 +15,7 @@ class SNKImageTileView: SNKTileView {
         case food
         case wave
         case pill
+        case eye
 
         private var foodColor: UIColor {
             guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.FOOD_COLOR }
@@ -31,6 +32,7 @@ class SNKImageTileView: SNKTileView {
             case .food: "rotate.3d.fill"
             case .wave: "water.waves"
             case .pill: "pill.fill"
+            case .eye: "staroflife.circle.fill"
             }
         }
 
@@ -38,8 +40,7 @@ class SNKImageTileView: SNKTileView {
             switch self {
             case .obstacle: obstacleColor
             case .food: foodColor
-            case .wave: .white
-            case .pill: .white
+            case .wave, .pill, .eye: .white
             }
         }
     }

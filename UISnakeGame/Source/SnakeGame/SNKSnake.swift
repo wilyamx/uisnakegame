@@ -38,6 +38,13 @@ final class SNKSnake {
             }
         }
     }
+    var invisibility: Bool = false {
+        didSet {
+            if invisibility {
+                invisibleBodyParts()
+            }
+        }
+    }
 
     private var headColor: UIColor {
         guard let config = SNKConstants.shared.gameConfig else { return SNKConstants.SNAKE_HEAD_COLOR }
@@ -159,7 +166,10 @@ final class SNKSnake {
         let body = SNKTileView(frame: frame, color: tailColor)
 
         if flexibility {
-            body.drawBorder()
+            body.drawBorder(color: UIColor.white)
+        }
+        else if invisibility {
+            body.drawBorder(color: UIColor.black)
         }
 
         view.addSubview(body)
@@ -178,7 +188,7 @@ final class SNKSnake {
 
     func flexibleBodyParts() {
         for bodyPart in bodyParts {
-            bodyPart.drawBorder()
+            bodyPart.drawBorder(color: UIColor.white)
         }
     }
 
@@ -186,6 +196,22 @@ final class SNKSnake {
         bodyParts[0].drawX()
     }
 
+    func invisibleBodyParts() {
+        for bodyPart in bodyParts {
+            bodyPart.drawBorder(color: UIColor.black)
+        }
+    }
+
+    func normalBodyParts() {
+        flexibility = false
+        invisibility = false
+        hardHead = false
+        
+        for bodyPart in bodyParts {
+            bodyPart.drawBorder(color: UIColor.clear)
+        }
+    }
+    
     // MARK: - Change Directions
 
     func changeDirection(to direction: SNKDirection) {

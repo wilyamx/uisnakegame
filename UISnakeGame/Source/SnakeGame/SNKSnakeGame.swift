@@ -47,6 +47,7 @@ class SNKSnakeGame {
     private(set) var obstacleLocations: [CGPoint] = []
     private(set) var waveLocations: [CGPoint] = []
     private(set) var pillLocations: [CGPoint] = []
+    private(set) var eyeLocations: [CGPoint] = []
 
     // game info
     @Published var score: Int = 0
@@ -222,11 +223,16 @@ class SNKSnakeGame {
         var type: SNKImageTileType = .wave
 
 #if DEV
-        type = number % 2 == 0 ? .pill : .wave
+        if number % 2 == 0 { type = .pill }
+        else if number % 3 == 1 { type = .wave }
+        else { type = .eye }
 #elseif TEST
-        type = number % 2 == 0 ? .wave : .pill
+        if number % 2 == 0 { type = .pill }
+        else if number % 3 == 1 { type = .wave }
+        else { type = .eye }
 #else
         if number % 5 == 0 { type = .wave }
+        else if number % 3 == 0 { type = .eye }
         else if number % 10 == 0 { type = .pill }
         else { return }
 #endif
@@ -239,12 +245,15 @@ class SNKSnakeGame {
             } while(snake.intersect(with: location))
         }
 
-        let foodFrame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
-        let food = SNKImageTileView(frame: foodFrame, type: type)
+        let frame = CGRect(x: location.x, y: location.y, width: grid.tileSize, height: grid.tileSize)
+        let item = SNKImageTileView(frame: frame, type: type)
 
         //wsrLogger.info(message: "\(location)")
-        type == .wave ? waveLocations.append(location) : pillLocations.append(location)
-        view.addSubview(food)
+        if type == .wave { waveLocations.append(location) }
+        else if type == .pill { pillLocations.append(location) }
+        else if type == .eye { eyeLocations.append(location) }
+
+        view.addSubview(item)
     }
 
     func placeRandomObstacles(color: UIColor, count: Int = 1, excludedLocations: [CGPoint]? = nil) {
@@ -365,11 +374,18 @@ class SNKSnakeGame {
             }
             else if let location = snakeIntersectWithPill() {
                 eatPillItem(from: location)
+                snake.normalBodyParts()
                 snake.hardHead = true
             }
             else if let location = snakeIntersectWithWave() {
                 eatWaveItem(from: location)
+                snake.normalBodyParts()
                 snake.flexibility = true
+            }
+            else if let location = snakeIntersectWithEye() {
+                eatEyeItem(from: location)
+                snake.normalBodyParts()
+                snake.invisibility = true
             }
         }
 
@@ -402,6 +418,11 @@ class SNKSnakeGame {
     private func snakeIntersectWithWave() -> CGPoint? {
         guard let snake, !waveLocations.isEmpty else { return nil }
         return snake.intersect(with: waveLocations)
+    }
+
+    private func snakeIntersectWithEye() -> CGPoint? {
+        guard let snake, !eyeLocations.isEmpty else { return nil }
+        return snake.intersect(with: eyeLocations)
     }
 
     // MARK: - Eating
@@ -439,6 +460,19 @@ class SNKSnakeGame {
         for item in view.subviews {
             if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
                 waveLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
+                item.removeFromSuperview()
+
+                collectSoundPlayer.play()
+                wsrLogger.info(message: "\(location)")
+                break
+            }
+        }
+    }
+
+    private func eatEyeItem(from location: CGPoint) {
+        for item in view.subviews {
+            if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
+                eyeLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
                 item.removeFromSuperview()
 
                 collectSoundPlayer.play()
