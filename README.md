@@ -49,7 +49,7 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 ## TILE IMAGES
 
 <p float="left">
-	<img src="images/snake.png" alt="light.panel.fill" height="100">
+	<img src="images/snake.png" alt="light.panel.fill" height="50">
 </p>
 
 <p float="left">
