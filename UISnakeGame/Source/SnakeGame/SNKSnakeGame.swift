@@ -402,6 +402,7 @@ class SNKSnakeGame {
 
     private func snakeIntersectWithObstacles() -> Bool {
         guard let snake else { return false }
+        guard snake.invisibility == false else { return false }
         return snake.intersect(with: obstacleLocations) != nil
     }
 
