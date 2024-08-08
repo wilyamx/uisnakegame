@@ -91,6 +91,7 @@ PROJECT SPECIFICATIONS
 	<img src="screenshots/03_snk_home_screen.png" alt="03_snk_home_screen" height="500">
 	<img src="screenshots/04_snk_settings_screen.png" alt="04_snk_settings_screen" height="500">
 	<img src="screenshots/08_snk_leaderboard.png" alt="08_snk_leaderboard" height="500">
+	<img src="screenshots/09_snk_about.png" alt="09_snk_about" height="500">
 </p>
 
 <p float="left">
