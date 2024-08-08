@@ -74,6 +74,7 @@ PROJECT SPECIFICATIONS
 
 ## Technical Implementations
 
+- 2 Dimensional Array Grid Layout
 - MVVM + Combine
 - Coordinator Design Pattern for Navigations
 - Property Wrappers
