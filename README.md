@@ -64,7 +64,7 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 	<img src="images/staroflife.circle.fill.png" alt="staroflife.circle.fill" height="100">
 </p>
 
-## Technology
+## TECHNOLOGY
 
 PROJECT SPECIFICATIONS
 
@@ -85,7 +85,7 @@ PROJECT SPECIFICATIONS
 	- [Eureka](https://eurekacommunity.github.io/) - [iOS form builder](https://github.com/xmartlabs/eureka)
 	- [SuperEasyLayout](https://github.com/doil6317/SuperEasyLayout) - apply UI constraints programmatically
 
-## Screenshots
+## SCREENSHOTS
 
 <p float="left">
 	<img src="screenshots/01_snk_launch_screen.png" alt="01_snk_launch_screen" height="500">
@@ -119,7 +119,7 @@ PROJECT SPECIFICATIONS
 	<img src="screenshots/07_snk_casual_game_4_stage_complete.png" alt="07_snk_casual_game_4_stage_complete" height="500">
 </p>
 
-FUTURE IMPROVEMENTS
+## FUTURE IMPROVEMENTS
 
 1. Orientation support for horizontal and vertical oriented obstacle design
 1. Snake image skinning
