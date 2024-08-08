@@ -118,3 +118,12 @@ PROJECT SPECIFICATIONS
 	<img src="screenshots/07_snk_casual_game_3_game.png" alt="07_snk_casual_game_3_game" height="500">
 	<img src="screenshots/07_snk_casual_game_4_stage_complete.png" alt="07_snk_casual_game_4_stage_complete" height="500">
 </p>
+
+FUTURE IMPROVEMENTS
+
+1. Orientation support for horizontal and vertical oriented obstacle design
+1. Snake image skinning
+1. Uploadable game config to share new personalized obstacle designs
+1. Map-based obstacle maker to matrix data
+1. 2 player battle for hi-score using shared obstacle designs
+1. Haptic feedback for wrong direction
