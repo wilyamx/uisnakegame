@@ -125,5 +125,5 @@ PROJECT SPECIFICATIONS
 1. Snake image skinning
 1. Uploadable game config to share new personalized obstacle designs
 1. Map-based obstacle maker to matrix data
-1. 2 player battle for hi-score using shared obstacle designs
+1. 2 players battle for hi-score using shared obstacle design
 1. Haptic feedback for wrong direction
