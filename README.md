@@ -64,6 +64,15 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 	<img src="images/staroflife.circle.fill.png" alt="staroflife.circle.fill" height="100">
 </p>
 
+<p float="left">
+	<img src="screenshots/01_snk_power_capsule.png" alt="01_snk_power_capsule" height="500">
+	<img src="screenshots/01_snk_power_capsule_snake.png" alt="01_snk_power_capsule_snake" height="500">
+	<img src="screenshots/02_snk_power_eye.png" alt="02_snk_power_eye" height="500">
+	<img src="screenshots/02_snk_power_eye_snake.png" alt="02_snk_power_eye_snake" height="500">
+	<img src="screenshots/03_snk_power_wave.png" alt="03_snk_power_wave" height="500">
+	<img src="screenshots/03_snk_power_wave_snake.png" alt="03_snk_power_wave_snake" height="500">
+</p>
+
 ## TECHNOLOGY
 
 PROJECT SPECIFICATIONS
