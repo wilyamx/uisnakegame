@@ -46,6 +46,22 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 - [Stage] A stage is cleared or completed if game is not over yet until time is up.
 - [Stage] Configurable either time-based or eat all spawn food item to clear the stage.
 
+## TILE IMAGES
+
+<p float="left">
+	<img src="screenshots/light.panel.fill.png" alt="light.panel.fill" height="100">
+	<img src="screenshots/rotate.3d.fill.png" alt="rotate.3d.fill" height="100">
+	<img src="screenshots/water.waves.png" alt="water.waves" height="100">
+	<img src="screenshots/pill.fill.png" alt="pill.fill" height="100">
+	<img src="screenshots/staroflife.circle.fill.png" alt="staroflife.circle.fill" height="100">
+</p>
+
+- Obstacle
+- Food
+- Wave
+- Pill
+- Eye
+
 ## Technology
 
 PROJECT SPECIFICATIONS
