@@ -49,7 +49,7 @@ class SNKConstants: NSObject {
     static let SNAKE_HEAD_COLOR = UIColor(hexString: "#E5243F")
     static let SNAKE_BODY_COLOR = UIColor(hexString: "#F65C51")
     static let SNAKE_TAIL_COLOR = UIColor(hexString: "#2F5755")
-    static let FOOD_SPAWN_COUNT = 2
+    static let FOOD_SPAWN_COUNT = 4
 
     // Not Configurable
     static let DEFAULT_GAME_CONFIG_FILE = "default-game-config.json"
