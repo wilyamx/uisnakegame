@@ -357,12 +357,20 @@ class SNKSnakeGame {
             snake.moveToPreviousLocation()
             gameOver()
         }
-        else if snakeIntersectWithObstacles() {
-            snake.moveToPreviousLocation()
-            gameOver()
-        }
         else {
-            if let location = snakeIntersectToFoodItems() {
+            if let location = snakeIntersectWithObstacles2() {
+                if snake.hardHead {
+                    eatObstacleItem(from: location)
+                }
+                else if snake.invisibility {
+                    // ignore
+                }
+                else {
+                    snake.moveToPreviousLocation()
+                    gameOver()
+                }
+            }
+            else if let location = snakeIntersectToFoodItems() {
                 eatFoodItem(from: location)
                 snakeLength = snake.grow()
                 placeRandomFood()
@@ -401,6 +409,11 @@ class SNKSnakeGame {
         return snake.intersect(with: obstacleLocations) != nil
     }
 
+    private func snakeIntersectWithObstacles2() -> CGPoint? {
+        guard let snake, !obstacleLocations.isEmpty else { return nil }
+        return snake.intersect(with: obstacleLocations)
+    }
+
     private func snakeIntersectToFoodItems() -> CGPoint? {
         guard let snake, !foodLocations.isEmpty else { return nil }
         return snake.intersect(with: foodLocations)
@@ -423,6 +436,19 @@ class SNKSnakeGame {
 
     // MARK: - Eating
 
+    private func eatObstacleItem(from location: CGPoint) {
+        for item in view.subviews {
+            if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
+                obstacleLocations.removeAll(where: { $0.x == location.x && $0.y == location.y})
+                item.removeFromSuperview()
+
+                collectSoundPlayer.play()
+                wsrLogger.info(message: "\(location)")
+                break
+            }
+        }
+    }
+
     private func eatFoodItem(from location: CGPoint) {
         for item in view.subviews {
             if item.frame.origin.x == location.x && item.frame.origin.y == location.y {
@@ -433,7 +459,7 @@ class SNKSnakeGame {
                 foodEatenCount += 1
 
                 collectSoundPlayer.play()
-                //wsrLogger.info(message: "\(location)")
+                wsrLogger.info(message: "\(location)")
                 break
             }
         }
