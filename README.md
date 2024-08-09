@@ -142,9 +142,13 @@ PROJECT SPECIFICATIONS
 
 ## FUTURE IMPROVEMENTS
 
-1. Orientation support for horizontal and vertical oriented obstacle design
+1. Orientation support for horizontal and vertical oriented obstacle maps
 1. Snake image skinning
 1. Uploadable game config to share new personalized obstacle designs
 1. Map-based obstacle maker to matrix data
-1. 2 players battle for hi-score using shared obstacle design
+1. 2 players battle for hi-score using shared map obstacle design
 1. Haptic feedback for wrong direction
+1. Snake pattern movement detection
+1. Connect to iOS game center
+1. Achievements
+
