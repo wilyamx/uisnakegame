@@ -45,7 +45,7 @@ class SNKConstants: NSObject {
     static let OBSTACLE_COLOR = UIColor(hexString: "#000000")
     static let SNAKE_LENGTH = 8
     static let PROGRESS_BAR_COLOR = UIColor(hexString: "#E5243F")
-    static let GAME_DURATION_IN_SECONDS = 15
+    static let GAME_DURATION_IN_SECONDS = 20
     static let SNAKE_HEAD_COLOR = UIColor(hexString: "#E5243F")
     static let SNAKE_BODY_COLOR = UIColor(hexString: "#F65C51")
     static let SNAKE_TAIL_COLOR = UIColor(hexString: "#2F5755")
@@ -76,6 +76,9 @@ class SNKConstants: NSObject {
         case gameProgress = "gameProgress"
         case showTheMapGameplayObjective = "showTheMapGameplayObjective"
         case showTheCasualGameplayObjective = "showTheCasualGameplayObjective"
+        case showInvisibleSnakeDetails = "showInvisibleSnakeDetails"
+        case showHardHeadedSnakeDetails = "showHardHeadedSnakeDetails"
+        case showFlexibleSnakeDetails = "showFlexibleSnakeDetails"
     }
 
     // MARK: - Persistent Data
@@ -130,6 +133,18 @@ class SNKConstants: NSObject {
 
     @WSRUserDefaultCodable(key: SNKKeys.gameProgress.rawValue)
     var gameProgress: [SNKUserGameProgressData]?
+
+    // eye
+    @WSRUserDefaultsReadAndWrite(SNKKeys.showInvisibleSnakeDetails.rawValue, default: false)
+    var showAboutInvisibleSnake: Bool
+
+    // pill
+    @WSRUserDefaultsReadAndWrite(SNKKeys.showHardHeadedSnakeDetails.rawValue, default: false)
+    var showAboutHardHeadedSnake: Bool
+
+    // wave
+    @WSRUserDefaultsReadAndWrite(SNKKeys.showFlexibleSnakeDetails.rawValue, default: false)
+    var showAboutFlexibleSnake: Bool
 
     // MARK: - Calculated Variables
 

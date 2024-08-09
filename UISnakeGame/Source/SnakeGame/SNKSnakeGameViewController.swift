@@ -213,8 +213,6 @@ class SNKSnakeGameViewController: SNKViewController {
                 switch state {
 
                 case .start:
-                    wsrLogger.info(message: "isLastStage-1: \(viewModel.gameplay.isLastStage), Stage: \(viewModel.gameplay.currentStage)")
-
                     viewModel.gameplay.restoreProgress()
                     game?.restart()
                     initGame()
@@ -278,7 +276,6 @@ class SNKSnakeGameViewController: SNKViewController {
                 case .stageComplete(_):
                     guard let game = game else { return }
 
-                    wsrLogger.info(message: "isLastStage-1: \(game.gameplay.isLastStage)")
                     progressBar?.pause()
                     game.stop()
                     game.gameplay.snakeLength = game.snakeLength
@@ -287,12 +284,8 @@ class SNKSnakeGameViewController: SNKViewController {
                     bgSoundPlayer.stop()
                     stageCompleteSoundPlayer.play()
 
-                    wsrLogger.info(message: "isLastStage-2: \(game.gameplay.isLastStage)")
-
                     Task { [weak self] in
                         guard let self else { return }
-
-                        wsrLogger.info(message: "isLastStage-3: \(game.gameplay.isLastStage), \(game.gameplay.currentStage)/\(game.gameplay.stages.count)")
 
                         let actionName = await game.gameplay.completedStageAlert(in: self, score: game.score)
 
@@ -313,8 +306,6 @@ class SNKSnakeGameViewController: SNKViewController {
                         // map based gameplay
                         else if actionName == "Play From Beginning" {
                             viewModel.gameplay.restart()
-
-                            wsrLogger.info(message: "isLastStage-4: \(viewModel.gameplay.isLastStage), Stage: \(viewModel.gameplay.currentStage)")
                             viewModel.state = .start
                         }
                     }
@@ -486,6 +477,41 @@ extension SNKSnakeGameViewController {
                       viewModel.gameplay.hasMoreFoodAvailable(eatenFoodCount: foodEatenCount) else { return }
 
                 viewModel.state = .stageComplete(game.stage)
+            }
+            .store(in: &cancellables)
+
+        game.$skillAcquired
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] skill in
+                guard let self, let skill else { return }
+
+                if skill == .pill && !SNKConstants.shared.showAboutHardHeadedSnake {
+                    viewModel.state = .pause
+                    Task { [weak self] in
+                        guard let self else { return }
+                        await game.gameplay.hardHeadedSnakeAlert(in: self)
+                        SNKConstants.shared.showAboutHardHeadedSnake = true
+                        viewModel.state = .pause
+                    }
+                }
+                else if skill == .wave && !SNKConstants.shared.showAboutFlexibleSnake {
+                    viewModel.state = .pause
+                    Task { [weak self] in
+                        guard let self else { return }
+                        await game.gameplay.flexibleSnakeAlert(in: self)
+                        SNKConstants.shared.showAboutFlexibleSnake = true
+                        viewModel.state = .pause
+                    }
+                }
+                else if skill == .eye && !SNKConstants.shared.showAboutInvisibleSnake {
+                    viewModel.state = .pause
+                    Task { [weak self] in
+                        guard let self else { return }
+                        await game.gameplay.invisibleSnakeAlert(in: self)
+                        SNKConstants.shared.showAboutInvisibleSnake = true
+                        viewModel.state = .pause
+                    }
+                }
             }
             .store(in: &cancellables)
 

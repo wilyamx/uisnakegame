@@ -101,6 +101,9 @@ final class SNKHomeViewModel {
         // game progress
         SNKConstants.shared.showTheMapGameplayObjective = false
         SNKConstants.shared.showTheCasualGameplayObjective = false
+        SNKConstants.shared.showAboutInvisibleSnake = false
+        SNKConstants.shared.showAboutHardHeadedSnake = false
+        SNKConstants.shared.showAboutFlexibleSnake = false
 
         let activeUser = SNKConstants.shared.activeUser
         guard activeUser.count >= 3 else { return }

@@ -134,6 +134,36 @@ struct SNKMapBasedGameplay: SNKGameplayProtocol {
         .register(in: viewController)
     }
 
+    @MainActor
+    func flexibleSnakeAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
+            message: "Snake has the ability to overlap it's body.",
+            title: "FLEXIBLE SNAKE"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
+        .register(in: viewController)
+    }
+    
+    @MainActor
+    func invisibleSnakeAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
+            message: "Snake has the ability to pass obstacles.",
+            title: "INVISIBLE SNAKE"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
+        .register(in: viewController)
+    }
+
+    @MainActor
+    func hardHeadedSnakeAlert(in viewController: UIViewController) async {
+        await WSRAsyncAlertController<String>(
+            message: "Snake has the ability to destroy obstacles.",
+            title: "HARD HEADED SNAKE"
+        )
+        .addButton(title: "Ok", returnValue: "Ok")
+        .register(in: viewController)
+    }
+
     mutating func earnedNewPoints(stageScore: Int) {
         score += stageScore
         wsrLogger.info(message: "Stage Score: \(stageScore), Total Score: \(score)")

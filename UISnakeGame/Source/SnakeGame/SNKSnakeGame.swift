@@ -54,6 +54,7 @@ class SNKSnakeGame {
     @Published var stage: Int = 0
     @Published var snakeLength: Int = 0
     @Published var foodEatenCount: Int = 0
+    @Published var skillAcquired: SNKImageTileType?
     lazy var cancellables = Set<AnyCancellable>()
 
     // theming
@@ -376,16 +377,19 @@ class SNKSnakeGame {
                 placeRandomFood()
             }
             else if let location = snakeIntersectWithPill() {
+                skillAcquired = .pill
                 eatPillItem(from: location)
                 snake.normalBodyParts()
                 snake.hardHead = true
             }
             else if let location = snakeIntersectWithWave() {
+                skillAcquired = .wave
                 eatWaveItem(from: location)
                 snake.normalBodyParts()
                 snake.flexibility = true
             }
             else if let location = snakeIntersectWithEye() {
+                skillAcquired = .eye
                 eatEyeItem(from: location)
                 snake.normalBodyParts()
                 snake.invisibility = true
