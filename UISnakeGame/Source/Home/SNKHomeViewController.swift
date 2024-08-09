@@ -127,9 +127,9 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private lazy var developerTextLabel: UILabel = {
         let view = UILabel()
 #if DEV
-        view.text = "Developed by: William S. Reña (@DEV)"
+        view.text = "Developed by: William S. Reña (DEVT BUILD)"
 #elseif TEST
-        view.text = "Developed by: William S. Reña (@TEST)"
+        view.text = "Developed by: William S. Reña (TEST BUILD)"
 #else
         view.text = "Developed by: William S. Reña"
 #endif
