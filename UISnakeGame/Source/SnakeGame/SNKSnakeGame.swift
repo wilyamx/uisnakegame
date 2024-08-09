@@ -358,7 +358,7 @@ class SNKSnakeGame {
             gameOver()
         }
         else {
-            if let location = snakeIntersectWithObstacles2() {
+            if let location = snakeIntersectWithObstacles() {
                 if snake.hardHead {
                     eatObstacleItem(from: location)
                 }
@@ -403,13 +403,7 @@ class SNKSnakeGame {
         return snake.intersectWithItself()
     }
 
-    private func snakeIntersectWithObstacles() -> Bool {
-        guard let snake else { return false }
-        guard snake.invisibility == false else { return false }
-        return snake.intersect(with: obstacleLocations) != nil
-    }
-
-    private func snakeIntersectWithObstacles2() -> CGPoint? {
+    private func snakeIntersectWithObstacles() -> CGPoint? {
         guard let snake, !obstacleLocations.isEmpty else { return nil }
         return snake.intersect(with: obstacleLocations)
     }
