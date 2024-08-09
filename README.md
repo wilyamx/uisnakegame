@@ -24,7 +24,7 @@ Snake game built using **UIKit**. Our different way to study and explore iOS Swi
 
 4. Skills
 	- Allow body collision (flexible body)
-	- Hard headed snake (can destroy obstacles) - PENDING
+	- Hard headed snake (can destroy obstacles)
 
 
 ## GAME MECHANICS
