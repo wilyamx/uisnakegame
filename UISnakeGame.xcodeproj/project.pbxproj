@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A24BA3932C869A7D00266DFF /* SuperEasyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A24BA3922C869A7D00266DFF /* SuperEasyLayout */; };
+		A24BA3962C869AAB00266DFF /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A24BA3952C869AAB00266DFF /* Eureka */; };
 		A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D946A2C4DFE3500C23768 /* AppDelegate.swift */; };
 		A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D946C2C4DFE3500C23768 /* SceneDelegate.swift */; };
 		A75D94722C4DFE3500C23768 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A75D94712C4DFE3500C23768 /* Base */; };
@@ -26,7 +28,6 @@
 		A75D94B62C4F85EB00C23768 /* SNKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94B52C4F85EB00C23768 /* SNKButton.swift */; };
 		A75D94B92C4F868800C23768 /* SNKStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94B82C4F868800C23768 /* SNKStyles.swift */; };
 		A75D94BD2C4F906A00C23768 /* UIColor+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94BC2C4F906A00C23768 /* UIColor+WSR.swift */; };
-		A75D94C02C4F924100C23768 /* SuperEasyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A75D94BF2C4F924100C23768 /* SuperEasyLayout */; };
 		A75D94C22C4F9ED300C23768 /* String+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C12C4F9ED300C23768 /* String+WSR.swift */; };
 		A75D94C42C4F9FAB00C23768 /* UIFont+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94C32C4F9FAB00C23768 /* UIFont+WSR.swift */; };
 		A75D94C62C4FACF700C23768 /* default-game-config.json in Resources */ = {isa = PBXBuildFile; fileRef = A75D94C52C4FACF700C23768 /* default-game-config.json */; };
@@ -40,7 +41,6 @@
 		A75D94DA2C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94D92C4FDE7000C23768 /* SNKLeaderboardCollectionViewCell.swift */; };
 		A75D94DC2C4FDFEA00C23768 /* UIView+SNK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94DB2C4FDFEA00C23768 /* UIView+SNK.swift */; };
 		A75D94DE2C4FE27C00C23768 /* Sequence+WSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94DD2C4FE27C00C23768 /* Sequence+WSR.swift */; };
-		A75D94E12C4FFD7100C23768 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A75D94E02C4FFD7100C23768 /* Eureka */; };
 		A75D94E72C507D9200C23768 /* SNKSnakeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94E62C507D9200C23768 /* SNKSnakeGameViewController.swift */; };
 		A75D94E92C507DA800C23768 /* SNKSnakeGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94E82C507DA800C23768 /* SNKSnakeGameViewModel.swift */; };
 		A75D94EB2C5094E200C23768 /* UIAlertController+SNK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D94EA2C5094E200C23768 /* UIAlertController+SNK.swift */; };
@@ -315,8 +315,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A75D94C02C4F924100C23768 /* SuperEasyLayout in Frameworks */,
-				A75D94E12C4FFD7100C23768 /* Eureka in Frameworks */,
+				A24BA3932C869A7D00266DFF /* SuperEasyLayout in Frameworks */,
+				A24BA3962C869AAB00266DFF /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,8 +647,8 @@
 			);
 			name = UISnakeGame;
 			packageProductDependencies = (
-				A75D94BF2C4F924100C23768 /* SuperEasyLayout */,
-				A75D94E02C4FFD7100C23768 /* Eureka */,
+				A24BA3922C869A7D00266DFF /* SuperEasyLayout */,
+				A24BA3952C869AAB00266DFF /* Eureka */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D94672C4DFE3500C23768 /* UISnakeGame.app */;
@@ -767,8 +767,8 @@
 			);
 			mainGroup = A75D945E2C4DFE3500C23768;
 			packageReferences = (
-				A75D94BE2C4F924100C23768 /* XCRemoteSwiftPackageReference "SuperEasyLayout" */,
-				A75D94DF2C4FFCFE00C23768 /* XCRemoteSwiftPackageReference "Eureka" */,
+				A24BA3912C869A7D00266DFF /* XCRemoteSwiftPackageReference "SuperEasyLayout" */,
+				A24BA3942C869AAA00266DFF /* XCRemoteSwiftPackageReference "Eureka" */,
 			);
 			productRefGroup = A75D94682C4DFE3500C23768 /* Products */;
 			projectDirPath = "";
@@ -1142,7 +1142,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1199,7 +1199,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1216,7 +1216,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKM74ZY9ZR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UISnakeGame/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SSnake;
@@ -1226,6 +1226,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1246,7 +1247,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKM74ZY9ZR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UISnakeGame/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SSnake;
@@ -1256,6 +1257,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1277,7 +1279,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsr.UISnakeGameTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1296,7 +1298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsr.UISnakeGameTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1346,9 +1348,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKM74ZY9ZR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DEV-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SSnake (DEV)";
@@ -1358,6 +1361,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1366,6 +1370,7 @@
 				OTHER_SWIFT_FLAGS = "-DDEV";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wsr.UISnakeGame-DEV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1377,9 +1382,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKM74ZY9ZR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DEV-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SSnake (DEV)";
@@ -1389,6 +1395,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1397,6 +1404,7 @@
 				OTHER_SWIFT_FLAGS = "-DDEV";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wsr.UISnakeGame-DEV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1410,7 +1418,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKM74ZY9ZR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TEST-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SSnake (TEST)";
@@ -1420,6 +1428,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1441,7 +1450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKM74ZY9ZR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TEST-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SSnake (TEST)";
@@ -1451,6 +1460,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1525,7 +1535,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A75D94BE2C4F924100C23768 /* XCRemoteSwiftPackageReference "SuperEasyLayout" */ = {
+		A24BA3912C869A7D00266DFF /* XCRemoteSwiftPackageReference "SuperEasyLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/doil6317/SuperEasyLayout.git";
 			requirement = {
@@ -1533,7 +1543,7 @@
 				minimumVersion = 0.3.0;
 			};
 		};
-		A75D94DF2C4FFCFE00C23768 /* XCRemoteSwiftPackageReference "Eureka" */ = {
+		A24BA3942C869AAA00266DFF /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
@@ -1576,14 +1586,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A75D94BF2C4F924100C23768 /* SuperEasyLayout */ = {
+		A24BA3922C869A7D00266DFF /* SuperEasyLayout */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A75D94BE2C4F924100C23768 /* XCRemoteSwiftPackageReference "SuperEasyLayout" */;
+			package = A24BA3912C869A7D00266DFF /* XCRemoteSwiftPackageReference "SuperEasyLayout" */;
 			productName = SuperEasyLayout;
 		};
-		A75D94E02C4FFD7100C23768 /* Eureka */ = {
+		A24BA3952C869AAB00266DFF /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A75D94DF2C4FFCFE00C23768 /* XCRemoteSwiftPackageReference "Eureka" */;
+			package = A24BA3942C869AAA00266DFF /* XCRemoteSwiftPackageReference "Eureka" */;
 			productName = Eureka;
 		};
 		A75D952E2C5A66FE00C23768 /* SuperEasyLayout */ = {

@@ -1,5 +1,4 @@
 {
-  "originHash" : "b24fefea5b2f4407ec723076b1b057a330366aeae8eb814a5d76805bd603a667",
   "pins" : [
     {
       "identity" : "eureka",
@@ -13,12 +12,12 @@
     {
       "identity" : "supereasylayout",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/doil6317/SuperEasyLayout",
+      "location" : "https://github.com/doil6317/SuperEasyLayout.git",
       "state" : {
         "revision" : "0d2a9111aa62e6f2b2a3bb70e526e5cf00e9f8f6",
         "version" : "0.3.0"
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
