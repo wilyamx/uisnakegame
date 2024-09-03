@@ -299,12 +299,12 @@
 		A75D95292C59CBC600C23768 /* advertising-logo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "advertising-logo.mp3"; sourceTree = "<group>"; };
 		A75D952B2C59CE2900C23768 /* typical-trap-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "typical-trap-loop.mp3"; sourceTree = "<group>"; };
 		A75D95762C5A66FE00C23768 /* UISnakeGame_DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISnakeGame_DEV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A75D95772C5A66FE00C23768 /* DEV-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DEV-Info.plist"; path = "/Users/WilliamRS/Documents/ui-snakegame/DEV-Info.plist"; sourceTree = "<absolute>"; };
+		A75D95772C5A66FE00C23768 /* DEV-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DEV-Info.plist"; path = "../DEV-Info.plist"; sourceTree = "<group>"; };
 		A75D95992C5A812C00C23768 /* default-game-config-dev.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-game-config-dev.json"; sourceTree = "<group>"; };
 		A75D959C2C5B15EC00C23768 /* UIApplication+WSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+WSR.swift"; sourceTree = "<group>"; };
 		A75D959F2C5BA72700C23768 /* SNKUserGameProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKUserGameProgress.swift; sourceTree = "<group>"; };
 		A75D95ED2C5C580500C23768 /* UISnakeGame_TEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISnakeGame_TEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A75D95EE2C5C580500C23768 /* TEST-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TEST-Info.plist"; path = "/Users/WilliamRS/Documents/ui-snakegame/TEST-Info.plist"; sourceTree = "<absolute>"; };
+		A75D95EE2C5C580500C23768 /* TEST-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TEST-Info.plist"; path = "../TEST-Info.plist"; sourceTree = "<group>"; };
 		A75D95EF2C5EEF5000C23768 /* SNKImageTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKImageTileView.swift; sourceTree = "<group>"; };
 		A75D95F32C62F71400C23768 /* SNKAboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNKAboutViewModel.swift; sourceTree = "<group>"; };
 		A75D95F72C63042800C23768 /* about.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
