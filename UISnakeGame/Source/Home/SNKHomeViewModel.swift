@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WSRComponents
+import WSRMedia
 import WSRUtils
 
 final class SNKHomeViewModel {

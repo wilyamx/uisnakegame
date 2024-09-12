@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRCommon
 import WSRComponents
 import WSRUtils
 

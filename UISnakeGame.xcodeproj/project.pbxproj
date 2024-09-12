@@ -21,6 +21,12 @@
 		A296C2F02C928912002D7CE5 /* WSRComponents in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2EF2C928912002D7CE5 /* WSRComponents */; };
 		A296C2F22C928912002D7CE5 /* WSRNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2F12C928912002D7CE5 /* WSRNetworking */; };
 		A296C2F42C928912002D7CE5 /* WSRUtils in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2F32C928912002D7CE5 /* WSRUtils */; };
+		A296C2F62C928EA3002D7CE5 /* WSRMedia in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2F52C928EA3002D7CE5 /* WSRMedia */; };
+		A296C2FA2C929727002D7CE5 /* WSRCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2F92C929727002D7CE5 /* WSRCommon */; };
+		A296C2FC2C929727002D7CE5 /* WSRMedia in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2FB2C929727002D7CE5 /* WSRMedia */; };
+		A296C2FE2C92973D002D7CE5 /* WSRCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2FD2C92973D002D7CE5 /* WSRCommon */; };
+		A296C3002C92975A002D7CE5 /* WSRCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2FF2C92975A002D7CE5 /* WSRCommon */; };
+		A296C3022C92975A002D7CE5 /* WSRMedia in Frameworks */ = {isa = PBXBuildFile; productRef = A296C3012C92975A002D7CE5 /* WSRMedia */; };
 		A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D946A2C4DFE3500C23768 /* AppDelegate.swift */; };
 		A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D946C2C4DFE3500C23768 /* SceneDelegate.swift */; };
 		A75D94722C4DFE3500C23768 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A75D94712C4DFE3500C23768 /* Base */; };
@@ -252,10 +258,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A296C2FA2C929727002D7CE5 /* WSRCommon in Frameworks */,
 				A296C2EA2C928901002D7CE5 /* WSRComponents in Frameworks */,
 				A296C2EC2C928901002D7CE5 /* WSRNetworking in Frameworks */,
 				A296C2EE2C928901002D7CE5 /* WSRUtils in Frameworks */,
 				A24BA3932C869A7D00266DFF /* SuperEasyLayout in Frameworks */,
+				A296C2FC2C929727002D7CE5 /* WSRMedia in Frameworks */,
 				A24BA3962C869AAB00266DFF /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +288,8 @@
 			files = (
 				A296C2E02C927B8D002D7CE5 /* WSRComponents in Frameworks */,
 				A296C2E22C927B8D002D7CE5 /* WSRNetworking in Frameworks */,
+				A296C2F62C928EA3002D7CE5 /* WSRMedia in Frameworks */,
+				A296C2FE2C92973D002D7CE5 /* WSRCommon in Frameworks */,
 				A296C2E42C927B8D002D7CE5 /* WSRUtils in Frameworks */,
 				A75D95652C5A66FE00C23768 /* SuperEasyLayout in Frameworks */,
 				A75D95662C5A66FE00C23768 /* Eureka in Frameworks */,
@@ -290,10 +300,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A296C3002C92975A002D7CE5 /* WSRCommon in Frameworks */,
 				A296C2F02C928912002D7CE5 /* WSRComponents in Frameworks */,
 				A296C2F22C928912002D7CE5 /* WSRNetworking in Frameworks */,
 				A296C2F42C928912002D7CE5 /* WSRUtils in Frameworks */,
 				A75D95DC2C5C580500C23768 /* SuperEasyLayout in Frameworks */,
+				A296C3022C92975A002D7CE5 /* WSRMedia in Frameworks */,
 				A75D95DD2C5C580500C23768 /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +536,8 @@
 				A296C2E92C928901002D7CE5 /* WSRComponents */,
 				A296C2EB2C928901002D7CE5 /* WSRNetworking */,
 				A296C2ED2C928901002D7CE5 /* WSRUtils */,
+				A296C2F92C929727002D7CE5 /* WSRCommon */,
+				A296C2FB2C929727002D7CE5 /* WSRMedia */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D94672C4DFE3500C23768 /* UISnakeGame.app */;
@@ -584,6 +598,8 @@
 				A296C2DF2C927B8D002D7CE5 /* WSRComponents */,
 				A296C2E12C927B8D002D7CE5 /* WSRNetworking */,
 				A296C2E32C927B8D002D7CE5 /* WSRUtils */,
+				A296C2F52C928EA3002D7CE5 /* WSRMedia */,
+				A296C2FD2C92973D002D7CE5 /* WSRCommon */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D95762C5A66FE00C23768 /* UISnakeGame_DEV.app */;
@@ -608,6 +624,8 @@
 				A296C2EF2C928912002D7CE5 /* WSRComponents */,
 				A296C2F12C928912002D7CE5 /* WSRNetworking */,
 				A296C2F32C928912002D7CE5 /* WSRUtils */,
+				A296C2FF2C92975A002D7CE5 /* WSRCommon */,
+				A296C3012C92975A002D7CE5 /* WSRMedia */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D95ED2C5C580500C23768 /* UISnakeGame_TEST.app */;
@@ -1473,6 +1491,30 @@
 		A296C2F32C928912002D7CE5 /* WSRUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WSRUtils;
+		};
+		A296C2F52C928EA3002D7CE5 /* WSRMedia */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRMedia;
+		};
+		A296C2F92C929727002D7CE5 /* WSRCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRCommon;
+		};
+		A296C2FB2C929727002D7CE5 /* WSRMedia */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRMedia;
+		};
+		A296C2FD2C92973D002D7CE5 /* WSRCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRCommon;
+		};
+		A296C2FF2C92975A002D7CE5 /* WSRCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRCommon;
+		};
+		A296C3012C92975A002D7CE5 /* WSRMedia */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRMedia;
 		};
 		A75D952E2C5A66FE00C23768 /* SuperEasyLayout */ = {
 			isa = XCSwiftPackageProductDependency;

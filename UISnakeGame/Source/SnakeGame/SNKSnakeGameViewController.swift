@@ -8,7 +8,7 @@
 
 import UIKit
 import SuperEasyLayout
-import WSRComponents
+import WSRMedia
 import WSRUtils
 
 class SNKSnakeGameViewController: SNKViewController {

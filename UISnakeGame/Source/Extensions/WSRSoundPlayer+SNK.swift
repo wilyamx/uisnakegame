@@ -8,6 +8,7 @@
 
 import Foundation
 import WSRComponents
+import WSRMedia
 
 public typealias WSRSound = WSRSoundPlayer.WSRSound
 
