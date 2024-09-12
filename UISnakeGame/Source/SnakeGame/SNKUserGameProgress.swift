@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import WSRUtils
 
 class SNKUserGameProgress {
     typealias SNKUserGameProgressData = SNKSnakeGameViewModel.SNKUserGameProgressData

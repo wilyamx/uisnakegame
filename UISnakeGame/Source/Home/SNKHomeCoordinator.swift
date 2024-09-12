@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRComponents
 
 class SNKHomeCoordinator: WSRCoordinatorProtocol {
     var childCoordinators = [WSRCoordinatorProtocol]()

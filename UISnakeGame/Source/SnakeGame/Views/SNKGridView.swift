@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRUtils
 
 class SNKGridView: UIView {
 

@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import WSRComponents
+import WSRMedia
 
-typealias WSRSound = WSRSoundPlayer.WSRSound
+public typealias WSRSound = WSRSoundPlayer.WSRSound
 
 // MARK: - Available Sound Effects
 
-extension WSRSound {
+public extension WSRSound {
     static let move = WSRSound(name: "move", withExtension: "mp3")
     static let foodCollect = WSRSound(name: "collectCoin", withExtension: "wav")
     static let gameOver = WSRSound(name: "game-over-arcade", withExtension: "mp3")

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import WSRCommon
+import WSRMedia
 
 enum SNKGameError: Error, LocalizedError, WSRActionableError {
     typealias CustomErrorActionType = ActionType
