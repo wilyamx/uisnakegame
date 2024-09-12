@@ -27,6 +27,9 @@
 		A296C2FE2C92973D002D7CE5 /* WSRCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2FD2C92973D002D7CE5 /* WSRCommon */; };
 		A296C3002C92975A002D7CE5 /* WSRCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A296C2FF2C92975A002D7CE5 /* WSRCommon */; };
 		A296C3022C92975A002D7CE5 /* WSRMedia in Frameworks */ = {isa = PBXBuildFile; productRef = A296C3012C92975A002D7CE5 /* WSRMedia */; };
+		A296C3082C92B21B002D7CE5 /* WSRStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A296C3072C92B21B002D7CE5 /* WSRStorage */; };
+		A296C30A2C92B226002D7CE5 /* WSRStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A296C3092C92B226002D7CE5 /* WSRStorage */; };
+		A296C30C2C92B234002D7CE5 /* WSRStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A296C30B2C92B234002D7CE5 /* WSRStorage */; };
 		A75D946B2C4DFE3500C23768 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D946A2C4DFE3500C23768 /* AppDelegate.swift */; };
 		A75D946D2C4DFE3500C23768 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D946C2C4DFE3500C23768 /* SceneDelegate.swift */; };
 		A75D94722C4DFE3500C23768 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A75D94712C4DFE3500C23768 /* Base */; };
@@ -261,6 +264,7 @@
 				A296C2FA2C929727002D7CE5 /* WSRCommon in Frameworks */,
 				A296C2EA2C928901002D7CE5 /* WSRComponents in Frameworks */,
 				A296C2EC2C928901002D7CE5 /* WSRNetworking in Frameworks */,
+				A296C3082C92B21B002D7CE5 /* WSRStorage in Frameworks */,
 				A296C2EE2C928901002D7CE5 /* WSRUtils in Frameworks */,
 				A24BA3932C869A7D00266DFF /* SuperEasyLayout in Frameworks */,
 				A296C2FC2C929727002D7CE5 /* WSRMedia in Frameworks */,
@@ -289,6 +293,7 @@
 				A296C2E02C927B8D002D7CE5 /* WSRComponents in Frameworks */,
 				A296C2E22C927B8D002D7CE5 /* WSRNetworking in Frameworks */,
 				A296C2F62C928EA3002D7CE5 /* WSRMedia in Frameworks */,
+				A296C30A2C92B226002D7CE5 /* WSRStorage in Frameworks */,
 				A296C2FE2C92973D002D7CE5 /* WSRCommon in Frameworks */,
 				A296C2E42C927B8D002D7CE5 /* WSRUtils in Frameworks */,
 				A75D95652C5A66FE00C23768 /* SuperEasyLayout in Frameworks */,
@@ -303,6 +308,7 @@
 				A296C3002C92975A002D7CE5 /* WSRCommon in Frameworks */,
 				A296C2F02C928912002D7CE5 /* WSRComponents in Frameworks */,
 				A296C2F22C928912002D7CE5 /* WSRNetworking in Frameworks */,
+				A296C30C2C92B234002D7CE5 /* WSRStorage in Frameworks */,
 				A296C2F42C928912002D7CE5 /* WSRUtils in Frameworks */,
 				A75D95DC2C5C580500C23768 /* SuperEasyLayout in Frameworks */,
 				A296C3022C92975A002D7CE5 /* WSRMedia in Frameworks */,
@@ -538,6 +544,7 @@
 				A296C2ED2C928901002D7CE5 /* WSRUtils */,
 				A296C2F92C929727002D7CE5 /* WSRCommon */,
 				A296C2FB2C929727002D7CE5 /* WSRMedia */,
+				A296C3072C92B21B002D7CE5 /* WSRStorage */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D94672C4DFE3500C23768 /* UISnakeGame.app */;
@@ -600,6 +607,7 @@
 				A296C2E32C927B8D002D7CE5 /* WSRUtils */,
 				A296C2F52C928EA3002D7CE5 /* WSRMedia */,
 				A296C2FD2C92973D002D7CE5 /* WSRCommon */,
+				A296C3092C92B226002D7CE5 /* WSRStorage */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D95762C5A66FE00C23768 /* UISnakeGame_DEV.app */;
@@ -626,6 +634,7 @@
 				A296C2F32C928912002D7CE5 /* WSRUtils */,
 				A296C2FF2C92975A002D7CE5 /* WSRCommon */,
 				A296C3012C92975A002D7CE5 /* WSRMedia */,
+				A296C30B2C92B234002D7CE5 /* WSRStorage */,
 			);
 			productName = UISnakeGame;
 			productReference = A75D95ED2C5C580500C23768 /* UISnakeGame_TEST.app */;
@@ -1515,6 +1524,18 @@
 		A296C3012C92975A002D7CE5 /* WSRMedia */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WSRMedia;
+		};
+		A296C3072C92B21B002D7CE5 /* WSRStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRStorage;
+		};
+		A296C3092C92B226002D7CE5 /* WSRStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRStorage;
+		};
+		A296C30B2C92B234002D7CE5 /* WSRStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WSRStorage;
 		};
 		A75D952E2C5A66FE00C23768 /* SuperEasyLayout */ = {
 			isa = XCSwiftPackageProductDependency;

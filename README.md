@@ -89,7 +89,7 @@ Hard Headed
 
 PROJECT SPECIFICATIONS
 
-- **IDE:** `XCode 15.4 for iOS 17.5`
+- **IDE:** `XCode 15.2 for iOS 17.2`
 - **Language:** `Swift 5`
 - **Interface:** `Storyboard`
 

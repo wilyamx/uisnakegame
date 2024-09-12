@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WSRComponents
+import WSRStorage
 
 class SNKConstants: NSObject {
     typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
