@@ -17,6 +17,15 @@
         "revision" : "0d2a9111aa62e6f2b2a3bb70e526e5cf00e9f8f6",
         "version" : "0.3.0"
       }
+    },
+    {
+      "identity" : "wsr",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wilyamx/wsr.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "521280e2dca27a2ae836ba3942a44093862dc7ea"
+      }
     }
   ],
   "version" : 2

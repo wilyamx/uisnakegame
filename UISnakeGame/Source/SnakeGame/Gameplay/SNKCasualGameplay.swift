@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import WSRComponents
+import WSRUtils
 
 struct SNKCasualGameplay: SNKGameplayProtocol {
     typealias SNKGridLocation = SNKGrid.SNKGridLocation

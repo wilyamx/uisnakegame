@@ -34,7 +34,7 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     private lazy var rankTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
-        view.font = .headline
+        view.font = .snk_headline
         view.textColor = .white
         view.lineBreakMode = .byCharWrapping
         return view
@@ -42,14 +42,14 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     private lazy var nameTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .left
-        view.font = .title3
+        view.font = .snk_title3
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
     }()
     private lazy var medalImageView: UIImageView = {
         let image = UIImage(systemName: "star.fill")
-        image?.applyingSymbolConfiguration(.init(font: .largeTitle, scale: .large))
+        image?.applyingSymbolConfiguration(.init(font: .snk_largeTitle, scale: .large))
 
         let view = UIImageView(image: image?.withRenderingMode(.alwaysTemplate))
         view.contentMode = .scaleAspectFit
@@ -65,7 +65,7 @@ class SNKLeaderboardCollectionViewCell: SNKCollectionViewCell {
     private lazy var scoreTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .right
-        view.font = .headline
+        view.font = .snk_headline
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view

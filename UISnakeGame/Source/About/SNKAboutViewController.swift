@@ -9,6 +9,7 @@
 import UIKit
 import SuperEasyLayout
 import WebKit
+import WSRUtils
 
 class SNKAboutViewController: SNKViewController {
     weak var coordinator: SNKHomeCoordinator?

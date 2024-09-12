@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRComponents
 
 class SNKConstants: NSObject {
     typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
@@ -107,15 +108,15 @@ class SNKConstants: NSObject {
 
     // Leaderboard
 
-    @WSRUserDefaultCodable(key: SNKKeys.leaderboard.rawValue)
+    @WSRUserDefaultCodable(SNKKeys.leaderboard.rawValue)
     var leaderboard: [SNKLeaderboardItemInfo]?
 
-    @WSRUserDefaultCodable(key: SNKKeys.leaderboardCasual.rawValue)
+    @WSRUserDefaultCodable(SNKKeys.leaderboardCasual.rawValue)
     var leaderboardCasual: [SNKLeaderboardItemInfo]?
 
     // Game Configuration
 
-    @WSRUserDefaultCodable(key: SNKKeys.gameConfig.rawValue)
+    @WSRUserDefaultCodable(SNKKeys.gameConfig.rawValue)
     var gameConfig: SNKGameConfiguration?
 
     // true: map based
@@ -131,7 +132,7 @@ class SNKConstants: NSObject {
     @WSRUserDefaultsReadAndWrite(SNKKeys.showTheCasualGameplayObjective.rawValue, default: false)
     var showTheCasualGameplayObjective: Bool
 
-    @WSRUserDefaultCodable(key: SNKKeys.gameProgress.rawValue)
+    @WSRUserDefaultCodable(SNKKeys.gameProgress.rawValue)
     var gameProgress: [SNKUserGameProgressData]?
 
     // eye

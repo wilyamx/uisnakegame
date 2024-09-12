@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRComponents
 
 final class SNKSnake {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection

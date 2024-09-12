@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import WSRComponents
+import WSRUtils
 
 struct SNKMapBasedGameplay: SNKGameplayProtocol {
     typealias SNKGameProgressData = SNKSnakeGameViewModel.SNKGameProgressData

@@ -8,6 +8,8 @@
 
 import UIKit
 import SuperEasyLayout
+import WSRComponents
+import WSRUtils
 
 class SNKSnakeGameViewController: SNKViewController {
     typealias SNKGameState = SNKSnakeGameViewModel.SNKGameState
@@ -42,7 +44,7 @@ class SNKSnakeGameViewController: SNKViewController {
         let view = UILabel()
         view.text = "SCORE: 0"
         view.textAlignment = .left
-        view.font = .body2
+        view.font = .snk_body2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
@@ -51,7 +53,7 @@ class SNKSnakeGameViewController: SNKViewController {
         let view = UILabel()
         view.text = "SNAKE: 0"
         view.textAlignment = .left
-        view.font = .body2
+        view.font = .snk_body2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view
@@ -60,7 +62,7 @@ class SNKSnakeGameViewController: SNKViewController {
         let view = UILabel()
         view.text = "STAGE: 1"
         view.textAlignment = .right
-        view.font = .body2
+        view.font = .snk_body2
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view

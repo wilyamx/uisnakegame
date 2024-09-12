@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import WSRUtils
 
 class SNKSettingsViewController: FormViewController {
     weak var coordinator: SNKHomeCoordinator?
