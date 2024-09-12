@@ -9,6 +9,9 @@
 import UIKit
 import SuperEasyLayout
 import Combine
+import WSRComponents
+import WSRMedia
+import WSRUtils
 
 class SNKSnakeGame {
     typealias SNKDirection = SNKSnakeGameViewModel.SNKDirection

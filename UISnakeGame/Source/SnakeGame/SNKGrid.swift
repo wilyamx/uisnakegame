@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import WSRUtils
 
 class SNKGrid {
     struct SNKGridLocation {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRUtils
 
 class SNKLeaderboardViewController: SNKViewController {
     weak var coordinator: SNKHomeCoordinator?

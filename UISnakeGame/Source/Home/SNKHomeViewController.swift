@@ -8,6 +8,10 @@
 
 import UIKit
 import SuperEasyLayout
+import WSRCommon
+import WSRComponents
+import WSRMedia
+import WSRUtils
 
 class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private typealias ItemInfo = SNKLeaderboardViewModel.ItemInfo
@@ -24,7 +28,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = UILabel()
         view.text = "SKILLFUL"
         view.textAlignment = .center
-        view.font = .largeTitle
+        view.font = .snk_largeTitle
         view.textColor = .color1
         view.lineBreakMode = .byCharWrapping
 
@@ -52,7 +56,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
     private lazy var userTextLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
-        view.font = .title1
+        view.font = .snk_title1
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         view.layer.shadowColor = UIColor.white.cgColor
@@ -78,7 +82,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = SNKButton()
         view.text = "NEW GAME"
         view.colorStyle = .primary
-        view.font = .title3
+        view.font = .snk_title3
         view.isUserInteractionEnabled = true
         view.layer.cornerRadius = 20
         return view
@@ -87,7 +91,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = SNKButton()
         view.text = SNKConstants.shared.hasActiveUser ? "PLAY" : continueTitle
         view.colorStyle = .primary
-        view.font = .title3
+        view.font = .snk_title3
         view.layer.cornerRadius = 20
         return view
     }()
@@ -95,7 +99,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = SNKButton()
         view.text = "SETTINGS"
         view.colorStyle = .primary
-        view.font = .title3
+        view.font = .snk_title3
         view.layer.cornerRadius = 20
         return view
     }()
@@ -103,7 +107,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = SNKButton()
         view.text = "LEADERBOARD"
         view.colorStyle = .primary
-        view.font = .title3
+        view.font = .snk_title3
         view.layer.cornerRadius = 20
         return view
     }()
@@ -111,7 +115,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = SNKButton()
         view.text = "RESET SAVE"
         view.colorStyle = .primary
-        view.font = .title3
+        view.font = .snk_title3
         view.layer.cornerRadius = 20
         return view
     }()
@@ -119,7 +123,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         let view = SNKButton()
         view.text = "ABOUT"
         view.colorStyle = .primary
-        view.font = .title3
+        view.font = .snk_title3
         view.layer.cornerRadius = 20
         return view
     }()
@@ -134,7 +138,7 @@ class SNKHomeViewController: SNKViewController, WSRStoryboarded {
         view.text = "Developed by: William S. Reña"
 #endif
         view.textAlignment = .center
-        view.font = .footnote
+        view.font = .snk_footnote
         view.textColor = .black
         view.lineBreakMode = .byCharWrapping
         return view

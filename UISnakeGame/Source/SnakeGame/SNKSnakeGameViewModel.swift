@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WSRUtils
 
 final class SNKSnakeGameViewModel {
     typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
