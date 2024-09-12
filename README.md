@@ -105,6 +105,7 @@ PROJECT SPECIFICATIONS
 - Package Dependencies
 	- [Eureka](https://eurekacommunity.github.io/) - [iOS form builder](https://github.com/xmartlabs/eureka)
 	- [SuperEasyLayout](https://github.com/doil6317/SuperEasyLayout) - apply UI constraints programmatically
+	- [WSR](https://github.com/wilyamx/wsr.git) - Reusable code for ios development
 
 ## SCREENSHOTS
 
