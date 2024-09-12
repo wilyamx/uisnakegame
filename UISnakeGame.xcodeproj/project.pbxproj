@@ -422,8 +422,6 @@
 				A75D95242C58654400C23768 /* SNKGameplayProtocol.swift */,
 				A75D95102C56276800C23768 /* Errors */,
 				A75D949F2C4E33C600C23768 /* Components */,
-				A75D949D2C4E337D00C23768 /* ViewModels */,
-				A75D949C2C4E336F00C23768 /* Utilities */,
 				A75D949B2C4E336300C23768 /* Extensions */,
 				A75D94A02C4E33E000C23768 /* Home */,
 				A75D94E52C507D4E00C23768 /* SnakeGame */,
@@ -442,20 +440,6 @@
 				A75D95022C54C6E100C23768 /* WSRSoundPlayer+SNK.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		A75D949C2C4E336F00C23768 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		A75D949D2C4E337D00C23768 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		A75D949F2C4E33C600C23768 /* Components */ = {
