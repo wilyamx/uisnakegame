@@ -9,7 +9,7 @@
 import UIKit
 import WSRStorage
 
-class SNKConstants: NSObject {
+final class SNKConstants: NSObject {
     typealias SNKLeaderboardItemInfo = SNKLeaderboardViewModel.ItemInfo
     typealias SNKUserGameProgressData = SNKSnakeGameViewModel.SNKUserGameProgressData
 
