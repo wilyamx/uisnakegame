@@ -1410,7 +1410,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/wilyamx/wsr.git";
 			requirement = {
-				branch = develop;
+				branch = master;
 				kind = branch;
 			};
 		};

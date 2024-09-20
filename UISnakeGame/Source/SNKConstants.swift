@@ -86,24 +86,24 @@ final class SNKConstants: NSObject {
 
     // Gameplay
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.activeUser.rawValue, default: "")
+    @WSRUserDefaults_UIKit(SNKKeys.activeUser.rawValue, default: "")
     var activeUser: String
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.portraitOrientation.rawValue, default: true)
+    @WSRUserDefaults_UIKit(SNKKeys.portraitOrientation.rawValue, default: true)
     var isPortraitOrientation: Bool
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.displayGrid.rawValue, default: true)
+    @WSRUserDefaults_UIKit(SNKKeys.displayGrid.rawValue, default: true)
     var displayGrid: Bool
 
     // Sounds
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.backgroundSound.rawValue, default: false)
+    @WSRUserDefaults_UIKit(SNKKeys.backgroundSound.rawValue, default: false)
     var backgroundSound: Bool
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.characterSound.rawValue, default: true)
+    @WSRUserDefaults_UIKit(SNKKeys.characterSound.rawValue, default: true)
     var characterSound: Bool
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.alertSound.rawValue, default: true)
+    @WSRUserDefaults_UIKit(SNKKeys.alertSound.rawValue, default: true)
     var alertSound: Bool
 
     // Leaderboard
@@ -121,30 +121,30 @@ final class SNKConstants: NSObject {
 
     // true: map based
     // false: survival
-    @WSRUserDefaultsReadAndWrite(SNKKeys.playMode.rawValue, default: true)
+    @WSRUserDefaults_UIKit(SNKKeys.playMode.rawValue, default: true)
     var playMode: Bool
 
     // Game Progress
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.showTheMapGameplayObjective.rawValue, default: false)
+    @WSRUserDefaults_UIKit(SNKKeys.showTheMapGameplayObjective.rawValue, default: false)
     var showTheMapGameplayObjective: Bool
 
-    @WSRUserDefaultsReadAndWrite(SNKKeys.showTheCasualGameplayObjective.rawValue, default: false)
+    @WSRUserDefaults_UIKit(SNKKeys.showTheCasualGameplayObjective.rawValue, default: false)
     var showTheCasualGameplayObjective: Bool
 
     @WSRUserDefaultCodable(SNKKeys.gameProgress.rawValue)
     var gameProgress: [SNKUserGameProgressData]?
 
     // eye
-    @WSRUserDefaultsReadAndWrite(SNKKeys.showInvisibleSnakeDetails.rawValue, default: false)
+    @WSRUserDefaults_UIKit(SNKKeys.showInvisibleSnakeDetails.rawValue, default: false)
     var showAboutInvisibleSnake: Bool
 
     // pill
-    @WSRUserDefaultsReadAndWrite(SNKKeys.showHardHeadedSnakeDetails.rawValue, default: false)
+    @WSRUserDefaults_UIKit(SNKKeys.showHardHeadedSnakeDetails.rawValue, default: false)
     var showAboutHardHeadedSnake: Bool
 
     // wave
-    @WSRUserDefaultsReadAndWrite(SNKKeys.showFlexibleSnakeDetails.rawValue, default: false)
+    @WSRUserDefaults_UIKit(SNKKeys.showFlexibleSnakeDetails.rawValue, default: false)
     var showAboutFlexibleSnake: Bool
 
     // MARK: - Calculated Variables

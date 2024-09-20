@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess.git",
+      "state" : {
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
+      }
+    },
+    {
       "identity" : "supereasylayout",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/doil6317/SuperEasyLayout.git",
@@ -23,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wilyamx/wsr.git",
       "state" : {
-        "branch" : "develop",
-        "revision" : "9363c661fb39defe45386c060916406a202cacc7"
+        "branch" : "master",
+        "revision" : "5d8290611cdff7c0150e3043ed030b29b8073192"
       }
     }
   ],
