@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import WSRComponents
+import WSRComponents_UIKit
 import WSRMedia
 
 public typealias WSRSound = WSRSoundPlayer.WSRSound

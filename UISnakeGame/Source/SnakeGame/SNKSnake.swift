@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WSRComponents
+import WSRComponents_UIKit
 import WSRMedia
 
 final class SNKSnake {

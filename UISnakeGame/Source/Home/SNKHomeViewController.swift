@@ -9,7 +9,7 @@
 import UIKit
 import SuperEasyLayout
 import WSRCommon
-import WSRComponents
+import WSRComponents_UIKit
 import WSRMedia
 import WSRUtils
 
